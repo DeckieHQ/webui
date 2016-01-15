@@ -1,0 +1,27 @@
+<form {{action "register" on="submit"}}>
+  <fieldset class="form-group">
+    <label for="email">Email</label>
+    <input type="email" value={{model.email}} class="form-control" id="email" placeholder="Enter email">
+    {{#if showErrors}}{{model.errors.email}}{{/if}}
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="firstname">Firstname</label>
+    <input value={{model.firstname}} class="form-control" id="firstname" placeholder="Enter firstname">
+    {{#if showErrors}}{{model.errors.firstname}}{{/if}}
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="lastname">Lastname</label>
+    <input value={{model.lastname}} class="form-control" id="lastname" placeholder="Enter lastname">
+    {{#if showErrors}}{{model.errors.lastname}}{{/if}}
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="password">Password</label>
+    <input type="password" value={{model.password}} class="form-control" id="password" placeholder="Enter password">
+    {{#if showErrors}}{{model.errors.password}}{{/if}}
+  </fieldset>
+
+  <button type="submit">Register</button>
+</form>

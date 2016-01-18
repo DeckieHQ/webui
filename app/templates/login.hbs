@@ -1,3 +1,12 @@
 <h2>Login</h2>
 
-{{login-form}}
+<form {{action "authenticate" on="submit"}}>
+  {{validated-input label="Email" placeholder="Enter email" value=email errors=errors.email showErrors=showErrors class="form-group"}}
+  {{validated-input label="Password" placeholder="Enter password" type="password" value=password errors=errors.password showErrors=showErrors class="form-group"}}
+
+  <button type="submit">Login</button>
+</form>
+
+<!-- {{#if errorMessage}}
+  {{errorMessage}}
+{{/if}} -->

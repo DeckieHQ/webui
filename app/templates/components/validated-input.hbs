@@ -1,0 +1,9 @@
+<label>{{label}}</label>
+{{input value=value type=type focus-out="showError" class="form-control" placeholder=placeholder}}
+{{#if showErrors}}
+  {{errors}}
+{{else}}
+  {{#if showError}}
+    <span class="error">{{errors}}</span>
+  {{/if}}
+{{/if}}

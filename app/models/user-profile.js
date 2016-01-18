@@ -14,7 +14,8 @@ UserProfile.reopen({
       presence: true
     },
     firstname: {
-      presence: true
+      presence: true,
+      length: { minimum: 10 }
     },
     lastname: {
       presence: true

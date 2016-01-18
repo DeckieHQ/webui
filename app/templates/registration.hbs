@@ -1,3 +1,10 @@
 <h2>Registration</h2>
 
-{{registration-form model=model}}
+<form {{action "register" on="submit"}}>
+  {{validated-input label="Email" placeholder="Enter email" value=model.email errors=model.errors.email showErrors=showErrors class="form-group"}}
+  {{validated-input label="Firstname" placeholder="Enter firstname" value=model.firstname errors=model.errors.firstname showErrors=showErrors class="form-group"}}
+  {{validated-input label="Lastname" placeholder="Enter lastname" value=model.lastname errors=model.errors.lastname showErrors=showErrors class="form-group"}}
+  {{validated-input label="Password" placeholder="Enter password" type="password" value=model.password errors=model.errors.password showErrors=showErrors class="form-group"}}
+
+  <button type="submit">Register</button>
+</form>

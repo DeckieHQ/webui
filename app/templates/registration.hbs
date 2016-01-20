@@ -1,10 +1,14 @@
 <h2>Registration</h2>
 
-<form {{action "register" on="submit"}}>
+<form>
   {{validated-input label="Email" placeholder="Enter email" value=model.email errors=model.errors.email showAllErrors=showErrors class="form-group"}}
   {{validated-input label="Firstname" placeholder="Enter firstname" value=model.firstname errors=model.errors.firstname showAllErrors=showErrors class="form-group"}}
   {{validated-input label="Lastname" placeholder="Enter lastname" value=model.lastname errors=model.errors.lastname showAllErrors=showErrors class="form-group"}}
   {{validated-input label="Password" placeholder="Enter password" type="password" value=model.password errors=model.errors.password showAllErrors=showErrors class="form-group"}}
 
-  <button type="submit">Register</button>
+  {{dynamic-submit actionOnSubmit="register"}}
 </form>
+
+{{#if errorMessage}}
+  {{errorMessage}}
+{{/if}}

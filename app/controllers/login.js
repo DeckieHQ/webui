@@ -14,20 +14,18 @@ export default Ember.Controller.extend(EmberValidations, {
   },
 
   actions: {
-    authenticate: function() {
+    authenticate: function(defer) {
       let identification = this.get('email');
       let password = this.get('password');
 
-      let self = this;
-
-      return self.validate()
-        .then(() => this.get('session').authenticate('authenticator:devise', identification, password))
-            // .catch((reason) => {
-            //   this.set('errorMessage', reason.error);
-            // })
-        // )
-        .catch(() => {
-          self.set("showErrors", true);
+      return this.validate()
+        .then(() => this.get('session').authenticate('authenticator:devise', identification, password)
+          .then(() => defer.resolve())
+        )
+        .catch((reason) => {
+          this.set('errorMessage', reason.error)
+          this.set("showErrors", true);
+          defer.reject();
         });
     }
   }

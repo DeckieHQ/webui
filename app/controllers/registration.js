@@ -2,14 +2,15 @@ import Ember from 'ember';
 
 export default Ember.Controller.extend({
    actions: {
-     register: function() {
+     register: function(defer) {
        let model = this.get('model');
-       let self = this;
 
-       model.validate()
-         .then(() => model.save())
-         .catch(() => {
-           self.set("showErrors", true);
+       return model.validate()
+         .then(() => model.save().then(() => defer.resolve()))
+         .catch((reason) => {
+           this.set('errorMessage', reason.error)
+           this.set("showErrors", true);
+           defer.reject();
          });
      }
    }

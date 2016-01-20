@@ -1,10 +1,8 @@
 import Ember from 'ember';
 import EmberValidations from 'ember-validations';
 
-const { service } = Ember.inject;
-
 export default Ember.Controller.extend(EmberValidations, {
-  session: service('session'),
+  session: Ember.inject.service('session'),
 
   validations: {
     email: {

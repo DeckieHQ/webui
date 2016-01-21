@@ -3,6 +3,6 @@ import UnauthenticatedRouteMixin from 'ember-simple-auth/mixins/unauthenticated-
 
 export default Ember.Route.extend(UnauthenticatedRouteMixin, {
   model: function() {
-    return this.store.createRecord('userProfile');
+    return this.store.createRecord('user');
   }
 });

@@ -38,6 +38,10 @@
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
     "ember-simple-auth": "1.0.1",
-    "ember-validations": "2.0.0-alpha.4"
+    "ember-validations": "2.0.0-alpha.4",
+    "moment": "~2.11.1"
+  },
+  "dependencies": {
+    "moment": "~2.11.1"
   }
 }

@@ -5,7 +5,7 @@ let User = DS.Model.extend(EmberValidations, {
   email: DS.attr(),
   first_name: DS.attr(),
   last_name: DS.attr(),
-  birthday: DS.attr('date', { defaultValue: new Date("October 13, 1988 11:13:00") }),
+  birthday: DS.attr('date'),
   phone_number: DS.attr(),
   password: DS.attr(),
 });

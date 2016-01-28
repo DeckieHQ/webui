@@ -9,6 +9,10 @@ Router.map(function() {
   this.route('registration')
   this.route('login');
   this.route('dashboard');
+  this.route('account', function() {
+    this.route('personnal-information');
+    this.route('change-password');
+  });
 });
 
 export default Router;

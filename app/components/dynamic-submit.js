@@ -10,7 +10,7 @@ export default Ember.Component.extend({
       defer.promise.then(() => {
         this.set('isSaving', false);
         this.set('isSaved', true);
-      }).catch((error) => {
+      }).catch(() => {
         this.set('isSaving', false);
       });
 

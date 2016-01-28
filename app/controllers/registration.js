@@ -5,6 +5,9 @@ export default Ember.Controller.extend(EmberValidations, {
   session: Ember.inject.service('session'),
 
   validations: {
+    "model.password": {
+      presence: true
+    },
     day: {
       presence: true,
       numericality: {
@@ -36,20 +39,21 @@ export default Ember.Controller.extend(EmberValidations, {
       let model = this.get('model');
 
       return model.validate()
+        .then(() => this.validate())
         .then(() =>  {
           let birthday = new Date(this.get('year'), this.get('month'), this.get('day'));
           model.set('birthday', birthday);
 
-          model.save().then(() => {
-            this.get('session').authenticate('authenticator:devise', model.get('email'), model.get('password'))
-              .then(() => defer.resolve());
-          });
+          return model.save();
         })
+        .then(() => this.get('session').authenticate('authenticator:devise', model.get('email'), model.get('password')))
+        .then(defer.resolve)
         .catch((reason) => {
-          this.set('errorMessage', reason.error)
+          this.set('errorMessage', reason.error);
           this.set("showErrors", true);
           defer.reject();
-        });
+        })
+      ;
     }
   }
  });

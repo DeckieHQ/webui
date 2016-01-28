@@ -1,0 +1,10 @@
+<div class='jumbotron col-md-3'>
+  <ul class="nav nav-pills nav-stacked">
+    {{#link-to 'account.personnal-information' tagName='li'}}<a {{bind-attr href='view.href'}}>Personnal information</a>{{/link-to}}
+    {{#link-to 'account.change-password' tagName='li'}}<a {{bind-attr href='view.href'}}>Change email</a>{{/link-to}}
+  </ul>
+</div>
+
+<div class='col-md-9'>
+  {{outlet}}
+</div>

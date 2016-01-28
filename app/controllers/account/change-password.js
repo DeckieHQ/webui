@@ -5,21 +5,24 @@ export default Ember.Controller.extend(EmberValidations, {
   session: Ember.inject.service('session'),
 
   validations: {
-    email: {
+    "model.current_password": {
       presence: true
     },
-    password: {
+    "model.password": {
       presence: true
-    }
+    },
+    "model.confirm_password": {
+      presence: true
+    },
   },
 
   actions: {
-    authenticate: function(defer) {
-      let identification = this.get('email');
-      let password = this.get('password');
+    change_password: function(defer) {
+      let model = this.get('model');
 
-      return this.validate()
-        .then(() => this.get('session').authenticate('authenticator:devise', identification, password))
+      return model.validate()
+        .then(() => this.validate())
+        .then(() => model.save())
         .then(defer.resolve)
         .catch((reason) => {
           this.set('errorMessage', reason.error)
@@ -29,4 +32,4 @@ export default Ember.Controller.extend(EmberValidations, {
       ;
     }
   }
-});
+ });

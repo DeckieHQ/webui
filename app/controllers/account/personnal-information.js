@@ -11,7 +11,7 @@ export default Ember.Controller.extend(EmberValidations, {
   },
 
   actions: {
-    update_profile: function(defer) {
+    update: function(defer) {
       let model = this.get('model');
 
       return model.validate()

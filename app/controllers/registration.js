@@ -41,7 +41,11 @@ export default Ember.Controller.extend(EmberValidations, {
       return model.validate()
         .then(() => this.validate())
         .then(() =>  {
-          let birthday = new Date(this.get('year'), this.get('month'), this.get('day'));
+          let year = this.get('year');
+          let month = parseInt(this.get('month')) - 1;
+          let day = parseInt(this.get('day')) + 1;
+
+          let birthday = new Date(year, month, day);
           model.set('birthday', birthday);
 
           return model.save();

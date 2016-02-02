@@ -7,6 +7,30 @@ export default Ember.Controller.extend(EmberValidations, {
   validations: {
     "model.current_password": {
       presence: true
+    },
+    day: {
+      presence: true,
+      numericality: {
+        onlyInteger: true,
+        greaterThanOrEqualTo: 1,
+        lessThanOrEqualTo: 31
+      }
+    },
+    month: {
+      presence: true,
+      numericality: {
+        onlyInteger: true,
+        greaterThanOrEqualTo: 1,
+        lessThanOrEqualTo: 12
+      }
+    },
+    year: {
+      presence: true,
+      numericality: {
+        onlyInteger: true,
+        greaterThanOrEqualTo: 1900,
+        lessThanOrEqualTo: 2000
+      }
     }
   },
 
@@ -16,7 +40,16 @@ export default Ember.Controller.extend(EmberValidations, {
 
       return model.validate()
         .then(() => this.validate())
-        .then(() => model.save())
+        .then(() => {
+          let year = this.get('year');
+          let month = parseInt(this.get('month')) - 1;
+          let day = parseInt(this.get('day')) + 1;
+
+          let birthday = new Date(year, month, day);
+          model.set('birthday', birthday);
+
+          return model.save();
+        })
         .then(() => this.get('session').authenticate('authenticator:devise', model.get('email'), model.get('current_password')))
         .then(defer.resolve)
         .catch((reason) => {

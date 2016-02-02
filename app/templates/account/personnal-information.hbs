@@ -3,12 +3,12 @@
   {{validated-input label="Firstname" placeholder="Enter firstname" value=model.first_name errors=model.errors.first_name showAllErrors=showErrors class="form-group"}}
   {{validated-input label="Lastname" placeholder="Enter lastname" value=model.last_name errors=model.errors.last_name showAllErrors=showErrors class="form-group"}}
 
-  <!-- <div class="form-group col-sm-12">
+  <div class="form-group col-sm-12">
     <label class="col-sm-12">Birthday</label>
-    <div class="col-sm-1">{{validated-input placeholder="day" value=day errors=errors.day showAllErrors=showErrors}}</div>
-    <div class="col-sm-1">{{validated-input placeholder="month" value=month errors=errors.month showAllErrors=showErrors}}</div>
-    <div class="col-sm-1">{{validated-input placeholder="year" value=year errors=errors.year showAllErrors=showErrors}}</div>
-  </div> -->
+    <div class="col-sm-2">{{validated-input placeholder="day" value=day errors=errors.day showAllErrors=showErrors}}</div>
+    <div class="col-sm-2">{{validated-input placeholder="month" value=month errors=errors.month showAllErrors=showErrors}}</div>
+    <div class="col-sm-2">{{validated-input placeholder="year" value=year errors=errors.year showAllErrors=showErrors}}</div>
+  </div>
 
   {{validated-input label="Current password" type="password" placeholder="Enter current password" value=model.current_password errors=errors.model.current_password showAllErrors=showErrors class="form-group"}}
 

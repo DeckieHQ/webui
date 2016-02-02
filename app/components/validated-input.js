@@ -8,7 +8,7 @@ export default Ember.Component.extend({
   },
 
   showErrors: function() {
-    let hasErrors = (this.get('errors').length > 0);
+    let hasErrors = ((this.get('errors') || []).length > 0);
     let showErrors = (this.get('showAllErrors') || this.get('showError'));
 
     return (hasErrors && showErrors);

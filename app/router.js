@@ -12,6 +12,7 @@ Router.map(function() {
   this.route('account', function() {
     this.route('personnal-information');
     this.route('change-password');
+    this.route('profile');
   });
 });
 

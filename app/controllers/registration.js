@@ -4,6 +4,8 @@ import EmberValidations from 'ember-validations';
 export default Ember.Controller.extend(EmberValidations, {
   session: Ember.inject.service('session'),
 
+  months: ["jan", "feb", "march"],
+
   validations: {
     "model.password": {
       presence: true
@@ -17,12 +19,7 @@ export default Ember.Controller.extend(EmberValidations, {
       }
     },
     month: {
-      presence: true,
-      numericality: {
-        onlyInteger: true,
-        greaterThanOrEqualTo: 1,
-        lessThanOrEqualTo: 12
-      }
+      presence: true
     },
     year: {
       presence: true,
@@ -42,11 +39,12 @@ export default Ember.Controller.extend(EmberValidations, {
         .then(() => this.validate())
         .then(() =>  {
           let year = this.get('year');
-          let month = parseInt(this.get('month')) - 1;
+          let month = this.get('months').indexOf(this.get('month'));
           let day = parseInt(this.get('day')) + 1;
-
           let birthday = new Date(year, month, day);
+
           model.set('birthday', birthday);
+          //TODO: check la date d'envoie si y'a pas un bug niveau backend
 
           return model.save();
         })

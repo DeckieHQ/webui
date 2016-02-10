@@ -1,0 +1,11 @@
+<select {{action 'setValue' on='change'}} {{action 'showError' on='focusOut'}} class="form-control validated-select {{if showErrors 'show-errors'}}">
+  <option>{{placeholder}}</option>
+  {{#each options as |option|}}
+    <option value={{option}} selected={{eq value option}}>
+      {{option}}
+    </option>
+  {{/each}}
+</select>
+{{#if showErrors}}
+  {{errors}}
+{{/if}}

@@ -1,5 +1,7 @@
 <select {{action 'setValue' on='change'}} {{action 'showError' on='focusOut'}} class="form-control validated-select {{if showErrors 'show-errors'}}">
-  <option>{{placeholder}}</option>
+  {{#if placeholder}}
+    <option value="">{{placeholder}}</option>
+  {{/if}}
   {{#each options as |option|}}
     <option value={{option}} selected={{eq value option}}>
       {{option}}

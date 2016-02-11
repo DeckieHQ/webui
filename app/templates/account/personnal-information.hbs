@@ -6,7 +6,9 @@
   <div class="form-group col-sm-12">
     <label class="col-sm-12">Birthday</label>
     <div class="col-sm-2">{{validated-input placeholder="day" value=day errors=errors.day showAllErrors=showErrors}}</div>
-    <div class="col-sm-2">{{validated-input placeholder="month" value=month errors=errors.month showAllErrors=showErrors}}</div>
+    <div class="col-sm-3">
+      {{validated-select options=months value=month errors=errors.month showAllErrors=showErrors class="form-group"}}
+    </div>
     <div class="col-sm-2">{{validated-input placeholder="year" value=year errors=errors.year showAllErrors=showErrors}}</div>
   </div>
 

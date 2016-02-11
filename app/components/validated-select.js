@@ -4,15 +4,12 @@ import ValidatedInput from '../components/validated-input';
 export default ValidatedInput.extend({
   actions: {
    setValue: function() {
-     let selectedIndex = Ember.$("#"+this.elementId+" .validated-select")[0].selectedIndex;
+     let selectElement = Ember.$("#"+this.elementId+" .validated-select")[0];
+     let selectedIndex = selectElement.selectedIndex;
+     let selectedValue = selectElement[selectedIndex].value;
 
-     if (selectedIndex == 0) {
-       this.set('value', null);
-       this.send('showError');
-     } else {
-       let selectedOption = this.get('options')[selectedIndex - 1];
-       this.set('value', selectedOption);
-     }
+     this.set('value', selectedValue);
+     this.send('showError');
    }
  }
 });

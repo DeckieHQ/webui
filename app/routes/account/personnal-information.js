@@ -7,10 +7,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
     let birthday = model.get('birthday');
 
-    controller.set('day', birthday.getDate());
-    controller.set('month', birthday.getMonth() + 1);
-    controller.set('year', birthday.getFullYear());
+    controller.set('day', moment(birthday).format("D"));
+    controller.set('month', moment(birthday).format("MMMM"));
+    controller.set('year', moment(birthday).format("YYYY"));
   },
-
-  //TODO: utiliser momentJS pour les dates
 });

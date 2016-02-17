@@ -5,6 +5,7 @@ export default Ember.Controller.extend(EmberValidations, {
   session: Ember.inject.service('session'),
 
   months: [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
+  cultures: [ "en" ],
 
   validations: {
     "model.current_password": {

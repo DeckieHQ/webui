@@ -14,6 +14,7 @@
     <div class="col-sm-1">{{validated-input placeholder="year" value=year errors=errors.year showAllErrors=showErrors}}</div>
   </div>
 
+  {{validated-select label="Language" options=cultures value=model.culture errors=model.errors.culture showAllErrors=showErrors class="form-group"}}
   {{validated-input label="Password" type="password" placeholder="Enter password" value=model.password errors=errors.model.password showAllErrors=showErrors class="form-group"}}
 
   {{dynamic-submit actionOnSubmit="register"}}

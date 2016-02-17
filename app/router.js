@@ -13,7 +13,9 @@ Router.map(function() {
     this.route('personnal-information');
     this.route('change-password');
     this.route('profile');
+    this.route('verifications');
   });
+  this.route('verification-email')
 });
 
 export default Router;

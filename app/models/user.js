@@ -8,9 +8,12 @@ let User = DS.Model.extend(EmberValidations, {
   last_name: DS.attr(),
   birthday: DS.attr('date'),
   phone_number: DS.attr(),
+  culture: DS.attr(),
   password: DS.attr(),
   confirm_password: DS.attr(),
-  current_password: DS.attr()
+  current_password: DS.attr(),
+  email_verified: DS.attr(),
+  phone_number_verified: DS.attr(),
 });
 
 User.reopen({
@@ -22,6 +25,9 @@ User.reopen({
       presence: true
     },
     last_name: {
+      presence: true
+    },
+    culture: {
       presence: true
     }
   }

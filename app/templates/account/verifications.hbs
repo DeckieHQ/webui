@@ -1,0 +1,9 @@
+{{#if model.email_verified}}
+  Your email is verified.
+{{else}}
+  Verify your email now
+  {{dynamic-submit actionOnSubmit="verify_email"}}
+  {{#if errorMessage}}
+    {{errorMessage}}
+  {{/if}}
+{{/if}}

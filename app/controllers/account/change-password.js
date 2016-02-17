@@ -23,9 +23,7 @@ export default Ember.Controller.extend(EmberValidations, {
       return model.validate()
         .then(() => this.validate())
         .then(() => model.save())
-        .then(() => {
-          defer.resolve();
-        })
+        .then(defer.resolve())
         .catch((reason) => {
           this.set('errorMessage', reason.error)
           this.set("showErrors", true);

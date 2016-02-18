@@ -1,0 +1,5 @@
+<form>
+  {{validated-input label="Token" placeholder="Enter token received on your phone" value=model.token errors=model.errors.token showAllErrors=showErrors class="form-group"}}
+
+  {{dynamic-submit actionOnSubmit="verify_phone_number"}}
+</form>

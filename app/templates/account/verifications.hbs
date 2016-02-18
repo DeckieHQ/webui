@@ -1,9 +1,21 @@
-{{#if model.email_verified}}
-  Your email is verified.
-{{else}}
-  Verify your email now
-  {{dynamic-submit actionOnSubmit="verify_email"}}
-  {{#if errorMessage}}
-    {{errorMessage}}
+<div class=well>
+  {{#if model.email_verified}}
+    Your email is verified.
+  {{else}}
+    Verify your email now
+    {{dynamic-submit actionOnSubmit="verify_email"}}
   {{/if}}
+</div>
+
+{{#if errorMessage}}
+  {{errorMessage}}
 {{/if}}
+
+<div class=well>
+  {{#if model.phone_number_verified}}
+    Your phone number is verified.
+  {{else}}
+    Verify your phone number now
+    {{dynamic-submit actionOnSubmit="verify_phone_number"}}
+  {{/if}}
+</div>

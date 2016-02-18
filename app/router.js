@@ -16,6 +16,7 @@ Router.map(function() {
     this.route('verifications');
   });
   this.route('verification-email')
+  this.route('verification-phone-number')
 });
 
 export default Router;

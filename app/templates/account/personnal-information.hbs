@@ -12,6 +12,8 @@
     <div class="col-sm-2">{{validated-input placeholder="year" value=year errors=errors.year showAllErrors=showErrors}}</div>
   </div>
 
+  {{validated-input label="Phone number" placeholder="Enter phone number" value=model.phone_number errors=model.errors.phone_number showAllErrors=showErrors class="form-group"}}
+
   {{validated-select label="Language" options=cultures value=model.culture errors=model.errors.culture showAllErrors=showErrors class="form-group"}}
   {{validated-input label="Current password" type="password" placeholder="Enter current password" value=model.current_password errors=errors.model.current_password showAllErrors=showErrors class="form-group"}}
 

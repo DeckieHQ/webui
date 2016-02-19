@@ -1,5 +1,5 @@
 <label>{{label}}</label>
-<select {{action 'setValue' on='change' on='focusOut'}} class="form-control validated-select {{if showErrors 'show-errors'}}">
+<select {{action 'changeValue' on='change' on='focusOut'}} class="form-control validated-select {{if showErrors 'show-errors'}}">
   {{#if placeholder}}
     <option value="">{{placeholder}}</option>
   {{/if}}

@@ -5,6 +5,7 @@
         {{#link-to 'index' class='navbar-brand'}}Deckie{{/link-to}}
         <ul class='nav navbar-nav navbar-right'>
           {{#if session.isAuthenticated}}
+            <li>{{#link-to 'events.new'}}Create event{{/link-to}}</li>
             <li>{{#link-to 'account'}}Account{{/link-to}}</li>
             <li><a href="#" {{action 'logout'}}>Logout</a></li>
           {{else}}

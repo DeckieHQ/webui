@@ -14,9 +14,13 @@ Router.map(function() {
     this.route('change-password');
     this.route('profile');
     this.route('verifications');
+    this.route('hosted-events');
   });
   this.route('verification-email')
   this.route('verification-phone-number')
+  this.route('events', function() {
+    this.route('new');
+  });
 });
 
 export default Router;

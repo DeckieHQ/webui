@@ -1,10 +1,12 @@
 {{#each model as |event|}}
-  <div class='well'>
-    {{event.title}}
-    {{event.begin_at}}
-    {{event.capctity}}
-    {{event.ambiance}}
-    {{event.level}}
-    {{event.category}}
-  </div>
+  {{#link-to 'event' event}}
+    <div class='well'>
+      {{event.title}}
+      {{event.begin_at}}
+      {{event.capctity}}
+      {{event.ambiance}}
+      {{event.level}}
+      {{event.category}}
+    </div>
+  {{/link-to}}
 {{/each}}

@@ -1,0 +1,30 @@
+<form>
+  {{validated-input label="Title" placeholder="Enter title" value=model.title errors=model.errors.title showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Capacity" placeholder="Enter capacity" value=model.capacity errors=model.errors.capacity showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Street" placeholder="Enter street" value=model.street errors=model.errors.street showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Postcode" placeholder="Enter postcode" value=model.postcode errors=model.errors.postcode showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="City" placeholder="Enter city" value=model.city errors=model.errors.city showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Country" placeholder="Enter country" value=model.country errors=model.errors.country showAllErrors=showErrors class="form-group"}}
+
+  {{validated-select label="Ambiance" options=ambiances value=model.ambiance errors=model.errors.ambiance showAllErrors=showErrors class="form-group"}}
+  {{validated-select label="Category" options=categories value=model.category errors=model.errors.category showAllErrors=showErrors class="form-group"}}
+  {{validated-select label="Level" options=levels value=model.level errors=model.errors.level showAllErrors=showErrors class="form-group"}}
+
+  <label>Date de début</label>
+  {{bootstrap-datepicker value=model.begin_at format="dd/mm/yy" class="form-control"}}
+  {{validated-input label="Hour" placeholder="Enter hour" value=begin_at_hour errors=errors.begin_at_hour showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Minute" placeholder="Enter minute" value=begin_at_minute errors=errors.begin_at_minute showAllErrors=showErrors class="form-group"}}
+
+  <label>Date de fin</label>
+  {{bootstrap-datepicker value=model.end_at format="dd/mm/yy" class="form-control"}}
+  {{validated-input label="Hour" placeholder="Enter hour" value=end_at_hour errors=errors.end_at_hour showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Minute" placeholder="Enter minute" value=end_at_minute errors=errors.end_at_minute showAllErrors=showErrors class="form-group"}}
+
+  <!-- <input type='date' class="form-control"/> -->
+
+  {{dynamic-submit actionOnSubmit="edit"}}
+</form>
+
+{{#if errorMessage}}
+  {{errorMessage}}
+{{/if}}

@@ -21,6 +21,9 @@ Router.map(function() {
   this.route('events', function() {
     this.route('new');
   });
+  this.route('event', { path: '/event/:event_id' }, function() {
+    this.route('edit');
+  });
 });
 
 export default Router;

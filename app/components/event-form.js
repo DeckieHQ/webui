@@ -1,15 +1,26 @@
 import Ember from 'ember';
 import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend(EmberValidations, {
-  ambiances: ['relaxed', 'party', 'serious'],
-  categories: ['party', 'board', 'role-playing', 'card', 'dice', 'miniature', 'strategy', 'cooperative', 'video', 'tile-based'],
-  levels: ['beginner', 'intermediate', 'advanced', 'expert'],
+export default Ember.Component.extend(EmberValidations, {
+  init: function() {
+    this._super.apply(this, arguments);
 
-  begin_at_hour: 19,
-  begin_at_minute: 0,
-  end_at_hour: 22,
-  end_at_minute: 0,
+    let model = this.get('model');
+
+    let begin_at = model.get('begin_at');
+    let end_at = model.get('end_at');
+
+    this.set('begin_at_hour', moment(begin_at).hour());
+    this.set('begin_at_minute', moment(begin_at).minute());
+
+    if (end_at) {
+      this.set('end_at_hour', moment(end_at).hour());
+      this.set('end_at_minute', moment(end_at).minute());
+    } else {
+      this.set('end_at_hour', 22);
+      this.set('end_at_minute', 30);
+    }
+  },
 
   validations: {
     begin_at_hour: {
@@ -44,8 +55,12 @@ export default Ember.Controller.extend(EmberValidations, {
     }
   },
 
+  ambiances: ['relaxed', 'party', 'serious'],
+  categories: ['party', 'board', 'role-playing', 'card', 'dice', 'miniature', 'strategy', 'cooperative', 'video', 'tile-based'],
+  levels: ['beginner', 'intermediate', 'advanced', 'expert'],
+
   actions: {
-    create: function(defer) {
+    create_or_update: function(defer) {
       let model = this.get('model');
 
       return model.validate()
@@ -75,5 +90,5 @@ export default Ember.Controller.extend(EmberValidations, {
         })
       ;
     }
-  }
- });
+  },
+});

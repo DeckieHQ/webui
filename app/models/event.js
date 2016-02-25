@@ -29,6 +29,21 @@ Event.reopen({
         lessThanOrEqualTo: 1000
       }
     },
+    street: {
+      presence: true
+    },
+    postcode: {
+      presence: true
+    },
+    city: {
+      presence: true
+    },
+    country: {
+      presence: true
+    },
+    begin_at: {
+      presence: true
+    },
   }
 });
 

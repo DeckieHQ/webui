@@ -11,4 +11,7 @@
 </select>
 {{#if showErrors}}
   {{errors}}
+  {{#each serverErrors as |serverError|}}
+    {{serverError.message}}
+  {{/each}}
 {{/if}}

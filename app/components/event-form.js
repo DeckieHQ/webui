@@ -46,7 +46,7 @@ export default Ember.Component.extend(EmberValidations, {
     "model.country": {
       presence: true
     },
-    begin_at: {
+    "model.begin_at": {
       presence: true
     },
     begin_at_hour: {
@@ -109,6 +109,7 @@ export default Ember.Component.extend(EmberValidations, {
         })
         .then(defer.resolve)
         .catch((reason) => {
+          console.log(reason);
           this.set("showErrors", true);
           defer.reject(reason);
         })

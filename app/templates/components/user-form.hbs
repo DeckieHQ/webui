@@ -1,7 +1,7 @@
 <form>
-  {{validated-input label="Email" placeholder="Enter email" value=model.email errors=errors.model.email showAllErrors=showErrors class="form-group"}}
-  {{validated-input label="Firstname" placeholder="Enter firstname" value=model.first_name errors=errors.model.first_name showAllErrors=showErrors class="form-group"}}
-  {{validated-input label="Lastname" placeholder="Enter lastname" value=model.last_name errors=errors.model.last_name showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Email" placeholder="Enter email" value=model.email serverErrors=model.errors.email errors=errors.model.email showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Firstname" placeholder="Enter firstname" value=model.first_name serverErrors=model.errors.first_name errors=errors.model.first_name showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Lastname" placeholder="Enter lastname" value=model.last_name serverErrors=model.errors.last_name errors=errors.model.last_name showAllErrors=showErrors class="form-group"}}
 
   <div class="form-group col-sm-12">
     <label class="col-sm-12">Birthday</label>
@@ -12,8 +12,8 @@
     <div class="col-sm-4">{{validated-input placeholder="year" value=year errors=errors.year showAllErrors=showErrors}}</div>
   </div>
 
-  {{validated-input label="Phone number" placeholder="Enter phone number" value=model.phone_number errors=errors.model.phone_number showAllErrors=showErrors class="form-group"}}
-  {{validated-select label="Language" options=cultures value=model.culture errors=errors.model.culture showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Phone number" placeholder="Enter phone number" value=model.phone_number serverErrors=model.errors.phone_number errors=errors.model.phone_number showAllErrors=showErrors class="form-group"}}
+  {{validated-select label="Language" options=cultures value=model.culture serverErrors=model.errors.culture errors=errors.model.culture showAllErrors=showErrors class="form-group"}}
 
   {{validated-input label="Password" type="password" placeholder=passwordPlaceHolder value=password errors=errors.password showAllErrors=showErrors class="form-group"}}
 

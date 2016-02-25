@@ -1,9 +1,9 @@
 {{model.display_name}}
 
 <form>
-  {{validated-input label="Nickname" placeholder="Enter nickname" value=model.nickname errors=model.errors.nickname showAllErrors=showErrors class="form-group"}}
-  {{validated-textarea rows="2" maxlength=140 label="Short description" placeholder="I am a student the day and a wizarrd at night" value=model.short_description errors=model.errors.short_description showAllErrors=showErrors class="form-group"}}
-  {{validated-textarea rows="7" label="Description" placeholder="Who you are, games you like, and others shits like that" value=model.description errors=model.errors.description showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Nickname" placeholder="Enter nickname" value=model.nickname serverErrors=model.errors.nickname errors=errors.model.nickname showAllErrors=showErrors class="form-group"}}
+  {{validated-textarea rows="2" maxlength=140 label="Short description" placeholder="I am a student the day and a wizarrd at night" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description showAllErrors=showErrors class="form-group"}}
+  {{validated-textarea rows="7" label="Description" placeholder="Who you are, games you like, and others shits like that" value=model.description serverErrors=model.errors.description errors=errors.model.description showAllErrors=showErrors class="form-group"}}
 
   {{dynamic-submit actionOnSubmit="update"}}
 </form>

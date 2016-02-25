@@ -15,7 +15,7 @@
   {{validated-input label="Phone number" placeholder="Enter phone number" value=model.phone_number errors=model.errors.phone_number showAllErrors=showErrors class="form-group"}}
   {{validated-select label="Language" options=cultures value=model.culture errors=model.errors.culture showAllErrors=showErrors class="form-group"}}
 
-  {{validated-input label="Current password" type="password" placeholder="Enter current password" value=password errors=errors.password showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Password" type="password" placeholder=passwordPlaceHolder value=password errors=errors.password showAllErrors=showErrors class="form-group"}}
 
   {{dynamic-submit actionOnSubmit="create_or_update"}}
 </form>

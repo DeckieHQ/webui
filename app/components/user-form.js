@@ -52,6 +52,14 @@ export default Ember.Component.extend(EmberValidations, {
     }
   }.property(),
 
+  passwordPlaceHolder: function() {
+    if (this.get('alreadyCreated')) {
+      return 'Enter current password';
+    } else {
+      return 'Enter password';
+    }
+  }.property(),
+
   actions: {
     create_or_update: function(defer) {
       let model = this.get('model');

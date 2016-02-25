@@ -4,13 +4,10 @@ import EmberValidations from 'ember-validations';
 export default Ember.Controller.extend(EmberValidations, {
   actions: {
     update: function(defer) {
-      let model = this.get('model');
-
-      return model.validate()
-        .then(() => model.save())
+      return this.get('model').save()
         .then(defer.resolve)
         .catch((reason) => {
-          this.set('errorMessage', reason.error)
+          // console.log(this.get('model').get('errors').get('nickname')[0].message);
           this.set("showErrors", true);
           defer.reject(reason);
         })

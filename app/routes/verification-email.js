@@ -18,7 +18,7 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
       })
       .catch((reason) => {
         result['verified'] = false;
-        result['reason'] = reason;
+        result['reason'] = reason.message;
         this.set('result', result)
       })
     ;

@@ -17,6 +17,18 @@ export default Ember.Component.extend(EmberValidations, {
   },
 
   validations: {
+    "model.email": {
+      presence: true
+    },
+    "model.first_name": {
+      presence: true
+    },
+    "model.last_name": {
+      presence: true
+    },
+    "model.culture": {
+      presence: true
+    },
     password: {
       presence: true
     },
@@ -65,8 +77,7 @@ export default Ember.Component.extend(EmberValidations, {
       let model = this.get('model');
       let password = this.get('password');
 
-      return model.validate()
-        .then(() => this.validate())
+      return this.validate()
         .then(() => {
           let birthday = moment()
             .date(this.get('day'))
@@ -87,7 +98,6 @@ export default Ember.Component.extend(EmberValidations, {
         .then(() => this.get('session').authenticate('authenticator:devise', model.get('email'), password))
         .then(defer.resolve)
         .catch((reason) => {
-          this.set('errorMessage', reason.error)
           this.set("showErrors", true);
           defer.reject(reason);
         })

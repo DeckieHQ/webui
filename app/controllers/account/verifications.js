@@ -1,7 +1,6 @@
 import Ember from 'ember';
-import EmberValidations from 'ember-validations';
 
-export default Ember.Controller.extend(EmberValidations, {
+export default Ember.Controller.extend({
   actions: {
     verify_email: function(defer) {
       let verification = this.store.createRecord('verification');
@@ -10,7 +9,6 @@ export default Ember.Controller.extend(EmberValidations, {
       return verification.save()
         .then(defer.resolve)
         .catch((reason) => {
-          this.set('errorMessage', reason.error)
           defer.reject(reason);
         })
       ;
@@ -26,7 +24,6 @@ export default Ember.Controller.extend(EmberValidations, {
           this.transitionToRoute('verification-phone-number');
         })
         .catch((reason) => {
-          this.set('errorMessage', reason.error)
           defer.reject(reason);
         })
       ;

@@ -23,6 +23,32 @@ export default Ember.Component.extend(EmberValidations, {
   },
 
   validations: {
+    "model.title": {
+      presence: true
+    },
+    "model.capacity": {
+      presence: true,
+      numericality: {
+        onlyInteger: true,
+        greaterThanOrEqualTo: 1,
+        lessThanOrEqualTo: 1000
+      }
+    },
+    "model.street": {
+      presence: true
+    },
+    "model.postcode": {
+      presence: true
+    },
+    "model.city": {
+      presence: true
+    },
+    "model.country": {
+      presence: true
+    },
+    begin_at: {
+      presence: true
+    },
     begin_at_hour: {
       presence: true,
       numericality: {
@@ -63,8 +89,7 @@ export default Ember.Component.extend(EmberValidations, {
     create_or_update: function(defer) {
       let model = this.get('model');
 
-      return model.validate()
-        .then(() => this.validate())
+      return this.validate()
         .then(() => {
           let begin_at_hour = this.get('begin_at_hour');
           let begin_at_minute = this.get('begin_at_minute');
@@ -84,7 +109,6 @@ export default Ember.Component.extend(EmberValidations, {
         })
         .then(defer.resolve)
         .catch((reason) => {
-          this.set('errorMessage', reason.error)
           this.set("showErrors", true);
           defer.reject(reason);
         })

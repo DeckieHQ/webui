@@ -1,8 +1,6 @@
-import Ember from 'ember';
 import DS from 'ember-data';
-import EmberValidations from 'ember-validations';
 
-let User = DS.Model.extend(EmberValidations, {
+export default DS.Model.extend({
   email: DS.attr(),
   first_name: DS.attr(),
   last_name: DS.attr(),
@@ -15,22 +13,3 @@ let User = DS.Model.extend(EmberValidations, {
   email_verified: DS.attr(),
   phone_number_verified: DS.attr(),
 });
-
-User.reopen({
-  validations: {
-    email: {
-      presence: true
-    },
-    first_name: {
-      presence: true
-    },
-    last_name: {
-      presence: true
-    },
-    culture: {
-      presence: true
-    }
-  }
-});
-
-export default User;

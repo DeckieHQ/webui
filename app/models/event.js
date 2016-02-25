@@ -1,8 +1,6 @@
-import Ember from 'ember';
 import DS from 'ember-data';
-import EmberValidations from 'ember-validations';
 
-let Event = DS.Model.extend(EmberValidations, {
+export default DS.Model.extend({
   title: DS.attr(),
   category: DS.attr(),
   ambiance: DS.attr(),
@@ -15,36 +13,3 @@ let Event = DS.Model.extend(EmberValidations, {
   city: DS.attr(),
   country: DS.attr(),
 });
-
-Event.reopen({
-  validations: {
-    title: {
-      presence: true
-    },
-    capacity: {
-      presence: true,
-      numericality: {
-        onlyInteger: true,
-        greaterThanOrEqualTo: 1,
-        lessThanOrEqualTo: 1000
-      }
-    },
-    street: {
-      presence: true
-    },
-    postcode: {
-      presence: true
-    },
-    city: {
-      presence: true
-    },
-    country: {
-      presence: true
-    },
-    begin_at: {
-      presence: true
-    },
-  }
-});
-
-export default Event;

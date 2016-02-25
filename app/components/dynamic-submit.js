@@ -10,8 +10,9 @@ export default Ember.Component.extend({
       defer.promise.then(() => {
         this.set('isSaving', false);
         this.set('isSaved', true);
-      }).catch(() => {
+      }).catch((reason) => {
         this.set('isSaving', false);
+        this.set('errorMessage', (reason.error || reason.message));
       });
 
       return this.get('targetObject').send(this.get('actionOnSubmit'), defer);

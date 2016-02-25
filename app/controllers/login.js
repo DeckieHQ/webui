@@ -22,9 +22,8 @@ export default Ember.Controller.extend(EmberValidations, {
         .then(() => this.get('session').authenticate('authenticator:devise', identification, password))
         .then(defer.resolve)
         .catch((reason) => {
-          this.set('errorMessage', reason.error)
           this.set("showErrors", true);
-          defer.reject();
+          defer.reject(reason);
         })
       ;
     }

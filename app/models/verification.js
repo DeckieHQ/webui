@@ -1,9 +1,5 @@
-import Ember from 'ember';
 import DS from 'ember-data';
-import EmberValidations from 'ember-validations';
 
-let Verification = DS.Model.extend(EmberValidations, {
+export default DS.Model.extend({
   type: DS.attr(),
 });
-
-export default Verification;

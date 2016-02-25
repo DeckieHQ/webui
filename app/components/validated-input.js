@@ -20,6 +20,7 @@ export default Ember.Component.extend({
 
      //TODO: 1) when focus on an input and clicking on submit the "focus-out" event is triggered if the input has an error but not the submit event (ember issue?)
      //2) When showError is call by a send action (like in validated-select) the property showError is not triggerred in the .property('showError') of showErrors
+     //3) First time clicking on submit from a model-form (like user-form) the component's validations does not show up (the errors object is cleaned on first submit)
    }
  }
 });

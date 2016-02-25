@@ -7,17 +7,17 @@ export default ValidatedInput.extend({
   },
 
   actions: {
-   changeValue: function() {
-     this.setValue();
-     this.send('showError');
-   }
- },
+    changeValue: function() {
+      this.setValue();
+      this.send('showError');
+    }
+  },
 
- setValue: function() {
-   let selectElement = Ember.$("#"+this.elementId+" .validated-select")[0];
-   let selectedIndex = selectElement.selectedIndex;
-   let selectedValue = selectElement[selectedIndex].value;
+  setValue: function() {
+    let selectElement = Ember.$("#"+this.elementId+" .validated-select")[0];
+    let selectedIndex = selectElement.selectedIndex;
+    let selectedValue = selectElement[selectedIndex].value;
 
-   this.set('value', selectedValue);
- }
+    this.set('value', selectedValue);
+  }
 });

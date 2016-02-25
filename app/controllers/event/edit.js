@@ -6,11 +6,6 @@ export default Ember.Controller.extend(EmberValidations, {
   categories: ['party', 'board', 'role-playing', 'card', 'dice', 'miniature', 'strategy', 'cooperative', 'video', 'tile-based'],
   levels: ['beginner', 'intermediate', 'advanced', 'expert'],
 
-  begin_at_hour: 19,
-  begin_at_minute: 0,
-  end_at_hour: 22,
-  end_at_minute: 0,
-
   validations: {
     begin_at_hour: {
       presence: true,

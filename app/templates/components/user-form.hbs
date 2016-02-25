@@ -1,0 +1,25 @@
+<form>
+  {{validated-input label="Email" placeholder="Enter email" value=model.email errors=model.errors.email showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Firstname" placeholder="Enter firstname" value=model.first_name errors=model.errors.first_name showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Lastname" placeholder="Enter lastname" value=model.last_name errors=model.errors.last_name showAllErrors=showErrors class="form-group"}}
+
+  <div class="form-group col-sm-12">
+    <label class="col-sm-12">Birthday</label>
+    <div class="col-sm-4">{{validated-input placeholder="day" value=day errors=errors.day showAllErrors=showErrors}}</div>
+    <div class="col-sm-4">
+      {{validated-select options=months placeholder=monthPlaceHolder value=month errors=errors.month showAllErrors=showErrors class="form-group"}}
+    </div>
+    <div class="col-sm-4">{{validated-input placeholder="year" value=year errors=errors.year showAllErrors=showErrors}}</div>
+  </div>
+
+  {{validated-input label="Phone number" placeholder="Enter phone number" value=model.phone_number errors=model.errors.phone_number showAllErrors=showErrors class="form-group"}}
+  {{validated-select label="Language" options=cultures value=model.culture errors=model.errors.culture showAllErrors=showErrors class="form-group"}}
+
+  {{validated-input label="Current password" type="password" placeholder="Enter current password" value=password errors=errors.password showAllErrors=showErrors class="form-group"}}
+
+  {{dynamic-submit actionOnSubmit="toto"}}
+</form>
+
+{{#if errorMessage}}
+  {{errorMessage}}
+{{/if}}

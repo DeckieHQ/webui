@@ -8,4 +8,28 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   //   let model = this.get('controller.model');
   //   model.rollbackAttributes();
   // },
+
+  actions: {
+    save(context, defer, beforeSave = null, afterSave = null) {
+      return context.validate()
+        .then(() => {
+          if (beforeSave) {
+            beforeSave();
+          }
+
+          return context.get('model').save();
+        })
+        .then(() => {
+          if (afterSave) {
+            return afterSave();
+          }
+        })
+        .then(defer.resolve)
+        .catch((reason) => {
+          context.set("showErrors", true);
+          defer.reject(reason);
+        })
+      ;
+    }
+  }
 });

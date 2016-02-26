@@ -77,8 +77,8 @@ export default Ember.Component.extend(EmberValidations, {
       let model = this.get('model');
       let password = this.get('password');
 
-      return this.validate()
-        .then(() => {
+      this.get('targetObject').send('save', this, defer,
+        () => {
           let birthday = moment()
             .date(this.get('day'))
             .month(this.get('month'))
@@ -92,16 +92,9 @@ export default Ember.Component.extend(EmberValidations, {
           } else {
             model.set('password', password);
           }
-
-          return model.save();
-        })
-        .then(() => this.get('session').authenticate('authenticator:devise', model.get('email'), password))
-        .then(defer.resolve)
-        .catch((reason) => {
-          this.set("showErrors", true);
-          defer.reject(reason);
-        })
-      ;
+        },
+        () => this.get('session').authenticate('authenticator:devise', model.get('email'), password)
+      );
     }
   },
 });

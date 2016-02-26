@@ -89,31 +89,21 @@ export default Ember.Component.extend(EmberValidations, {
     create_or_update: function(defer) {
       let model = this.get('model');
 
-      return this.validate()
-        .then(() => {
-          let begin_at_hour = this.get('begin_at_hour');
-          let begin_at_minute = this.get('begin_at_minute');
-          let begin_at = moment(model.get('begin_at'));
-          begin_at.hour(begin_at_hour).minute(begin_at_minute);
-          model.set('begin_at', begin_at.toDate());
+      this.get('targetObject').send('save', this, defer, () => {
+        let begin_at_hour = this.get('begin_at_hour');
+        let begin_at_minute = this.get('begin_at_minute');
+        let begin_at = moment(model.get('begin_at'));
+        begin_at.hour(begin_at_hour).minute(begin_at_minute);
+        model.set('begin_at', begin_at.toDate());
 
-          if (model.get('end_at')) {
-            let end_at_hour = this.get('end_at_hour');
-            let end_at_minute = this.get('end_at_minute');
-            let end_at = moment(model.get('end_at'));
-            end_at.hour(end_at_hour).minute(end_at_minute);
-            model.set('end_at', end_at.toDate());
-          }
-
-          return model.save();
-        })
-        .then(defer.resolve)
-        .catch((reason) => {
-          console.log(reason);
-          this.set("showErrors", true);
-          defer.reject(reason);
-        })
-      ;
+        if (model.get('end_at')) {
+          let end_at_hour = this.get('end_at_hour');
+          let end_at_minute = this.get('end_at_minute');
+          let end_at = moment(model.get('end_at'));
+          end_at.hour(end_at_hour).minute(end_at_minute);
+          model.set('end_at', end_at.toDate());
+        }
+      });
     }
   },
 });

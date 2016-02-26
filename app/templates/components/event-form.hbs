@@ -10,13 +10,11 @@
   {{validated-select label="Category" options=categories value=model.category serverErrors=model.errors.category errors=errors.model.category showAllErrors=showErrors class="form-group"}}
   {{validated-select label="Level" options=levels value=model.level serverErrors=model.errors.level errors=errors.model.level showAllErrors=showErrors class="form-group"}}
 
-  <label>Date de début</label>
-  {{bootstrap-datepicker value=model.begin_at format="dd/mm/yy" class="form-control"}}
+  {{validated-date label="Begin at" placeholder="Pick date" value=model.begin_at errors=errors.model.begin_at showAllErrors=showErrors class="form-group"}}
   {{validated-input label="Hour" placeholder="Enter hour" value=begin_at_hour errors=errors.begin_at_hour showAllErrors=showErrors class="form-group"}}
   {{validated-input label="Minute" placeholder="Enter minute" value=begin_at_minute errors=errors.begin_at_minute showAllErrors=showErrors class="form-group"}}
 
-  <label>Date de fin</label>
-  {{bootstrap-datepicker value=model.end_at format="dd/mm/yy" class="form-control"}}
+  {{validated-date label="End at" placeholder="Pick date" value=model.end_at errors=errors.model.end_at showAllErrors=showErrors class="form-group"}}
   {{validated-input label="Hour" placeholder="Enter hour" value=end_at_hour errors=errors.end_at_hour showAllErrors=showErrors class="form-group"}}
   {{validated-input label="Minute" placeholder="Enter minute" value=end_at_minute errors=errors.end_at_minute showAllErrors=showErrors class="form-group"}}
 

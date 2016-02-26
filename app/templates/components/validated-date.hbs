@@ -1,0 +1,8 @@
+<label>{{label}}</label>
+{{bootstrap-datepicker value=value format="dd/mm/yy" focus-out="showError" class="form-control" classBinding="showErrors" placeholder=placeholder}}
+{{#if showErrors}}
+  {{errors}}
+  {{#each serverErrors as |serverError|}}
+    {{serverError.message}}
+  {{/each}}
+{{/if}}

@@ -86,7 +86,7 @@ export default Ember.Component.extend(EmberValidations, {
   levels: ['beginner', 'intermediate', 'advanced', 'expert'],
 
   actions: {
-    create_or_update: function(defer) {
+    save_event: function(defer) {
       let model = this.get('model');
 
       this.get('targetObject').send('save', this, defer, () => {

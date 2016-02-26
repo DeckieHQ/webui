@@ -5,5 +5,5 @@
   {{validated-textarea rows="2" maxlength=140 label="Short description" placeholder="I am a student the day and a wizarrd at night" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description showAllErrors=showErrors class="form-group"}}
   {{validated-textarea rows="7" label="Description" placeholder="Who you are, games you like, and others shits like that" value=model.description serverErrors=model.errors.description errors=errors.model.description showAllErrors=showErrors class="form-group"}}
 
-  {{dynamic-submit actionOnSubmit="update"}}
+  {{dynamic-submit actionOnSubmit="update_profile"}}
 </form>

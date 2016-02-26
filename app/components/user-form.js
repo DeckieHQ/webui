@@ -73,7 +73,7 @@ export default Ember.Component.extend(EmberValidations, {
   }.property(),
 
   actions: {
-    create_or_update: function(defer) {
+    save_user: function(defer) {
       let model = this.get('model');
       let password = this.get('password');
 

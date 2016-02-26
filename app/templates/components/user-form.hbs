@@ -11,11 +11,12 @@
     </div>
     <div class="col-sm-4">{{validated-input placeholder="year" value=year errors=errors.year showAllErrors=showErrors}}</div>
   </div>
+  {{birthday_error}}
 
   {{validated-input label="Phone number" placeholder="Enter phone number" value=model.phone_number serverErrors=model.errors.phone_number errors=errors.model.phone_number showAllErrors=showErrors class="form-group"}}
   {{validated-select label="Language" options=cultures value=model.culture serverErrors=model.errors.culture errors=errors.model.culture showAllErrors=showErrors class="form-group"}}
 
-  {{validated-input label="Password" type="password" placeholder=passwordPlaceHolder value=password errors=errors.password showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Password" type="password" placeholder=passwordPlaceHolder value=password serverErrors=passwordErrors errors=errors.password showAllErrors=showErrors class="form-group"}}
 
   {{dynamic-submit actionOnSubmit="save_user"}}
 </form>

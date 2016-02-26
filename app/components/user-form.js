@@ -53,7 +53,7 @@ export default Ember.Component.extend(EmberValidations, {
     }
   },
 
-  months: [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ],
+  months: moment.months(),
   cultures: [ "en" ],
 
   monthPlaceHolder: function() {
@@ -72,6 +72,14 @@ export default Ember.Component.extend(EmberValidations, {
     }
   }.property(),
 
+  passwordErrors: function() {
+    if (this.get('alreadyCreated')) {
+      return this.get('model.errors.current_password');
+    } else {
+      return this.get('model.errors.password');
+    }
+  }.property('model.errors.current_password', 'model.errors.password'),
+
   actions: {
     save_user: function(defer) {
       let model = this.get('model');
@@ -79,13 +87,16 @@ export default Ember.Component.extend(EmberValidations, {
 
       this.get('targetObject').send('save', this, defer,
         () => {
-          let birthday = moment()
-            .date(this.get('day'))
-            .month(this.get('month'))
-            .year(this.get('year'))
-            .toDate();
+          let date = [ this.get('day'), this.get('month'), this.get('year') ].join("-");
+          let birthday = moment(date, "DD-MMMM-YYYY");
 
-          model.set('birthday', birthday);
+          if (!birthday.isValid()) {
+            let birthday_error = birthday.toDate();
+            this.set('birthday_error', birthday_error);
+            throw new Error(birthday_error);
+          }
+
+          model.set('birthday', birthday.toDate());
 
           if (this.get('alreadyCreated')) {
             model.set('current_password', password);

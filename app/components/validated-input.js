@@ -3,7 +3,6 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   init: function() {
     this._super.apply(this, arguments);
-    this.set('showAllErrors', false);
     this.set('showError', false);
   },
 
@@ -11,10 +10,10 @@ export default Ember.Component.extend({
 
   showErrors: function() {
     let hasErrors = (((this.get('errors') || []).length > 0) || ((this.get('serverErrors') || []).length > 0));
-    let showErrors = (this.get('showAllErrors') || this.get('showError'));
+    let showErrors = (this.get('targetObject').get('showErrors') || this.get('showError'));
 
     return (hasErrors && showErrors);
-  }.property('errors', 'serverErrors', 'showAllErrors', 'showError'),
+  }.property('errors', 'serverErrors', 'showError', 'targetObject.showErrors'),
 
   actions: {
    showError: function() {

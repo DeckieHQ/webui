@@ -1,22 +1,22 @@
 <form>
-  {{validated-input label="Title" placeholder="Enter title" value=model.title serverErrors=model.errors.title errors=errors.model.title showAllErrors=showErrors class="form-group"}}
-  {{validated-input label="Capacity" placeholder="Enter capacity" value=model.capacity serverErrors=model.errors.capacity errors=errors.model.capacity showAllErrors=showErrors class="form-group"}}
-  {{validated-input label="Street" placeholder="Enter street" value=model.street serverErrors=model.errors.street errors=errors.model.street showAllErrors=showErrors class="form-group"}}
-  {{validated-input label="Postcode" placeholder="Enter postcode" value=model.postcode serverErrors=model.errors.postcode errors=errors.model.postcode showAllErrors=showErrors class="form-group"}}
-  {{validated-input label="City" placeholder="Enter city" value=model.city serverErrors=model.errors.city errors=errors.model.city showAllErrors=showErrors class="form-group"}}
-  {{validated-input label="Country" placeholder="Enter country" value=model.country serverErrors=model.errors.country errors=errors.model.country showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Title" placeholder="Enter title" value=model.title serverErrors=model.errors.title errors=errors.model.title showAllErrors=showErrors}}
+  {{validated-input label="Capacity" placeholder="Enter capacity" value=model.capacity serverErrors=model.errors.capacity errors=errors.model.capacity showAllErrors=showErrors}}
+  {{validated-input label="Street" placeholder="Enter street" value=model.street serverErrors=model.errors.street errors=errors.model.street showAllErrors=showErrors}}
+  {{validated-input label="Postcode" placeholder="Enter postcode" value=model.postcode serverErrors=model.errors.postcode errors=errors.model.postcode showAllErrors=showErrors}}
+  {{validated-input label="City" placeholder="Enter city" value=model.city serverErrors=model.errors.city errors=errors.model.city showAllErrors=showErrors}}
+  {{validated-input label="Country" placeholder="Enter country" value=model.country serverErrors=model.errors.country errors=errors.model.country showAllErrors=showErrors}}
 
-  {{validated-select label="Ambiance" options=ambiances value=model.ambiance serverErrors=model.errors.ambiance errors=errors.model.ambiance showAllErrors=showErrors class="form-group"}}
-  {{validated-select label="Category" options=categories value=model.category serverErrors=model.errors.category errors=errors.model.category showAllErrors=showErrors class="form-group"}}
-  {{validated-select label="Level" options=levels value=model.level serverErrors=model.errors.level errors=errors.model.level showAllErrors=showErrors class="form-group"}}
+  {{validated-select label="Ambiance" options=ambiances value=model.ambiance serverErrors=model.errors.ambiance errors=errors.model.ambiance showAllErrors=showErrors}}
+  {{validated-select label="Category" options=categories value=model.category serverErrors=model.errors.category errors=errors.model.category showAllErrors=showErrors}}
+  {{validated-select label="Level" options=levels value=model.level serverErrors=model.errors.level errors=errors.model.level showAllErrors=showErrors}}
 
-  {{validated-date label="Begin at" placeholder="Pick date" value=model.begin_at errors=errors.model.begin_at showAllErrors=showErrors class="form-group"}}
-  {{validated-input label="Hour" placeholder="Enter hour" value=begin_at_hour errors=errors.begin_at_hour showAllErrors=showErrors class="form-group"}}
-  {{validated-input label="Minute" placeholder="Enter minute" value=begin_at_minute errors=errors.begin_at_minute showAllErrors=showErrors class="form-group"}}
+  {{validated-date label="Begin at" placeholder="Pick date" value=model.begin_at errors=errors.model.begin_at showAllErrors=showErrors}}
+  {{validated-input label="Hour" placeholder="Enter hour" value=begin_at_hour errors=errors.begin_at_hour showAllErrors=showErrors}}
+  {{validated-input label="Minute" placeholder="Enter minute" value=begin_at_minute errors=errors.begin_at_minute showAllErrors=showErrors}}
 
-  {{validated-date label="End at" placeholder="Pick date" value=model.end_at errors=errors.model.end_at showAllErrors=showErrors class="form-group"}}
-  {{validated-input label="Hour" placeholder="Enter hour" value=end_at_hour errors=errors.end_at_hour showAllErrors=showErrors class="form-group"}}
-  {{validated-input label="Minute" placeholder="Enter minute" value=end_at_minute errors=errors.end_at_minute showAllErrors=showErrors class="form-group"}}
+  {{validated-date label="End at" placeholder="Pick date" value=model.end_at errors=errors.model.end_at showAllErrors=showErrors}}
+  {{validated-input label="Hour" placeholder="Enter hour" value=end_at_hour errors=errors.end_at_hour showAllErrors=showErrors}}
+  {{validated-input label="Minute" placeholder="Enter minute" value=end_at_minute errors=errors.end_at_minute showAllErrors=showErrors}}
 
   <!-- <input type='date' class="form-control"/> -->
 

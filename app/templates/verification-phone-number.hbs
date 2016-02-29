@@ -1,5 +1,5 @@
 <form>
-  {{validated-input label="Token" placeholder="Enter token received on your phone" value=model.token serverErrors=model.errors.token errors=errors.model.token showAllErrors=showErrors class="form-group"}}
+  {{validated-input label="Token" placeholder="Enter token received on your phone" value=model.token serverErrors=model.errors.token errors=errors.model.token showAllErrors=showErrors}}
 
   {{dynamic-submit actionOnSubmit="verify_phone_number"}}
 </form>

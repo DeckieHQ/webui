@@ -7,6 +7,8 @@ export default Ember.Component.extend({
     this.set('showError', false);
   },
 
+  classNames: ['form-group'],
+
   showErrors: function() {
     let hasErrors = (((this.get('errors') || []).length > 0) || ((this.get('serverErrors') || []).length > 0));
     let showErrors = (this.get('showAllErrors') || this.get('showError'));

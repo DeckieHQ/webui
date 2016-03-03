@@ -10,8 +10,13 @@ export default Ember.Component.extend(EmberValidations, {
     let begin_at = model.get('begin_at');
     let end_at = model.get('end_at');
 
-    this.set('begin_at_hour', moment(begin_at).hour());
-    this.set('begin_at_minute', moment(begin_at).minute());
+    if (begin_at) {
+      this.set('begin_at_hour', moment(begin_at).hour());
+      this.set('begin_at_minute', moment(begin_at).minute());
+    } else {
+      this.set('begin_at_hour', 19);
+      this.set('begin_at_minute', 0);
+    }
 
     if (end_at) {
       this.set('end_at_hour', moment(end_at).hour());

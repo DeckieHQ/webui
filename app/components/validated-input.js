@@ -8,12 +8,21 @@ export default Ember.Component.extend({
 
   classNames: ['form-group'],
 
+  displayErrors: function() {
+    let displayErrors = this.get('errors') || [];
+    let serverErrors = this.get('serverErrors') || [];
+
+    serverErrors.forEach(e => displayErrors.push(e.message));
+
+    return displayErrors;
+  }.property('errors', 'serverErrors'),
+
   showErrors: function() {
-    let hasErrors = (((this.get('errors') || []).length > 0) || ((this.get('serverErrors') || []).length > 0));
+    let hasErrors = this.get('displayErrors').length > 0;
     let showErrors = (this.get('targetObject').get('showErrors') || this.get('showError'));
 
     return (hasErrors && showErrors);
-  }.property('errors', 'serverErrors', 'showError', 'targetObject.showErrors'),
+  }.property('displayErrors', 'showError', 'targetObject.showErrors'),
 
   actions: {
    showError: function() {

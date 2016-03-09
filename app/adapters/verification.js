@@ -3,6 +3,6 @@ import ApplicationAdapter from '../adapters/application';
 
 export default ApplicationAdapter.extend({
   pathForType: function() {
-    return 'user/verifications';
+    return 'user/verification';
   },
 });

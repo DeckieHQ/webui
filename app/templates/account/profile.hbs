@@ -1,5 +1,3 @@
-{{model.display_name}}
-
 <form>
   {{validated-input label="Nickname" placeholder="Enter nickname" value=model.nickname serverErrors=model.errors.nickname errors=errors.model.nickname}}
   {{validated-textarea rows="2" maxlength=140 label="Short description" placeholder="I am a student the day and a wizarrd at night" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}

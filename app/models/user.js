@@ -12,4 +12,6 @@ export default DS.Model.extend({
   current_password: DS.attr(),
   email_verified: DS.attr(),
   phone_number_verified: DS.attr(),
+  profile: DS.belongsTo('profile'),
+  hosted_events: DS.hasMany('event'),
 });

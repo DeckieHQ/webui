@@ -12,4 +12,6 @@ export default DS.Model.extend({
   postcode: DS.attr(),
   city: DS.attr(),
   country: DS.attr(),
+  host: DS.belongsTo('profile'),
+  comments: DS.hasMany('comment'),
 });

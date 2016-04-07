@@ -10,14 +10,14 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   // },
 
   actions: {
-    save(context, defer, beforeSave = null, afterSave = null) {
+    save(context, defer, beforeSave = null, afterSave = null, model = context.get('model')) {
       return context.validate()
         .then(() => {
           if (beforeSave) {
             beforeSave();
           }
 
-          return context.get('model').save();
+          return model.save();
         })
         .then(() => {
           if (afterSave) {

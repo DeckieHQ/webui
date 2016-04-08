@@ -16,6 +16,10 @@ export default Ember.Controller.extend(EmberValidations, {
       });
 
       this.send('save', this, defer, null, null, comment);
+    },
+
+    delete_comment: function(comment) {
+      comment.destroyRecord();
     }
   }
  });

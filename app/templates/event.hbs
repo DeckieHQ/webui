@@ -1,34 +1,37 @@
-<div class='well col-lg-8'>
-  <div class='col-lg-11'>
+<div class='col-lg-9'>
+  <div class='well'>
     <div>{{model.title}}</div>
     <div>{{model.begin_at}}</div>
     <div>slots: {{model.capacity}}</div>
     <div>ambiance: {{model.ambiance}}</div>
     <div>level required: {{model.level}}</div>
     <div>category: {{model.category}}</div>
+
+    {{#link-to 'event.edit'}}<button class="btn btn-success">Edit</button>{{/link-to}}
   </div>
 
-  {{#link-to 'event.edit'}}<button class="btn btn-success">Edit</button>{{/link-to}}
+  <div class='well'>
+    <form>
+      {{validated-input label="Comment" placeholder="Enter your comment" value=message errors=errors.message}}
+
+      {{dynamic-submit actionOnSubmit="comment"}}
+    </form>
+  </div>
+
+  {{#each model.comments as |comment|}}
+    <div class='well'>
+      {{comment.message}}
+      <button {{action 'delete_comment' comment}} class="btn btn-danger">
+        Delete comment
+      </button>
+    </div>
+  {{/each}}
 </div>
 
-<div class='col-lg-3 col-lg-offset-1'>
+<div class='col-lg-3'>
   <div class='well'>Join this event</div>
   <div class='well'>
     <div>{{model.host.display_name}}</div>
     <div>{{model.host.short_description}}</div>
   </div>
-</div>
-
-<div class='well col-lg-8'>
-  <form>
-    {{validated-input label="Comment" placeholder="Enter your comment" value=message errors=errors.message}}
-
-    {{dynamic-submit actionOnSubmit="comment"}}
-  </form>
-</div>
-
-<div class='well col-lg-8'>
-  {{#each model.comments as |comment|}}
-    <div>{{comment.message}}</div>
-  {{/each}}
 </div>

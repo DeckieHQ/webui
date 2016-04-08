@@ -1,7 +1,7 @@
 import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
-export default Ember.Route.extend(ApplicationRouteMixin, {
+export default Ember.Route.extend({
   //TODO: gérer le clean des formulaires si pas de submits
 
   // deactivate: function() {
@@ -9,7 +9,28 @@ export default Ember.Route.extend(ApplicationRouteMixin, {
   //   model.rollbackAttributes();
   // },
 
+  session: Ember.inject.service('session'),
+
+  beforeModel(transition) {
+    if (this.get('session').get('isAuthenticated')) {
+      return this._populateCurrentUser();
+    }
+  },
+
+  _populateCurrentUser() {
+    return this.store.find('user', '')
+      .then(user => {
+        this.get('currentUser').set('content', user);
+        user.get('profile');
+      }
+    );
+  },
+
   actions: {
+    sessionAuthenticated() {
+      this._populateCurrentUser().then(user => this.transitionTo('dashboard'));
+    },
+
     save(context, defer, beforeSave = null, afterSave = null, model = context.get('model')) {
       return context.validate()
         .then(() => {

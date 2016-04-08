@@ -7,7 +7,9 @@
     <div>level required: {{model.level}}</div>
     <div>category: {{model.category}}</div>
 
-    {{#link-to 'event.edit'}}<button class="btn btn-success">Edit</button>{{/link-to}}
+    {{#if isHost}}
+      {{#link-to 'event.edit'}}<button class="btn btn-success">Edit</button>{{/link-to}}
+    {{/if}}
   </div>
 
   <div class='well'>
@@ -21,9 +23,11 @@
   {{#each model.comments as |comment|}}
     <div class='well'>
       {{comment.message}}
-      <button {{action 'delete_comment' comment}} class="btn btn-danger">
-        Delete comment
-      </button>
+      {{#if isHost}}
+        <button {{action 'delete_comment' comment}} class="btn btn-danger">
+          Delete comment
+        </button>
+      {{/if}}
     </div>
   {{/each}}
 </div>

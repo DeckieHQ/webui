@@ -21,10 +21,6 @@ module.exports = function(environment) {
       'connect-src': '*',
       'script-src': '*'
     },
-    'ember-simple-auth': {
-      routeAfterAuthentication: 'dashboard',
-      routeIfAlreadyAuthenticated: 'dashboard'
-    }
   };
 
   if (environment === 'development') {

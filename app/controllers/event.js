@@ -8,6 +8,10 @@ export default Ember.Controller.extend(EmberValidations, {
     }
   },
 
+  isHost: function() {
+    return this.get('currentUser').get('profile.id') == this.get('model.host.id');
+  }.property(),
+
   actions: {
     comment: function(defer) {
       let comment = this.store.createRecord('comment', {

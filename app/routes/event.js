@@ -5,4 +5,8 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
   model: function(params) {
     return this.store.find('event', params.event_id);
   },
+
+  afterModel(model) {
+    return model.get('user_submission');
+  }
 });

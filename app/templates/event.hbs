@@ -21,21 +21,47 @@
   </div>
 
   {{#each model.comments as |comment|}}
-    <div class='well'>
-      {{comment.message}}
-      {{#if isHost}}
-        <button {{action 'delete_comment' comment}} class="btn btn-danger">
-          Delete comment
-        </button>
-      {{/if}}
-    </div>
+    {{comment-display comment=comment isHost=isHost}}
   {{/each}}
 </div>
 
 <div class='col-lg-3'>
-  <div class='well'>Join this event</div>
   <div class='well'>
+    {{#if isHost}}
+      Delete event
+    {{else if pending}}
+      <div>Your submission to this event in awaiting the host acceptance</div>
+      <div>
+        <button {{action 'quit_event' model.user_submission}} class="btn btn-danger">
+          Quit
+        </button>
+      </div>
+    {{else if confirmed}}
+      You are attendee to this event
+      <div>
+        <button {{action 'quit_event' model.user_submission}} class="btn btn-danger">
+          Quit
+        </button>
+      </div>
+    {{else}}
+      <div>
+        <button {{action 'join_event'}} class="btn btn-success">
+          Join
+        </button>
+      </div>
+    {{/if}}
+  </div>
+
+  <div class='well'>
+    <div>Hosted by:</div>
     <div>{{model.host.display_name}}</div>
     <div>{{model.host.short_description}}</div>
+  </div>
+
+  <div class='well'>
+    <div>Attendees:</div>
+    {{#each model.attendees as |attendee|}}
+      <div>{{attendee.display_name}}</div>
+    {{/each}}
   </div>
 </div>

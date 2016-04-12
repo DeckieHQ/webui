@@ -94,6 +94,9 @@ export default Ember.Component.extend(EmberValidations, {
     save_event: function(defer) {
       let model = this.get('model');
 
+      //TODO: add auto_accept (and checkbox input) to event form
+      model.set('auto_accept', true);
+
       this.get('targetObject').send('save', this, defer, () => {
         let begin_at_hour = this.get('begin_at_hour');
         let begin_at_minute = this.get('begin_at_minute');

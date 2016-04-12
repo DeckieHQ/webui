@@ -1,6 +1,7 @@
 import DS from 'ember-data';
 
 export default DS.Model.extend({
+  host: DS.belongsTo('profile'),
   title: DS.attr(),
   category: DS.attr(),
   ambiance: DS.attr(),
@@ -12,6 +13,9 @@ export default DS.Model.extend({
   postcode: DS.attr(),
   city: DS.attr(),
   country: DS.attr(),
-  host: DS.belongsTo('profile'),
+  auto_accept: DS.attr(),
   comments: DS.hasMany('comment'),
+  attendees: DS.hasMany('profile'),
+  submissions: DS.hasMany('submission'),
+  user_submission: DS.belongsTo('submission'),
 });

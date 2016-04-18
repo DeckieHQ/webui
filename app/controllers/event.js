@@ -40,7 +40,10 @@ export default Ember.Controller.extend(EmberValidations, {
         event: this.get('model')
       });
 
-      this.send('save', this, defer, null, () => this.set('user_submission', submission), submission);
+      this.send('save', this, defer, null, () => {
+        this.set('user_submission', submission);
+        this.get('model').get('attendees').reload();
+      }, submission);
     },
 
     quit_event: function() {

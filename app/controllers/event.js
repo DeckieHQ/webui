@@ -18,21 +18,21 @@ export default Ember.Controller.extend(EmberValidations, {
 
   isMember: function() {
     return this.get('isHost') || this.get('confirmed');
-  }.property(),
+  }.property('confirmed'),
 
   status: function() {
     let user_submission = this.get('user_submission');
 
     return user_submission ? user_submission.get('status') : "";
-  }.property(),
+  }.property('user_submission'),
 
   pending: function() {
     return this.get('status') == 'pending';
-  }.property(),
+  }.property('status'),
 
   confirmed: function() {
     return this.get('status') == 'confirmed';
-  }.property(),
+  }.property('status'),
 
   actions: {
     join_event: function(defer) {
@@ -40,11 +40,13 @@ export default Ember.Controller.extend(EmberValidations, {
         event: this.get('model')
       });
 
-      this.send('save', this, defer, null, null, submission);
+      this.send('save', this, defer, null, () => this.set('user_submission', submission), submission);
     },
 
     quit_event: function() {
-      this.get('user_submission').destroyRecord();
+      this.get('user_submission').destroyRecord().then(
+        () => this.set('user_submission', null)
+      );
     },
 
     toggle_private_comments: function() {
@@ -55,14 +57,11 @@ export default Ember.Controller.extend(EmberValidations, {
       let comment = this.store.createRecord('comment', {
         message: this.get('message'),
         private: this.get('isPrivate'),
+        author: this.get('currentUser').get('profile'),
         event: this.get('model')
       });
 
       this.send('save', this, defer, null, null, comment);
     },
-
-    delete_comment: function(comment) {
-      comment.destroyRecord();
-    }
   }
  });

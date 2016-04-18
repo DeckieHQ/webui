@@ -10,11 +10,11 @@ export default Ember.Component.extend(EmberValidations, {
 
   canDelete: function() {
     return this.get('currentUser').get('profile.id') == this.get('comment.author.id') || this.get('isHost');
-  }.property(),
+  }.property('comment'),
 
   isOwner: function() {
     return this.get('currentUser').get('profile.id') == this.get('comment.author.id');
-  }.property(),
+  }.property('comment'),
 
   isUpdating: false,
 
@@ -40,5 +40,9 @@ export default Ember.Component.extend(EmberValidations, {
         })
       ;
     },
+
+    delete_comment: function(comment) {
+      comment.destroyRecord();
+    }
   }
 });

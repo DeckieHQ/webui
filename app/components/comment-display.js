@@ -1,8 +1,44 @@
 import Ember from 'ember';
-import ValidatedInput from '../components/validated-input';
+import EmberValidations from 'ember-validations';
 
-export default Ember.Component.extend({
+export default Ember.Component.extend(EmberValidations, {
+  validations: {
+    "comment.message": {
+      length: { maximum: 200 }
+    }
+  },
+
   canDelete: function() {
     return this.get('currentUser').get('profile.id') == this.get('comment.author.id') || this.get('isHost');
   }.property(),
+
+  isOwner: function() {
+    return this.get('currentUser').get('profile.id') == this.get('comment.author.id');
+  }.property(),
+
+  isUpdating: false,
+
+  actions: {
+    toggle_update_comment: function() {
+      this.toggleProperty('isUpdating');
+    },
+
+    update_comment: function(defer) {
+      let comment = this.get('comment');
+      //TODO: erreurs pas gérées
+      //TODO: améliorer le defer
+
+      return this.validate()
+        .then(() => comment.save())
+        .then(() => {
+          defer.resolve;
+          this.toggleProperty('isUpdating');
+        })
+        .catch((reason) => {
+          context.set("showErrors", true);
+          defer.reject(reason);
+        })
+      ;
+    },
+  }
 });

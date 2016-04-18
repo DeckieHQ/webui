@@ -8,12 +8,22 @@ export default Ember.Controller.extend(EmberValidations, {
     }
   },
 
+  showPrivates: false,
+
+  isPrivate: false,
+
   isHost: function() {
     return this.get('currentUser').get('profile.id') == this.get('model.host.id');
   }.property(),
 
+  isMember: function() {
+    return this.get('isHost') || this.get('confirmed');
+  }.property(),
+
   status: function() {
-    return this.get('model').get('user_submission').get('status');
+    let user_submission = this.get('user_submission');
+
+    return user_submission ? user_submission.get('status') : "";
   }.property(),
 
   pending: function() {
@@ -33,17 +43,18 @@ export default Ember.Controller.extend(EmberValidations, {
       this.send('save', this, defer, null, null, submission);
     },
 
-    quit_event: function(submission) {
-      // let submission = this.get('model').get('user_submission');
-      console.log(this.get('model.user_submission'));
+    quit_event: function() {
+      this.get('user_submission').destroyRecord();
+    },
 
-      //TODO: not working, WHY ?????
-      submission.destroyRecord();
+    toggle_private_comments: function() {
+      this.toggleProperty('showPrivates');
     },
 
     comment: function(defer) {
       let comment = this.store.createRecord('comment', {
         message: this.get('message'),
+        private: this.get('isPrivate'),
         event: this.get('model')
       });
 

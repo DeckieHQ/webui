@@ -15,14 +15,25 @@
   <div class='well'>
     <form>
       {{validated-input label="Comment" placeholder="Enter your comment" value=message errors=errors.message}}
+      {{#if isMember}}
+        {{validated-checkbox label="Private comment" value=isPrivate}}
+      {{/if}}
 
       {{dynamic-submit actionOnSubmit="comment"}}
     </form>
   </div>
 
-  {{#each model.comments as |comment|}}
-    {{comment-display comment=comment isHost=isHost}}
-  {{/each}}
+  {{#if isMember}}
+    <button {{action 'toggle_private_comments'}} class="btn btn-success">
+      Toggle all/private comments
+    </button>
+  {{/if}}
+
+  {{#if showPrivates}}
+    {{comments-list isPrivate=true event=model isHost=isHost}}
+  {{else}}
+    {{comments-list event=model isHost=isHost}}
+  {{/if}}
 </div>
 
 <div class='col-lg-3'>
@@ -32,14 +43,14 @@
     {{else if pending}}
       <div>Your submission to this event in awaiting the host acceptance</div>
       <div>
-        <button {{action 'quit_event' model.user_submission}} class="btn btn-danger">
+        <button {{action 'quit_event'}} class="btn btn-danger">
           Quit
         </button>
       </div>
     {{else if confirmed}}
       You are attendee to this event
       <div>
-        <button {{action 'quit_event' model.user_submission}} class="btn btn-danger">
+        <button {{action 'quit_event'}} class="btn btn-danger">
           Quit
         </button>
       </div>
@@ -54,14 +65,20 @@
 
   <div class='well'>
     <div>Hosted by:</div>
-    <div>{{model.host.display_name}}</div>
-    <div>{{model.host.short_description}}</div>
+
+    {{#link-to 'profile' model.host}}
+      <div>{{model.host.display_name}}</div>
+      <div>{{model.host.short_description}}</div>
+    {{/link-to}}
   </div>
 
   <div class='well'>
     <div>Attendees:</div>
+
     {{#each model.attendees as |attendee|}}
-      <div>{{attendee.display_name}}</div>
+      {{#link-to 'profile' attendee}}
+        <div>{{attendee.display_name}}</div>
+      {{/link-to}}
     {{/each}}
   </div>
 </div>

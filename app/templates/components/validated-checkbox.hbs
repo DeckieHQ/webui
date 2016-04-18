@@ -1,0 +1,5 @@
+<label>{{label}}</label>
+{{input checked=value type="checkbox" focus-out="showError" class="form-control" classBinding="showErrors"}}
+{{#if showErrors}}
+  {{displayErrors}}
+{{/if}}

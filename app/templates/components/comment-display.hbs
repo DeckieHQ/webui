@@ -1,9 +1,27 @@
 <div class='well'>
-  <div>{{comment.author.display_name}}</div>
-  <div>{{comment.message}}</div>
-  {{#if canDelete}}
-    <button {{action 'delete_comment' comment}} class="btn btn-danger">
-      Delete comment
-    </button>
+  {{#link-to 'profile' comment.author}}
+    <div>{{comment.author.display_name}}</div>
+  {{/link-to}}
+
+  {{#if isUpdating}}
+    <form>
+      {{validated-input value=comment.message errors=errors.comment.message}}
+
+      {{dynamic-submit actionOnSubmit="update_comment"}}
+    </form>
+  {{else}}
+    <div>{{comment.message}}</div>
+
+    {{#if canDelete}}
+      <button {{action 'delete_comment' comment}} class="btn btn-danger">
+        Delete comment
+      </button>
+    {{/if}}
+
+    {{#if isOwner}}
+      <button {{action 'toggle_update_comment' comment}} class="btn btn-warning">
+        Update comment
+      </button>
+    {{/if}}
   {{/if}}
 </div>

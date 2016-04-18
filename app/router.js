@@ -24,6 +24,7 @@ Router.map(function() {
   this.route('event', { path: '/event/:event_id' }, function() {
     this.route('edit');
   });
+  this.route('profile', { path: '/profile/:profile_id' });
 });
 
 export default Router;

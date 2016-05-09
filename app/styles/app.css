@@ -1,3 +1,35 @@
 .show-errors {
   border-color: red;
 }
+
+.ais-search-box--input {
+  @extend .form-control;
+}
+
+/*body, html, .main {
+  height: 95.15%;
+}*/
+
+
+.title {
+  padding: 8%;
+  z-index: 2;
+}
+
+.background {
+  padding: 20%;
+  padding-top: 5%;
+  padding-bottom: 5%;
+  position: relative;
+  overflow: hidden;
+}
+
+.background img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.8;
+    z-index: 1;
+}

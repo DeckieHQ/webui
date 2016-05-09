@@ -1,17 +1,13 @@
-<div id="search-input"></div>
-<div id="search-input-icon"></div>
+<div class='background'>
+  <div class='title'>
+    <h1>Find people who love to play the same games as you do</h1>
 
-<div id="left-column">
-  <div id="category" class="facet"></div>
-  <div id="brand" class="facet"></div>
-  <div id="price" class="facet"></div>
-  <div id="type" class="facet"></div>
+    <!-- {{#link-to 'search' tagName='button' class='btn btn-success"'}}Find events{{/link-to}}
+     -->
+    {{#link-to 'search'}}<button class="btn btn-success btn-lg">Find events now</button>{{/link-to}}
+  </div>
+
+  <img src="assets/images/background-1.jpg">
 </div>
 
-
-<div id="right-column">
-  <div id="sort-by-wrapper"><span id="sort-by"></span></div>
-  <div id="stats"></div>
-  <div id="hits"></div>
-  <div id="pagination"></div>
-</div>
+<h3>{{#link-to 'search'}}Find events{{/link-to}}</h3>

@@ -1,0 +1,42 @@
+<div id="search-input"></div>
+
+<div class='well col-lg-3'>
+  <div id="category" class="facet"></div>
+  <div id="brand" class="facet"></div>
+  <div id="price" class="facet"></div>
+  <div id="type" class="facet"></div>
+</div>
+
+
+<div class='well col-lg-8 col-lg-offset-1'>
+  <div id="sort-by-wrapper"><span id="sort-by"></span></div>
+  <div id="stats"></div>
+  <div id="hits"></div>
+  <div id="pagination"></div>
+</div>
+
+<script type="text/html" id="hit-template">
+  <div class="hit">
+    <div class="hit-image">
+      <img src="&#123;{image}&#125;" alt="&#123;{name}&#125;">
+    </div>
+    <div class="hit-content">
+      <h3 class="hit-price">$
+        &#123;{price}&#125;
+      </h3>
+      <h2 class="hit-name">
+        &#123;{_highlightResult.name.value}&#125;
+      </h2>
+      <p class="hit-description">
+        &#123;{_highlightResult.description.value}&#125;
+      </p>
+    </div>
+  </div>
+</script>
+
+<script type="text/html" id="no-results-template">
+  <div id="no-results-message">
+    <p>We didn't find any results for the search <em>"{{query}}"</em>.</p>
+    <a href="." class='clear-all'>Clear search</a>
+  </div>
+</script>

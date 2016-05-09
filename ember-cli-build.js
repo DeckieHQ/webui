@@ -9,6 +9,8 @@ module.exports = function(defaults) {
 
   app.import('bower_components/moment/moment.js');
   app.import('vendor/instantsearch/instantsearch.js');
+  app.import('vendor/instantsearch/instantsearch.css');
+  app.import('vendor/instantsearch/instantsearch.js.map');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

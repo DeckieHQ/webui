@@ -1,9 +1,9 @@
 <div class='col-lg-3'>
-  <div class='well classWithPad'>
+  <div class='well'>
     <ul class="nav nav-pills nav-stacked">
       {{#link-to 'account.dashboard' tagName='li'}}<a {{bind-attr href='view.href'}}>Dashboard</a>{{/link-to}}
-      {{#link-to 'account.personnal-information' tagName='li'}}<a {{bind-attr href='view.href'}}>Personnal information</a>{{/link-to}}
       {{#link-to 'account.profile' tagName='li'}}<a {{bind-attr href='view.href'}}>Profile</a>{{/link-to}}
+      {{#link-to 'account.personnal-information' tagName='li'}}<a {{bind-attr href='view.href'}}>Personnal information</a>{{/link-to}}
       {{#link-to 'account.verifications' tagName='li'}}<a {{bind-attr href='view.href'}}>Verifications</a>{{/link-to}}
       {{#link-to 'account.change-password' tagName='li'}}<a {{bind-attr href='view.href'}}>Change password</a>{{/link-to}}
       {{#link-to 'account.hosted-events' tagName='li'}}<a {{bind-attr href='view.href'}}>Hosted events</a>{{/link-to}}
@@ -12,7 +12,5 @@
 </div>
 
 <div class='col-lg-6'>
-  <div class='classWithPad'>
-    {{outlet}}
-  </div>
+  {{outlet}}
 </div>

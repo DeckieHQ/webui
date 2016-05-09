@@ -1,24 +1,63 @@
 <form>
-  {{validated-input label="Title" placeholder="Enter title" value=model.title serverErrors=model.errors.title errors=errors.model.title}}
-  {{validated-input label="Capacity" placeholder="Enter capacity" value=model.capacity serverErrors=model.errors.capacity errors=errors.model.capacity}}
-  {{validated-input label="Street" placeholder="Enter street" value=model.street serverErrors=model.errors.street errors=errors.model.street}}
-  {{validated-input label="Postcode" placeholder="Enter postcode" value=model.postcode serverErrors=model.errors.postcode errors=errors.model.postcode}}
-  {{validated-input label="City" placeholder="Enter city" value=model.city serverErrors=model.errors.city errors=errors.model.city}}
-  {{validated-input label="Country" placeholder="Enter country" value=model.country serverErrors=model.errors.country errors=errors.model.country}}
+  <div class='col-lg-12'>
+    {{validated-input label="Title" placeholder="Enter title" value=model.title serverErrors=model.errors.title errors=errors.model.title}}
+  </div>
 
-  {{validated-select label="Ambiance" options=ambiances value=model.ambiance serverErrors=model.errors.ambiance errors=errors.model.ambiance}}
-  {{validated-select label="Category" options=categories value=model.category serverErrors=model.errors.category errors=errors.model.category}}
-  {{validated-select label="Level" options=levels value=model.level serverErrors=model.errors.level errors=errors.model.level}}
+  <div class='col-lg-6'>
+    {{validated-input label="Capacity" placeholder="Enter capacity" value=model.capacity serverErrors=model.errors.capacity errors=errors.model.capacity}}
+  </div>
+  <div class='col-lg-6'>
+    {{validated-select label="Category" options=categories value=model.category serverErrors=model.errors.category errors=errors.model.category}}
+  </div>
 
-  {{validated-date label="Begin at" placeholder="Pick date" value=model.begin_at errors=errors.model.begin_at}}
-  {{validated-input label="Hour" placeholder="Enter hour" value=begin_at_hour errors=errors.begin_at_hour}}
-  {{validated-input label="Minute" placeholder="Enter minute" value=begin_at_minute errors=errors.begin_at_minute}}
+  <div class='col-lg-6'>
+    {{validated-select label="Ambiance" options=ambiances value=model.ambiance serverErrors=model.errors.ambiance errors=errors.model.ambiance}}
+  </div>
+  <div class='col-lg-6'>
+    {{validated-select label="Level" options=levels value=model.level serverErrors=model.errors.level errors=errors.model.level}}
+  </div>
 
-  {{validated-date label="End at" placeholder="Pick date" value=model.end_at errors=errors.model.end_at}}
+  <div class='begin-at col-lg-12'>
+    <label>Date</label>
+  </div>
+  <div class='col-lg-6'>
+    {{validated-date placeholder="Pick date" value=model.begin_at errors=errors.model.begin_at}}
+  </div>
+  <div class='col-lg-3'>
+    {{validated-input placeholder="Enter hour" value=begin_at_hour errors=errors.begin_at_hour}}
+  </div>
+  <div class='col-lg-3'>
+    {{validated-input placeholder="Enter minute" value=begin_at_minute errors=errors.begin_at_minute}}
+  </div>
+
+  <div class='col-lg-12'>
+    {{validated-textarea rows="2" maxlength=140 label="Short description" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
+  </div>
+
+  <div class='col-lg-12'>
+    {{validated-textarea rows="7" label="Description" value=model.description serverErrors=model.errors.description errors=errors.model.description}}
+  </div>
+
+  <div class='col-lg-12'>
+    {{validated-input label="Street" placeholder="Enter street" value=model.street serverErrors=model.errors.street errors=errors.model.street name='street'}}
+  </div>
+  <div class='col-lg-4'>
+    {{validated-input label="Postcode" placeholder="Enter postcode" value=model.postcode serverErrors=model.errors.postcode errors=errors.model.postcode name='postcode'}}
+  </div>
+  <div class='col-lg-4'>
+    {{validated-input label="City" placeholder="Enter city" value=model.city serverErrors=model.errors.city errors=errors.model.city name='city'}}
+  </div>
+  <div class='col-lg-4'>
+    {{validated-input label="Country" placeholder="Enter country" value=model.country serverErrors=model.errors.country errors=errors.model.country name='country'}}
+  </div>
+
+  <!-- {{validated-date label="End at" placeholder="Pick date" value=model.end_at errors=errors.model.end_at}}
   {{validated-input label="Hour" placeholder="Enter hour" value=end_at_hour errors=errors.end_at_hour}}
-  {{validated-input label="Minute" placeholder="Enter minute" value=end_at_minute errors=errors.end_at_minute}}
+  {{validated-input label="Minute" placeholder="Enter minute" value=end_at_minute errors=errors.end_at_minute}} -->
 
   <!-- <input type='date' class="form-control"/> -->
 
-  {{dynamic-submit actionOnSubmit="save_event"}}
+  <div class='col-lg-12'>
+    {{dynamic-submit actionOnSubmit="save_event"}}
+  </div>
 </form>

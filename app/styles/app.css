@@ -37,3 +37,12 @@
 .no-account {
   text-align: center;
 }
+
+.birthday {
+  margin-top: -15px;
+  margin-bottom: 0px;
+}
+
+.begin-at {
+  margin-bottom: -20px;
+}

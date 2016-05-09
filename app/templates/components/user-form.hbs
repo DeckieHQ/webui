@@ -3,8 +3,8 @@
   {{validated-input label="Firstname" placeholder="Enter firstname" value=model.first_name serverErrors=model.errors.first_name errors=errors.model.first_name name="firstName"}}
   {{validated-input label="Lastname" placeholder="Enter lastname" value=model.last_name serverErrors=model.errors.last_name errors=errors.model.last_name name="lastName"}}
 
-  <div class="form-group col-sm-12">
-    <label class="col-sm-12">Birthday</label>
+  <label>Birthday</label>
+  <div class="birthday form-group col-sm-12">
     <div class="col-sm-4">{{validated-input placeholder="day" value=day errors=errors.day}}</div>
     <div class="col-sm-4">
       {{validated-select options=months placeholder=monthPlaceHolder value=month errors=errors.month}}

@@ -18,8 +18,8 @@ module.exports = function(environment) {
       // when it is created
     },
     contentSecurityPolicy: {
-      'connect-src': '*',
-      'script-src': '*'
+      'connect-src': '*'
+      // 'script-src': '*'
     },
   };
 

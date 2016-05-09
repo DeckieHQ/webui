@@ -1,8 +1,19 @@
-<h2>Login</h2>
+<div class='well col-lg-6 col-lg-offset-3'>
+  <div class='col-lg-6'>
+    <h2>Login</h2>
 
-<form>
-  {{validated-input label="Email" placeholder="Enter email" value=email errors=errors.email}}
-  {{validated-input label="Password" placeholder="Enter password" type="password" value=password errors=errors.password}}
+    <form>
+      {{validated-input label="Email" placeholder="Enter email" value=email errors=errors.email name="email"}}
+      {{validated-input label="Password" placeholder="Enter password" type="password" value=password errors=errors.password}}
 
-  {{dynamic-submit actionOnSubmit="authenticate"}}
-</form>
+      {{dynamic-submit actionOnSubmit="authenticate"}}
+    </form>
+  </div>
+
+  <div class='no-account-container col-lg-6'>
+    <div class='no-account'>
+      <p>No account yet?</p>
+      {{#link-to 'registration'}}<button class="btn btn-success btn-lg">Create account</button>{{/link-to}}
+    </div>
+  </div>
+</div>

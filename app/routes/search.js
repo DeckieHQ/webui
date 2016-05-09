@@ -11,9 +11,9 @@ function getHeader(title) {
 export default Ember.Route.extend({
   model: function() {
     var search = instantsearch({
-      appId: 'HE7TT3H0G2',
-      apiKey: '8e22a8ed627215c0adc54d61b6c2d6a5', // search only API key, no ADMIN key
-      indexName: 'products',
+      appId: 'IU1NEZPMLF',
+      apiKey: '6e5ede7d10404d3249e6578f0a91a650', // search only API key, no ADMIN key
+      indexName: 'Event_production',
       urlSync: true
     });
 
@@ -28,7 +28,7 @@ export default Ember.Route.extend({
         var widgets = [
           instantsearch.widgets.searchBox({
             container: '#search-input',
-            placeholder: 'Search for products'
+            placeholder: 'Search for events'
           }),
 
           instantsearch.widgets.hits({
@@ -50,7 +50,7 @@ export default Ember.Route.extend({
 
           instantsearch.widgets.refinementList({
             container: '#category',
-            attributeName: 'categories',
+            attributeName: 'category',
             limit: 10,
             operator: 'or',
             templates: {
@@ -59,38 +59,56 @@ export default Ember.Route.extend({
           }),
 
           instantsearch.widgets.refinementList({
-            container: '#brand',
-            attributeName: 'brand',
+            container: '#ambiance',
+            attributeName: 'ambiance',
             limit: 10,
             operator: 'or',
             templates: {
-              header: getHeader('Brand')
+              header: getHeader('Ambiance')
             }
           }),
 
-          instantsearch.widgets.rangeSlider({
-            container: '#price',
-            attributeName: 'price',
-            templates: {
-              header: getHeader('Price')
-            }
-          }),
-
-          instantsearch.widgets.menu({
-            container: '#type',
-            attributeName: 'type',
+          instantsearch.widgets.refinementList({
+            container: '#level',
+            attributeName: 'level',
             limit: 10,
+            operator: 'or',
             templates: {
-              header: getHeader('Type')
+              header: getHeader('Level')
             }
           })
+
+          // instantsearch.widgets.refinementList({
+          //   container: '#brand',
+          //   attributeName: 'brand',
+          //   limit: 10,
+          //   operator: 'or',
+          //   templates: {
+          //     header: getHeader('Brand')
+          //   }
+          // }),
+          //
+          // instantsearch.widgets.rangeSlider({
+          //   container: '#price',
+          //   attributeName: 'price',
+          //   templates: {
+          //     header: getHeader('Price')
+          //   }
+          // }),
+          //
+          // instantsearch.widgets.menu({
+          //   container: '#type',
+          //   attributeName: 'type',
+          //   limit: 10,
+          //   templates: {
+          //     header: getHeader('Type')
+          //   }
+          // })
         ];
 
         widgets.forEach(search.addWidget, search);
 
         search.start();
-
-        console.log(search);
       });
     }
   }

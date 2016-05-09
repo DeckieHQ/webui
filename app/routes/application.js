@@ -28,7 +28,7 @@ export default Ember.Route.extend({
 
   actions: {
     sessionAuthenticated() {
-      this._populateCurrentUser().then(user => this.transitionTo('dashboard'));
+      this._populateCurrentUser().then(user => this.transitionTo('search'));
     },
 
     save(context, defer, beforeSave = null, afterSave = null, model = context.get('model')) {

@@ -38,6 +38,14 @@
   text-align: center;
 }
 
+.submit {
+  text-align: right;
+}
+
+.submit > div {
+  display: inline-block;
+}
+
 .birthday {
   margin-top: -15px;
   margin-bottom: 0px;
@@ -45,4 +53,18 @@
 
 .begin-at {
   margin-bottom: -20px;
+}
+
+.margin-bottom {
+  margin-bottom: 20px;
+}
+
+.event-title {
+  font-style: bold;
+  font-size: 30px;
+}
+
+#map {
+  width: 100%;
+  height: 200px;
 }

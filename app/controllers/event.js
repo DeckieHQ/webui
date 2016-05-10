@@ -2,13 +2,33 @@ import Ember from 'ember';
 import EmberValidations from 'ember-validations';
 
 export default Ember.Controller.extend(EmberValidations, {
+  init: function () {
+    this._super();
+    Ember.run.schedule("afterRender", this, function() {
+      let event = this.get('model');
+
+      let container = document.getElementById('map');
+
+      let LatLng = new window.google.maps.LatLng(
+        event.get('latitude'),
+        event.get('longitude')
+      );
+
+      let options = { center: LatLng, zoom: 15 };
+
+      let map = new window.google.maps.Map(container, options);
+
+      new google.maps.Marker({ position: LatLng, map: map});
+    });
+  },
+
   validations: {
     message: {
       length: { maximum: 200 }
     }
   },
 
-  showPrivates: false,
+  onlyPrivates: false,
 
   isPrivate: false,
 
@@ -50,10 +70,6 @@ export default Ember.Controller.extend(EmberValidations, {
       this.get('user_submission').destroyRecord().then(
         () => this.set('user_submission', null)
       );
-    },
-
-    toggle_private_comments: function() {
-      this.toggleProperty('showPrivates');
     },
 
     comment: function(defer) {

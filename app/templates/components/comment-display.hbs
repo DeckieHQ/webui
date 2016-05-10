@@ -1,27 +1,44 @@
 <div class='well'>
-  {{#link-to 'profile' comment.author}}
-    <div>{{comment.author.display_name}}</div>
-  {{/link-to}}
+  <div class='row'>
+    <div class='col-lg-8'>
+      {{#link-to 'profile' comment.author}}
+        {{comment.author.display_name}}
+      {{/link-to}}
+    </div>
 
-  {{#if isUpdating}}
-    <form>
-      {{validated-input value=comment.message errors=errors.comment.message}}
+    {{#unless isUpdating}}
+      <div class='col-lg-4'>
+        {{#if canDelete}}
+          <button {{action 'delete_comment' comment}} class="btn btn-danger">
+            Delete comment
+          </button>
+        {{/if}}
 
-      {{dynamic-submit actionOnSubmit="update_comment"}}
-    </form>
-  {{else}}
-    <div>{{comment.message}}</div>
+        {{#if isOwner}}
+          <button {{action 'toggle_update_comment' comment}} class="btn btn-warning">
+            Update comment
+          </button>
+        {{/if}}
+      </div>
+    {{/unless}}
+  </div>
 
-    {{#if canDelete}}
-      <button {{action 'delete_comment' comment}} class="btn btn-danger">
-        Delete comment
-      </button>
-    {{/if}}
+  <div class='row'>
+    <div class='col-lg-12'>
+      {{#if isUpdating}}
+        <form>
+          {{validated-input value=comment.message errors=errors.comment.message}}
 
-    {{#if isOwner}}
-      <button {{action 'toggle_update_comment' comment}} class="btn btn-warning">
-        Update comment
-      </button>
-    {{/if}}
-  {{/if}}
+          <div class='submit'>
+            <button {{action 'cancel_update'}} class="btn btn-danger">
+              Cancel
+            </button>
+            {{dynamic-submit actionOnSubmit="update_comment"}}
+          </div>
+        </form>
+      {{else}}
+        <div>{{comment.message}}</div>
+      {{/if}}
+    </div>
+  </div>
 </div>

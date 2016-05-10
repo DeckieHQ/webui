@@ -41,6 +41,10 @@ export default Ember.Component.extend(EmberValidations, {
       ;
     },
 
+    cancel_update: function() {
+      this.set('isUpdating', false);
+    },
+
     delete_comment: function(comment) {
       comment.destroyRecord();
     }

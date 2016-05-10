@@ -1,45 +1,7 @@
-<div class='col-lg-9'>
-  <div class='well'>
-    <div>{{model.title}}</div>
-    <div>{{model.begin_at}}</div>
-    <div>slots: {{model.capacity}}</div>
-    <div>ambiance: {{model.ambiance}}</div>
-    <div>level required: {{model.level}}</div>
-    <div>category: {{model.category}}</div>
-
-    {{#if isHost}}
-      {{#link-to 'event.edit'}}<button class="btn btn-success">Edit</button>{{/link-to}}
-    {{/if}}
-  </div>
-
-  <div class='well'>
-    <form>
-      {{validated-input label="Comment" placeholder="Enter your comment" value=message errors=errors.message}}
-      {{#if isMember}}
-        {{validated-checkbox label="Private comment" value=isPrivate}}
-      {{/if}}
-
-      {{dynamic-submit actionOnSubmit="comment"}}
-    </form>
-  </div>
-
-  {{#if isMember}}
-    <button {{action 'toggle_private_comments'}} class="btn btn-success">
-      Toggle all/private comments
-    </button>
-  {{/if}}
-
-  {{#if showPrivates}}
-    {{comments-list isPrivate=true event=model isHost=isHost}}
-  {{else}}
-    {{comments-list event=model isHost=isHost}}
-  {{/if}}
-</div>
-
 <div class='col-lg-3'>
   <div class='well'>
     {{#if isHost}}
-      Delete event
+      {{#link-to 'event.edit'}}<button class="btn btn-success">Edit event</button>{{/link-to}}
     {{else if pending}}
       <div>Your submission to this event in awaiting the host acceptance</div>
       <div>
@@ -66,16 +28,23 @@
   </div>
 
   <div class='well'>
-    <div>Hosted by:</div>
+    <b>Hosted by:</b>
 
     {{#link-to 'profile' model.host}}
       <div>{{model.host.display_name}}</div>
-      <div>{{model.host.short_description}}</div>
     {{/link-to}}
+    <div>{{model.host.short_description}}</div>
   </div>
 
   <div class='well'>
-    <div>Attendees:</div>
+    <b>Location:</b>
+    <div>{{model.street}}</div>
+    <div>{{model.postcode}}, {{model.city}}</div>
+    <div id="map"></div>
+  </div>
+
+  <div class='well'>
+    <b>Attendees: {{model.attendees_count}} / {{model.capacity}}</b>
 
     {{#each model.attendees as |attendee|}}
       {{#link-to 'profile' attendee}}
@@ -83,4 +52,67 @@
       {{/link-to}}
     {{/each}}
   </div>
+</div>
+
+<div class='col-lg-9'>
+  <div class='well'>
+    <div class='row margin-bottom'>
+      <div class='col-lg-8'>
+        <div class='event-title'>{{model.title}}</div>
+        <div>
+          {{model.short_description}} qdzcqsd qxdqsdqsd qsdqsdqs qsdqsdqsd qsdqsdqsdqsd qs dqsdqsd qsd qsdqsd qsd qsdqsdqs qsdqsd
+        </div>
+      </div>
+      <div class='col-lg-4'>
+        <b>{{moment-format model.begin_at}}</b>
+        <div>({{moment-from-now model.begin_at}})</div>
+      </div>
+    </div>
+    <div class='row margin-bottom'>
+      <div class='col-lg-4'>
+        <b>Category: {{model.category}}</b>
+      </div>
+      <div class='col-lg-4'>
+        <b>Expected ambiance: {{model.ambiance}}</b>
+      </div>
+      <div class='col-lg-4'>
+        <b>Minimum level required: {{model.level}}</b>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-lg-12'>
+        <div>{{model.description}}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class='well'>
+    <form>
+      {{validated-input label="Comment" placeholder="Enter your comment" value=message errors=errors.message}}
+
+      <div class='submit'>
+        {{#if isMember}}
+          <div>
+            Make the comment private:
+            {{input type="checkbox" checked=isPrivate}}
+          </div>
+        {{/if}}
+
+        {{dynamic-submit actionOnSubmit="comment"}}
+      </div>
+    </form>
+  </div>
+
+  {{#if isMember}}
+    <div>
+      Show only private comments:
+      {{input type="checkbox" checked=onlyPrivates}}
+    </div>
+  {{/if}}
+
+  {{#if onlyPrivates}}
+    {{comments-list isPrivate=true event=model isHost=isHost}}
+  {{else}}
+    {{comments-list event=model isHost=isHost}}
+  {{/if}}
 </div>

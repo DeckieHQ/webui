@@ -1,6 +1,6 @@
 {{#each model as |event|}}
   <div class='well'>
-    <div class='row'>
+    <div class='row margin-bottom'>
       <div class='col-lg-8'>
         {{#link-to 'event' event}}
           <div class='event-title'>{{event.title}}</div>
@@ -18,6 +18,9 @@
         <div>({{moment-from-now event.begin_at}})</div>
         <b>Attendees: {{event.attendees_count}} / {{event.capacity}}</b>
       </div>
+    </div>
+    <div class='row'>
+      {{pending-submissions event=event}}
     </div>
   </div>
 {{/each}}

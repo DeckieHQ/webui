@@ -14,6 +14,7 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   description: DS.attr(),
   short_description: DS.attr(),
   attendees_count: DS.attr(),
+  submissions_count: DS.attr(),
   street: DS.attr(),
   postcode: DS.attr(),
   city: DS.attr(),

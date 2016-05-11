@@ -8,8 +8,24 @@ export default Ember.Route.extend(AuthenticatedRouteMixin, {
 
   //TODO: not needed if user not authenticated or host
   afterModel(model) {
-    return model.get('user_submission').then((submission) => {
-      return this.controllerFor('event').set('user_submission', submission);
-    });
+    return model.get('user_submission')
+      .then((submission) => {
+        if (submission) {
+          return this.controllerFor('event').set('user_submission', submission);
+        }
+      })
+      .then(() => {
+        let isHost = this.get('currentUser').get('profile.id') == model.get('host.id');
+
+        if (isHost) {
+          return model.query('submissions', { include: 'profile' });
+        }
+      })
+      .then((submissions) => {
+        if (submissions) {
+          return this.controllerFor('event').set('submissions', submissions);
+        }
+      })
+    ;
   },
 });

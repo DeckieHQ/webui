@@ -7,6 +7,8 @@ export default Ember.Controller.extend(EmberValidations, {
     Ember.run.schedule("afterRender", this, function() {
       let event = this.get('model');
 
+      //TODO: sometimes map doesn't show when event is already loaded
+
       let container = document.getElementById('map');
 
       let LatLng = new window.google.maps.LatLng(
@@ -54,6 +56,10 @@ export default Ember.Controller.extend(EmberValidations, {
     return this.get('status') == 'confirmed';
   }.property('status'),
 
+  pendingSubmissions: function() {
+    return this.get('submissions').filter((s) => s.get('status') == 'pending');
+  }.property('submissions'),
+
   actions: {
     join_event: function(defer) {
       let submission = this.store.createRecord('submission', {
@@ -70,6 +76,14 @@ export default Ember.Controller.extend(EmberValidations, {
       this.get('user_submission').destroyRecord().then(
         () => this.set('user_submission', null)
       );
+    },
+
+    accept_submission: function(submission) {
+      submission.save().then(() => {
+        submission.set('status', 'confirmed');
+        this.notifyPropertyChange('submissions');
+        this.get('model').get('attendees').reload();
+      });
     },
 
     comment: function(defer) {

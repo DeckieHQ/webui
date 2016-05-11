@@ -5,4 +5,5 @@ export default DS.Model.extend({
     inverse: 'user_submission'
   }),
   status: DS.attr(),
+  profile: DS.belongsTo('profile')
 });

@@ -5,5 +5,5 @@ import HasManyQuery from 'ember-data-has-many-query';
 export default DS.JSONAPIAdapter.extend(DataAdapterMixin, HasManyQuery.RESTAdapterMixin, {
   authorizer: 'authorizer:devise',
 
-  host: 'http://forster-deckie-api.herokuapp.com/',
+  host: 'http://forster-deckie-api.herokuapp.com',
 });

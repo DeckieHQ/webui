@@ -1,27 +1,47 @@
-<div id="search-input"></div>
-
-<div class='well col-lg-3'>
-  <div id="category" class="facet"></div>
-  <div id="ambiance" class="facet"></div>
-  <div id="level" class="facet"></div>
+<div class='col-lg-3'>
+  <div class='well'>
+    <div id="category" class="facet"></div>
+  </div>
+  <div class='well'>
+    <div id="ambiance" class="facet"></div>
+  </div>
+  <div class='well'>
+    <div id="level" class="facet"></div>
+  </div>
 </div>
 
 
-<div class='well col-lg-8 col-lg-offset-1'>
-  <div id="stats"></div>
+<div class='col-lg-6'>
+  <div id="search-input"></div>
+  <div id="stats" class='margin-bottom'></div>
+
   <div id="hits"></div>
   <div id="pagination"></div>
 </div>
 
 <script type="text/html" id="hit-template">
-  <div class="hit">
-    <!-- <div class="hit-image">
-      <img src="&#123;{image}&#125;" alt="&#123;{name}&#125;">
-    </div> -->
-    <div class="hit-content">
-      <a href="/event/&#123;{objectID}&#125;">&#123;{title}&#125;</a>
-      <!-- <p>&#123;{objectID}&#125;</p>
-      <p>&#123;{title}&#125;</p> -->
+  <div class="hit well">
+    <div class='row margin-bottom'>
+      <div class='col-lg-8'>
+        <a href="/event/&#123;{objectID}&#125;" class='event-title'>&#123;{title}&#125;</a>
+        <div>&#123;{short_description}&#125;</div>
+      </div>
+      <div class='col-lg-4'>
+        <b>&#123;{begin_at}&#125;</b>
+        <div>({{moment-from-now begin_at}})</div>
+        <b>Attendees: &#123;{attendees_count}&#125; / &#123;{capacity}&#125;</b>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-lg-4'>
+        <b>Category: &#123;{category}&#125;</b>
+      </div>
+      <div class='col-lg-4'>
+        <b>Expected ambiance: &#123;{ambiance}&#125;</b>
+      </div>
+      <div class='col-lg-4'>
+        <b>Minimum level required: &#123;{level}&#125;</b>
+      </div>
     </div>
   </div>
 </script>
@@ -29,6 +49,6 @@
 <script type="text/html" id="no-results-template">
   <div id="no-results-message">
     <p>We didn't find any results for the search <em>"{{query}}"</em>.</p>
-    <a href="." class='clear-all'>Clear search</a>
+    <a href="/search">Clear search</a>
   </div>
 </script>

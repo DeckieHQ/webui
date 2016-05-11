@@ -1,14 +1,23 @@
 {{#each model as |event|}}
   <div class='well'>
-    {{#link-to 'event' event}}
-      <div>
-        {{event.title}}
+    <div class='row'>
+      <div class='col-lg-8'>
+        {{#link-to 'event' event}}
+          <div class='event-title'>{{event.title}}</div>
+        {{/link-to}}
+        <div>
+          {{#if event.short_description}}
+            {{event.short_description}}
+          {{else}}
+            <i>No short description on this event.</i>
+          {{/if}}
+        </div>
       </div>
-    {{/link-to}}
-    {{event.begin_at}}
-    {{event.capctity}}
-    {{event.ambiance}}
-    {{event.level}}
-    {{event.category}}
+      <div class='col-lg-4'>
+        <b>{{moment-format event.begin_at}}</b>
+        <div>({{moment-from-now event.begin_at}})</div>
+        <b>Attendees: {{event.attendees_count}} / {{event.capacity}}</b>
+      </div>
+    </div>
   </div>
 {{/each}}

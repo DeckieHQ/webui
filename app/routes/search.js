@@ -5,7 +5,7 @@ function getTemplate(templateName) {
 }
 
 function getHeader(title) {
-  return '<h5>' + title + '</h5>';
+  return '<label>' + title + '</label>';
 }
 
 export default Ember.Route.extend({
@@ -54,7 +54,7 @@ export default Ember.Route.extend({
             limit: 10,
             operator: 'or',
             templates: {
-              header: getHeader('Category')
+              header: getHeader('Category:')
             }
           }),
 
@@ -64,7 +64,7 @@ export default Ember.Route.extend({
             limit: 10,
             operator: 'or',
             templates: {
-              header: getHeader('Ambiance')
+              header: getHeader('Expected ambiance:')
             }
           }),
 
@@ -74,36 +74,9 @@ export default Ember.Route.extend({
             limit: 10,
             operator: 'or',
             templates: {
-              header: getHeader('Level')
+              header: getHeader('Minimum level required:')
             }
           })
-
-          // instantsearch.widgets.refinementList({
-          //   container: '#brand',
-          //   attributeName: 'brand',
-          //   limit: 10,
-          //   operator: 'or',
-          //   templates: {
-          //     header: getHeader('Brand')
-          //   }
-          // }),
-          //
-          // instantsearch.widgets.rangeSlider({
-          //   container: '#price',
-          //   attributeName: 'price',
-          //   templates: {
-          //     header: getHeader('Price')
-          //   }
-          // }),
-          //
-          // instantsearch.widgets.menu({
-          //   container: '#type',
-          //   attributeName: 'type',
-          //   limit: 10,
-          //   templates: {
-          //     header: getHeader('Type')
-          //   }
-          // })
         ];
 
         widgets.forEach(search.addWidget, search);

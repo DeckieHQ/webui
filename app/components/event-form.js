@@ -19,6 +19,7 @@ export default Ember.Component.extend(EmberValidations, {
     }
 
     if (end_at) {
+      this.set('addEndDate', true);
       this.set('end_at_hour', moment(end_at).hour());
       this.set('end_at_minute', moment(end_at).minute());
     } else {
@@ -86,6 +87,8 @@ export default Ember.Component.extend(EmberValidations, {
     }
   },
 
+  addEndDate: false,
+
   ambiances: ['relaxed', 'party', 'serious'],
   categories: ['party', 'board', 'role-playing', 'card', 'dice', 'miniature', 'strategy', 'cooperative', 'video', 'tile-based'],
   levels: ['beginner', 'intermediate', 'advanced', 'expert'],
@@ -101,12 +104,14 @@ export default Ember.Component.extend(EmberValidations, {
         begin_at.hour(begin_at_hour).minute(begin_at_minute);
         model.set('begin_at', begin_at.toDate());
 
-        if (model.get('end_at')) {
+        if (this.get('addEndDate')) {
           let end_at_hour = this.get('end_at_hour');
           let end_at_minute = this.get('end_at_minute');
           let end_at = moment(model.get('end_at'));
           end_at.hour(end_at_hour).minute(end_at_minute);
           model.set('end_at', end_at.toDate());
+        } else {
+          model.set('end_at', null);
         }
       });
     }

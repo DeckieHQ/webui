@@ -47,6 +47,32 @@
 
   <div class='row'>
     <div class='col-lg-12'>
+      Add end date: {{input type="checkbox" checked=addEndDate}}
+    </div>
+  </div>
+
+  {{#if addEndDate}}
+    <div class='row'>
+      <div class='begin-at col-lg-12'>
+        <label>End date</label>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-lg-6'>
+        {{validated-date placeholder="Pick date" value=model.end_at errors=errors.model.end_at}}
+      </div>
+      <div class='col-lg-3'>
+        {{validated-input placeholder="Enter hour" value=end_at_hour errors=errors.end_at_hour}}
+      </div>
+      <div class='col-lg-3'>
+        {{validated-input placeholder="Enter minute" value=end_at_minute errors=errors.end_at_minute}}
+      </div>
+    </div>
+  {{/if}}
+
+  <div class='row'>
+    <div class='col-lg-12'>
       {{validated-textarea rows="2" maxlength=140 label="Short description" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
     </div>
   </div>

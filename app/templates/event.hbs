@@ -90,6 +90,9 @@
       <div class='col-lg-4'>
         <b>{{moment-format model.begin_at}}</b>
         <div>({{moment-from-now model.begin_at}})</div>
+        {{#if model.end_at}}
+          <div>End at: {{moment-format model.end_at}}</div>
+        {{/if}}
       </div>
     </div>
     <div class='row margin-bottom'>

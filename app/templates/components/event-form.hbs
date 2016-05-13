@@ -6,8 +6,9 @@
   </div>
 
   <div class='row'>
-    <div class='col-lg-6'>
-      {{validated-input label="Capacity" placeholder="Enter capacity" value=model.capacity serverErrors=model.errors.capacity errors=errors.model.capacity}}
+    <div class='col-lg-6 inline-block'>
+      <div class='capacity'>Capacity: </div>
+      <div>{{validated-input placeholder="Enter capacity" value=model.capacity serverErrors=model.errors.capacity errors=errors.model.capacity}}</div>
     </div>
     <div class='col-lg-6'>
       Validation automatique: {{input type="checkbox" checked=model.auto_accept}}

@@ -1,4 +1,6 @@
-<label>{{label}}</label>
+{{#if label}}
+  <label>{{label}}</label>
+{{/if}}
 {{input value=value type=type focus-out="showError" class="form-control" classBinding="showErrors" placeholder=placeholder name=name}}
 {{#if showErrors}}
   {{displayErrors}}

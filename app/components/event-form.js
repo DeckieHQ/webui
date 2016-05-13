@@ -97,7 +97,7 @@ export default Ember.Component.extend(EmberValidations, {
     save_event: function(defer) {
       let model = this.get('model');
 
-      this.get('targetObject').send('save', this, defer, () => {
+      this.get('targetObject').send('save', this, defer, true, () => {
         let begin_at_hour = this.get('begin_at_hour');
         let begin_at_minute = this.get('begin_at_minute');
         let begin_at = moment(model.get('begin_at'));

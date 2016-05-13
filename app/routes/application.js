@@ -31,7 +31,9 @@ export default Ember.Route.extend({
       this._populateCurrentUser().then(user => this.transitionTo('search'));
     },
 
-    save(context, defer, beforeSave = null, afterSave = null, model = context.get('model')) {
+    save(context, defer, transitionToModel = false, beforeSave = null, afterSave = null, model = context.get('model')) {
+      let self = this;
+
       return context.validate()
         .then(() => {
           if (beforeSave) {
@@ -45,7 +47,13 @@ export default Ember.Route.extend({
             return afterSave();
           }
         })
-        .then(defer.resolve)
+        .then(() => {
+          defer.resolve;
+
+          if (transitionToModel) {
+            self.transitionTo(model.constructor.modelName, model)
+          }
+        })
         .catch((reason) => {
           context.set("showErrors", true);
           defer.reject(reason);

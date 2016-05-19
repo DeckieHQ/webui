@@ -85,7 +85,7 @@ export default Ember.Component.extend(EmberValidations, {
       let model = this.get('model');
       let password = this.get('password');
 
-      this.get('targetObject').send('save', this, defer,
+      this.get('targetObject').send('save', this, defer, false,
         () => {
           let date = [ this.get('day'), this.get('month'), this.get('year') ].join("-");
           let birthday = moment(date, "DD-MMMM-YYYY");

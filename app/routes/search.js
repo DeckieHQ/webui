@@ -11,8 +11,8 @@ function getHeader(title) {
 export default Ember.Route.extend({
   model: function() {
     var search = instantsearch({
-      appId: 'IU1NEZPMLF',
-      apiKey: '6e5ede7d10404d3249e6578f0a91a650', // search only API key, no ADMIN key
+      appId: 'IWTAAUR5I4',
+      apiKey: '409291b7d521d6f20f754f9034c7e322', // search only API key, no ADMIN key
       indexName: 'Event_production',
       urlSync: true
     });

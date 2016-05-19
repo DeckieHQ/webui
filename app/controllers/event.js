@@ -42,6 +42,10 @@ export default Ember.Controller.extend(EmberValidations, {
     return this.get('isHost') || this.get('confirmed');
   }.property('confirmed'),
 
+  displayPrivateComments: function() {
+    return this.get('isMember') && (this.get('model.private_comments_count') > 0)
+  }.property('isMember'),
+
   status: function() {
     let user_submission = this.get('user_submission');
 
@@ -94,7 +98,7 @@ export default Ember.Controller.extend(EmberValidations, {
         event: this.get('model')
       });
 
-      this.send('save', this, defer, null, null, comment);
+      this.send('save', this, defer, false, null, null, comment);
     },
   }
  });

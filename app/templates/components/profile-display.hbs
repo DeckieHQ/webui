@@ -7,9 +7,9 @@
   {{/if}}
 
   {{#if profile.avatar_url}}
-    <img src='{{profile.avatar_url}}'>
+    <img class='profile-avatar' src='{{profile.avatar_url}}'>
   {{else}}
-    <img src='/assets/images/anonyme.jpeg'>
+    <img class='profile-avatar' src='/assets/images/anonyme.jpeg'>
   {{/if}}
 
   <div>Member since {{moment-from-now profile.created_at}}</div>

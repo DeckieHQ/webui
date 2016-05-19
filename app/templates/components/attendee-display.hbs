@@ -1,0 +1,12 @@
+{{#link-to 'profile' attendee}}
+  <div>{{attendee.display_name}}</div>
+{{/link-to}}
+
+{{#if displayContact}}
+  <div>{{attendee.contact.email}}</div>
+  <div>{{attendee.contact.phone_number}}</div>
+{{else}}
+  <button {{action 'display_contact'}} class="btn btn-success">
+    See contact infos
+  </button>
+{{/if}}

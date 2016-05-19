@@ -9,4 +9,5 @@ export default DS.Model.extend({
   email_verified: DS.attr(),
   phone_number_verified: DS.attr(),
   created_at: DS.attr(),
+  contact: DS.belongsTo('contact'),
 });

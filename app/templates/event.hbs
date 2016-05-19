@@ -71,9 +71,7 @@
     <b>Attendees: {{model.attendees.length}} / {{model.capacity}}</b>
 
     {{#each model.attendees as |attendee|}}
-      {{#link-to 'profile' attendee}}
-        <div>{{attendee.display_name}}</div>
-      {{/link-to}}
+      {{attendee-display attendee=attendee}}
     {{/each}}
   </div>
 </div>

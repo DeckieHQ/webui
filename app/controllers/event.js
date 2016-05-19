@@ -7,7 +7,7 @@ export default Ember.Controller.extend(EmberValidations, {
     Ember.run.schedule("afterRender", this, function() {
       let event = this.get('model');
 
-      //TODO: sometimes map doesn't show when event is already loaded
+      //TODO: sometimes map doesn't show when event is already loaded / add google api key
 
       let container = document.getElementById('map');
 
@@ -70,7 +70,7 @@ export default Ember.Controller.extend(EmberValidations, {
         event: this.get('model')
       });
 
-      this.send('save', this, defer, null, () => {
+      this.send('save', this, defer, false, null, () => {
         this.set('user_submission', submission);
         this.get('model').get('attendees').reload();
       }, submission);

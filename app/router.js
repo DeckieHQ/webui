@@ -16,6 +16,7 @@ Router.map(function() {
     this.route('profile');
     this.route('verifications');
     this.route('hosted-events');
+    this.route('notifications');
   });
   this.route('verification-email')
   this.route('verification-phone-number')

@@ -1,1 +1,8 @@
-{{notifications.notifications.length}}
+<button {{action "retrieve_notifications"}}>{{notifications.notifications_count}}</button>
+
+<div id='notifications'>
+  {{#each list as |notification|}}
+    {{notification.type}}
+    {{notification.viewed}}
+  {{/each}}
+</div>

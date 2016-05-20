@@ -7,7 +7,7 @@
       <div>
         <ul class='nav navbar-nav navbar-right'>
           {{#if session.isAuthenticated}}
-            <li>{{notifications-box class='notifications'}}</li>
+            <li>{{notifications-box class='notifications_count'}}</li>
             <li>{{#link-to 'events.new'}}Create event{{/link-to}}</li>
             <li>{{#link-to 'account.dashboard'}}Account{{/link-to}}</li>
             <li><a href="#" {{action 'logout'}}>Logout</a></li>

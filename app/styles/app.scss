@@ -12,10 +12,18 @@
   font-weight: normal;
 }
 
-.notifications {
+.notifications_count {
   color: #777;
   padding-top: 15px;
   padding-bottom: 15px;
+}
+
+#notifications {
+  display: none;
+  position: absolute;
+  padding: 15px;
+  background-color: white;
+  border: 2px solid black;
 }
 
 .classWithPad {

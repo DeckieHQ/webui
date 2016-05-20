@@ -11,6 +11,7 @@ export default DS.Model.extend({
   confirm_password: DS.attr(),
   current_password: DS.attr(),
   email_verified: DS.attr(),
+  notifications_count: DS.attr(),
   phone_number_verified: DS.attr(),
   profile: DS.belongsTo('profile'),
   hosted_events: DS.hasMany('event'),

@@ -2,7 +2,19 @@
 
 <div id='notifications'>
   {{#each list as |notification|}}
-    {{notification.type}}
-    {{notification.viewed}}
+    <div {{action 'transition_to' notification}} class='notification'>
+      {{notification.action.actor.display_name}}
+      {{notification.type}}
+      {{notification.action.title}}
+    </div>
+  {{else}}
+    <div class='notification'>
+      No notifications
+    </div>
   {{/each}}
+  {{#link-to 'account.notifications'}}
+    <div class='notification'>
+      Voir toutes les notifications
+    </div>
+  {{/link-to}}
 </div>

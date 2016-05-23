@@ -31,6 +31,10 @@ export default Ember.Route.extend({
       this._populateCurrentUser().then(user => this.transitionTo('search'));
     },
 
+    transition_to(record) {
+      this.transitionTo(record.get('constructor.modelName'), record);
+    },
+
     save(context, defer, transitionToModel = false, beforeSave = null, afterSave = null, model = context.get('model')) {
       let self = this;
 

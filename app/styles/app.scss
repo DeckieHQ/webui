@@ -19,11 +19,16 @@
 }
 
 #notifications {
+  width: 280px;
   display: none;
   position: absolute;
-  padding: 15px;
+  padding: 5px;
   background-color: white;
   border: 2px solid black;
+}
+
+.notification {
+  padding: 15px;
 }
 
 .classWithPad {

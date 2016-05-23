@@ -1,5 +1,7 @@
 {{#each model as |notification|}}
-  <li>
-    {{notification.id}}
-  </li>
+  <div class='notification'>
+    {{notification.action.actor.display_name}}
+    {{notification.type}}
+    {{notification.action.title}}
+  </div>
 {{/each}}

@@ -8,7 +8,7 @@
 </button>
 
 {{#if showNotifications}}
-  <div id='notifications'>
+  <div id='notifications' class='well'>
     {{#each list as |notification|}}
       {{notification-display notification=notification}}
     {{else}}

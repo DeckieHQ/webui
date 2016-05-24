@@ -1,20 +1,25 @@
-<button {{action "retrieve_notifications"}}>{{notifications.notifications_count}}</button>
-
-<div id='notifications'>
-  {{#each list as |notification|}}
-    <div {{action 'transition_to' notification}} class='notification'>
-      {{notification.action.actor.display_name}}
-      {{notification.type}}
-      {{notification.action.title}}
-    </div>
+<button {{action "retrieve_notifications"}} id='notifications-button'>
+  {{#if newNotifications}}
+    <span class="glyphicon glyphicon-exclamation-sign newNotifications" aria-hidden="true"></span>
+    {{notifications.notifications_count}}
   {{else}}
-    <div class='notification'>
-      No notifications
-    </div>
-  {{/each}}
-  {{#link-to 'account.notifications'}}
-    <div class='notification'>
-      Voir toutes les notifications
-    </div>
-  {{/link-to}}
-</div>
+    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+  {{/if}}
+</button>
+
+{{#if showNotifications}}
+  <div id='notifications'>
+    {{#each list as |notification|}}
+      {{notification-display notification=notification}}
+    {{else}}
+      <div class='notification'>
+        No notifications
+      </div>
+    {{/each}}
+    {{#link-to 'account.notifications'}}
+      <div class='notification'>
+        Voir toutes les notifications
+      </div>
+    {{/link-to}}
+  </div>
+{{/if}}

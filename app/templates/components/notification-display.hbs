@@ -1,0 +1,5 @@
+<div {{action 'transition_to'}} class="well notification {{unless notification.viewed 'not-viewed'}}">
+  {{notification.action.actor.display_name}}
+  {{notification.type}}
+  {{notification.action.title}}
+</div>

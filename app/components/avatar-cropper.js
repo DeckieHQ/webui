@@ -13,7 +13,16 @@ export default imageCropper.extend({
     getCroppedAvatar: function() {
       var container = this.$(this.get('cropperContainer'));
       var croppedImage = container.cropper('getCroppedCanvas');
-      this.set('croppedAvatar', croppedImage);
+
+      let canvas = document.createElement('canvas');
+      let context = canvas.getContext('2d');
+      canvas.width = 50;
+      canvas.height = 50;
+      context.drawImage(croppedImage, 0, 0, canvas.width, canvas.height);
+
+      this.set('croppedAvatar', canvas);
+
+      this.set('profile.avatar', canvas.toDataURL("image/jpeg"));
     }
   }
 });

@@ -1,0 +1,7 @@
+<strong>Image Input</strong><br>
+
+{{#if displayCropper}}
+  {{avatar-cropper image=file.dataURL profile=profile}}
+{{/if}}
+
+{{file-input fileChanged="fileSelectionChanged"}}

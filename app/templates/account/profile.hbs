@@ -4,8 +4,8 @@
     {{validated-textarea rows="2" maxlength=140 label="Short description" placeholder="I am a student the day and a wizarrd at night" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
     {{validated-textarea rows="7" label="Description" placeholder="Who you are, games you like, and others shits like that" value=model.description serverErrors=model.errors.description errors=errors.model.description}}
 
-
-    {{avatar-cropper image="assets/images/anonyme.jpeg"}}
+    <img src={{model.avatar_url}}>
+    {{image-input profile=model}}
     {{dynamic-submit actionOnSubmit="update_profile"}}
   </form>
 </div>

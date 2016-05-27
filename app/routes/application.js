@@ -59,6 +59,7 @@ export default Ember.Route.extend({
           }
         })
         .catch((reason) => {
+          console.log(reason);
           context.set("showErrors", true);
           defer.reject(reason);
         })

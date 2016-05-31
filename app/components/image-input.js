@@ -12,5 +12,9 @@ export default Ember.Component.extend({
       this.set('file', file);
       this.set('profile.avatar', file.dataURL);
     },
+
+    save: function(defer) {
+      this.get('targetObject').send('save', defer);
+    }
   },
 });

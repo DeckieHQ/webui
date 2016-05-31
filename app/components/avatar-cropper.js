@@ -10,7 +10,7 @@ export default imageCropper.extend({
   croppedAvatar: null,
 
   actions: {
-    getCroppedAvatar: function() {
+    getCroppedAvatar: function(defer) {
       var container = this.$(this.get('cropperContainer'));
       var croppedImage = container.cropper('getCroppedCanvas');
 
@@ -20,9 +20,11 @@ export default imageCropper.extend({
       canvas.height = 50;
       context.drawImage(croppedImage, 0, 0, canvas.width, canvas.height);
 
-      this.set('croppedAvatar', canvas);
+      // this.set('croppedAvatar', canvas);
 
       this.set('profile.avatar', canvas.toDataURL("image/jpeg"));
+
+      this.get('targetObject').send('save', defer);
     }
   }
 });

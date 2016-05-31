@@ -8,8 +8,23 @@
 
   {{#if profile.avatar_url}}
     <img class='profile-avatar' src='{{profile.avatar_url}}'>
+    <button {{action 'update_avatar'}} class="btn btn-success">
+      Modify avatar
+    </button>
   {{else}}
     <img class='profile-avatar' src='/assets/images/anonyme.jpeg'>
+    <button {{action 'update_avatar'}} class="btn btn-success">
+      Add avatar
+    </button>
+  {{/if}}
+
+  {{#if updateAvatar}}
+    <div id='update-avatar'>
+      <div class='avatar well'>
+        {{image-input profile=profile}}
+      </div>
+      <div class='toto'></div>
+    </div>
   {{/if}}
 
   <div>Member since {{moment-from-now profile.created_at}}</div>

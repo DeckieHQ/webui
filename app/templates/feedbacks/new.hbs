@@ -1,0 +1,21 @@
+<div class='well col-lg-6 col-lg-offset-3'>
+  <form>
+    <div class='row'>
+      <div class='col-lg-12'>
+        {{validated-input label="Title" placeholder="Enter title" value=model.title serverErrors=model.errors.title errors=errors.model.title}}
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-lg-12'>
+        {{validated-textarea rows="7" label="Description" value=model.description serverErrors=model.errors.description errors=errors.model.description}}
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-lg-12'>
+        <div class='submit'>{{dynamic-submit actionOnSubmit="create"}}</div>
+      </div>
+    </div>
+  </form>
+</div>

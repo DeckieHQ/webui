@@ -28,6 +28,9 @@ Router.map(function() {
   });
   this.route('event-created', { path: '/event-created/:event_id' });
   this.route('profile', { path: '/profile/:profile_id' });
+  this.route('feedbacks', function() {
+    this.route('new');
+  });
 });
 
 export default Router;

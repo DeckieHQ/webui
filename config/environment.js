@@ -25,6 +25,8 @@ module.exports = function(environment) {
       'font-src': "'self' https://*.gstatic.com",
       'style-src': "'self' 'unsafe-inline' https://*.googleapis.com"
     },
+    apiURL: process.env.API_URL,
+    authPATH: '/user/sign_in'
   };
 
   if (environment === 'development') {

@@ -15,6 +15,7 @@
     "moment": "~2.11.1",
     "bootstrap": "~3.3.5",
     "bootstrap-sass": "~3.3.6",
-    "cropper": "~2.3.0"
+    "cropper": "~2.3.0",
+    "bootstrap-datepicker": "~1.6.1"
   }
 }

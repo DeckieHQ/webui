@@ -1,5 +1,7 @@
 import Devise from 'ember-simple-auth/authenticators/devise';
 
+import ENV from '../config/environment';
+
 export default Devise.extend({
-  serverTokenEndpoint: 'http://forster-deckie-api.herokuapp.com/user/sign_in'
+  serverTokenEndpoint: `${ENV.apiURL}${ENV.authPATH}`
 });

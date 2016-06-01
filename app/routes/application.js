@@ -35,7 +35,7 @@ export default Ember.Route.extend({
       this.transitionTo(record.get('constructor.modelName'), record);
     },
 
-    save(context, defer, params) {
+    save(context, defer, params = {}) {
       let self = this;
       let model = params.model || context.get('model');
 

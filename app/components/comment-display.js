@@ -26,12 +26,11 @@ export default Ember.Component.extend(EmberValidations, {
     update_comment: function(defer) {
       let comment = this.get('comment');
       //TODO: erreurs pas gérées
-      //TODO: améliorer le defer
 
       return this.validate()
         .then(() => comment.save())
         .then(() => {
-          defer.resolve;
+          defer.resolve();
           this.toggleProperty('isUpdating');
         })
         .catch((reason) => {

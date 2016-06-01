@@ -2,6 +2,7 @@ import Ember from 'ember';
 import EmberValidations from 'ember-validations';
 
 export default Ember.Controller.extend(EmberValidations, {
+  //TODO: add password confirmation validation
   validations: {
     "model.current_password": {
       presence: true

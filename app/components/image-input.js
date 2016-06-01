@@ -14,7 +14,11 @@ export default Ember.Component.extend({
     },
 
     save: function(defer) {
-      this.get('targetObject').send('save', defer);
+      this.get('targetObject').send('update_profile', defer);
+    },
+
+    cancel: function() {
+      this.get('targetObject').send('cancel');
     }
   },
 });

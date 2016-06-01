@@ -1,7 +1,17 @@
-<strong>Image Input</strong><br>
+<div id='update-avatar'>
+  <div id='crop-avatar' class='well'>
+    <div class='row'>
+      <div class='col-lg-11'>
+        {{file-input fileChanged="fileSelectionChanged"}}
+      </div>
+      <div class='col-lg-1'>
+        <span {{action 'cancel'}} class="glyphicon glyphicon-remove"></span>
+      </div>
+    </div>
 
-{{#if displayCropper}}
-  {{avatar-cropper image=file.dataURL profile=profile}}
-{{/if}}
-
-{{file-input fileChanged="fileSelectionChanged"}}
+    {{#if displayCropper}}
+      {{avatar-cropper image=file.dataURL profile=profile}}
+    {{/if}}
+  </div>
+  <div id='shadow'></div>
+</div>

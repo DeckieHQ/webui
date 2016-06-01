@@ -1,35 +1,45 @@
 <div class='well'>
-  {{#if profile.nickname}}
-    <b>{{profile.nickname}}</b>
-    <div>{{profile.display_name}}</div>
-  {{else}}
-    <b>{{profile.display_name}}</b>
-  {{/if}}
-
-  {{#if profile.avatar_url}}
-    <img class='profile-avatar' src='{{profile.avatar_url}}'>
-    <button {{action 'update_avatar'}} class="btn btn-success">
-      Modify avatar
-    </button>
-  {{else}}
-    <img class='profile-avatar' src='/assets/images/anonyme.jpeg'>
-    <button {{action 'update_avatar'}} class="btn btn-success">
-      Add avatar
-    </button>
-  {{/if}}
-
-  {{#if updateAvatar}}
-    <div id='update-avatar'>
-      <div class='avatar well'>
-        {{image-input profile=profile}}
+  <div class='row'>
+    <div class='col-lg-8'>
+      {{#if profile.nickname}}
+        <b>{{profile.nickname}}</b>
+        <span>({{profile.display_name}})</span>
+      {{else}}
+        <b>{{profile.display_name}}</b>
+      {{/if}}
+      <div><i>Member since {{moment-from-now profile.created_at}}</i></div>
+      <div class='margin-top'>{{profile.short_description}}</div>
+      <div class='margin-top'>
+        <span>
+          Email verified
+          {{#if profile.email_verified}}
+            <span class='glyphicon glyphicon-ok'></span>
+          {{else}}
+            <span class='glyphicon glyphicon-remove'></span>
+          {{/if}}
+        </span>
+        <span>
+          Phone number verified
+          {{#if profile.phone_number_verified}}
+            <span class='glyphicon glyphicon-ok'></span>
+          {{else}}
+            <span class='glyphicon glyphicon-remove'></span>
+          {{/if}}
+        </span>
       </div>
-      <div class='toto'></div>
     </div>
-  {{/if}}
+    <div class='col-lg-4'>
+      {{#if profile.avatar_url}}
+        <img class='profile-avatar' src='{{profile.avatar_url}}'>
+      {{else}}
+        <img class='profile-avatar' src='/assets/images/anonyme.jpeg'>
+      {{/if}}
+    </div>
+  </div>
 
-  <div>Member since {{moment-from-now profile.created_at}}</div>
-  <div>{{profile.short_description}}</div>
-  <div>Email verified: {{profile.email_verified}}</div>
-  <div>Phone number verified: {{profile.phone_number_verified}}</div>
-  <div>{{profile.description}}</div>
+  <div class='row margin-top'>
+    <div class='col-lg-12'>
+      <div>{{profile.description}}</div>
+    </div>
+  </div>
 </div>

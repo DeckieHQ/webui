@@ -1,11 +1,35 @@
 <div class='well'>
   <form>
-    {{validated-input label="Nickname" placeholder="Enter nickname" value=model.nickname serverErrors=model.errors.nickname errors=errors.model.nickname}}
-    {{validated-textarea rows="2" maxlength=140 label="Short description" placeholder="I am a student the day and a wizarrd at night" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
-    {{validated-textarea rows="7" label="Description" placeholder="Who you are, games you like, and others shits like that" value=model.description serverErrors=model.errors.description errors=errors.model.description}}
+    <div class='row'>
+      <div class='col-lg-8'>
+        {{validated-input label="Nickname" placeholder="Enter nickname" value=model.nickname serverErrors=model.errors.nickname errors=errors.model.nickname}}
+        {{validated-textarea rows="3" maxlength=140 label="Short description" placeholder="I am a student the day and a wizarrd at night" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
+      </div>
+      <div class='col-lg-4'>
+        {{#if model.avatar_url}}
+          <img class='profile-avatar' src='{{model.avatar_url}}'>
+          <button {{action 'update_avatar'}} class="btn btn-success">
+            Modify avatar
+          </button>
+        {{else}}
+          <img class='profile-avatar' src='/assets/images/anonyme.jpeg'>
+          <button {{action 'update_avatar'}} class="btn btn-success">
+            Add avatar
+          </button>
+        {{/if}}
+      </div>
+    </div>
 
-    <img src={{model.avatar_url}}>
-    {{image-input profile=model}}
+    <div class='row'>
+      <div class='col-lg-12'>
+        {{validated-textarea rows="7" label="Description" placeholder="Who you are, games you like, and others shits like that" value=model.description serverErrors=model.errors.description errors=errors.model.description}}
+      </div>
+    </div>
+
     {{dynamic-submit actionOnSubmit="update_profile"}}
   </form>
 </div>
+
+{{#if updateAvatar}}
+  {{image-input profile=model}}
+{{/if}}

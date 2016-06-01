@@ -26,6 +26,7 @@ Router.map(function() {
   this.route('event', { path: '/event/:event_id' }, function() {
     this.route('edit');
   });
+  this.route('event-created', { path: '/event-created/:event_id' });
   this.route('profile', { path: '/profile/:profile_id' });
 });
 

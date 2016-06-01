@@ -64,6 +64,10 @@ export default Ember.Controller.extend(EmberValidations, {
     return this.get('submissions').filter((s) => s.get('status') == 'pending');
   }.property('submissions'),
 
+  full: Ember.computed('model.attendees.length', function() {
+    return this.get('model.attendees.length') >= this.get('model.capacity');
+  }),
+
   actions: {
     join_event: function(defer) {
       let submission = this.store.createRecord('submission', {

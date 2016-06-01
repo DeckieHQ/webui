@@ -6,13 +6,12 @@
         {{validated-textarea rows="3" maxlength=140 label="Short description" placeholder="I am a student the day and a wizarrd at night" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
       </div>
       <div class='col-lg-4'>
+        {{avatar-display profile=model}}
         {{#if model.avatar_url}}
-          <img class='profile-avatar' src='{{model.avatar_url}}'>
           <button {{action 'update_avatar'}} class="btn btn-success">
             Modify avatar
           </button>
         {{else}}
-          <img class='profile-avatar' src='/assets/images/anonyme.jpeg'>
           <button {{action 'update_avatar'}} class="btn btn-success">
             Add avatar
           </button>

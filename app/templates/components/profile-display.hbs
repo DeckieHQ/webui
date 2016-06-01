@@ -1,39 +1,30 @@
 <div class='well'>
   <div class='row'>
     <div class='col-lg-8'>
-      {{#if profile.nickname}}
-        <b>{{profile.nickname}}</b>
-        <span>({{profile.display_name}})</span>
-      {{else}}
-        <b>{{profile.display_name}}</b>
-      {{/if}}
+      {{name-display profile=profile}}
       <div><i>Member since {{moment-from-now profile.created_at}}</i></div>
       <div class='margin-top'>{{profile.short_description}}</div>
       <div class='margin-top'>
-        <span>
+        <div>
           Email verified
           {{#if profile.email_verified}}
-            <span class='glyphicon glyphicon-ok'></span>
+            <span class='icon-ok'></span>
           {{else}}
             <span class='glyphicon glyphicon-remove'></span>
           {{/if}}
-        </span>
-        <span>
+        </div>
+        <div>
           Phone number verified
           {{#if profile.phone_number_verified}}
-            <span class='glyphicon glyphicon-ok'></span>
+            <span class='icon-ok'></span>
           {{else}}
             <span class='glyphicon glyphicon-remove'></span>
           {{/if}}
-        </span>
+        </div>
       </div>
     </div>
     <div class='col-lg-4'>
-      {{#if profile.avatar_url}}
-        <img class='profile-avatar' src='{{profile.avatar_url}}'>
-      {{else}}
-        <img class='profile-avatar' src='/assets/images/anonyme.jpeg'>
-      {{/if}}
+      {{avatar-display profile=profile}}
     </div>
   </div>
 

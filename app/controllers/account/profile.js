@@ -12,6 +12,7 @@ export default Ember.Controller.extend(EmberValidations, {
     },
 
     update_avatar: function() {
+      this.get('model').rollbackAttributes();
       this.set('updateAvatar', true);
     },
 

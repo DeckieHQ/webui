@@ -1,6 +1,4 @@
-{{#link-to 'profile' attendee}}
-  <div>{{attendee.display_name}}</div>
-{{/link-to}}
+{{profile-link profile=attendee}}
 
 {{#if displayContact}}
   <div>{{attendee.contact.email}}</div>

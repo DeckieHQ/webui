@@ -47,7 +47,14 @@
   z-index: 20;
 }
 
+.avatar-small {
+  width: 30px;
+  height: 30px;
+}
+
 .profile-avatar {
+  border-radius: 25px;
+  border:1px solid lightgrey;
   width: 100%;
   height: 100%;
 }
@@ -83,6 +90,11 @@
 
 .classWithPad {
   padding:10px;
+}
+
+.icon-ok {
+  @extend .glyphicon, .glyphicon-ok;
+  color: green;
 }
 
 .welcome-container {
@@ -155,8 +167,7 @@
 }
 
 .btn-submit {
-  @extend .btn;
-  @extend .btn-success;
+  @extend .btn, .btn-success;
   width: 100px;
 }
 

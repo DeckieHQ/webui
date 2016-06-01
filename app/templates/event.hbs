@@ -36,11 +36,7 @@
       {{/if}}
       {{#each pendingSubmissions as |submission|}}
         <div class='inline-block'>
-          <div>
-            {{#link-to 'profile' submission.profile}}
-              {{submission.profile.display_name}}
-            {{/link-to}}
-          </div>
+          {{profile-link profile=submission.profile}}
           <button {{action 'accept_submission' submission}} class="btn btn-success">
             Accept
           </button>
@@ -52,9 +48,7 @@
   <div class='well'>
     <b>Hosted by:</b>
 
-    {{#link-to 'profile' model.host}}
-      <div>{{model.host.display_name}}</div>
-    {{/link-to}}
+    {{profile-link profile=model.host}}
     <div>{{model.host.short_description}}</div>
   </div>
 

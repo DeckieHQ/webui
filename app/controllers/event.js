@@ -70,10 +70,15 @@ export default Ember.Controller.extend(EmberValidations, {
         event: this.get('model')
       });
 
-      this.send('save', this, defer, false, null, () => {
-        this.set('user_submission', submission);
-        this.get('model').get('attendees').reload();
-      }, submission);
+      let params = {
+        afterSave: () => {
+          this.set('user_submission', submission);
+          this.get('model').get('attendees').reload();
+        },
+        model: submission
+      };
+
+      this.send('save', this, defer, params);
     },
 
     quit_event: function() {
@@ -98,7 +103,7 @@ export default Ember.Controller.extend(EmberValidations, {
         event: this.get('model')
       });
 
-      this.send('save', this, defer, false, null, null, comment);
+      this.send('save', this, defer, { model: comment });
     },
   }
  });

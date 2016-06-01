@@ -35,26 +35,27 @@ export default Ember.Route.extend({
       this.transitionTo(record.get('constructor.modelName'), record);
     },
 
-    save(context, defer, transitionToModel = false, beforeSave = null, afterSave = null, model = context.get('model')) {
+    save(context, defer, params) {
       let self = this;
+      let model = params.model || context.get('model');
 
       return context.validate()
         .then(() => {
-          if (beforeSave) {
-            beforeSave();
+          if (params.beforeSave) {
+            params.beforeSave();
           }
 
           return model.save();
         })
         .then(() => {
-          if (afterSave) {
-            return afterSave();
+          if (params.afterSave) {
+            return params.afterSave();
           }
         })
         .then(() => {
-          defer.resolve;
+          defer.resolve();
 
-          if (transitionToModel) {
+          if (params.transitionToModel) {
             self.transitionTo(model.constructor.modelName, model)
           }
         })

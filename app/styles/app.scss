@@ -29,7 +29,7 @@
   min-height: 100%;
   position: absolute;
   right: 0;
-  top: 30%;
+  top: 20%;
   z-index: 15;
 }
 
@@ -43,8 +43,29 @@
 }
 
 #crop-avatar {
+  height: 60vh;
   position: relative;
   z-index: 20;
+}
+
+.cropper {
+  padding: 1vw;
+}
+
+.cropper-container {
+  width: 90%;
+  max-height: 40vh;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.crop-box {
+  margin-top: 1vw;
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
 }
 
 .avatar-small {
@@ -112,6 +133,24 @@
 .icon-ok {
   @extend .glyphicon, .glyphicon-ok;
   color: green;
+}
+
+.icon-remove {
+  @extend .glyphicon, .glyphicon-remove;
+}
+
+.icon-remove:hover {
+  cursor: pointer;
+  color: red;
+}
+
+.icon-pencil {
+  @extend .glyphicon, .glyphicon-pencil;
+}
+
+.icon-pencil:hover {
+  cursor: pointer;
+  color: blue;
 }
 
 .welcome-container {

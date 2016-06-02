@@ -18,8 +18,8 @@ Router.map(function() {
     this.route('hosted-events');
     this.route('notifications');
   });
-  this.route('verification-email')
-  this.route('verification-phone-number')
+  this.route('email-verification');
+  this.route('phone-number-verification');
   this.route('events', function() {
     this.route('new');
   });

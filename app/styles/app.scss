@@ -18,6 +18,8 @@
 }
 
 .line-separator {
+  margin-top: 1vh;
+  margin-bottom: 1vh;
   height:1px;
   background:#717171;
   border-bottom:1px solid #313030;
@@ -31,6 +33,11 @@
   right: 0;
   top: 20%;
   z-index: 15;
+}
+
+.update-avatar-button {
+  margin-top: 1vh;
+  @extend .btn, .btn-xs, .btn-warning;
 }
 
 #shadow {
@@ -88,6 +95,7 @@
   padding: 1vw;
   z-index: 12;
   width: 30vw;
+  color: black;
 }
 
 .profile-avatar {
@@ -184,6 +192,46 @@
   text-align: center;
 }
 
+.underline-hover:hover {
+  text-decoration: underline;
+}
+
+.pending-submission,
+.attendee {
+  margin-top: 1vh;
+}
+
+.attendee-info {
+  padding-bottom: 1vh;
+}
+
+.pending-submission > div {
+  display: inline-block;
+}
+
+.accept-submission,
+.attendee-contact {
+  float: right;
+}
+
+.host-contact {
+  text-align: center;
+}
+
+.host-contact > button {
+  @extend .btn, .btn-sm, .btn-warning;
+}
+
+.accept-submission > button {
+  vertical-align: -webkit-baseline-middle;
+  @extend .btn, .btn-xs, .btn-success;
+}
+
+.attendee-contact > button {
+  vertical-align: -webkit-baseline-middle;
+  @extend .btn, .btn-xs, .btn-warning;
+}
+
 .no-account-container {
   height: 245px;
   border-left: 1px solid #b4b4b4;
@@ -240,6 +288,10 @@
 .btn-submit {
   @extend .btn, .btn-success;
   width: 100px;
+}
+
+.account-list > li {
+  cursor: pointer;
 }
 
 .glyphicon-refresh-animate {

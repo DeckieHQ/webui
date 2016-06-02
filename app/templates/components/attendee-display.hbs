@@ -1,10 +1,20 @@
-{{profile-link profile=attendee}}
+<div class='inline-block'>
+  {{profile-link profile=attendee}}
+
+  {{#unless displayContact}}
+    {{#if isHost}}
+      <div class="attendee-contact">
+        <button {{action 'display_contact'}}>
+          See contact infos
+        </button>
+      </div>
+    {{/if}}
+  {{/unless}}
+</div>
 
 {{#if displayContact}}
-  <div>{{attendee.contact.email}}</div>
-  <div>{{attendee.contact.phone_number}}</div>
-{{else}}
-  <button {{action 'display_contact'}} class="btn btn-success">
-    See contact infos
-  </button>
+  <div class='attendee-info'>
+    <i>{{attendee.contact.email}}</i>
+    <i>{{attendee.contact.phone_number}}</i>
+  </div>
 {{/if}}

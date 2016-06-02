@@ -91,6 +91,10 @@ export default Ember.Controller.extend(EmberValidations, {
       );
     },
 
+    display_host_contact: function() {
+      this.set('displayHostContact', true);
+    },
+
     accept_submission: function(submission) {
       submission.save().then(() => {
         submission.set('status', 'confirmed');

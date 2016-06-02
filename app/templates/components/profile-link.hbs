@@ -5,18 +5,18 @@
         {{avatar-display profile=profile}}
       </div>
 
-      <div>{{name-display profile=profile}}</div>
+      <div class='underline-hover'>{{name-display profile=profile}}</div>
+    </div>
+
+    <div class='profile-box row'>
+      <div class='col-lg-3 avatar-medium'>
+        {{avatar-display profile=profile}}
+      </div>
+
+      <div class='col-lg-9'>
+        <div>{{name-display profile=profile}}</div>
+        <i>{{profile.short_description}}</i>
+      </div>
     </div>
   {{/link-to}}
-
-  <div class='profile-box row'>
-    <div class='col-lg-3 avatar-medium'>
-      {{avatar-display profile=profile}}
-    </div>
-
-    <div class='col-lg-9'>
-      <div>{{name-display profile=profile}}</div>
-      <i>{{profile.short_description}}</i>
-    </div>
-  </div>
 </div>

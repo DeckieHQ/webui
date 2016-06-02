@@ -1,7 +1,7 @@
 <div class='col-md-3'>
   <div class='well'>
     {{#if isHost}}
-      {{#link-to 'event.edit'}}<button class="btn btn-success">Edit event</button>{{/link-to}}
+      {{#link-to 'event.edit'}}<button class="btn btn-warning">Edit event</button>{{/link-to}}
     {{else if pending}}
       <div>Your submission to this event in awaiting the host acceptance</div>
       <div>
@@ -32,43 +32,66 @@
   {{#if isHost}}
     <div class='well'>
       {{#if pendingSubmissions}}
-        <b>Pending submissions:</b>
+        <b>Pending submissions</b>
+        <div class='line-separator'></div>
       {{else}}
         No pending submissions
       {{/if}}
       {{#each pendingSubmissions as |submission|}}
-        <div class='inline-block'>
+        <div class='pending-submission'>
           {{profile-link profile=submission.profile}}
-          <button {{action 'accept_submission' submission}} class="btn btn-success">
-            Accept
-          </button>
+          <div class="accept-submission">
+            <button {{action 'accept_submission' submission}}>
+              Accept
+            </button>
+          </div>
         </div>
       {{/each}}
     </div>
   {{/if}}
 
   <div class='well'>
-    <b>Hosted by:</b>
-
+    <b>Host</b>
+    <div class='line-separator'></div>
     {{profile-link profile=model.host}}
     <div>{{model.host.short_description}}</div>
+    {{#unless displayHostContact}}
+    {{#if confirmed}}
+        <div class="host-contact">
+          <button {{action 'display_host_contact'}}>
+            See contact infos
+          </button>
+        </div>
+      {{/if}}
+    {{/unless}}
+    {{#if displayHostContact}}
+      <div>
+        <i>{{model.host.contact.email}}</i>
+        <i>{{model.host.contact.phone_number}}</i>
+      </div>
+    {{/if}}
   </div>
 
   <div class='well'>
-    <b>Location:</b>
+    <b>Attendees: {{model.attendees.length}} / {{model.capacity}}</b>
+    {{#if model.attendees}}
+      <div class='line-separator'></div>
+    {{/if}}
+    {{#each model.attendees as |attendee|}}
+      <div class='attendee'>
+        {{attendee-display attendee=attendee isHost=isHost}}
+      </div>
+    {{/each}}
+  </div>
+
+  <div class='well'>
+    <b>Location</b>
+    <div class='line-separator'></div>
     <div>{{model.street}}</div>
     <div>{{model.postcode}}, {{model.city}}</div>
     <div id='map-container'>
       <div id="map"></div>
     </div>
-  </div>
-
-  <div class='well'>
-    <b>Attendees: {{model.attendees.length}} / {{model.capacity}}</b>
-
-    {{#each model.attendees as |attendee|}}
-      {{attendee-display attendee=attendee}}
-    {{/each}}
   </div>
 </div>
 

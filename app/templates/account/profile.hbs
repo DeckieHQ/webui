@@ -7,15 +7,16 @@
       </div>
       <div class='col-lg-4'>
         {{avatar-display profile=model}}
-        {{#if model.avatar_url}}
-          <button {{action 'update_avatar'}} class="btn btn-success">
-            Modify avatar
+
+        <div class='center-text'>
+          <button {{action 'update_avatar'}} class='update-avatar-button'>
+            {{#if model.avatar_url}}
+              Modify avatar
+            {{else}}
+              Add avatar
+            {{/if}}
           </button>
-        {{else}}
-          <button {{action 'update_avatar'}} class="btn btn-success">
-            Add avatar
-          </button>
-        {{/if}}
+        </div>
       </div>
     </div>
 

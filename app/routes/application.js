@@ -44,7 +44,6 @@ export default Ember.Route.extend({
           if (params.beforeSave) {
             params.beforeSave();
           }
-
           return model.save();
         })
         .then(() => {
@@ -52,9 +51,8 @@ export default Ember.Route.extend({
             return params.afterSave();
           }
         })
+        .then(defer.resolve)
         .then(() => {
-          defer.resolve();
-
           if (params.transitionToModel) {
             self.transitionTo(model.constructor.modelName, model)
           }

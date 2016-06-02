@@ -4,7 +4,7 @@ import DS from 'ember-data';
 
 export default Ember.Route.extend(AuthenticatedRouteMixin, {
   beforeModel: function() {
-    let params = this.paramsFor('verification-email');
+    let params = this.paramsFor('email-verification');
     let verification = this.store.createRecord('verification-extend');
     verification.set('type', 'email');
     verification.set('token', params.token);

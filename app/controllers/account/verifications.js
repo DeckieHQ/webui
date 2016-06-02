@@ -21,7 +21,7 @@ export default Ember.Controller.extend({
       return verification.save()
         .then(() => {
           defer.resolve;
-          this.transitionToRoute('verification-phone-number');
+          this.transitionToRoute('phone-number-verification');
         })
         .catch((reason) => {
           defer.reject(reason);

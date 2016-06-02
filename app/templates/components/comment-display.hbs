@@ -7,12 +7,16 @@
     <div class='col-lg-1 align-right'>
       {{#unless isUpdating}}
         {{#if isOwner}}
-          <span {{action 'toggle_update_comment' comment}} class="icon-pencil"></span>
+          <span {{action 'toggle_update_comment' comment}} class="icon-pencil">
+            <div class='alt'>Edit</div>
+          </span>
         {{/if}}
       {{/unless}}
 
       {{#if canDelete}}
-        <span {{action 'delete_comment' comment}} class="icon-remove"></span>
+        <span {{action 'delete_comment' comment}} class="icon-remove">
+          <div class='alt'>Remove</div>
+        </span>
       {{/if}}
     </div>
   </div>

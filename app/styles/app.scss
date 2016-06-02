@@ -52,8 +52,25 @@
   height: 30px;
 }
 
+.avatar-medium {
+  padding: 0;
+}
+
+.show-profile-box:hover .profile-box{
+  display : block;
+}
+
+.profile-box {
+  position: absolute;
+  display: none;
+  @extend .well;
+  padding: 1vw;
+  z-index: 12;
+  width: 30vw;
+}
+
 .profile-avatar {
-  border-radius: 25px;
+  border-radius: 15px;
   border:1px solid lightgrey;
   width: 100%;
   height: 100%;

@@ -8,6 +8,7 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('registration')
   this.route('login');
+  this.route('login-or-registration');
   this.route('search');
   this.route('account', function() {
     this.route('dashboard');

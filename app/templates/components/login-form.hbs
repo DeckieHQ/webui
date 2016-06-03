@@ -1,0 +1,8 @@
+<h2>Login</h2>
+
+<form>
+  {{validated-input label="Email" placeholder="Enter email" value=email errors=errors.email name="email"}}
+  {{validated-input label="Password" placeholder="Enter password" type="password" value=password errors=errors.password}}
+
+  {{dynamic-submit actionOnSubmit="authenticate"}}
+</form>

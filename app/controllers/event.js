@@ -2,9 +2,18 @@ import Ember from 'ember';
 import EmberValidations from 'ember-validations';
 
 export default Ember.Controller.extend(EmberValidations, {
+  session: Ember.inject.service('session'),
+  queryParams: ['applyAction'],
+
   init: function () {
     this._super();
+
     Ember.run.schedule("afterRender", this, function() {
+      if (this.get('applyAction')) {
+        console.log(this.get('applyAction'));
+        this.send(this.get('applyAction'));
+      }
+
       let event = this.get('model');
 
       //TODO: sometimes map doesn't show when event is already loaded / add google api key
@@ -70,19 +79,30 @@ export default Ember.Controller.extend(EmberValidations, {
 
   actions: {
     join_event: function(defer) {
-      let submission = this.store.createRecord('submission', {
-        event: this.get('model')
-      });
-
-      let params = {
-        afterSave: () => {
-          this.set('user_submission', submission);
-          this.get('model').get('attendees').reload();
-        },
-        model: submission
+      if (!this.get('session.isAuthenticated')) {
+        return this.transitionToRoute('login-or-registration').then((newRoute) => {
+          newRoute.controller.set('transitonToRecord', this.get('model'));
+          newRoute.controller.set('applyAction', ('join_event'));
+        });
       };
 
-      this.send('save', this, defer, params);
+      if (this.get('status') == "") {
+        let submission = this.store.createRecord('submission', {
+          event: this.get('model')
+        });
+
+        let params = {
+          afterSave: () => {
+            this.set('user_submission', submission);
+            this.get('model').get('attendees').reload();
+          },
+          model: submission
+        };
+
+        let defer = Ember.RSVP.defer();
+
+        this.send('save', this, defer, params);
+      }
     },
 
     quit_event: function() {

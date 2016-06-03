@@ -85,6 +85,17 @@ export default Ember.Component.extend(EmberValidations, {
       let model = this.get('model');
       let password = this.get('password');
 
+      let afterSave;
+
+      if (this.get('transition')) {
+        afterSave = () => {
+          this.get('session').authenticate('authenticator:devise', model.get('email'), password);
+          this.get('targetObject').send('transition');
+        }
+      } else {
+        afterSave = () => this.get('session').authenticate('authenticator:devise', model.get('email'), password)
+      }
+
       let params = {
         beforeSave: () => {
           let date = [ this.get('day'), this.get('month'), this.get('year') ].join("-");
@@ -104,7 +115,7 @@ export default Ember.Component.extend(EmberValidations, {
             model.set('password', password);
           }
         },
-        afterSave: () => this.get('session').authenticate('authenticator:devise', model.get('email'), password)
+        afterSave: afterSave
       };
 
       this.get('targetObject').send('save', this, defer, params);

@@ -28,7 +28,8 @@ export default Ember.Route.extend({
 
   actions: {
     sessionAuthenticated() {
-      this._populateCurrentUser().then(user => this.transitionTo('search'));
+      // this._populateCurrentUser().then(user => this.transitionTo('search'));
+      this._populateCurrentUser();
     },
 
     transition_to(record) {
@@ -53,7 +54,9 @@ export default Ember.Route.extend({
         })
         .then(defer.resolve)
         .then(() => {
-          if (params.transitionToModel) {
+          if (params.transitionToRecord) {
+            self.transitionTo(params.transitionToRecord.constructor.modelName, params.transitionToRecord)
+          } else if (params.transitionToModel) {
             self.transitionTo(model.constructor.modelName, model)
           }
         })

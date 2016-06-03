@@ -2,11 +2,11 @@
   <div class='row'>
     <div class='col-lg-8'>
       {{name-display profile=profile}}
-      <div><i>Member since {{moment-from-now profile.created_at}}</i></div>
+      <div><i>{{t 'profile.since'}} {{moment-from-now profile.created_at}}</i></div>
       <div class='margin-top'>{{profile.short_description}}</div>
       <div class='margin-top'>
         <div>
-          Email verified
+          {{t 'profile.email-verified'}}
           {{#if profile.email_verified}}
             <span class='icon-ok'></span>
           {{else}}
@@ -14,7 +14,7 @@
           {{/if}}
         </div>
         <div>
-          Phone number verified
+          {{t 'profile.phone-number-verified'}}
           {{#if profile.phone_number_verified}}
             <span class='icon-ok'></span>
           {{else}}

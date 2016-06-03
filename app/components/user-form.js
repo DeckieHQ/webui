@@ -60,15 +60,15 @@ export default Ember.Component.extend(EmberValidations, {
     if (this.get('alreadyCreated')) {
       return null;
     } else {
-      return 'Pick month...';
+      return 'user.month.placeholder';
     }
   }.property(),
 
   passwordPlaceHolder: function() {
     if (this.get('alreadyCreated')) {
-      return 'Enter current password';
+      return 'user.password.placeholder.edit';
     } else {
-      return 'Enter password';
+      return 'user.password.placeholder.register';
     }
   }.property(),
 

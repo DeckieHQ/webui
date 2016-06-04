@@ -5,7 +5,8 @@ export default Ember.Controller.extend({
     transition: function() {
       let record = this.get('transitonToRecord');
       if (record) {
-        return this.transitionToRoute(record.get('constructor.modelName'), record, {queryParams: {applyAction: this.get('applyAction')}});
+        this.container.lookup('controller:event').send('join_event');
+        return this.transitionToRoute(record.get('constructor.modelName'), record);
       } else {
         this.transitionToRoute('search')
       }

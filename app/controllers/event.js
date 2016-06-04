@@ -8,12 +8,7 @@ export default Ember.Controller.extend(EmberValidations, {
   init: function () {
     this._super();
 
-    Ember.run.schedule("afterRender", this, function() {
-      if (this.get('applyAction')) {
-        console.log(this.get('applyAction'));
-        this.send(this.get('applyAction'));
-      }
-
+    Ember.run.scheduleOnce("afterRender", this, function() {
       let event = this.get('model');
 
       //TODO: sometimes map doesn't show when event is already loaded / add google api key

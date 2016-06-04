@@ -24,6 +24,8 @@ export default Ember.Component.extend(EmberValidations, {
           defer.resolve();
           if (this.get('transition')) {
             this.get('targetObject').send('transition');
+          } else {
+            this.get('targetObject').transitionToRoute('search');
           }
         })
         .catch((reason) => {

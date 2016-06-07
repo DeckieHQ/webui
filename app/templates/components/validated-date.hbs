@@ -1,7 +1,7 @@
 {{#if label}}
   <label>{{label}}</label>
 {{/if}}
-{{bootstrap-datepicker value=value format="dd/mm/yy" focus-out="showError" class="form-control" classBinding="showErrors" placeholder=placeholder}}
+{{bootstrap-datepicker value=value format="dd/mm/yy" focus-out="showError" class="form-control" classBinding="showErrors" placeholder=placeholder language=i18n.locale}}
 {{#if showErrors}}
   {{displayErrors}}
 {{/if}}

@@ -7,7 +7,6 @@ module.exports = function(defaults) {
     // Add options here
   });
 
-  app.import('bower_components/moment/moment.js');
   app.import('vendor/google-maps.js');
   app.import('vendor/instantsearch/instantsearch.js');
   app.import('vendor/instantsearch/instantsearch.css');

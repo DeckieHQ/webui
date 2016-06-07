@@ -11,7 +11,11 @@ export default Ember.Route.extend({
 
   session: Ember.inject.service('session'),
 
+  moment: Ember.inject.service(),
+
   beforeModel(transition) {
+    this.get('moment').changeLocale('fr');
+
     if (this.get('session').get('isAuthenticated')) {
       return this._populateCurrentUser();
     }

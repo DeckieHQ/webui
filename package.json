@@ -49,7 +49,6 @@
     "ember-moment": "6.1.0",
     "ember-simple-auth": "1.0.1",
     "ember-truth-helpers": "1.2.0",
-    "ember-validations": "2.0.0-alpha.4",
-    "moment": "~2.11.1"
+    "ember-validations": "2.0.0-alpha.4"
   }
 }

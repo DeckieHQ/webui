@@ -10,9 +10,9 @@ export default Ember.Component.extend(EmberValidations, {
     let birthday = this.get('model').get('birthday');
 
     if (birthday) {
-      this.set('day', moment(birthday).format("DD"));
+      this.set('day',   moment(birthday).format("DD"));
       this.set('month', moment(birthday).format("MMMM"));
-      this.set('year', moment(birthday).format("YYYY"));
+      this.set('year',  moment(birthday).format("YYYY"));
     }
   },
 
@@ -54,6 +54,7 @@ export default Ember.Component.extend(EmberValidations, {
   },
 
   months: moment.months(),
+
   cultures: [ "en" ],
 
   monthPlaceHolder: function() {

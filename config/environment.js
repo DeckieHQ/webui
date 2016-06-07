@@ -28,7 +28,10 @@ module.exports = function(environment) {
     apiURL: process.env.API_URL,
     authPATH: '/user/sign_in',
     i18n: {
-      defaultLocale: 'en'
+      defaultLocale: 'fr'
+    },
+    moment: {
+      includeLocales: ['fr', 'en']
     }
   };
 

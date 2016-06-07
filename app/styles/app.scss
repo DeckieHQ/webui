@@ -1,6 +1,11 @@
 @import "bootstrap";
 @import "algolia";
 
+@import "mixins";
+
+@import "welcome";
+@import "footer";
+
 .show-errors {
   border-color: red;
 }
@@ -175,22 +180,6 @@
   background-color: white;
   border: 1px solid #e3e3e3;
   border-radius: 4px;
-}
-
-.welcome-container {
-  margin-left: -15px;
-  margin-right: -15px;
-  margin-top: -20px;
-  height: 450px;
-  background: url('/assets/images/background-1.jpg');
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.welcome-container > .welcome {
-  color: white;
-  text-align: center;
 }
 
 .underline-hover:hover {

@@ -1,0 +1,16 @@
+$footer-height: 5vh;
+
+main {
+  min-height: 100vh;
+  margin-bottom: -$footer-height;
+}
+main:after {
+  content: "";
+  display: block;
+}
+#footer, main:after {
+  height: $footer-height;
+}
+#footer {
+  background: orange;
+}

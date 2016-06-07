@@ -45,7 +45,23 @@ export default {
   "profile": {
     "since": "Member since",
     "email-verified": "Email verified",
-    "phone-number-verified": "Phone number verified"
+    "phone-number-verified": "Phone number verified",
+    "nickname": {
+      "label": "Nickname",
+      "placeholder": "Enter nickname"
+    },
+    "short-description": {
+      "label": "Short Description",
+      "placeholder": "I am a student during the day and a wizard at night!"
+    },
+    "description": {
+      "label": "Description",
+      "placeholder": "Who you are, things you like."
+    },
+    "avatar": {
+      "new": "Add avatar",
+      "edit": "Modify Avatar"
+    }
   },
   "user": {
     "email": {
@@ -82,9 +98,19 @@ export default {
     "password": {
       "label": "Password",
       "placeholder": {
-        "register": "Enter password",
+        "enter": "Enter password",
         "edit": "Enter current password"
       }
     }
+  },
+  "event": {
+    "short-description": {
+      "empty": "No short description on this event.",
+    },
+    "count": "Attendees: {{attendees-count}} / {{capacity}}"
+  },
+  "submissions": {
+    "empty": "No pending submissions",
+    "count": "There is {{count}} pending submission awaiting your approval."
   }
 };

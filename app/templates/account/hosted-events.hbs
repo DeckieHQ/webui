@@ -9,14 +9,14 @@
           {{#if event.short_description}}
             {{event.short_description}}
           {{else}}
-            <i>No short description on this event.</i>
+            <i>{{t 'event.short-description.empty'}}</i>
           {{/if}}
         </div>
       </div>
       <div class='col-lg-4'>
         <b>{{moment-format event.begin_at}}</b>
         <div>({{moment-from-now event.begin_at}})</div>
-        <b>Attendees: {{event.attendees_count}} / {{event.capacity}}</b>
+        <b>{{t 'event.count' attendees-count=event.attendees_count capacity=event.capacity}}</b>
       </div>
     </div>
     <div class='row'>

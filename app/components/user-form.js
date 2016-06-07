@@ -68,7 +68,7 @@ export default Ember.Component.extend(EmberValidations, {
     if (this.get('alreadyCreated')) {
       return 'user.password.placeholder.edit';
     } else {
-      return 'user.password.placeholder.register';
+      return 'user.password.placeholder.enter';
     }
   }.property(),
 

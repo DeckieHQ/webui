@@ -1,0 +1,101 @@
+#search
+  .facet
+    .ais-refinement-list--label
+      display: block
+      position: relative
+      text-transform: capitalize
+
+    .ais-refinement-list--checkbox
+      position: relative
+      top: 1px
+      margin-right: 0.5em
+
+    .ais-refinement-list--count
+      position: absolute
+      right: 0
+      top: 1px
+      opacity: 0.5
+
+      &::before
+        content: "("
+      &::after
+        content: ")"
+
+  #hits
+    .ais-hits--item
+      a
+        @extend .well
+        @include unstyled-link()
+        display: block
+        transition: all ease .1s
+
+      .head
+        margin-bottom: 0.75em
+
+      .body
+        display: flex
+        align-items: center
+
+      h3
+        color: #449d44
+        margin: 0
+
+      .details
+        font-size: 1.5em
+
+        div
+          float: left
+          margin: 0 .5em
+
+          &:first-child
+            margin-left: .75em
+
+          &:last-child
+            margin-right: 0
+
+        .glyphicon
+          position: relative
+          top: .125em
+
+      .description
+        font-style: italic
+        margin-bottom: 0.5em
+
+      .categories
+        margin-bottom: 0.5em
+
+        .icon-tags
+          @extend .glyphicon, .glyphicon-tags
+          margin: 0 0.3em
+          font-size: 1.25em
+
+        span
+          text-transform: capitalize
+
+      .host
+        img
+          width: 2em
+
+        .avatar-small
+          > div
+            display: inline
+
+      .attendees
+        font-size: 3em
+        text-align: center
+
+        span
+          padding: .5em
+          border-radius: 50%
+          color: #449d44
+          display: inline-block
+          margin: auto
+
+          background-color: rgba(255,255,255,.5)
+          box-shadow: 0 0 30px -5px rgba(0,0,0,.25)
+
+      &:hover
+        a
+          border-color: #449d44
+          transform: scale(1.01)
+          background-color: rgba(#449d44, 0.2)

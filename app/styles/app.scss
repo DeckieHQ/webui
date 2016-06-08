@@ -4,6 +4,7 @@
 @import "mixins";
 
 @import "welcome";
+@import "search";
 @import "footer";
 
 .show-errors {
@@ -285,7 +286,7 @@
 }
 
 .glyphicon-refresh-animate {
-  -animation: spin .7s infinite linear;
+  animation: spin .7s infinite linear;
   -webkit-animation: spin2 .7s infinite linear;
 }
 

@@ -12,7 +12,11 @@ export default Ember.Controller.extend(EmberValidations, {
   },
   actions: {
     create: function(defer) {
-      this.send('save', this, defer);
+      let params = {
+        afterSave: () => this.transitionToRoute('feedback-sent')
+      }
+
+      this.send('save', this, defer, params);
     }
   }
 });

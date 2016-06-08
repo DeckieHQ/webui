@@ -32,6 +32,7 @@ Router.map(function() {
   this.route('feedbacks', function() {
     this.route('new');
   });
+  this.route('feedback-sent');
 });
 
 export default Router;

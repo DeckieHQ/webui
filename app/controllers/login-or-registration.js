@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
         this.container.lookup('controller:event').send('join_event');
         return this.transitionToRoute(record.get('constructor.modelName'), record);
       } else {
-        this.transitionToRoute('search')
+        this.transitionToRoute('search');
       }
     }
   }

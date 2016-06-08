@@ -17,7 +17,16 @@ export default Ember.Controller.extend(EmberValidations, {
 
   actions: {
     change_password: function(defer) {
-      this.send('save', this, defer);
+      this.set('updated', false);
+
+      let params = {
+        afterSave: () => {
+          this.set('updated', true);
+          this.get('model').reload();
+        }
+      };
+
+      this.send('save', this, defer, params);
     }
   }
  });

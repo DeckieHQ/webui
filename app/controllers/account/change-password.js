@@ -22,7 +22,6 @@ export default Ember.Controller.extend(EmberValidations, {
       let params = {
         afterSave: () => {
           this.set('updated', true);
-          this.get('model').reload();
         }
       };
 

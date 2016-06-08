@@ -83,6 +83,10 @@ export default Ember.Component.extend(EmberValidations, {
 
   actions: {
     save_user: function(defer) {
+      if (this.get('alreadyCreated')) {
+        this.get('targetObject').set('updated', false);
+      }
+
       let model = this.get('model');
       let password = this.get('password');
 
@@ -93,6 +97,11 @@ export default Ember.Component.extend(EmberValidations, {
           this.get('session').authenticate('authenticator:devise', model.get('email'), password);
           this.get('targetObject').send('transition');
         }
+      } else if (this.get('alreadyCreated')) {
+        afterSave = () => {
+          this.get('session').authenticate('authenticator:devise', model.get('email'), password);
+          this.get('targetObject').set('updated', true);
+        }
       } else {
         afterSave = () => {
           this.get('session').authenticate('authenticator:devise', model.get('email'), password);
@@ -102,7 +111,8 @@ export default Ember.Component.extend(EmberValidations, {
 
       let params = {
         beforeSave: () => {
-          let date = [ this.get('day'), this.get('month'), this.get('year') ].join("-");
+          let day = parseInt(this.get('day')) + 1;
+          let date = [ day, this.get('month'), this.get('year') ].join("-");
           let birthday = moment(date, "DD-MMMM-YYYY");
 
           if (!birthday.isValid()) {

@@ -47,8 +47,8 @@ export default Ember.Component.extend(EmberValidations, {
       presence: true,
       numericality: {
         onlyInteger: true,
-        greaterThanOrEqualTo: 1900,
-        lessThanOrEqualTo: 2000
+        greaterThanOrEqualTo: moment().subtract(100, 'years').format('YYYY'),
+        lessThanOrEqualTo: moment().subtract(18, 'years').format('YYYY')
       }
     }
   },

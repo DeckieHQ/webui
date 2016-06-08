@@ -42,6 +42,11 @@ export default {
       }
     }
   },
+  "login": {
+    "title": "Login",
+    "no-account": "No account yet?",
+    "create-account": "Create account"
+  },
   "profile": {
     "since": "Member since",
     "email-verified": "Email verified",

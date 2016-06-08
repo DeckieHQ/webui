@@ -13,8 +13,10 @@ export default Ember.Route.extend({
 
   moment: Ember.inject.service(),
 
+  i18n: Ember.inject.service(),
+
   beforeModel(transition) {
-    this.get('moment').changeLocale('fr');
+    this._switchLocale('fr');
 
     if (this.get('session').get('isAuthenticated')) {
       return this._populateCurrentUser();
@@ -28,6 +30,12 @@ export default Ember.Route.extend({
         user.get('profile');
       }
     );
+  },
+  _switchLocale(locale) {
+    this.get('moment').changeLocale(locale);
+    this.set('i18n.locale', locale);
+    // Stopgap to fix an issue with ember-validations and i18n 4.X
+    Ember.I18n = this.get('i18n');
   },
 
   actions: {

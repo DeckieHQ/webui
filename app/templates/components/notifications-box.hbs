@@ -13,12 +13,12 @@
       {{notification-display notification=notification}}
     {{else}}
       <div class='notification'>
-        No notifications
+        {{t 'notifications.box.empty'}}
       </div>
     {{/each}}
     {{#link-to 'account.notifications'}}
       <div class='notification'>
-        Voir toutes les notifications
+        {{t 'notifications.box.expand'}}
       </div>
     {{/link-to}}
   </div>

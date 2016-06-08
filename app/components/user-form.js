@@ -10,9 +10,9 @@ export default Ember.Component.extend(EmberValidations, {
     let birthday = this.get('model').get('birthday');
 
     if (birthday) {
-      this.set('day', moment(birthday).format("DD"));
+      this.set('day',   moment(birthday).format("DD"));
       this.set('month', moment(birthday).format("MMMM"));
-      this.set('year', moment(birthday).format("YYYY"));
+      this.set('year',  moment(birthday).format("YYYY"));
     }
   },
 
@@ -47,28 +47,29 @@ export default Ember.Component.extend(EmberValidations, {
       presence: true,
       numericality: {
         onlyInteger: true,
-        greaterThanOrEqualTo: 1900,
-        lessThanOrEqualTo: 2000
+        greaterThanOrEqualTo: moment().subtract(100, 'years').format('YYYY'),
+        lessThanOrEqualTo: moment().subtract(18, 'years').format('YYYY')
       }
     }
   },
 
   months: moment.months(),
+
   cultures: [ "en" ],
 
   monthPlaceHolder: function() {
     if (this.get('alreadyCreated')) {
       return null;
     } else {
-      return 'Pick month...';
+      return 'user.month.placeholder';
     }
   }.property(),
 
   passwordPlaceHolder: function() {
     if (this.get('alreadyCreated')) {
-      return 'Enter current password';
+      return 'user.password.placeholder.edit';
     } else {
-      return 'Enter password';
+      return 'user.password.placeholder.enter';
     }
   }.property(),
 

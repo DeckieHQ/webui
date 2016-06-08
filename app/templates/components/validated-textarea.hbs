@@ -1,7 +1,7 @@
 {{#if label}}
-  <label>{{label}}</label>
+  <label>{{translatedLabel}}</label>
 {{/if}}
-{{textarea rows=rows maxlength=maxlength value=value focus-out="showError" class="form-control" classBinding="showErrors" placeholder=placeholder}}
+{{textarea rows=rows maxlength=maxlength value=value focus-out="showError" class="form-control" classBinding="showErrors" placeholder=translatedPlaceholder}}
 {{#if maxlength}}
   <div class='align-right'>
     <i>{{characters_left}}</i>

@@ -1,7 +1,7 @@
 {{#if label}}
-  <label>{{label}}</label>
+  <label>{{translatedLabel}}</label>
 {{/if}}
-{{input value=value type=type focus-out="showError" class="form-control" classBinding="showErrors" placeholder=placeholder name=name}}
+{{input value=value type=type focus-out="showError" class="form-control" classBinding="showErrors" placeholder=translatedPlaceholder name=name}}
 {{#if showErrors}}
   {{displayErrors}}
 {{/if}}

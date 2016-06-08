@@ -1,9 +1,9 @@
 {{#if label}}
-  <label>{{label}}</label>
+  <label>{{translatedLabel}}</label>
 {{/if}}
 <select {{action 'changeValue' on='change' on='focusOut'}} class="form-control validated-select {{if showErrors 'show-errors'}}">
   {{#if placeholder}}
-    <option value="">{{placeholder}}</option>
+    <option value="">{{translatedPlaceholder}}</option>
   {{/if}}
   {{#each options as |option|}}
     <option value={{option}} selected={{eq value option}}>

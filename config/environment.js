@@ -26,7 +26,13 @@ module.exports = function(environment) {
       'style-src': "'self' 'unsafe-inline' https://*.googleapis.com"
     },
     apiURL: process.env.API_URL,
-    authPATH: '/user/sign_in'
+    authPATH: '/user/sign_in',
+    i18n: {
+      defaultLocale: 'fr'
+    },
+    moment: {
+      includeLocales: ['fr', 'en']
+    }
   };
 
   if (environment === 'development') {

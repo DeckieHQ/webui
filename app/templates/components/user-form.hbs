@@ -1,22 +1,22 @@
 <form>
-  {{validated-input label="Email" placeholder="Enter email" value=model.email serverErrors=model.errors.email errors=errors.model.email name="email"}}
-  {{validated-input label="Firstname" placeholder="Enter firstname" value=model.first_name serverErrors=model.errors.first_name errors=errors.model.first_name name="firstName"}}
-  {{validated-input label="Lastname" placeholder="Enter lastname" value=model.last_name serverErrors=model.errors.last_name errors=errors.model.last_name name="lastName"}}
+  {{validated-input label="user.email.label" placeholder="user.email.placeholder" value=model.email serverErrors=model.errors.email errors=errors.model.email name="email"}}
+  {{validated-input label="user.firstname.label" placeholder="user.firstname.placeholder" value=model.first_name serverErrors=model.errors.first_name errors=errors.model.first_name name="firstName"}}
+  {{validated-input label="user.lastname.label" placeholder="user.lastname.placeholder" value=model.last_name serverErrors=model.errors.last_name errors=errors.model.last_name name="lastName"}}
 
-  <label>Birthday</label>
+  <label>{{t 'user.birthday.label'}}</label>
   <div class="birthday form-group col-sm-12">
-    <div class="col-sm-4">{{validated-input placeholder="day" value=day errors=errors.day}}</div>
+    <div class="col-sm-4">{{validated-input placeholder="user.day.placeholder" value=day errors=errors.day}}</div>
     <div class="col-sm-4">
       {{validated-select options=months placeholder=monthPlaceHolder value=month errors=errors.month}}
     </div>
-    <div class="col-sm-4">{{validated-input placeholder="year" value=year errors=errors.year}}</div>
+    <div class="col-sm-4">{{validated-input placeholder="user.year.placeholder" value=year errors=errors.year}}</div>
   </div>
   {{birthday_error}}
 
-  {{validated-input label="Phone number" placeholder="Enter phone number" value=model.phone_number serverErrors=model.errors.phone_number errors=errors.model.phone_number name="phoneNumber"}}
-  {{validated-select label="Language" options=cultures value=model.culture serverErrors=model.errors.culture errors=errors.model.culture}}
+  {{validated-input label="user.phonenumber.label" placeholder="user.phonenumber.placeholder" value=model.phone_number serverErrors=model.errors.phone_number errors=errors.model.phone_number name="phoneNumber"}}
+  {{validated-select label="user.culture.label" options=cultures value=model.culture serverErrors=model.errors.culture errors=errors.model.culture}}
 
-  {{validated-input label="Password" type="password" placeholder=passwordPlaceHolder value=password serverErrors=passwordErrors errors=errors.password}}
+  {{validated-input label="user.password.label" type="password" placeholder=passwordPlaceHolder value=password serverErrors=passwordErrors errors=errors.password}}
 
   {{dynamic-submit actionOnSubmit="save_user"}}
 </form>

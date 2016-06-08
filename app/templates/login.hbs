@@ -1,12 +1,14 @@
 <div class='well col-lg-6 col-lg-offset-3'>
   <div class='col-lg-6'>
+    <h2>{{t 'login.title'}}</h2>
+
     {{login-form}}
   </div>
 
   <div class='no-account-container col-lg-6'>
     <div class='no-account'>
-      <p>No account yet?</p>
-      {{#link-to 'registration'}}<button class="btn btn-success btn-lg">Create account</button>{{/link-to}}
+      <p>{{t 'login.no-account'}}</p>
+      {{#link-to 'registration'}}<button class="btn btn-success btn-lg">{{t 'login.create-account'}}</button>{{/link-to}}
     </div>
   </div>
 </div>

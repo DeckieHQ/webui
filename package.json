@@ -44,11 +44,11 @@
     "ember-data-has-many-query": "0.0.5",
     "ember-disable-proxy-controllers": "^1.0.1",
     "ember-export-application-global": "^1.0.4",
+    "ember-i18n": "4.2.1",
     "ember-lodash": "0.0.7",
     "ember-moment": "6.1.0",
     "ember-simple-auth": "1.0.1",
     "ember-truth-helpers": "1.2.0",
-    "ember-validations": "2.0.0-alpha.4",
-    "moment": "~2.11.1"
+    "ember-validations": "2.0.0-alpha.4"
   }
 }

@@ -2,8 +2,8 @@
   <form>
     <div class='row'>
       <div class='col-lg-8'>
-        {{validated-input label="Nickname" placeholder="Enter nickname" value=model.nickname serverErrors=model.errors.nickname errors=errors.model.nickname}}
-        {{validated-textarea rows="3" maxlength=140 label="Short description" placeholder="I am a student the day and a wizarrd at night" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
+        {{validated-input label="profile.nickname.label" placeholder="profile.nickname.placeholder" value=model.nickname serverErrors=model.errors.nickname errors=errors.model.nickname}}
+        {{validated-textarea rows="3" maxlength=140 label="profile.short-description.label" placeholder="profile.short-description.placeholder" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
       </div>
       <div class='col-lg-4'>
         {{avatar-display profile=model}}
@@ -11,9 +11,9 @@
         <div class='center-text'>
           <button {{action 'update_avatar'}} class='update-avatar-button'>
             {{#if model.avatar_url}}
-              Modify avatar
+              {{t 'profile.avatar.edit'}}
             {{else}}
-              Add avatar
+              {{t 'profile.avatar.new'}}
             {{/if}}
           </button>
         </div>
@@ -22,7 +22,7 @@
 
     <div class='row'>
       <div class='col-lg-12'>
-        {{validated-textarea rows="7" label="Description" placeholder="Who you are, games you like, and others shits like that" value=model.description serverErrors=model.errors.description errors=errors.model.description}}
+        {{validated-textarea rows="7" label="profile.description.label" placeholder="profile.description.placeholder" value=model.description serverErrors=model.errors.description errors=errors.model.description}}
       </div>
     </div>
 

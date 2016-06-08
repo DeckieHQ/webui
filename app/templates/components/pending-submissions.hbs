@@ -1,10 +1,10 @@
 <div class='col-lg-12'>
   {{#if hasPendingSubmissions}}
     <a href="#" {{action "display_pending_submissions"}}>
-      There is {{pendingSubmissionsCount}} pending submission awaiting your approval.
+      {{t 'submissions.count' count=pendingSubmissionsCount}}
     </a>
   {{else}}
-    <i>No pending submissions</i>
+    <i>{{t 'submissions.empty'}}</i>
   {{/if}}
 </div>
 

@@ -5,7 +5,6 @@ export default ValidatedInput.extend({
   didInsertElement() {
     Ember.run.scheduleOnce('afterRender', this, 'setValue');
   },
-
   actions: {
     changeValue: function() {
       this.setValue();

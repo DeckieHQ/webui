@@ -1,0 +1,51 @@
+#notifications-button
+  font-size: 1.75em
+  text-shadow: 0 2px 0 rgba(#000, .2)
+  margin: -.25em 0
+  cursor: pointer
+  position: relative
+
+  .notification-count
+    position: absolute
+    left: 1em
+    top: -.5em
+
+    background-color: #f00
+    font-size: .5em
+    color: #fff
+    font-weight: bold
+    padding: 0 .375em .25em
+    display: block
+    border-radius: .25em
+    border: 1px solid firebrick
+
+
+#notifications
+  .notification
+    border-bottom: 1px solid #eee
+    padding: 1em
+    cursor: pointer
+    display: flex
+    align-items: center
+
+    &:hover
+      color: #449d44
+
+    &.expand
+      text-align: center
+      border: none
+      color: #449d44
+
+      &:hover
+        color: inherit
+
+    .avatar
+      margin-right: 1em
+      img
+        width: 2em
+
+    .content
+      line-height: 1.1em
+
+      .actor,.title
+        font-weight: bold

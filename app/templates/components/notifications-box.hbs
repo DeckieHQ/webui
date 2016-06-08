@@ -1,14 +1,15 @@
-<button {{action "retrieve_notifications"}} id='notifications-button'>
-  {{#if newNotifications}}
-    <span class="glyphicon glyphicon-exclamation-sign newNotifications" aria-hidden="true"></span>
-    {{notifications.notifications_count}}
-  {{else}}
-    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
-  {{/if}}
-</button>
+<div {{action "retrieve_notifications"}} id='notifications-button'>
+  <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true">
+    {{#if newNotifications}}
+      <span class="notification-count">
+        {{notifications.notifications_count}}
+      </span>
+    {{/if}}
+  </span>
+</div>
 
 {{#if showNotifications}}
-  <div id='notifications' class='well'>
+  <div id='notifications' class="well">
     {{#each list as |notification|}}
       {{notification-display notification=notification}}
     {{else}}
@@ -17,7 +18,7 @@
       </div>
     {{/each}}
     {{#link-to 'account.notifications'}}
-      <div class='notification'>
+      <div class='notification expand'>
         {{t 'notifications.box.expand'}}
       </div>
     {{/link-to}}

@@ -1,5 +1,10 @@
-<div {{action 'transition_to'}} class="well notification {{if notification.viewed 'viewed'}}">
-  {{notification.action.actor.display_name}}
-  {{notification.type}}
-  {{notification.action.title}}
+<div {{action 'transition_to'}} class="notification {{if notification.viewed 'viewed'}}">
+  <div class="avatar">
+    {{avatar-display notification.action.actor}}
+  </div>
+  <div class="content">
+    <span class="actor">{{notification.action.actor.display_name}}</span>
+    {{notification.type}}
+    <span class="title">"{{notification.action.title}}"</span>
+  </div>
 </div>

@@ -25,7 +25,29 @@ export default Ember.Component.extend(EmberValidations, {
     } else {
       this.set('end_at_hour', 22);
       this.set('end_at_minute', 30);
+
     }
+    Ember.run.scheduleOnce('afterRender', this, function () {
+      let placesAutocomplete = places({
+        container: document.getElementsByName('street')[0],
+        type: 'address',
+        templates: {
+          value: function(suggestion) {
+            return suggestion.name;
+          }
+        }
+      });
+      placesAutocomplete.on('change', this._addressHandler(this));
+    });
+  },
+  _addressHandler: function(context) {
+    return function(e) {
+      let model = context.get('model');
+
+      model.set('city',     e.suggestion.city);
+      model.set('postcode', e.suggestion.postcode);
+      model.set('country',  e.suggestion.country);
+    };
   },
 
   validations: {

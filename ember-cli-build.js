@@ -12,6 +12,8 @@ module.exports = function(defaults) {
   app.import('vendor/instantsearch/instantsearch.js');
   app.import('vendor/instantsearch/instantsearch.css');
   app.import('vendor/instantsearch/instantsearch.js.map');
+  app.import('vendor/places/places.js');
+  app.import('vendor/places/places.js.map');
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

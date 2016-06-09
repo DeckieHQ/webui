@@ -19,33 +19,43 @@
     border-radius: .25em
     border: 1px solid firebrick
 
+%notification
+  border-bottom: 1px solid #eee
+  padding: 1em
+  cursor: pointer
+  display: flex
+  align-items: center
+
+  &:hover
+    color: #449d44
+
+  &.expand
+    text-align: center
+    border: none
+    color: #449d44
+
+    &:hover
+      color: inherit
+
+  .avatar
+    margin-right: 1em
+    img
+      width: 2em
+
+  .content
+    line-height: 1.1em
+
+    .actor,.title
+      font-weight: bold
 
 #notifications
   .notification
-    border-bottom: 1px solid #eee
-    padding: 1em
-    cursor: pointer
-    display: flex
-    align-items: center
+    @extend %notification
 
-    &:hover
-      color: #449d44
-
-    &.expand
-      text-align: center
-      border: none
-      color: #449d44
-
-      &:hover
-        color: inherit
+#notifications-expanded
+  .notification
+    @extend %notification
 
     .avatar
-      margin-right: 1em
       img
-        width: 2em
-
-    .content
-      line-height: 1.1em
-
-      .actor,.title
-        font-weight: bold
+        width: 3.5em

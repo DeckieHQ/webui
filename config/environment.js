@@ -21,7 +21,7 @@ module.exports = function(environment) {
       'connect-src': '*',
       // 'script-src': '*'
       'script-src': "'self' 'unsafe-eval' https://*.googleapis.com https://*.gstatic.com",
-      'img-src': "'self' https://*.googleapis.com https://*.gstatic.com",
+      'img-src': "'self' https://*.googleapis.com https://*.gstatic.com http://res.cloudinary.com",
       'font-src': "'self' https://*.gstatic.com",
       'style-src': "'self' 'unsafe-inline' https://*.googleapis.com"
     },

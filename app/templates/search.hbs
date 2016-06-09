@@ -1,6 +1,5 @@
 <div id='search' class='col-md-10'>
   <div class='row'>
-    <!-- TODO: add data-spy="affix" (voir bootsrap doc) -->
     <div class='col-lg-3 well'>
       <div id="category" class="facet"></div>
       <hr>
@@ -9,72 +8,76 @@
       <div id="level" class="facet"></div>
     </div>
 
-
     <div class='col-lg-9'>
       <div id="search-input"></div>
-      <div id="stats" class='margin-bottom'></div>
 
-      <div id="hits"></div>
+      <div id="stats" class='hide'></div>
+
+      <div id="hits" class='hide'></div>
+
+      <div id="hits-list">
+        {{#each model.result.hits as |event|}}
+          <div class="hit">
+
+            {{#link-to 'event' event.objectID}}
+              <div class='row head'>
+                <div class='col-lg-6'>
+                  <h3>{{event.title}}</h3>
+                </div>
+                <div class='col-lg-6'>
+                  <div class="details">
+                    <div class="date">
+                      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                      {{moment-format event.begin_at 'DD MMMM'}}
+                    </div>
+                    <div class="time">
+                      <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                      {{moment-format event.begin_at 'hh:mm'}}
+                    </div>
+                    <div class="place">
+                      <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                      {{capitalize event.city}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class='row body'>
+                <div class='col-lg-9'>
+                  <div class='description'>
+                   {{event.short_description}}
+                  </div>
+                  <div class='categories'>
+                    <span class='icon-tags'></span>
+                    <span>{{event.category}}</span>,
+                    <span>{{event.ambiance}}</span>, for
+                    <span>{{event.level}}</span> !
+                  </div>
+                  <div class='host'>
+                    <span class='avatar-small'>
+                      {{avatar-display profile=event.host}}
+                    </span>
+
+                    <span>{{name-display profile=event.host}}</span>
+                  </div>
+                </div>
+                <div class='col-lg-3'>
+                  <div class="attendees">
+                    <span>{{event.attendees_count}} / {{event.capacity}}</span>
+                  </div>
+                </div>
+              </div>
+            {{/link-to}}
+          </div>
+        {{else}}
+          <p>We didn't find any results for this search.</p>
+          <a href="/search">Clear search</a>
+        {{/each}}
+      </div>
       <div id="pagination"></div>
     </div>
   </div>
 </div>
 
-<script type="text/html" id="hit-template">
-  <a href="/event/&#123;{objectID}&#125;">
-    <div class='row head'>
-      <div class='col-lg-6'>
-        <h3>&#123;{title}&#125;</h3>
-      </div>
-      <div class='col-lg-6'>
-        <div class="details">
-          <div class="date">
-            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-            03 juin
-          </div>
-          <div class="time">
-            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-            19h
-          </div>
-          <div class="place">
-            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-            Toulouse
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class='row body'>
-      <div class='col-lg-9'>
-        <div class='description'>
-          &#123;{short_description}&#125;
-        </div>
-        <div class='categories'>
-          <span class='icon-tags'></span>
-          <span>&#123;{category}&#125;</span>,
-          <span>&#123;{ambiance}&#125;</span>, for
-          <span>&#123;{level}&#125;</span> !
-        </div>
-        <div class='host'>
-          <span class='avatar-small'>
-            {{avatar-display profile=profile}}
-          </span>
-
-          <span>&#123;{host.display_name}&#125;</span>
-        </div>
-      </div>
-      <div class='col-lg-3'>
-        <div class="attendees">
-          <span>5 / 8</span>
-        </div>
-      </div>
-    </div>
-  </a>
-</script>
-
-<script type="text/html" id="no-results-template">
-  <div id="no-results-message">
-    <p>We didn't find any results for the search <em>"{{query}}"</em>.</p>
-    <a href="/search">Clear search</a>
-  </div>
-</script>
+<script type="text/html" id="hit-template"></script>
+<script type="text/html" id="no-results-template"></script>

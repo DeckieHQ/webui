@@ -32,6 +32,12 @@ module.exports = function(environment) {
     },
     moment: {
       includeLocales: ['fr', 'en']
+    },
+    algolia: {
+      appId:  process.env.ALGOLIASEARCH_APPLICATION_ID,
+      apiKey: process.env.ALGOLIASEARCH_API_KEY_SEARCH,
+      indexName: 'Event_production',
+      urlSync: true
     }
   };
 

@@ -1,5 +1,7 @@
 import Ember from 'ember';
 
+import ENV from '../config/environment';
+
 function getTemplate(templateName) {
   return document.querySelector('#' + templateName + '-template').innerHTML;
 }
@@ -10,12 +12,7 @@ function getHeader(title) {
 
 export default Ember.Route.extend({
   model: function() {
-    var search = instantsearch({
-      appId: 'IWTAAUR5I4',
-      apiKey: '409291b7d521d6f20f754f9034c7e322', // search only API key, no ADMIN key
-      indexName: 'Event_production',
-      urlSync: true
-    });
+    var search = instantsearch(ENV.algolia);
 
     return search;
   },

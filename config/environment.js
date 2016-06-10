@@ -40,7 +40,7 @@ module.exports = function(environment) {
       urlSync: true
     },
     'g-map': {
-      key: 'AIzaSyBdPM3LiSry0rpsjhaBc_1GmjfZE1gqBGI'
+      key: process.env.GOOGLE_API_KEY || ''
     }
   };
 

@@ -25,11 +25,13 @@ export default Ember.Route.extend({
        searchParams = { aroundLatLng: `${coords.latitude}, ${coords.longitude}` };
      }
 
+     console.log(searchParams);
+
     return new Promise(function(resolve, reject) {
       index.search('', searchParams, function searchDone(err, content) {
         if (err) { return reject(err); }
 
-        resolve(content.hits.slice(0, 2));
+        resolve(content.hits.slice(0, 3));
       });
     });
   }

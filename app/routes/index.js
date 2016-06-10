@@ -22,7 +22,7 @@ export default Ember.Route.extend({
          searchParams = {};
 
      if (coords != null) {
-       searchParams = { aroundLatLng: `${coords.latitude}, ${coords.longitude}`, aroundRadius: 10000 };
+       searchParams = { aroundLatLng: `${coords.latitude}, ${coords.longitude}` };
      }
 
     return new Promise(function(resolve, reject) {

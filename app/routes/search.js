@@ -1,3 +1,4 @@
+import _ from 'lodash/lodash';
 import Ember from 'ember';
 
 import ENV from '../config/environment';
@@ -19,8 +20,29 @@ export default Ember.Route.extend({
     return Search.create();
   },
   afterModel: function() {
+    if (!navigator.geolocation) { return this._loadSearch(); }
+
+    let self = this;
+
+    return new Promise(function(resolve, reject) {
+      navigator.geolocation.getCurrentPosition(resolve, reject);
+    }).then(function(position) {
+      return self.instantSearch(position.coords);
+    }).catch(function(err) {
+      return self.instantSearch();
+    });
+  },
+  instantSearch: function(coords) {
     Ember.run.scheduleOnce('afterRender', this, function () {
-      let search = instantsearch(ENV.algolia),
+      let initParameters = _.cloneDeep(ENV.algolia);
+
+      if (coords != null) {
+        initParameters.searchParameters = {
+          aroundLatLng: `${coords.latitude}, ${coords.longitude}`
+        };
+      }
+
+      let search = instantsearch(initParameters),
         widgets = [
         instantsearch.widgets.searchBox({
           container: '#search-input',
@@ -71,8 +93,6 @@ export default Ember.Route.extend({
       widgets.forEach(search.addWidget, search);
 
       search.start();
-
-      console.log(search.helper);
 
       search.helper.on('result', this.eventsHandler(this));
     });

@@ -85,10 +85,10 @@
     <b>Location</b>
     <div class='line-separator'></div>
     <div>{{model.street}}</div>
-    <div>{{model.postcode}}, {{model.city}}</div>
-    <div id='map-container'>
-      <div id="map"></div>
-    </div>
+    <div>{{model.postcode}}, {{capitalize model.city}}</div>
+    {{#g-map lat=model.latitude lng=model.longitude zoom=14 as |context|}}
+      {{g-map-marker context lat=model.latitude lng=model.longitude}}
+    {{/g-map}}
   </div>
 </div>
 

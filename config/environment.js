@@ -18,12 +18,12 @@ module.exports = function(environment) {
       // when it is created
     },
     contentSecurityPolicy: {
-      'connect-src': '*',
-      // 'script-src': '*'
-      'script-src': "'self' 'unsafe-eval' https://*.googleapis.com https://*.gstatic.com",
-      'img-src': "'self' https://*.googleapis.com https://*.gstatic.com http://res.cloudinary.com",
-      'font-src': "'self' https://*.gstatic.com",
-      'style-src': "'self' 'unsafe-inline' https://*.googleapis.com"
+      'default-src': "'none'",
+      'script-src': "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com",
+      'font-src': "'self' fonts.gstatic.com",
+      'connect-src': "*",//"'self' maps.gstatic.com",
+      'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com *.cloudinary.com",
+      'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com"
     },
     apiURL: process.env.API_URL,
     authPATH: '/user/sign_in',
@@ -38,6 +38,9 @@ module.exports = function(environment) {
       apiKey: process.env.ALGOLIASEARCH_API_KEY_SEARCH,
       indexName: 'Event_production',
       urlSync: true
+    },
+    'g-map': {
+      key: 'AIzaSyBdPM3LiSry0rpsjhaBc_1GmjfZE1gqBGI'
     }
   };
 

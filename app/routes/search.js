@@ -72,6 +72,8 @@ export default Ember.Route.extend({
 
       search.start();
 
+      console.log(search.helper);
+
       search.helper.on('result', this.eventsHandler(this));
     });
   },

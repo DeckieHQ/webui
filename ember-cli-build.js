@@ -8,7 +8,7 @@ module.exports = function(defaults) {
   });
 
   app.import('bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.fr.js');
-  app.import('vendor/google-maps.js');
+
   app.import('vendor/instantsearch/instantsearch.js');
   app.import('vendor/instantsearch/instantsearch.css');
   app.import('vendor/instantsearch/instantsearch.js.map');

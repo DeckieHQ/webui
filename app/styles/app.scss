@@ -12,6 +12,22 @@
 @import "navbar";
 @import "event";
 
+#email-verify {
+  text-align: center;
+
+  .success {
+    color: #449d44;
+  }
+
+  .warning {
+    color: orange;
+  }
+
+  .goto {
+    @extend .btn, .btn-success;
+  }
+}
+
 .show-errors {
   border-color: red;
 }

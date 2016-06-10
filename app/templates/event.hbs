@@ -1,159 +1,163 @@
-<div class='col-md-3'>
-  <div class='well'>
-    {{#if isHost}}
-      {{#link-to 'event.edit'}}<button class="btn btn-warning">Edit event</button>{{/link-to}}
-    {{else if pending}}
-      <div>Your submission to this event in awaiting the host acceptance</div>
-      <div>
-        <button {{action 'quit_event'}} class="btn btn-danger">
-          Quit
-        </button>
-      </div>
-    {{else if confirmed}}
-      You are attendee to this event
-      <div>
-        <button {{action 'quit_event'}} class="btn btn-danger">
-          Quit
-        </button>
-      </div>
-    {{else if full}}
-      <div>This event is already full</div>
-    {{else}}
-      <div>
-        Join event
-        {{dynamic-submit actionOnSubmit="join_event"}}
-      </div>
-    {{/if}}
-  </div>
-
-  {{#if isHost}}
-    <div class='well'>
-      {{#if pendingSubmissions}}
-        <b>Pending submissions</b>
-        <div class='line-separator'></div>
-      {{else}}
-        No pending submissions
-      {{/if}}
-      {{#each pendingSubmissions as |submission|}}
-        <div class='pending-submission'>
-          {{profile-link profile=submission.profile}}
-          <div class="accept-submission">
-            <button {{action 'accept_submission' submission}}>
-              Accept
+<div class='col-md-10'>
+  <div class='row'>
+    <div class='col-md-3'>
+      <div class='well'>
+        {{#if isHost}}
+          {{#link-to 'event.edit'}}<button class="btn btn-warning">Edit event</button>{{/link-to}}
+        {{else if pending}}
+          <div>Your submission to this event in awaiting the host acceptance</div>
+          <div>
+            <button {{action 'quit_event'}} class="btn btn-danger">
+              Quit
             </button>
           </div>
-        </div>
-      {{/each}}
-    </div>
-  {{/if}}
-
-  <div class='well'>
-    <b>Host</b>
-    <div class='line-separator'></div>
-    {{profile-link profile=model.host}}
-    <div>{{model.host.short_description}}</div>
-    {{#unless displayHostContact}}
-    {{#if confirmed}}
-        <div class="host-contact">
-          <button {{action 'display_host_contact'}}>
-            See contact infos
-          </button>
-        </div>
-      {{/if}}
-    {{/unless}}
-    {{#if displayHostContact}}
-      <div>
-        <i>{{model.host.contact.email}}</i>
-        <i>{{model.host.contact.phone_number}}</i>
-      </div>
-    {{/if}}
-  </div>
-
-  <div class='well'>
-    <b>Attendees: {{model.attendees.length}} / {{model.capacity}}</b>
-    {{#if model.attendees}}
-      <div class='line-separator'></div>
-    {{/if}}
-    {{#each model.attendees as |attendee|}}
-      <div class='attendee'>
-        {{attendee-display attendee=attendee isHost=isHost}}
-      </div>
-    {{/each}}
-  </div>
-
-  <div class='well'>
-    <b>Location</b>
-    <div class='line-separator'></div>
-    <div>{{model.street}}</div>
-    <div>{{model.postcode}}, {{capitalize model.city}}</div>
-    {{#g-map lat=model.latitude lng=model.longitude zoom=14 as |context|}}
-      {{g-map-marker context lat=model.latitude lng=model.longitude}}
-    {{/g-map}}
-  </div>
-</div>
-
-<div class='col-md-9'>
-  <div class='well'>
-    <div class='row margin-bottom'>
-      <div class='col-lg-8'>
-        <div class='event-title'>{{model.title}}</div>
-        <div>
-          {{model.short_description}}
-        </div>
-      </div>
-      <div class='col-lg-4'>
-        <b>{{moment-format model.begin_at}}</b>
-        <div>({{moment-from-now model.begin_at}})</div>
-        {{#if model.end_at}}
-          <div>End at: {{moment-format model.end_at}}</div>
-        {{/if}}
-      </div>
-    </div>
-    <div class='row margin-bottom'>
-      <div class='col-lg-4'>
-        <b>Category: {{model.category}}</b>
-      </div>
-      <div class='col-lg-4'>
-        <b>Expected ambiance: {{model.ambiance}}</b>
-      </div>
-      <div class='col-lg-4'>
-        <b>Minimum level required: {{model.level}}</b>
-      </div>
-    </div>
-    <div class='row'>
-      <div class='col-lg-12'>
-        <div>{{model.description}}</div>
-      </div>
-    </div>
-  </div>
-
-  <div class='well'>
-    <form>
-      {{validated-input label="Comment" placeholder="Enter your comment" value=message errors=errors.message}}
-
-      <div class='align-right inline-block'>
-        {{#if isMember}}
+        {{else if confirmed}}
+          You are attendee to this event
           <div>
-            Make the comment private:
-            {{input type="checkbox" checked=isPrivate}}
+            <button {{action 'quit_event'}} class="btn btn-danger">
+              Quit
+            </button>
+          </div>
+        {{else if full}}
+          <div>This event is already full</div>
+        {{else}}
+          <div>
+            Join event
+            {{dynamic-submit actionOnSubmit="join_event"}}
           </div>
         {{/if}}
-
-        {{dynamic-submit actionOnSubmit="comment"}}
       </div>
-    </form>
-  </div>
 
-  {{#if displayPrivateComments}}
-    <div>
-      Show only private comments:
-      {{input type="checkbox" checked=onlyPrivates}}
+      {{#if isHost}}
+        <div class='well'>
+          {{#if pendingSubmissions}}
+            <b>Pending submissions</b>
+            <div class='line-separator'></div>
+          {{else}}
+            No pending submissions
+          {{/if}}
+          {{#each pendingSubmissions as |submission|}}
+            <div class='pending-submission'>
+              {{profile-link profile=submission.profile}}
+              <div class="accept-submission">
+                <button {{action 'accept_submission' submission}}>
+                  Accept
+                </button>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+      {{/if}}
+
+      <div class='well'>
+        <b>Host</b>
+        <div class='line-separator'></div>
+        {{profile-link profile=model.host}}
+        <div>{{model.host.short_description}}</div>
+        {{#unless displayHostContact}}
+        {{#if confirmed}}
+            <div class="host-contact">
+              <button {{action 'display_host_contact'}}>
+                See contact infos
+              </button>
+            </div>
+          {{/if}}
+        {{/unless}}
+        {{#if displayHostContact}}
+          <div>
+            <i>{{model.host.contact.email}}</i>
+            <i>{{model.host.contact.phone_number}}</i>
+          </div>
+        {{/if}}
+      </div>
+
+      <div class='well'>
+        <b>Attendees: {{model.attendees.length}} / {{model.capacity}}</b>
+        {{#if model.attendees}}
+          <div class='line-separator'></div>
+        {{/if}}
+        {{#each model.attendees as |attendee|}}
+          <div class='attendee'>
+            {{attendee-display attendee=attendee isHost=isHost}}
+          </div>
+        {{/each}}
+      </div>
+
+      <div class='well'>
+        <b>Location</b>
+        <div class='line-separator'></div>
+        <div>{{model.street}}</div>
+        <div>{{model.postcode}}, {{capitalize model.city}}</div>
+        {{#g-map lat=model.latitude lng=model.longitude zoom=14 as |context|}}
+          {{g-map-marker context lat=model.latitude lng=model.longitude}}
+        {{/g-map}}
+      </div>
     </div>
-  {{/if}}
 
-  {{#if onlyPrivates}}
-    {{comments-list isPrivate=true event=model isHost=isHost}}
-  {{else}}
-    {{comments-list event=model isHost=isHost}}
-  {{/if}}
+    <div class='col-md-9'>
+      <div class='well'>
+        <div class='row margin-bottom'>
+          <div class='col-lg-8'>
+            <div class='event-title'>{{model.title}}</div>
+            <div>
+              {{model.short_description}}
+            </div>
+          </div>
+          <div class='col-lg-4'>
+            <b>{{moment-format model.begin_at}}</b>
+            <div>({{moment-from-now model.begin_at}})</div>
+            {{#if model.end_at}}
+              <div>End at: {{moment-format model.end_at}}</div>
+            {{/if}}
+          </div>
+        </div>
+        <div class='row margin-bottom'>
+          <div class='col-lg-4'>
+            <b>Category: {{model.category}}</b>
+          </div>
+          <div class='col-lg-4'>
+            <b>Expected ambiance: {{model.ambiance}}</b>
+          </div>
+          <div class='col-lg-4'>
+            <b>Minimum level required: {{model.level}}</b>
+          </div>
+        </div>
+        <div class='row'>
+          <div class='col-lg-12'>
+            <div>{{model.description}}</div>
+          </div>
+        </div>
+      </div>
+
+      <div class='well'>
+        <form>
+          {{validated-input label="Comment" placeholder="Enter your comment" value=message errors=errors.message}}
+
+          <div class='align-right inline-block'>
+            {{#if isMember}}
+              <div>
+                Make the comment private:
+                {{input type="checkbox" checked=isPrivate}}
+              </div>
+            {{/if}}
+
+            {{dynamic-submit actionOnSubmit="comment"}}
+          </div>
+        </form>
+      </div>
+
+      {{#if displayPrivateComments}}
+        <div>
+          Show only private comments:
+          {{input type="checkbox" checked=onlyPrivates}}
+        </div>
+      {{/if}}
+
+      {{#if onlyPrivates}}
+        {{comments-list isPrivate=true event=model isHost=isHost}}
+      {{else}}
+        {{comments-list event=model isHost=isHost}}
+      {{/if}}
+    </div>
+  </div>
 </div>

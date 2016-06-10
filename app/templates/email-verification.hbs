@@ -1,5 +1,11 @@
-{{#if model.verified}}
-  Email is now verified
-{{else}}
-  Failed: {{model.reason}}
-{{/if}}
+<div id='email-verify' class='well col-lg-6 col-lg-offset-3'>
+  {{#if model.verified}}
+    <span class='success'>{{t 'email.verified'}}</span>
+    <hr>
+    {{#link-to 'account' class='goto'}}{{t 'account.button'}}{{/link-to}}
+  {{else}}
+    <span class='warning'>{{t 'email.verify-fail'}}</span>
+    <hr>
+    {{#link-to 'account.verifications' class='goto'}}{{t 'verifications.button'}}{{/link-to}}
+  {{/if}}
+</div>

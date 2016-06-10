@@ -1,8 +1,10 @@
 <div class=well>
   {{#if model.email_verified}}
-    Your email is verified.
+    {{t 'account.email.verified'}}
+  {{else if emailSent}}
+    <span class='success'>{{t 'account.email.verify.sent'}}</span>
   {{else}}
-    Verify your email now
+    {{t 'account.email.verify'}}
     {{dynamic-submit actionOnSubmit="verify_email"}}
   {{/if}}
 </div>

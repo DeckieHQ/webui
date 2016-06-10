@@ -2,31 +2,7 @@ import Ember from 'ember';
 import EmberValidations from 'ember-validations';
 
 export default Ember.Controller.extend(EmberValidations, {
-  session: Ember.inject.service('session'),
-  queryParams: ['applyAction'],
-
-  init: function () {
-    this._super();
-
-    Ember.run.scheduleOnce("afterRender", this, function() {
-      let event = this.get('model');
-
-      //TODO: sometimes map doesn't show when event is already loaded / add google api key
-
-      let container = document.getElementById('map');
-
-      let LatLng = new window.google.maps.LatLng(
-        event.get('latitude'),
-        event.get('longitude')
-      );
-
-      let options = { center: LatLng, zoom: 15 };
-
-      let map = new window.google.maps.Map(container, options);
-
-      new google.maps.Marker({ position: LatLng, map: map});
-    });
-  },
+  session: Ember.inject.service(),
 
   validations: {
     message: {

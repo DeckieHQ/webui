@@ -23,7 +23,7 @@ export default Ember.Controller.extend({
 
       return verification.save()
         .then(() => {
-          defer.resolve;
+          defer.resolve();
           this.transitionToRoute('phone-number-verification');
         })
         .catch((reason) => {

@@ -1,19 +1,21 @@
-<div class=well>
+<div class='verification'>
   {{#if model.email_verified}}
     {{t 'account.email.verified'}}
+    <span class='verified'></span>
   {{else if emailSent}}
     <span class='success'>{{t 'account.email.verify.sent'}}</span>
   {{else}}
     {{t 'account.email.verify'}}
-    {{dynamic-submit actionOnSubmit="verify_email"}}
+    {{dynamic-submit actionOnSubmit="verify_email" class='verify'}}
   {{/if}}
 </div>
 
-<div class=well>
+<div class='verification'>
   {{#if model.phone_number_verified}}
-    Your phone number is verified.
+    {{t 'account.phone-number.verified'}}
+    <span class='verified'></span>
   {{else}}
-    Verify your phone number now
-    {{dynamic-submit actionOnSubmit="verify_phone_number"}}
+    {{t 'account.phone-number.verify'}}
+    {{dynamic-submit actionOnSubmit="verify_phone_number" class='verify'}}
   {{/if}}
 </div>

@@ -8,9 +8,20 @@ export default Ember.Controller.extend(EmberValidations, {
     }
   },
 
+  alreadyVerified: function() {
+    return this.get('currentUser.phone_number_verified');
+  }.property(),
+
   actions: {
     verify_phone_number: function(defer) {
-      this.send('save', this, defer);
+      let params = {
+        afterSave: () => {
+          this.set('verified', true);
+          this.set('currentUser.phone_number_verified', true);
+        }
+      }
+
+      this.send('save', this, defer, params);
     }
   }
  });

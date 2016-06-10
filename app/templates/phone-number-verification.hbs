@@ -1,5 +1,22 @@
-<form>
-  {{validated-input label="Token" placeholder="Enter token received on your phone" value=model.token serverErrors=model.errors.token errors=errors.model.token}}
-
-  {{dynamic-submit actionOnSubmit="verify_phone_number"}}
-</form>
+<div id='verify'>
+  {{#if alreadyVerified}}
+    {{t 'phone-number.already-verified'}}
+  {{else if verified}}
+    <span class='success'>{{t 'phone-number.verified'}}</span>
+  {{else}}
+    <form>
+      {{t 'token.received'}}
+      <hr>
+      <div class='row'>
+        <div class='col-md-6'>
+          {{validated-input placeholder="Enter token" value=model.token class='input' serverErrors=model.errors.token errors=errors.model.token}}
+        </div>
+        <div class='col-md-6'>
+          {{dynamic-submit actionOnSubmit="verify_phone_number"}}
+        </div>
+      </div>
+    </form>
+  {{/if}}
+  <hr>
+  {{#link-to 'account.verifications' class='goto'}}{{t 'verifications.button'}}{{/link-to}}
+</div>

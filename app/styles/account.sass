@@ -4,3 +4,17 @@
 
   .success
     color: #449d44
+
+  .verification
+    @extend .well
+    display: flex
+    align-items: center
+
+    .verified
+      @extend .verify, .success, .glyphicon, .glyphicon-ok
+
+    .verify
+      margin-left: auto
+
+      > .btn-submit
+        @extend .btn-sm

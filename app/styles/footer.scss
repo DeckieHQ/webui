@@ -13,4 +13,12 @@ main:after {
 }
 #footer {
   background: orange;
+  display: flex;
+  align-items: center;
+  background-color: #5f5f5f;
+  color: white;
+
+  .content {
+    margin: auto;
+  }
 }

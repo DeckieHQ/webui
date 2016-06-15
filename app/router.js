@@ -18,6 +18,7 @@ Router.map(function() {
     this.route('verifications');
     this.route('hosted-events');
     this.route('notifications');
+    this.route('achievements');
   });
   this.route('email-verification');
   this.route('phone-number-verification');

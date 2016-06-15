@@ -11,4 +11,5 @@ export default DS.Model.extend({
   phone_number_verified: DS.attr(),
   created_at: DS.attr(),
   contact: DS.belongsTo('contact'),
+  achievements: DS.hasMany('achievement'),
 });

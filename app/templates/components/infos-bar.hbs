@@ -1,0 +1,19 @@
+<div id='infos-bar'>
+  <div class='well'>
+    {{#each infos.hosted_events as |event|}}
+      <div>{{event.title}}</div>
+    {{/each}}
+  </div>
+
+  {{#if infos.missing_profile_info}}
+    <div class='well'>
+      <div>Améliorer votre profile</div>
+    </div>
+  {{/if}}
+
+  {{#if infos.missing_verification}}
+    <div class='well'>
+      <div>Rajoutez des verifications</div>
+    </div>
+  {{/if}}
+</div>

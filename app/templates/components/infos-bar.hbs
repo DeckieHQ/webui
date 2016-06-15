@@ -1,19 +1,33 @@
 <div id='infos-bar'>
-  <div class='well'>
-    {{#each infos.hosted_events as |event|}}
-      <div>{{event.title}}</div>
-    {{/each}}
-  </div>
-
   {{#if infos.missing_profile_info}}
     <div class='well'>
-      <div>Améliorer votre profile</div>
+      <div>Améliorer votre profil</div>
+      {{#link-to 'account.profile'}}<div class='btn btn-success'>Profile</div>{{/link-to}}
+    </div>
+  {{else if infos.missing_verification}}
+    <div class='well'>
+      <div>Rajoutez des verifications</div>
+      {{#link-to 'account.verifications'}}<div class='btn btn-success'>Verifications</div>{{/link-to}}
     </div>
   {{/if}}
 
-  {{#if infos.missing_verification}}
+  {{#unless hide_my_events}}
     <div class='well'>
-      <div>Rajoutez des verifications</div>
+      <label>Hosted events</label>
+      {{#each infos.hosted_events as |event|}}
+        <div>{{event.title}}</div>
+      {{/each}}
+      {{#link-to 'account.hosted-events'}}<div class='btn btn-success'>Mes events</div>{{/link-to}}
     </div>
-  {{/if}}
+  {{/unless}}
+
+  {{#unless hide_events_nearby}}
+    <div class='well'>
+      <label>Events nearby</label>
+      {{#each infos.events as |event|}}
+        <div>{{event.title}}</div>
+      {{/each}}
+      {{#link-to 'search'}}<div class='btn btn-success'>Plus d'events</div>{{/link-to}}
+    </div>
+  {{/unless}}
 </div>

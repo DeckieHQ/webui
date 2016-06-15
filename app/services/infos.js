@@ -44,6 +44,10 @@ export default Ember.Service.extend({
     return this.get('currentUser').get('hosted_events');
   }.property(),
 
+  last_achievements: function(){
+    return this.get('currentUser').get('profile').get('achievements');
+  }.property(),
+
   missing_profile_info: function(){
     return !(this.get('currentUser').get('profile.avatar_url') && this.get('currentUser').get('profile.short_description'));
   }.property(),

@@ -1,4 +1,12 @@
 <div id='infos-bar'>
+  <div class='well'>
+    <label>Last achievements</label>
+    {{#each infos.last_achievements as |achievement|}}
+      <div>{{achievement.description}}</div>
+    {{/each}}
+    {{#link-to 'account.achievements'}}<div class='btn btn-success'>Mes Haut-faits</div>{{/link-to}}
+  </div>
+
   {{#if infos.missing_profile_info}}
     <div class='well'>
       <div>Améliorer votre profil</div>

@@ -2,7 +2,9 @@
   <div class='row'>
     <div class='col-md-3'>
       <div class='well'>
-        {{#if isHost}}
+        {{#unless model.opened}}
+          <div>This event is closed</div>
+        {{else if isHost}}
           {{#link-to 'event.edit'}}<button class="btn btn-warning">Edit event</button>{{/link-to}}
         {{else if pending}}
           <div>Your submission to this event in awaiting the host acceptance</div>
@@ -25,7 +27,7 @@
             Join event
             {{dynamic-submit actionOnSubmit="join_event"}}
           </div>
-        {{/if}}
+        {{/unless}}
       </div>
 
       {{#if isHost}}

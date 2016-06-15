@@ -27,10 +27,11 @@ export default Ember.Route.extend({
     return this.store.find('user', '')
       .then(user => {
         this.get('currentUser').set('content', user);
-        user.get('profile');
+        return user.get('profile');
       }
     );
   },
+
   _switchLocale(locale) {
     this.get('moment').changeLocale(locale);
     this.set('i18n.locale', locale);

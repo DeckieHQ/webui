@@ -1,7 +1,7 @@
 import Ember from 'ember';
-import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
+import AuthenticatedRoute from './authenticated-route';
 
-export default Ember.Route.extend(AuthenticatedRouteMixin, {
+export default AuthenticatedRoute.extend({
   model: function() {
     let verification = this.store.createRecord('verification-extend');
     verification.set('type', 'phone_number');

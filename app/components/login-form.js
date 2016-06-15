@@ -22,11 +22,7 @@ export default Ember.Component.extend(EmberValidations, {
         .then(() => this.get('session').authenticate('authenticator:devise', identification, password))
         .then(() => {
           defer.resolve();
-          if (this.get('transition')) {
-            this.get('targetObject').send('transition');
-          } else {
-            this.get('targetObject').transitionToRoute('search');
-          }
+          this.get('targetObject').send('transition');
         })
         .catch((reason) => {
           this.set("showErrors", true);

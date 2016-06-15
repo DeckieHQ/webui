@@ -2,6 +2,8 @@ import Ember from 'ember';
 import EmberValidations from 'ember-validations';
 
 export default Ember.Component.extend(EmberValidations, {
+  i18n: Ember.inject.service(),
+
   validations: {
     "comment.message": {
       length: { maximum: 200 }
@@ -41,11 +43,14 @@ export default Ember.Component.extend(EmberValidations, {
     },
 
     cancel_update: function() {
+      this.get('comment').rollbackAttributes();
       this.set('isUpdating', false);
     },
 
     delete_comment: function(comment) {
-      comment.destroyRecord();
+      if (confirm(this.get('i18n').t('comment.confirm-delete'))) {
+        comment.destroyRecord();
+      }
     }
   }
 });

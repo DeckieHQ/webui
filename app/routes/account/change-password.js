@@ -1,4 +1,11 @@
 import Ember from 'ember';
 import AuthenticatedRoute from '../authenticated-route';
 
-export default AuthenticatedRoute.extend();
+export default AuthenticatedRoute.extend({
+  deactivate: function() {
+    var model = this.currentModel;
+    model.set('password', null)
+    model.set('current_password', null)
+    model.set('confirm_password', null)
+  },
+});

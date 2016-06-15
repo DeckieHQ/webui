@@ -3,6 +3,7 @@ import EmberValidations from 'ember-validations';
 
 export default Ember.Controller.extend(EmberValidations, {
   session: Ember.inject.service(),
+  i18n: Ember.inject.service(),
 
   validations: {
     message: {
@@ -77,9 +78,11 @@ export default Ember.Controller.extend(EmberValidations, {
     },
 
     quit_event: function() {
-      this.get('user_submission').destroyRecord().then(
-        () => this.set('user_submission', null)
-      );
+      if (confirm(this.get('i18n').t('event.confirm-quit'))) {
+        this.get('user_submission').destroyRecord().then(
+          () => this.set('user_submission', null)
+        );
+      }
     },
 
     display_host_contact: function() {
@@ -102,7 +105,15 @@ export default Ember.Controller.extend(EmberValidations, {
         event: this.get('model')
       });
 
-      this.send('save', this, defer, { model: comment });
+      let params = {
+        afterSave: () => {
+          this.set('message', null);
+          this.set('isPrivate', false);
+        },
+        model: comment
+      }
+
+      this.send('save', this, defer, params);
     },
   }
  });

@@ -1,7 +1,13 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  session: Ember.inject.service('session'),
+  deactivate: function() {
+    var controller = this.get('controller');
+    controller.set('message', null);
+    controller.set('isPrivate', false);
+  },
+
+  session: Ember.inject.service(),
 
   model: function(params) {
     return this.store.find('event', params.event_id);

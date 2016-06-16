@@ -18,3 +18,23 @@
 
       > .btn-submit
         @extend .btn-sm
+
+  #achievements
+    .achievement
+      display: flex
+      align-items: center
+      padding: 1em
+
+      .ok
+        @extend .success, .glyphicon, .glyphicon-ok
+        margin-left: auto
+
+      .no
+        @extend .glyphicon, .glyphicon-remove
+        margin-left: auto
+
+      .condition
+        font-style: italic
+
+    hr
+      margin: 0

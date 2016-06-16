@@ -1,5 +1,49 @@
-<div class='well'>
-  {{#each model as |achievement|}}
-    <div>{{achievement.description}}</div>
-  {{/each}}
+<div id='achievements'>
+  <div class='achievement'>
+    <div>
+      <div>{{t 'achievement.early-registration'}}</div>
+      <div class='condition'>{{t 'achievement.granted-by'}}{{t 'achievement.condition.early-registration'}}</div>
+    </div>
+    {{#if earlyRegistration}}
+      <span class='ok'></span>
+    {{else}}
+      <span class='no'></span>
+    {{/if}}
+  </div>
+  <hr>
+  <div class='achievement'>
+    <div>
+      <div>{{t 'achievement.first-feedback'}}</div>
+      <div class='condition'>{{t 'achievement.granted-by'}}{{t 'achievement.condition.first-feedback'}}</div>
+    </div>
+    {{#if firstFeedback}}
+      <span class='ok'></span>
+    {{else}}
+      <span class='no'></span>
+    {{/if}}
+  </div>
+  <hr>
+  <div class='achievement'>
+    <div>
+      <div>{{t 'achievement.early-event'}}</div>
+      <div class='condition'>{{t 'achievement.granted-by'}}{{t 'achievement.condition.early-event'}}</div>
+    </div>
+    {{#if earlyEvent}}
+      <span class='ok'></span>
+    {{else}}
+      <span class='no'></span>
+    {{/if}}
+  </div>
+  <hr>
+  <div class='achievement'>
+    <div>
+      <div>{{t 'achievement.verified-profile'}}</div>
+      <div class='condition'>{{t 'achievement.granted-by'}}{{t 'achievement.condition.verified-profile'}}</div>
+    </div>
+    {{#if verifiedProfile}}
+      <span class='ok'></span>
+    {{else}}
+      <span class='no'></span>
+    {{/if}}
+  </div>
 </div>

@@ -3,6 +3,7 @@ import ENV from '../config/environment';
 
 export default Ember.Service.extend({
   currentUser: Ember.inject.service(),
+  i18n: Ember.inject.service(),
 
   init() {
     this._super(...arguments);
@@ -41,18 +42,20 @@ export default Ember.Service.extend({
   },
 
   hosted_events: function(){
-    return this.get('currentUser').get('hosted_events');
+    if (this.get('currentUser')) {
+      return this.get('currentUser').get('hosted_events').slice(0, 3);
+    }
   }.property(),
 
-  last_achievements: function(){
-    return this.get('currentUser').get('profile').get('achievements');
-  }.property(),
-
-  missing_profile_info: function(){
-    return !(this.get('currentUser').get('profile.avatar_url') && this.get('currentUser').get('profile.short_description'));
-  }.property(),
-
-  missing_verification: function(){
-    return !(this.get('currentUser').get('phone_number_verified') && this.get('currentUser').get('email_verified'));
+  last_achievement: function(){
+    if (this.get('currentUser')) {
+      return this.get('currentUser').get('profile').get('achievements').then(
+        (achievements) => {
+          let last_achievement = achievements.get('lastObject')
+          let translated = this.get('i18n').t('achievement.'+last_achievement.get('name'));
+          this.set('last_achievement', translated);
+        }
+      );
+    }
   }.property(),
 });

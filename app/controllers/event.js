@@ -54,7 +54,6 @@ export default Ember.Controller.extend(EmberValidations, {
       if (!this.get('session.isAuthenticated')) {
         return this.transitionToRoute('login-or-registration').then((newRoute) => {
           newRoute.controller.set('transitonToRecord', this.get('model'));
-          newRoute.controller.set('applyAction', ('join_event'));
         });
       };
 

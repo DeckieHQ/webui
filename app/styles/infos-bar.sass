@@ -1,0 +1,27 @@
+#infos-bar
+  // .info-box
+  //   @extend .well
+
+  .goto
+    display: block
+    text-align: center
+    margin-top: 0.5em
+
+  .goto-btn
+    @extend .btn, .btn-xs, .btn-warning
+
+  .event
+    @include unstyled-link()
+
+    .begin_at
+      font-style: italic
+
+    > div
+      padding-top: 3px
+      padding-bottom: 3px
+
+    &:hover
+      > div
+        color: #449d44
+        font-weight: bold
+        background-color: #e3e3e3;

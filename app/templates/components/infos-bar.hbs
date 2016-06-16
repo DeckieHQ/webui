@@ -1,41 +1,67 @@
 <div id='infos-bar'>
-  <div class='well'>
-    <label>Last achievements</label>
-    {{#each infos.last_achievements as |achievement|}}
-      <div>{{achievement.description}}</div>
-    {{/each}}
-    {{#link-to 'account.achievements'}}<div class='btn btn-success'>Mes Haut-faits</div>{{/link-to}}
-  </div>
-
-  {{#if infos.missing_profile_info}}
+  {{#unless currentUser.profile.short_description}}
     <div class='well'>
-      <div>Améliorer votre profil</div>
-      {{#link-to 'account.profile'}}<div class='btn btn-success'>Profile</div>{{/link-to}}
+      <div>{{t 'profile.tips.short-description'}}</div>
+      {{#link-to 'account.profile' class='goto'}}<div class='goto-btn'>Add</div>{{/link-to}}
     </div>
-  {{else if infos.missing_verification}}
+  {{else unless currentUser.profile.avatar_url}}
     <div class='well'>
-      <div>Rajoutez des verifications</div>
-      {{#link-to 'account.verifications'}}<div class='btn btn-success'>Verifications</div>{{/link-to}}
+      <div>{{t 'profile.tips.avatar'}}</div>
+      {{#link-to 'account.profile' class='goto'}}<div class='goto-btn'>Add</div>{{/link-to}}
     </div>
-  {{/if}}
-
-  {{#unless hide_my_events}}
+  {{else unless currentUser.phone_number}}
     <div class='well'>
-      <label>Hosted events</label>
-      {{#each infos.hosted_events as |event|}}
-        <div>{{event.title}}</div>
-      {{/each}}
-      {{#link-to 'account.hosted-events'}}<div class='btn btn-success'>Mes events</div>{{/link-to}}
+      <div>{{t 'profile.tips.phone-number'}}</div>
+      {{#link-to 'account.personnal-information' class='goto'}}<div class='goto-btn'>Add</div>{{/link-to}}
+    </div>
+  {{else unless currentUser.email_verified}}
+    <div class='well'>
+      <div>{{t 'profile.tips.email-verification'}}</div>
+      {{#link-to 'account.verifications' class='goto'}}<div class='goto-btn'>Add</div>{{/link-to}}
+    </div>
+  {{else unless currentUser.phone_number_verified}}
+    <div class='well'>
+      <div>{{t 'profile.tips.phone-number-verification'}}</div>
+      {{#link-to 'account.verifications' class='goto'}}<div class='goto-btn'>Add</div>{{/link-to}}
     </div>
   {{/unless}}
+
+  {{#if infos.hosted_events}}
+    <div class='well'>
+      <label>Hosted events</label>
+      <div class="line-separator"></div>
+      {{#each infos.hosted_events as |event|}}
+        {{#link-to 'event' event class='event'}}
+          <div>
+            <div>{{event.title}}</div>
+            <div class='begin_at'>({{moment-from-now event.begin_at}})</div>
+          </div>
+        {{/link-to}}
+      {{/each}}
+      {{#link-to 'account.hosted-events' class='goto'}}<div class='goto-btn'>Hosted events</div>{{/link-to}}
+    </div>
+  {{/if}}
 
   {{#unless hide_events_nearby}}
     <div class='well'>
       <label>Events nearby</label>
+      <div class="line-separator"></div>
       {{#each infos.events as |event|}}
-        <div>{{event.title}}</div>
+        {{#link-to 'event' event class='event'}}
+          <div>
+            <div>{{event.title}}</div>
+            <div class='begin_at'>({{moment-from-now event.begin_at}})</div>
+          </div>
+        {{/link-to}}
       {{/each}}
-      {{#link-to 'search'}}<div class='btn btn-success'>Plus d'events</div>{{/link-to}}
+      {{#link-to 'search' class='goto'}}<div class='goto-btn'>Plus d'events</div>{{/link-to}}
     </div>
   {{/unless}}
+
+  <div class='well'>
+    <label>Last achievement</label>
+    <div class="line-separator"></div>
+    <div>{{infos.last_achievement}}</div>
+    {{#link-to 'account.achievements' class='goto'}}<div class='goto-btn'>Mes Haut-faits</div>{{/link-to}}
+  </div>
 </div>

@@ -1,5 +1,5 @@
 #welcome
-  .welcome-container
+  #welcome-container
     margin-left: -15px
     margin-right: -15px
     margin-top: -20px
@@ -9,9 +9,9 @@
     align-items: center
     justify-content: center
 
-  .welcome-container > .welcome
-    color: white
-    text-align: center
+    .welcome
+      color: white
+      text-align: center
 
 
   #suggested-events
@@ -46,9 +46,6 @@
           display: inline-block
           margin: 0 .5em
 
-          &:first-child
-            margin-left: .75em
-
           &:last-child
             margin-right: 0
 
@@ -71,6 +68,9 @@
           background-color: rgba(255,255,255,.5)
           box-shadow: 0 0 30px -5px rgba(0,0,0,.25)
 
+      .event-description
+        text-align: center
+
       .host
         > .row
           display: flex
@@ -79,7 +79,7 @@
         .name
           font-weight: bold
 
-        .description
+        .profile-description
           font-style: italic
           font-size: .9em
 
@@ -105,3 +105,25 @@
         .my-btn
           color: white
           background-color: #449d44
+
+  .box
+    padding-right: 5vw
+    padding-left: 5vw
+    text-align: center
+    display: flex
+    min-height: 300px
+    margin-left: -15px
+    margin-right: -15px
+    align-items: center
+
+    .goto
+      @extend .btn, .btn-success
+      margin-top: 2em
+
+  #about
+    @extend .box
+    background-color: #e3e3e3
+
+
+  #beta
+    @extend .box

@@ -47,7 +47,7 @@
       <label>Events nearby</label>
       <div class="line-separator"></div>
       {{#each infos.events as |event|}}
-        {{#link-to 'event' event class='event'}}
+        {{#link-to 'event' event.objectID class='event'}}
           <div>
             <div>{{event.title}}</div>
             <div class='begin_at'>({{moment-from-now event.begin_at}})</div>

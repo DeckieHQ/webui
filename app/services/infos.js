@@ -44,8 +44,18 @@ export default Ember.Service.extend({
   hosted_events: function(){
     if (this.get('currentUser')) {
       return this.get('currentUser').get('hosted_events').then(
-        (hosted_events) => {
-          this.set('hosted_events', hosted_events.slice(0, 3));
+        (events) => {
+          this.set('hosted_events', events.slice(0, 3));
+        }
+      );
+    }
+  }.property(),
+
+  submissions: function(){
+    if (this.get('currentUser')) {
+      return this.get('currentUser').content.query('submissions', { include: 'event' }).then(
+        (submissions) => {
+          this.set('submissions', submissions.slice(0, 3));
         }
       );
     }

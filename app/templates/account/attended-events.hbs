@@ -1,0 +1,33 @@
+<div id="attended-events">
+  {{#each model as |submission|}}
+    <div class="well">
+      <div class='row margin-bottom'>
+        <div class='col-lg-8'>
+          {{#link-to 'event' submission.event}}
+            <div class='event-title'>{{submission.event.title}}</div>
+          {{/link-to}}
+          <div>
+            {{#if submission.event.short_description}}
+              {{submission.event.short_description}}
+            {{else}}
+              <i>{{t 'event.short-description.empty'}}</i>
+            {{/if}}
+          </div>
+        </div>
+        <div class='col-lg-4'>
+          <b>{{moment-format submission.event.begin_at}}</b>
+          <div>({{moment-from-now submission.event.begin_at}})</div>
+          <b>{{t 'event.count' attendees-count=submission.event.attendees_count capacity=submission.event.capacity}}</b>
+        </div>
+      </div>
+    </div>
+  {{else}}
+    <div class="well">
+      <div class='no-event'>{{t 'account.no-event'}}</div>
+      <hr>
+      <div class='create'>
+        {{#link-to 'events.new' class='goto'}}{{t 'navigation.events'}}{{/link-to}}
+      </div>
+    </div>
+  {{/each}}
+</div>

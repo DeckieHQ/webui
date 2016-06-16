@@ -42,6 +42,22 @@
     </div>
   {{/if}}
 
+  {{#if infos.submissions}}
+    <div class='well'>
+      <label>Attended events</label>
+      <div class="line-separator"></div>
+      {{#each infos.submissions as |submission|}}
+        {{#link-to 'event' submission.event class='event'}}
+          <div>
+            <div>{{submission.event.title}}</div>
+            <div class='begin_at'>({{moment-from-now submission.event.begin_at}})</div>
+          </div>
+        {{/link-to}}
+      {{/each}}
+      {{#link-to 'account.attended-events' class='goto'}}<div class='goto-btn'>Attended events</div>{{/link-to}}
+    </div>
+  {{/if}}
+
   {{#unless hide_events_nearby}}
     <div class='well'>
       <label>Events nearby</label>

@@ -1,6 +1,7 @@
 import DS from 'ember-data';
+import HasManyQuery from 'ember-data-has-many-query';
 
-export default DS.Model.extend({
+export default DS.Model.extend(HasManyQuery.ModelMixin, {
   email: DS.attr(),
   first_name: DS.attr(),
   last_name: DS.attr(),
@@ -15,4 +16,5 @@ export default DS.Model.extend({
   phone_number_verified: DS.attr(),
   profile: DS.belongsTo('profile'),
   hosted_events: DS.hasMany('event'),
+  submissions: DS.hasMany('submission'),
 });

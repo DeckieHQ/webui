@@ -5,12 +5,14 @@
     </div>
   </div>
 
-  <div class='row'>
-    <div class='col-lg-6 inline-block'>
-      <div class='capacity'>Capacity: </div>
-      <div>{{validated-input placeholder="Enter capacity" value=model.capacity serverErrors=model.errors.capacity errors=errors.model.capacity}}</div>
+  <div class='row capacity'>
+    <div class='col-lg-4'>
+      <div>{{validated-input label='Min capacity' placeholder="Enter minimum capacity" value=model.min_capacity serverErrors=model.errors.min_capacity errors=errors.model.min_capacity}}</div>
     </div>
-    <div class='col-lg-6'>
+    <div class='col-lg-4'>
+      <div>{{validated-input label='Capacity' placeholder="Enter capacity" value=model.capacity serverErrors=model.errors.capacity errors=errors.model.capacity}}</div>
+    </div>
+    <div class='col-lg-4 auto-accept'>
       Validation automatique: {{input type="checkbox" checked=model.auto_accept}}
     </div>
   </div>
@@ -26,6 +28,8 @@
       {{validated-select label="Level" options=levels value=model.level serverErrors=model.errors.level errors=errors.model.level}}
     </div>
   </div>
+
+  <hr>
 
   <div class='row'>
     <div class='begin-at col-lg-12'>
@@ -71,6 +75,8 @@
     </div>
   {{/if}}
 
+  <hr>
+
   <div class='row'>
     <div class='col-lg-12'>
       {{validated-textarea rows="2" maxlength=140 label="Short description" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
@@ -82,6 +88,8 @@
       {{validated-textarea rows="7" label="Description" value=model.description serverErrors=model.errors.description errors=errors.model.description}}
     </div>
   </div>
+
+  <hr>
 
   <div class='row'>
     <div class='col-lg-12'>

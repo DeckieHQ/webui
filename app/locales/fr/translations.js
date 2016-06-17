@@ -104,6 +104,18 @@ export default {
     "empty": "Aucune demande de participation en attente.",
     "count": "{{count}} demande(s) de participation pour cet évennement attendent votre validation."
   },
+  "Title": "Nom",
+  "Min capacity": "Inscriptions minimums",
+  "Capacity": "Places restantes",
+  "Category": "Type de jeu",
+  "Ambiance": "Ambiance attendue",
+  "Level": "Niveau minimum requis",
+  "Short description": "Description courte",
+  "Description": "Description longue",
+  "Street": "Adresse",
+  "Postcode": "Code postal",
+  "City": "Ville",
+  "Country": "Pays",
   errors: {
     inclusion: "n'est pas inclu dans la liste",
     exclusion: "est réservé",

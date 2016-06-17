@@ -13,6 +13,14 @@
 @import "navbar";
 @import "event";
 
+.capacity {
+  display: flex;
+
+  .auto-accept {
+    margin: auto;
+  }
+}
+
 #verify {
   @extend .well, .col-lg-6, .col-lg-offset-3;
   text-align: center;
@@ -272,10 +280,6 @@
 
 .inline-block  > div {
   display: inline-block;
-}
-
-.capacity {
-  font-weight: bold;
 }
 
 .birthday {

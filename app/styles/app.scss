@@ -30,7 +30,7 @@
   }
 
   .warning {
-    color: orange;
+    color: #f0ad4e;
   }
 
   .goto {
@@ -173,7 +173,7 @@
 }
 
 .newNotifications {
-  color: orange;
+  color: #f0ad4e;
 }
 
 .classWithPad {
@@ -182,7 +182,7 @@
 
 .icon-ok {
   @extend .glyphicon, .glyphicon-ok;
-  color: green;
+  color: #449d44;
 }
 
 .icon-remove {
@@ -200,16 +200,17 @@
 
 .icon-pencil:hover {
   cursor: pointer;
-  color: blue;
+  color: #f0ad4e;
 }
 
 .icon-pencil:hover .alt,
 .icon-remove:hover .alt{
   display : block;
+  z-index: 5;
 }
 
 .alt {
-  padding: 0.5vw;
+  padding: .75em;
   position: absolute;
   display: none;
   color: black;

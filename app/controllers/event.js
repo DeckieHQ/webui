@@ -15,6 +15,10 @@ export default Ember.Controller.extend(EmberValidations, {
 
   isPrivate: false,
 
+  minCapacityReached: function() {
+    return (this.get('model').get('attendees_count') - this.get('model').get('min_capacity')) >= 0
+  }.property('model.min_capacity', 'model.attendees_count'),
+
   isHost: function() {
     return this.get('currentUser').get('profile.id') == this.get('model.host.id');
   }.property(),

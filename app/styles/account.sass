@@ -38,3 +38,98 @@
 
     hr
       margin: 0
+
+  #hosted-events,
+  #attended-events
+    .hit
+      a
+        @extend .well
+        @include unstyled-link()
+        display: block
+        transition: all ease .1s
+
+      .head
+        margin-bottom: 0.75em
+
+      .body
+        display: flex
+        align-items: center
+
+      h3
+        margin: 0
+
+      h3.confirmed
+        color: #449d44
+
+      .pending
+        color: #f0ad4e
+
+      .details
+        font-size: 1.5em
+
+        text-align: right
+
+        div
+          display: inline-block
+          margin: 0 .25em
+
+          &:first-child
+            margin-left: 0
+
+          &:last-child
+            margin-right: 0
+
+        .glyphicon
+          position: relative
+          top: .125em
+
+      .description
+        font-style: italic
+        margin-bottom: 0.5em
+
+      .categories
+        margin-bottom: 0.5em
+
+        .icon-tags
+          @extend .glyphicon, .glyphicon-tags
+          margin: 0 0.3em
+          font-size: 1.25em
+
+        span
+          text-transform: capitalize
+
+      .host
+        img
+          width: 2em
+
+        span
+         display: inline-block
+
+      .attendees
+        font-size: 3em
+        text-align: center
+
+        span
+          padding: .5em
+          border-radius: 50%
+          color: #449d44
+          display: inline-block
+          margin: auto
+
+          background-color: rgba(255,255,255,.5)
+          box-shadow: 0 0 30px -5px rgba(0,0,0,.25)
+
+      &:hover
+        a
+          border-color: #449d44
+          transform: scale(1.01)
+          background-color: rgba(#449d44, 0.2)
+
+    .pending-submission
+      margin-top: 1em
+
+      .some
+        color: #f0ad4e
+
+      .empty
+        font-style: italic

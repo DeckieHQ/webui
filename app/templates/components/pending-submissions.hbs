@@ -1,26 +1,7 @@
-<div class='col-lg-12'>
+<div class='pending-submission'>
   {{#if hasPendingSubmissions}}
-    <a href="#" {{action "display_pending_submissions"}}>
-      {{t 'submissions.count' count=pendingSubmissionsCount}}
-    </a>
+    <span class='some'>{{t 'submissions.count' count=pendingSubmissionsCount}}</span>
   {{else}}
-    <i>{{t 'submissions.empty'}}</i>
+    <span class='empty'>{{t 'submissions.empty'}}</span>
   {{/if}}
 </div>
-
-{{#if showPendingSubmissions}}
-  <div class='col-lg-12'>
-    {{#each pendingSubmissions as |submission|}}
-      <div class='inline-block'>
-        <div>
-          {{#link-to 'profile' submission.profile}}
-            {{submission.profile.display_name}}
-          {{/link-to}}
-        </div>
-        <button {{action 'accept_submission' submission}} class="btn btn-success">
-          Accept
-        </button>
-      </div>
-    {{/each}}
-  </div>
-{{/if}}

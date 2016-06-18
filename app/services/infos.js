@@ -42,7 +42,7 @@ export default Ember.Service.extend({
   },
 
   hosted_events: function(){
-    if (this.get('currentUser')) {
+    if (this.get('currentUser').content) {
       return this.get('currentUser').get('hosted_events').then(
         (events) => {
           this.set('hosted_events', events.slice(0, 3));
@@ -52,7 +52,7 @@ export default Ember.Service.extend({
   }.property(),
 
   submissions: function(){
-    if (this.get('currentUser')) {
+    if (this.get('currentUser').content) {
       return this.get('currentUser').content.query('submissions', { include: 'event' }).then(
         (submissions) => {
           this.set('submissions', submissions.slice(0, 3));
@@ -62,7 +62,7 @@ export default Ember.Service.extend({
   }.property(),
 
   last_achievement: function(){
-    if (this.get('currentUser')) {
+    if (this.get('currentUser').content) {
       return this.get('currentUser').get('profile').get('achievements').then(
         (achievements) => {
           let last_achievement = achievements.get('lastObject')

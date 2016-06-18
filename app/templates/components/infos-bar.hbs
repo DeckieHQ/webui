@@ -1,5 +1,10 @@
 <div id='infos-bar'>
-  {{#unless currentUser.profile.short_description}}
+  {{#unless session.isAuthenticated}}
+    <div class='well'>
+      <div>{{t 'profile.tips.register'}}</div>
+      {{#link-to 'registration' class='goto'}}<div class='goto-btn'>Create account</div>{{/link-to}}
+    </div>
+  {{else unless currentUser.profile.short_description}}
     <div class='well'>
       <div>{{t 'profile.tips.short-description'}}</div>
       {{#link-to 'account.profile' class='goto'}}<div class='goto-btn'>Add</div>{{/link-to}}
@@ -74,10 +79,12 @@
     </div>
   {{/unless}}
 
-  <div class='well'>
-    <label>Last achievement</label>
-    <div class="line-separator"></div>
-    <div>{{infos.last_achievement}}</div>
-    {{#link-to 'account.achievements' class='goto'}}<div class='goto-btn'>Mes Haut-faits</div>{{/link-to}}
-  </div>
+  {{#if infos.last_achievement}}
+    <div class='well'>
+      <label>Last achievement</label>
+      <div class="line-separator"></div>
+      <div>{{infos.last_achievement}}</div>
+      {{#link-to 'account.achievements' class='goto'}}<div class='goto-btn'>Mes Haut-faits</div>{{/link-to}}
+    </div>
+  {{/if}}
 </div>

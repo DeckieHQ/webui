@@ -16,8 +16,8 @@ export default imageCropper.extend({
 
       let canvas = document.createElement('canvas');
       let context = canvas.getContext('2d');
-      canvas.width = 50;
-      canvas.height = 50;
+      canvas.width = 500;
+      canvas.height = 500;
       context.drawImage(croppedImage, 0, 0, canvas.width, canvas.height);
 
       this.set('profile.avatar', canvas.toDataURL("image/jpeg"));

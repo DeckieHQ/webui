@@ -13,7 +13,7 @@ export default Ember.Route.extend({
     return this.store.find('event', params.event_id);
   },
 
-  //TODO: not needed if user not authenticated or host
+  //TODO: not needed if host
   afterModel(model) {
     if (this.get('session.isAuthenticated')) {
       return model.get('user_submission')

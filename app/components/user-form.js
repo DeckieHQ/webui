@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import EmberValidations from 'ember-validations';
+import { validator } from 'ember-validations';
 
 export default Ember.Component.extend(EmberValidations, {
   session: Ember.inject.service('session'),
@@ -31,6 +32,18 @@ export default Ember.Component.extend(EmberValidations, {
     },
     password: {
       presence: true
+    },
+    birthday: {
+      inline: validator(function() {
+        let day = parseInt(this.model.day) + 1;
+        let date = [ day, this.model.month, this.model.year ].join("-");
+        let birthday = moment(date, "DD-MMMM-YYYY");
+
+        if (!birthday.isValid()) {
+          //TODO: trad
+          return "you can't do this!"
+        }
+      })
     },
     day: {
       presence: true,
@@ -90,6 +103,8 @@ export default Ember.Component.extend(EmberValidations, {
       let model = this.get('model');
       let password = this.get('password');
 
+      this.set('showBirthdayError', true);
+
       let afterSave;
 
       if (this.get('transition')) {
@@ -114,12 +129,6 @@ export default Ember.Component.extend(EmberValidations, {
           let day = parseInt(this.get('day')) + 1;
           let date = [ day, this.get('month'), this.get('year') ].join("-");
           let birthday = moment(date, "DD-MMMM-YYYY");
-
-          if (!birthday.isValid()) {
-            let birthday_error = birthday.toDate();
-            this.set('birthday_error', birthday_error);
-            throw new Error(birthday_error);
-          }
 
           model.set('birthday', birthday.toDate());
 

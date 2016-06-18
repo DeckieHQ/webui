@@ -4,6 +4,9 @@
   {{validated-input label="user.lastname.label" placeholder="user.lastname.placeholder" value=model.last_name serverErrors=model.errors.last_name errors=errors.model.last_name name="lastName"}}
 
   <label>{{t 'user.birthday.label'}}</label>
+  {{#if showBirthdayError}}
+    <span class='error'>{{errors.birthday}}</span>
+  {{/if}}
   <div class="birthday form-group col-sm-12">
     <div class="col-sm-4">{{validated-input placeholder="user.day.placeholder" value=day errors=errors.day}}</div>
     <div class="col-sm-4">

@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import EmberValidations from 'ember-validations';
+import { validator } from 'ember-validations';
 
 export default Ember.Component.extend(EmberValidations, {
   init: function() {
@@ -52,7 +53,10 @@ export default Ember.Component.extend(EmberValidations, {
 
   validations: {
     "model.title": {
-      presence: true
+      presence: true,
+      length: {
+        maximum: 128,
+      },
     },
     "model.capacity": {
       presence: true,
@@ -60,6 +64,13 @@ export default Ember.Component.extend(EmberValidations, {
         onlyInteger: true,
         greaterThanOrEqualTo: 1,
         lessThanOrEqualTo: 1000
+      }
+    },
+    "model.min_capacity": {
+      numericality: {
+        onlyInteger: true,
+        greaterThanOrEqualTo: 1,
+        lessThanOrEqualTo: 'model.capacity'
       }
     },
     "model.street": {
@@ -76,6 +87,27 @@ export default Ember.Component.extend(EmberValidations, {
     },
     "model.begin_at": {
       presence: true
+    },
+    "model.end_at": {
+      inline: validator(function() {
+        let end_at_hour = this.model.end_at_hour;
+        let end_at = this.model.get('model.end_at');
+        if(end_at_hour && end_at) {
+          let begin_at_hour = this.model.begin_at_hour;
+          let begin_at_minute = this.model.begin_at_minute;
+          let begin_at = moment(this.model.get('model.begin_at'));
+          begin_at.hour(begin_at_hour).minute(begin_at_minute);
+
+          let end_at_minute = this.model.end_at_minute;
+          end_at = moment(end_at);
+          end_at.hour(end_at_hour).minute(end_at_minute);
+
+          if (begin_at > end_at) {
+            // TODO: trad
+            return "you can't do this!"
+          }
+        }
+      })
     },
     begin_at_hour: {
       presence: true,

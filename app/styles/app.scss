@@ -21,6 +21,10 @@
   }
 }
 
+.error {
+  color: red;
+}
+
 #verify {
   @extend .well, .col-lg-6, .col-lg-offset-3;
   text-align: center;

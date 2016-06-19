@@ -12,7 +12,7 @@ export default Ember.Component.extend(EmberValidations, {
 
     if (birthday) {
       this.set('day',   moment(birthday).format("DD"));
-      this.set('month', moment(birthday).format("MMMM"));
+      this.set('month', moment(birthday).format("M"));
       this.set('year',  moment(birthday).format("YYYY"));
     }
   },
@@ -68,7 +68,25 @@ export default Ember.Component.extend(EmberValidations, {
 
   months: moment.months(),
 
-  cultures: [ "en" ],
+  months: [
+    { value: '1', label: 'month.january' },
+    { value: '2', label: 'month.february' },
+    { value: '3', label: 'month.march' },
+    { value: '4', label: 'month.april' },
+    { value: '5', label: 'month.may' },
+    { value: '6', label: 'month.june' },
+    { value: '7', label: 'month.jully' },
+    { value: '8', label: 'month.august' },
+    { value: '9', label: 'month.september' },
+    { value: '10', label: 'month.october' },
+    { value: '11', label: 'month.november' },
+    { value: '12', label: 'month.december' },
+  ],
+
+  cultures: [
+    { value: 'fr', label: 'culture.fr' },
+    { value: 'en', label: 'culture.en' },
+  ],
 
   monthPlaceHolder: function() {
     if (this.get('alreadyCreated')) {
@@ -128,7 +146,7 @@ export default Ember.Component.extend(EmberValidations, {
         beforeSave: () => {
           let day = parseInt(this.get('day')) + 1;
           let date = [ day, this.get('month'), this.get('year') ].join("-");
-          let birthday = moment(date, "DD-MMMM-YYYY");
+          let birthday = moment(date, "DD-M-YYYY");
 
           model.set('birthday', birthday.toDate());
 

@@ -12,22 +12,22 @@ export default Ember.Component.extend(EmberValidations, {
     let end_at = model.get('end_at');
 
     if (begin_at) {
-      this.set('begin_at_hour', moment(begin_at).hour());
-      this.set('begin_at_minute', moment(begin_at).minute());
+      this.set('begin_at_hour', moment(begin_at).hour().toString());
+      this.set('begin_at_minute', moment(begin_at).minute().toString());
     } else {
-      this.set('begin_at_hour', 19);
-      this.set('begin_at_minute', 0);
+      this.set('begin_at_hour', '19');
+      this.set('begin_at_minute', '0');
     }
 
     if (end_at) {
       this.set('addEndDate', true);
-      this.set('end_at_hour', moment(end_at).hour());
-      this.set('end_at_minute', moment(end_at).minute());
+      this.set('end_at_hour', moment(end_at).hour().toString());
+      this.set('end_at_minute', moment(end_at).minute().toString());
     } else {
-      this.set('end_at_hour', 22);
-      this.set('end_at_minute', 30);
-
+      this.set('end_at_hour', '22');
+      this.set('end_at_minute', '30');
     }
+
     Ember.run.scheduleOnce('afterRender', this, function () {
       let placesAutocomplete = places({
         container: document.getElementsByName('street')[0],
@@ -111,11 +111,6 @@ export default Ember.Component.extend(EmberValidations, {
     },
     begin_at_hour: {
       presence: true,
-      numericality: {
-        onlyInteger: true,
-        greaterThanOrEqualTo: 0,
-        lessThanOrEqualTo: 23
-      }
     },
     begin_at_minute: {
       presence: true,
@@ -142,10 +137,6 @@ export default Ember.Component.extend(EmberValidations, {
   },
 
   addEndDate: false,
-
-  ambiances: ['relaxed', 'party', 'serious'],
-  categories: ['party', 'board', 'role-playing', 'card', 'dice', 'miniature', 'strategy', 'cooperative', 'video', 'tile-based'],
-  levels: ['beginner', 'intermediate', 'advanced', 'expert'],
 
   actions: {
     save_event: function(defer) {
@@ -175,4 +166,47 @@ export default Ember.Component.extend(EmberValidations, {
       this.get('targetObject').send('save', this, defer, params);
     }
   },
+
+  ambiances: [
+    { value: 'relaxed', label: 'ambiance.relaxed' },
+    { value: 'party', label: 'ambiance.party' },
+    { value: 'serious', label: 'ambiance.serious' }
+  ],
+
+  categories: [
+    { value: 'party', label: 'category.party' },
+    { value: 'board', label: 'category.board' },
+    { value: 'role-playing', label: 'category.role-playing' },
+    { value: 'card', label: 'category.card' },
+    { value: 'dice', label: 'category.dice' },
+    { value: 'miniature', label: 'category.miniature' },
+    { value: 'strategy', label: 'category.strategy' },
+  ],
+
+  levels: [
+    { value: 'beginner', label: 'level.beginner' },
+    { value: 'intermediate', label: 'level.intermediate' },
+    { value: 'advanced', label: 'level.advanced' },
+    { value: 'expert', label: 'level.expert' },
+  ],
+
+  hours: [
+    { value: '0', label: '00h' }, { value: '1', label: '01h' }, { value: '2', label: '02h' },
+    { value: '3', label: '03h' }, { value: '4', label: '04h' }, { value: '5', label: '05h' },
+    { value: '6', label: '06h' }, { value: '7', label: '07h' }, { value: '8', label: '08h' },
+    { value: '9', label: '09h' }, { value: '10', label: '10h' }, { value: '11', label: '11h' },
+    { value: '12', label: '12h' }, { value: '13', label: '13h' }, { value: '14', label: '14h' },
+    { value: '15', label: '15h' }, { value: '16', label: '16h' }, { value: '17', label: '17h' },
+    { value: '18', label: '18h' }, { value: '19', label: '19h' }, { value: '20', label: '20h' },
+    { value: '21', label: '21h' }, { value: '22', label: '22h' }, { value: '23', label: '23h' },
+  ],
+
+  minutes: [
+    { value: '0', label: '00' }, { value: '5', label: '05' },
+    { value: '10', label: '10' }, { value: '15', label: '15' },
+    { value: '20', label: '20' }, { value: '25', label: '25' },
+    { value: '30', label: '30' }, { value: '35', label: '35' },
+    { value: '40', label: '40' }, { value: '45', label: '45' },
+    { value: '50', label: '50' }, { value: '55', label: '55' },
+  ],
 });

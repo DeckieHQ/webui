@@ -42,10 +42,10 @@
       {{validated-date placeholder="Pick date" value=model.begin_at errors=errors.model.begin_at}}
     </div>
     <div class='col-lg-3'>
-      {{validated-input placeholder="Enter hour" value=begin_at_hour errors=errors.begin_at_hour}}
+      {{validated-select options=hours value=begin_at_hour errors=errors.begin_at_hour}}
     </div>
     <div class='col-lg-3'>
-      {{validated-input placeholder="Enter minute" value=begin_at_minute errors=errors.begin_at_minute}}
+      {{validated-select options=minutes value=begin_at_minute errors=errors.begin_at_minute}}
     </div>
   </div>
 
@@ -67,10 +67,10 @@
         {{validated-date placeholder="Pick date" value=model.end_at errors=errors.model.end_at}}
       </div>
       <div class='col-lg-3'>
-        {{validated-input placeholder="Enter hour" value=end_at_hour errors=errors.end_at_hour}}
+        {{validated-select options=hours value=end_at_hour errors=errors.end_at_hour}}
       </div>
       <div class='col-lg-3'>
-        {{validated-input placeholder="Enter minute" value=end_at_minute errors=errors.end_at_minute}}
+        {{validated-select options=minutes value=end_at_minute errors=errors.end_at_minute}}
       </div>
     </div>
   {{/if}}

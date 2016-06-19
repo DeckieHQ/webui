@@ -3,7 +3,7 @@
     {{t 'account.email.verified'}}
     <span class='verified'></span>
   {{else if emailSent}}
-    <span class='success'>{{t 'account.email.verify.sent'}}</span>
+    <span class='success'>{{t 'account.email.verification-sent'}}</span>
   {{else}}
     {{t 'account.email.verify'}}
     {{dynamic-submit actionOnSubmit="verify_email" class='verify'}}

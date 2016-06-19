@@ -1,5 +1,5 @@
 {{#if label}}
-  <label>{{translatedLabel}}</label>
+  <label>{{t label}}</label>
 {{/if}}
 <select {{action 'changeValue' on='change' on='focusOut'}} class="form-control validated-select {{if showErrors 'show-errors'}}">
   {{#if placeholder}}

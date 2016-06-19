@@ -5,7 +5,7 @@ export default Ember.Component.extend({
   displayCropper: false,
   loadImage: false,
   wrongFormat: false,
-  validTypes: [ 'image/jpeg', 'image/jpg', 'image/png', 'image/bmp', 'image/gif'],
+  validTypes: [ 'image/jpeg', 'image/jpg', 'image/png'],
 
   actions: {
     fileSelectionChanged: function(file) {

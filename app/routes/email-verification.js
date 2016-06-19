@@ -4,6 +4,8 @@ import AuthenticatedRoute from './authenticated-route';
 
 export default AuthenticatedRoute.extend({
   beforeModel: function() {
+    this._super.apply(this, arguments);
+
     let result = {};
 
     if (this.get('currentUser.email_verified')) {

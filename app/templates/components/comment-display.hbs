@@ -8,14 +8,14 @@
       {{#unless isUpdating}}
         {{#if isOwner}}
           <span {{action 'toggle_update_comment' comment}} class="icon-pencil">
-            <div class='alt'>Edit</div>
+            <div class='alt'>{{t 'edit'}}</div>
           </span>
         {{/if}}
       {{/unless}}
 
       {{#if canDelete}}
         <span {{action 'delete_comment' comment}} class="icon-remove">
-          <div class='alt'>Remove</div>
+          <div class='alt'>{{t 'remove'}}</div>
         </span>
       {{/if}}
     </div>
@@ -30,7 +30,7 @@
           <div class='align-right inline-block'>
             <div>
               <button {{action 'cancel_update'}} class="btn btn-danger">
-                Cancel
+                {{t 'cancel'}}
               </button>
             </div>
             <div>

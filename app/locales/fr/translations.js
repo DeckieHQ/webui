@@ -5,17 +5,28 @@ export default {
     "account": "Mon Compte",
     "registration": "Inscription",
     "login": "Connexion",
-    "logout": "Deconnexion"
+    "logout": "Deconnexion",
+    "verifications": "Mes vérifications",
+    "index": "Retour à l'acceuil"
+  },
+  "footer": {
+    "incorporated": "pas encore incorporée",
+    "contact": "contact",
   },
   "welcome": {
     "title": "Rencontrez des personnes jouant au mêmes jeux que vous",
     "button": "Chercher un évennement près de chez moi"
   },
+  "search": {
+    "no-results": "Votre recherche n'a donnée aucun résultat",
+    "clear": "Réinitialiser la rechercher"
+  },
   "notifications": {
     "box": {
       "empty": "Aucune notification",
       "expand": "Voir toutes les notifications"
-    }
+    },
+    "preferences": "Notifications par email"
   },
   "account": {
     "navigation": {
@@ -25,13 +36,28 @@ export default {
       "verifications": "Vérifications",
       "password": "Changer mot de passe",
       "hosted-events": "Evennements Hébergés",
-      "notifications": "Notifications"
+      "notifications": "Notifications",
+      "attended-events": "Evennements auquels je participe",
+      "achievements": "Faits d'armes"
+    },
+    "phone-number": {
+      "verified": "Votre numéro de téléphone est bien vérifié",
+      "verify": "Vérifier votre numéro de téléphone:"
+    },
+    "email": {
+      "verified": "Votre email est bien vérifié",
+      "verify": "Vérifier email:",
+      "verification-sent": "Un email de vérification vous a été envoyé."
+    },
+    "hosted-events": {
+      "empty": "Vous n'avez encore organisé aucune partie"
     }
   },
   "login": {
     "title": "Se connecter",
     "no-account": "Pas de compte ?",
-    "create-account": "Créer un compte"
+    "create-account": "Créer un compte",
+    "have-account": "Déjà inscris ?",
   },
   "profile": {
     "since": "Membre depuis",
@@ -52,7 +78,8 @@ export default {
     "avatar": {
       "new": "Ajouter photo",
       "edit": "Modifier photo"
-    }
+    },
+    "updated": "Votre profil a bien été mis à jour"
   },
   "user": {
     "email": {
@@ -92,7 +119,8 @@ export default {
         "enter": "Entrer mot de passe",
         "edit": "Entrer mot de passe actuel"
       }
-    }
+    },
+    "updated": "Vos informations personnelles ont bien été mises à jour"
   },
   "event": {
     "short-description": {
@@ -104,7 +132,63 @@ export default {
     "empty": "Aucune demande de participation en attente.",
     "count": "{{count}} demande(s) de participation pour cet évennement attendent votre validation."
   },
-  "Title": "Nom",
+  "phone-number": {
+    "already-verified": "Votre numéro de téléphone est déjà vérifié",
+    "verified": "Votre numéro de téléphone a bien été vérifié",
+    "token-received": "Un code de validation vous a été envoyé par sms",
+    "enter-token": "Code de validation"
+  },
+  "email": {
+    "already-verified": "Votre email est déjà vérifié",
+    "verified": "Votre numéro de téléphone a bien été vérifié",
+    "verify-fail": "Ce lien n'est plus valide",
+    "enter-token": "Code de validation"
+  },
+  "avatar": {
+    "wrong-format": "Erreur de format d'image, choisissez une image de type: png, jpeg ou jpg",
+    "empty": "Pas d'image selectionnée"
+  },
+  "submit": {
+    "retry": "Réessayer !",
+    "ok": "Valider"
+  },
+  "feedback": {
+    "sent": "Merci ! Votre avis a bien été pris en compte."
+  },
+  "achievement": {
+    "granted-by": "Condition:",
+    "early-registration": "J'étais ici avant que ce soit cool.",
+    "first-feedback": "Mon opinion compte",
+    "early-event": "Ambassadeur",
+    "verified-profile": "Papiers en règles",
+    "condition": {
+      "early-registration": "s'inscrire avant le lancement officiel.",
+      "first-feedback": "envoyer un avis (contructif) sur la plateforme.",
+      "early-event": "organiser un évènement avant le lancement officiel.",
+      "verified-profile": "vérifier son profil.",
+    }
+  },
+  "label": {
+    "title": "Titre",
+    "description": "Description",
+    "password": "Mot de passe",
+    "current-password": "Mot de passe actuel",
+    "new-password": "Nouveau mot de passe",
+    "confirm-password": "Confirmer le nouveau mot de passe",
+  },
+  "placeholder": {
+    "title": "Entrer un titre",
+    "description": "Entrer une description",
+    "feedback": "Entrer votre avis, s'il s'agit d'un bug merci d'être aussi descriptif et clair que possible pour que nous puissions le corriger dans les plus brefs délais.",
+    "password": "Entrer mot de passe",
+    "current-password": "Entrer mot de passe actuel",
+    "new-password": "Entrer un nouveau mot de passe",
+    "confirm-password": "Confirmer le nouveau mot de passe",
+  },
+  "edit": "Editer",
+  "remove": "Supprimer",
+  "cancel": "Annuler",
+  "contact-infos": "Voir les informations de contact",
   "Min capacity": "Inscriptions minimums",
   "Capacity": "Places restantes",
   "Category": "Type de jeu",

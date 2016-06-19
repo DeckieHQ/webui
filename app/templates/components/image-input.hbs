@@ -16,9 +16,9 @@
         {{else if loadImage}}
           <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
         {{else if wrongFormat}}
-          <i>Wrong image format, accepted ones: png, jpeg, jpg, bpm, gif</i>
+          <i>{{t 'avatar.wrong-format'}}</i>
         {{else}}
-          <i>No picture selected</i>
+          <i>{{t 'avatar.empty'}}</i>
         {{/if}}
       </div>
     </div>

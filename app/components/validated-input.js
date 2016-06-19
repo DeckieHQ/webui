@@ -7,12 +7,11 @@ export default Ember.Component.extend({
     this._super.apply(this, arguments);
     this.set('showError', false);
   },
-  translatedLabel: function() {
-    return this.get('i18n').t(this.get('label'));
-  }.property('label'),
-  
+
   translatedPlaceholder: function() {
-    return this.get('i18n').t(this.get('placeholder'));
+    if (this.get('placeholder')) {
+      return this.get('i18n').t(this.get('placeholder'));
+    }
   }.property('placeholder'),
 
   classNames: ['form-group'],

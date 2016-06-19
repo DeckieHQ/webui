@@ -1,6 +1,6 @@
 {{#if hasFailed}}
   <button {{action 'submit'}} class="btn btn-warning">
-    Retry !
+    {{t 'submit.retry'}}
   </button>
   {{errorMessage}}
 {{else}}
@@ -10,7 +10,7 @@
     {{else if isSaved}}
       <span class="glyphicon glyphicon-ok"></span>
     {{else}}
-      Submit !
+    {{t 'submit.ok'}}
     {{/if}}
   </button>
 {{/if}}

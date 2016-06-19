@@ -7,7 +7,14 @@ export default {
     "login": "Connexion",
     "logout": "Deconnexion",
     "verifications": "Mes vérifications",
-    "index": "Retour à l'acceuil"
+    "index": "Retour à l'acceuil",
+    "profile": "Mon profil",
+    "personnal": "Mes informations",
+    "hosted-events": "Mes évenements hébergés",
+    "attended-events": "Evenements auquels je participe",
+    "nearby-events": "Plus d'evenements",
+    "achievements": "Mes faits d'armes",
+    "search": "Voir les parties"
   },
   "footer": {
     "incorporated": "pas encore incorporée",
@@ -15,7 +22,20 @@ export default {
   },
   "welcome": {
     "title": "Rencontrez des personnes jouant au mêmes jeux que vous",
-    "button": "Chercher un évennement près de chez moi"
+    "button": "Chercher un évennement près de chez moi",
+    "access": "Accéder",
+    "find-events": {
+      "title": "Trouver des parties",
+      "content": "Rencontrez des gens qui jouent à vos jeux préférés. Deckie vous sélectionne les parties à côté de chez vous. Affinez la sélection par type de jeu, ambiance attendue ou niveau requis.",
+    },
+    "create-events": {
+      "title": "Organiser des parties",
+      "content": "Vous détenez le dernier jeu du moment pas encore sorti? Organisez une partie sur Deckie en quelques clics. Sélectionnez une ambiance attendue, un niveau requis, sortez un tonnelet pour vos invités et vous être paré.",
+    },
+    "beta": {
+      "title": "Deckie est en version beta",
+      "content": "Deckie lance sa beta ouverte début juillet. Inscrivez vous, créez ou participez à des parties pour un lancement officiel début septembre.",
+    },
   },
   "search": {
     "no-results": "Votre recherche n'a donnée aucun résultat",
@@ -38,6 +58,7 @@ export default {
       "hosted-events": "Evennements Hébergés",
       "notifications": "Notifications",
       "attended-events": "Evennements auquels je participe",
+      "nearby-events": "Plus d'évenements",
       "achievements": "Faits d'armes"
     },
     "phone-number": {
@@ -58,6 +79,12 @@ export default {
     "no-account": "Pas de compte ?",
     "create-account": "Créer un compte",
     "have-account": "Déjà inscris ?",
+  },
+  "infos": {
+    "hosted-events": "Evenements hébergés",
+    "attended-events": "Evenements auquels je participe",
+    "nearby-events": "Evenements proches",
+    "last-achievement": "Dernier fait d'armes",
   },
   "profile": {
     "since": "Membre depuis",
@@ -126,7 +153,26 @@ export default {
     "short-description": {
       "empty": "Aucune description brève pour cet évennement.",
     },
-    "count": "Participants : {{attendees-count}} / {{capacity}}"
+    "count": "Participants : {{attendees-count}} / {{capacity}}",
+    "min-attendee": "Cette partie aura lieu seulement s'il y a au moins {{min}} inscris.",
+    "closed": "Cette partie est terminée",
+    "edit": "Editer la partie",
+    "submission": {
+      "pending": "Votre inscription est en attente de validation par l'hôte",
+      "confirmed": "Vous êtes inscris à cette partie"
+    },
+    "quit": "Quitter la partie",
+    "full": "Cette partie est déjà complète",
+    "join": "Rejoindre la partie",
+    "pending-submissions": "Inscriptions en attente",
+    "empty-pending-submissions": "Pas d'inscriptions en attente",
+    "accept": "Accepter",
+    "host": "Hôte",
+    "location": "Lieu"
+  },
+  "comment": {
+    "private": "Rendre le commentaire privé:",
+    "show-privates": "N'afficher que les commentaires privés:"
   },
   "submissions": {
     "empty": "Aucune demande de participation en attente.",
@@ -168,6 +214,14 @@ export default {
       "verified-profile": "vérifier son profil.",
     }
   },
+  "tips": {
+    "register": "Pas encore de compte?",
+    "short-description": "Ajoutez une description courte pour votre profil",
+    "avatar": "Ajoutez une photo de profil",
+    "phone-number": "Ajoutez un numéro de téléphone",
+    "email-verification": "Vérifier votre email",
+    "phone-number-verification": "Vérifier votre numéro de téléphone",
+  },
   "label": {
     "title": "Titre",
     "description": "Description",
@@ -175,6 +229,7 @@ export default {
     "current-password": "Mot de passe actuel",
     "new-password": "Nouveau mot de passe",
     "confirm-password": "Confirmer le nouveau mot de passe",
+    "comment": "Commentaire"
   },
   "placeholder": {
     "title": "Entrer un titre",
@@ -184,6 +239,7 @@ export default {
     "current-password": "Entrer mot de passe actuel",
     "new-password": "Entrer un nouveau mot de passe",
     "confirm-password": "Confirmer le nouveau mot de passe",
+    "comment": "Entrer un commentaire"
   },
   "edit": "Editer",
   "remove": "Supprimer",

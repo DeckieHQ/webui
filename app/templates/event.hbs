@@ -4,34 +4,34 @@
       {{#unless minCapacityReached}}
         <div class='min-capacity'>
           <span class='glyphicon glyphicon-warning-sign'></span>
-          This event will start only if there is {{model.min_capacity}} attendees.
+          {{t 'event.min-attendee' min=model.min_capacity}}
         </div>
       {{/unless}}
 
       <div class='well'>
         {{#unless model.opened}}
-          <div>This event is closed</div>
+          <div>{{t 'event.closed'}}</div>
         {{else if isHost}}
-          {{#link-to 'event.edit'}}<button class="btn btn-warning">Edit event</button>{{/link-to}}
+          {{#link-to 'event.edit'}}<button class="btn btn-warning">{{t 'event.edit'}}</button>{{/link-to}}
         {{else if pending}}
-          <div>Your submission to this event in awaiting the host acceptance</div>
+          <div>{{t 'event.submission.pending'}}</div>
           <div>
             <button {{action 'quit_event'}} class="btn btn-danger">
               Quit
             </button>
           </div>
         {{else if confirmed}}
-          You are attendee to this event
+          {{t 'event.submission.confirmed'}}
           <div>
             <button {{action 'quit_event'}} class="btn btn-danger">
-              Quit
+              {{t 'event.quit'}}
             </button>
           </div>
         {{else if full}}
-          <div>This event is already full</div>
+          <div>{{t 'event.full'}}</div>
         {{else}}
           <div>
-            Join event
+            {{t 'event.join'}}
             {{dynamic-submit actionOnSubmit="join_event"}}
           </div>
         {{/unless}}
@@ -40,17 +40,17 @@
       {{#if isHost}}
         <div class='well'>
           {{#if pendingSubmissions}}
-            <b>Pending submissions</b>
+            <b>{{t 'event.pending-submissions'}}</b>
             <div class='line-separator'></div>
           {{else}}
-            No pending submissions
+            {{t 'event.empty-pending-submissions'}}
           {{/if}}
           {{#each pendingSubmissions as |submission|}}
             <div class='pending-submission'>
               {{profile-link profile=submission.profile}}
               <div class="accept-submission">
                 <button {{action 'accept_submission' submission}}>
-                  Accept
+                  {{t 'event.accept'}}
                 </button>
               </div>
             </div>
@@ -59,7 +59,7 @@
       {{/if}}
 
       <div class='well'>
-        <b>Host</b>
+        <b>{{t 'event.host'}}</b>
         <div class='line-separator'></div>
         {{profile-link profile=model.host}}
         <div>{{model.host.short_description}}</div>
@@ -67,7 +67,7 @@
         {{#if confirmed}}
             <div class="host-contact">
               <button {{action 'display_host_contact'}}>
-                See contact infos
+                {{t 'contact-infos'}}
               </button>
             </div>
           {{/if}}
@@ -81,7 +81,7 @@
       </div>
 
       <div class='well'>
-        <b>Attendees: {{model.attendees.length}} / {{model.capacity}}</b>
+        <b>{{t 'event.count' attendees-count=model.attendees.length capacity=model.capacity}}</b>
         {{#if model.attendees}}
           <div class='line-separator'></div>
         {{/if}}
@@ -93,7 +93,7 @@
       </div>
 
       <div class='well'>
-        <b>Location</b>
+        <b>{{t 'event.location'}}</b>
         <div class='line-separator'></div>
         <div>{{model.street}}</div>
         <div>{{model.postcode}}, {{capitalize model.city}}</div>
@@ -157,12 +157,12 @@
 
       <div class='well'>
         <form>
-          {{validated-input label="Comment" placeholder="Enter your comment" value=message errors=errors.message}}
+          {{validated-input label="label.comment" placeholder="placeholder.comment" value=message errors=errors.message}}
 
           <div class='align-right inline-block'>
             {{#if isMember}}
               <div>
-                Make the comment private:
+                {{t 'comment.private'}}
                 {{input type="checkbox" checked=isPrivate}}
               </div>
             {{/if}}
@@ -174,7 +174,7 @@
 
       {{#if displayPrivateComments}}
         <div>
-          Show only private comments:
+          {{t 'comment.show-privates'}}
           {{input type="checkbox" checked=onlyPrivates}}
         </div>
       {{/if}}

@@ -70,7 +70,7 @@
             <hr>
 
             <div class="goto">
-              <span class="my-btn">Accéder</span>
+              <span class="my-btn">{{t 'welcome.access'}}</span>
             </div>
           </div>
         {{/link-to}}
@@ -80,24 +80,22 @@
 
   <div id='about'>
     <div class='col-md-6'>
-      <h3>Trouver des parties</h3>
-      <div>qzdqzd qzdqzdqz dqzdqz dqzdqzd qzdqzdq zdqzdqzd qzdqzdqzd</div>
-      {{#link-to 'search'}}<div class='goto'>Search</div>{{/link-to}}
+      <h3>{{t 'welcome.find-events.title'}}</h3>
+      <div>{{t 'welcome.find-events.content'}}</div>
+      {{#link-to 'search'}}<div class='goto'>{{t 'navigation.search'}}</div>{{/link-to}}
     </div>
     <div class='col-md-6'>
-      <h3>Trouver des parties</h3>
-      <div>qzdqzd qzdqzdqz dqzdqz dqzdqzd qzdqzdq zdqzdqzd qzdqzdqzd</div>
-      {{#link-to 'events.new'}}<div class='goto'>New event</div>{{/link-to}}
+      <h3>{{t 'welcome.create-events.title'}}</h3>
+      <div>{{t 'welcome.create-events.content'}}</div>
+      {{#link-to 'events.new'}}<div class='goto'>{{t 'navigation.events'}}</div>{{/link-to}}
     </div>
   </div>
 
-  <!-- <div class="clearfix"></div> -->
-
   <div id='beta'>
     <div class='col-md-12'>
-      <h3>Deckie version BETA</h3>
-      <div>qzdqzd qzdqzdqz dqzdqz dqzdqzd qzdqzdq zdqzdqzd qzdqzdqzd</div>
-      {{#link-to 'feedbacks.new'}}<div class='goto'>Send feedback</div>{{/link-to}}
+      <h3>{{t 'welcome.beta.title'}}</h3>
+      <div>{{t 'welcome.beta.content'}}</div>
+      {{#link-to 'feedbacks.new'}}<div class='goto'>{{t 'navigation.feedbacks'}}</div>{{/link-to}}
     </div>
   </div>
 </div>

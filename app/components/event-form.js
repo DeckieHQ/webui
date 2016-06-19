@@ -69,7 +69,7 @@ export default Ember.Component.extend(EmberValidations, {
     "model.min_capacity": {
       numericality: {
         onlyInteger: true,
-        greaterThanOrEqualTo: 1,
+        greaterThanOrEqualTo: 0,
         lessThanOrEqualTo: 'model.capacity'
       }
     },

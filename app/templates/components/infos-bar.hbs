@@ -1,39 +1,39 @@
 <div id='infos-bar'>
   {{#unless session.isAuthenticated}}
     <div class='well'>
-      <div>{{t 'profile.tips.register'}}</div>
-      {{#link-to 'registration' class='goto'}}<div class='goto-btn'>Create account</div>{{/link-to}}
+      <div>{{t 'tips.register'}}</div>
+      {{#link-to 'registration' class='goto'}}<div class='goto-btn'>{{t 'navigation.registration'}}</div>{{/link-to}}
     </div>
   {{else unless currentUser.profile.short_description}}
     <div class='well'>
-      <div>{{t 'profile.tips.short-description'}}</div>
-      {{#link-to 'account.profile' class='goto'}}<div class='goto-btn'>Add</div>{{/link-to}}
+      <div>{{t 'tips.short-description'}}</div>
+      {{#link-to 'account.profile' class='goto'}}<div class='goto-btn'>{{t 'navigation.profile'}}</div>{{/link-to}}
     </div>
   {{else unless currentUser.profile.avatar_url}}
     <div class='well'>
-      <div>{{t 'profile.tips.avatar'}}</div>
-      {{#link-to 'account.profile' class='goto'}}<div class='goto-btn'>Add</div>{{/link-to}}
+      <div>{{t 'tips.avatar'}}</div>
+      {{#link-to 'account.profile' class='goto'}}<div class='goto-btn'>{{t 'navigation.profile'}}</div>{{/link-to}}
     </div>
   {{else unless currentUser.phone_number}}
     <div class='well'>
-      <div>{{t 'profile.tips.phone-number'}}</div>
-      {{#link-to 'account.personnal-information' class='goto'}}<div class='goto-btn'>Add</div>{{/link-to}}
+      <div>{{t 'tips.phone-number'}}</div>
+      {{#link-to 'account.personnal-information' class='goto'}}<div class='goto-btn'>{{t 'navigation.personnal'}}</div>{{/link-to}}
     </div>
   {{else unless currentUser.email_verified}}
     <div class='well'>
-      <div>{{t 'profile.tips.email-verification'}}</div>
-      {{#link-to 'account.verifications' class='goto'}}<div class='goto-btn'>Add</div>{{/link-to}}
+      <div>{{t 'tips.email-verification'}}</div>
+      {{#link-to 'account.verifications' class='goto'}}<div class='goto-btn'>{{t 'navigation.verifications'}}</div>{{/link-to}}
     </div>
   {{else unless currentUser.phone_number_verified}}
     <div class='well'>
-      <div>{{t 'profile.tips.phone-number-verification'}}</div>
-      {{#link-to 'account.verifications' class='goto'}}<div class='goto-btn'>Add</div>{{/link-to}}
+      <div>{{t 'tips.phone-number-verification'}}</div>
+      {{#link-to 'account.verifications' class='goto'}}<div class='goto-btn'>{{t 'navigation.verifications'}}</div>{{/link-to}}
     </div>
   {{/unless}}
 
   {{#if infos.hosted_events}}
     <div class='well'>
-      <label>Hosted events</label>
+      <label>{{t 'infos.hosted-events'}}</label>
       <div class="line-separator"></div>
       {{#each infos.hosted_events as |event|}}
         {{#link-to 'event' event class='event'}}
@@ -43,13 +43,13 @@
           </div>
         {{/link-to}}
       {{/each}}
-      {{#link-to 'account.hosted-events' class='goto'}}<div class='goto-btn'>Hosted events</div>{{/link-to}}
+      {{#link-to 'account.hosted-events' class='goto'}}<div class='goto-btn'>{{t 'navigation.hosted-events'}}</div>{{/link-to}}
     </div>
   {{/if}}
 
   {{#if infos.submissions}}
     <div class='well'>
-      <label>Attended events</label>
+      <label>{{t 'infos.attended-events'}}</label>
       <div class="line-separator"></div>
       {{#each infos.submissions as |submission|}}
         {{#link-to 'event' submission.event class='event'}}
@@ -59,13 +59,13 @@
           </div>
         {{/link-to}}
       {{/each}}
-      {{#link-to 'account.attended-events' class='goto'}}<div class='goto-btn'>Attended events</div>{{/link-to}}
+      {{#link-to 'account.attended-events' class='goto'}}<div class='goto-btn'>{{t 'navigation.attended-events'}}</div>{{/link-to}}
     </div>
   {{/if}}
 
   {{#unless hide_events_nearby}}
     <div class='well'>
-      <label>Events nearby</label>
+      <label>{{t 'infos.nearby-events'}}</label>
       <div class="line-separator"></div>
       {{#each infos.events as |event|}}
         {{#link-to 'event' event.objectID class='event'}}
@@ -75,16 +75,16 @@
           </div>
         {{/link-to}}
       {{/each}}
-      {{#link-to 'search' class='goto'}}<div class='goto-btn'>Plus d'events</div>{{/link-to}}
+      {{#link-to 'search' class='goto'}}<div class='goto-btn'>{{t 'navigation.nearby-events'}}</div>{{/link-to}}
     </div>
   {{/unless}}
 
   {{#if infos.last_achievement}}
     <div class='well'>
-      <label>Last achievement</label>
+      <label>{{t 'infos.last-achievement'}}</label>
       <div class="line-separator"></div>
       <div>{{infos.last_achievement}}</div>
-      {{#link-to 'account.achievements' class='goto'}}<div class='goto-btn'>Mes Haut-faits</div>{{/link-to}}
+      {{#link-to 'account.achievements' class='goto'}}<div class='goto-btn'>{{t 'navigation.achievements'}}</div>{{/link-to}}
     </div>
   {{/if}}
 </div>

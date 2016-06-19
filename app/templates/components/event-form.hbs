@@ -1,31 +1,31 @@
 <form autocomplete="false">
   <div class='row'>
     <div class='col-lg-12'>
-      {{validated-input label="Title" placeholder="Enter title" value=model.title serverErrors=model.errors.title errors=errors.model.title}}
+      {{validated-input label="label.title" placeholder="placeholder.title" value=model.title serverErrors=model.errors.title errors=errors.model.title}}
     </div>
   </div>
 
   <div class='row capacity'>
     <div class='col-lg-4'>
-      <div>{{validated-input label='Min capacity' placeholder="Enter minimum capacity" value=model.min_capacity serverErrors=model.errors.min_capacity errors=errors.model.min_capacity}}</div>
+      <div>{{validated-input label='label.min-capacity' placeholder="placeholder.min-capacity" value=model.min_capacity serverErrors=model.errors.min_capacity errors=errors.model.min_capacity}}</div>
     </div>
     <div class='col-lg-4'>
-      <div>{{validated-input label='Capacity' placeholder="Enter capacity" value=model.capacity serverErrors=model.errors.capacity errors=errors.model.capacity}}</div>
+      <div>{{validated-input label='label.capacity' placeholder="placeholder.capacity" value=model.capacity serverErrors=model.errors.capacity errors=errors.model.capacity}}</div>
     </div>
     <div class='col-lg-4 auto-accept'>
-      Validation automatique: {{input type="checkbox" checked=model.auto_accept}}
+      {{t 'event.auto-accept'}} {{input type="checkbox" checked=model.auto_accept}}
     </div>
   </div>
 
   <div class='row'>
     <div class='col-lg-4'>
-      {{validated-select label="Category" options=categories value=model.category serverErrors=model.errors.category errors=errors.model.category}}
+      {{validated-select label="label.category" options=categories value=model.category serverErrors=model.errors.category errors=errors.model.category}}
     </div>
     <div class='col-lg-4'>
-      {{validated-select label="Ambiance" options=ambiances value=model.ambiance serverErrors=model.errors.ambiance errors=errors.model.ambiance}}
+      {{validated-select label="label.ambiance" options=ambiances value=model.ambiance serverErrors=model.errors.ambiance errors=errors.model.ambiance}}
     </div>
     <div class='col-lg-4'>
-      {{validated-select label="Level" options=levels value=model.level serverErrors=model.errors.level errors=errors.model.level}}
+      {{validated-select label="label.level" options=levels value=model.level serverErrors=model.errors.level errors=errors.model.level}}
     </div>
   </div>
 
@@ -33,13 +33,13 @@
 
   <div class='row'>
     <div class='col-lg-12'>
-      <label>Date</label>
+      <label>{{t 'label.date'}}</label>
     </div>
   </div>
 
   <div class='row'>
     <div class='col-lg-6'>
-      {{validated-date placeholder="Pick date" value=model.begin_at errors=errors.model.begin_at}}
+      {{validated-date placeholder="placeholder.date" value=model.begin_at errors=errors.model.begin_at}}
     </div>
     <div class='col-lg-3'>
       {{validated-select options=hours value=begin_at_hour errors=errors.begin_at_hour}}
@@ -51,20 +51,20 @@
 
   <div class='row'>
     <div class='col-lg-12'>
-      Add end date: {{input type="checkbox" checked=addEndDate}}
+      {{t 'event.add-end-date'}} {{input type="checkbox" checked=addEndDate}}
     </div>
   </div>
 
   {{#if addEndDate}}
     <div class='row'>
       <div class='col-lg-12'>
-        <label>End date</label>
+        <label>{{t 'label.end-date'}}</label>
       </div>
     </div>
 
     <div class='row'>
       <div class='col-lg-6'>
-        {{validated-date placeholder="Pick date" value=model.end_at errors=errors.model.end_at}}
+        {{validated-date placeholder="placeholder.date" value=model.end_at errors=errors.model.end_at}}
       </div>
       <div class='col-lg-3'>
         {{validated-select options=hours value=end_at_hour errors=errors.end_at_hour}}
@@ -79,13 +79,13 @@
 
   <div class='row'>
     <div class='col-lg-12'>
-      {{validated-textarea rows="2" maxlength=140 label="Short description" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
+      {{validated-textarea rows="2" maxlength=140 label="label.short-description" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
     </div>
   </div>
 
   <div class='row'>
     <div class='col-lg-12'>
-      {{validated-textarea rows="7" label="Description" value=model.description serverErrors=model.errors.description errors=errors.model.description}}
+      {{validated-textarea rows="7" label="label.description" value=model.description serverErrors=model.errors.description errors=errors.model.description}}
     </div>
   </div>
 
@@ -93,19 +93,19 @@
 
   <div class='row'>
     <div class='col-lg-12'>
-      {{validated-input label="Street" placeholder="Enter street" value=model.street serverErrors=model.errors.street errors=errors.model.street name='street'}}
+      {{validated-input label="label.street" placeholder="placeholder.street" value=model.street serverErrors=model.errors.street errors=errors.model.street name='street'}}
     </div>
   </div>
 
   <div class='row'>
     <div class='col-lg-4'>
-      {{validated-input label="Postcode" placeholder="Enter postcode" value=model.postcode serverErrors=model.errors.postcode errors=errors.model.postcode name='postcode'}}
+      {{validated-input label="label.postcode" placeholder="placeholder.postcode" value=model.postcode serverErrors=model.errors.postcode errors=errors.model.postcode name='postcode'}}
     </div>
     <div class='col-lg-4'>
-      {{validated-input label="City" placeholder="Enter city" value=model.city serverErrors=model.errors.city errors=errors.model.city name='city'}}
+      {{validated-input label="label.city" placeholder="placeholder.city" value=model.city serverErrors=model.errors.city errors=errors.model.city name='city'}}
     </div>
     <div class='col-lg-4'>
-      {{validated-input label="Country" placeholder="Enter country" value=model.country serverErrors=model.errors.country errors=errors.model.country name='country'}}
+      {{validated-input label="label.country" placeholder="placeholder.country" value=model.country serverErrors=model.errors.country errors=errors.model.country name='country'}}
     </div>
   </div>
 

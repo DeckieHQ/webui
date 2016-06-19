@@ -168,7 +168,9 @@ export default {
     "empty-pending-submissions": "Pas d'inscriptions en attente",
     "accept": "Accepter",
     "host": "Hôte",
-    "location": "Lieu"
+    "location": "Lieu",
+    "add-end-date": "Ajouter une date de fin:",
+    "auto-accept": "Validation automatique:"
   },
   "comment": {
     "private": "Rendre le commentaire privé:",
@@ -229,7 +231,20 @@ export default {
     "current-password": "Mot de passe actuel",
     "new-password": "Nouveau mot de passe",
     "confirm-password": "Confirmer le nouveau mot de passe",
-    "comment": "Commentaire"
+    "comment": "Commentaire",
+    "min-capacity": "Minimum inscris",
+    "capacity": "Places disponibles",
+    "date": "Date",
+    "end-date": "Date de fin",
+    "street": "Adresse",
+    "postcode": "Code postal",
+    "city": "Ville",
+    "country": "Pays",
+    "short-description": "Description courte",
+    "description": "Description longue",
+    "category": "Type de jeu",
+    "ambiance": "Ambiance attendue",
+    "level": "Niveau minimum requis",
   },
   "placeholder": {
     "title": "Entrer un titre",
@@ -239,23 +254,43 @@ export default {
     "current-password": "Entrer mot de passe actuel",
     "new-password": "Entrer un nouveau mot de passe",
     "confirm-password": "Confirmer le nouveau mot de passe",
-    "comment": "Entrer un commentaire"
+    "comment": "Entrer un commentaire",
+    "min-capacity": "Nombre d'inscris minimum pour démarrer",
+    "capacity": "Capacité maximum",
+    "date": "Sélectionner une date",
+    "street": "Entrer une adresse",
+    "postcode": "Code postal",
+    "city": "Ville",
+    "country": "Pays",
+  },
+  "culture": {
+    "fr": "Français",
+    "en": "English"
+  },
+  "category": {
+    "party": "Jeu de collaboration",
+    "board": "Jeu de plateau",
+    "role-playing": "Jeu de rôles",
+    "card": "Jeu de carte",
+    "dice": "Jeu de dès",
+    "miniature": "Jeu de figurines",
+    "strategy": "Jeu de stratégie"
+  },
+  "level": {
+    "beginner": "Débutant",
+    "intermediate": "Intermédiaire",
+    "advanced": "Avancé",
+    "expert": "Expert"
+  },
+  "ambiance": {
+    "relaxed": "Décontracté",
+    "party": "Fun",
+    "serious": "Sérieuse"
   },
   "edit": "Editer",
   "remove": "Supprimer",
   "cancel": "Annuler",
   "contact-infos": "Voir les informations de contact",
-  "Min capacity": "Inscriptions minimums",
-  "Capacity": "Places restantes",
-  "Category": "Type de jeu",
-  "Ambiance": "Ambiance attendue",
-  "Level": "Niveau minimum requis",
-  "Short description": "Description courte",
-  "Description": "Description longue",
-  "Street": "Adresse",
-  "Postcode": "Code postal",
-  "City": "Ville",
-  "Country": "Pays",
   errors: {
     inclusion: "n'est pas inclu dans la liste",
     exclusion: "est réservé",

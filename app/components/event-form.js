@@ -93,7 +93,7 @@ export default Ember.Component.extend(EmberValidations, {
     "model.begin_at": {
       presence: true
     },
-    "model.end_at": {
+    end_at: {
       inline: validator(function() {
         let end_at_hour = this.model.end_at_hour;
         let end_at = this.model.get('model.end_at');
@@ -120,6 +120,8 @@ export default Ember.Component.extend(EmberValidations, {
   actions: {
     save_event: function(defer) {
       let model = this.get('model');
+
+      this.set('showCustomError', true);
 
       let params = {
         transitionToModel: true,

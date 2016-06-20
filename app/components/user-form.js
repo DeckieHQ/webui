@@ -3,7 +3,8 @@ import EmberValidations from 'ember-validations';
 import { validator } from 'ember-validations';
 
 export default Ember.Component.extend(EmberValidations, {
-  session: Ember.inject.service('session'),
+  session: Ember.inject.service(),
+  i18n: Ember.inject.service(),
 
   init: function() {
     this._super.apply(this, arguments);
@@ -19,7 +20,13 @@ export default Ember.Component.extend(EmberValidations, {
 
   validations: {
     "model.email": {
-      presence: true
+      presence: true,
+      inline: validator(function() {
+        let regex = new RegExp(/\S+@\S+\.\S+/);
+        if (!regex.test(this.model.get('model.email'))) {
+          return this.get('i18n').t('error.email');
+        };
+      })
     },
     "model.first_name": {
       presence: true
@@ -40,8 +47,7 @@ export default Ember.Component.extend(EmberValidations, {
         let birthday = moment(date, "DD-MMMM-YYYY");
 
         if (!birthday.isValid()) {
-          //TODO: trad
-          return "you can't do this!"
+          return this.get('i18n').t('error.date');
         }
       })
     },
@@ -121,7 +127,7 @@ export default Ember.Component.extend(EmberValidations, {
       let model = this.get('model');
       let password = this.get('password');
 
-      this.set('showBirthdayError', true);
+      this.set('showCustomError', true);
 
       let afterSave;
 

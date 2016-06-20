@@ -290,6 +290,8 @@ export default {
   "error": {
     "password-confirm": "n'est pas égal au nouveau mot de passe",
     "end-at": "la date de fin doit être supérieure à la date de début",
+    "email": "email invalide",
+    "date": "date invalide",
   },
   "edit": "Editer",
   "remove": "Supprimer",

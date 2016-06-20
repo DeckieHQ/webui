@@ -29,6 +29,8 @@ Router.map(function() {
   this.route('event', { path: '/event/:event_id' }, function() {
     this.route('edit');
   });
+  this.route('notification', { path: '/notification/:notification_id' });
+
   this.route('event-created', { path: '/event-created/:event_id' });
   this.route('profile', { path: '/profile/:profile_id' });
   this.route('feedbacks', function() {

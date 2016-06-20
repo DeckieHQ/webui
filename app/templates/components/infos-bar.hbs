@@ -38,7 +38,12 @@
       {{#each infos.hosted_events as |event|}}
         {{#link-to 'event' event class='event'}}
           <div>
-            <div>{{event.title}}</div>
+            <div>
+              {{event.title}}
+              {{#if event.hasPendingSubmissions}}
+                <span class='glyphicon glyphicon-alert warning'>{{event.pendingSubmissionsCount}}</span>
+              {{/if}}
+            </div>
             <div class='begin_at'>({{moment-from-now event.begin_at}})</div>
           </div>
         {{/link-to}}

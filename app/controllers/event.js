@@ -7,7 +7,6 @@ export default Ember.Controller.extend(EmberValidations, {
 
   validations: {
     message: {
-      presence: true,
       length: { maximum: 200 }
     }
   },

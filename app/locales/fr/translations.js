@@ -10,10 +10,6 @@ export default {
     "index": "Retour à l'acceuil",
     "profile": "Mon profil",
     "personnal": "Mes informations",
-    "hosted-events": "Mes évenements hébergés",
-    "attended-events": "Evenements auquels je participe",
-    "nearby-events": "Plus d'evenements",
-    "achievements": "Mes faits d'armes",
     "search": "Voir les parties"
   },
   "footer": {
@@ -296,7 +292,10 @@ export default {
   "edit": "Editer",
   "remove": "Supprimer",
   "cancel": "Annuler",
-  "contact-infos": "Voir les informations de contact",
+  "add": "Ajouter",
+  "verify": "Vérifier",
+  "see-all": "Voir tous",
+  "see-more": "Voir plus",
   errors: {
     inclusion: "n'est pas inclu dans la liste",
     exclusion: "est réservé",

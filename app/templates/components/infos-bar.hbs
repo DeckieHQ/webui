@@ -17,17 +17,17 @@
   {{else unless currentUser.phone_number}}
     <div class='well'>
       <div>{{t 'tips.phone-number'}}</div>
-      {{#link-to 'account.personnal-information' class='goto'}}<div class='goto-btn'>{{t 'navigation.personnal'}}</div>{{/link-to}}
+      {{#link-to 'account.personnal-information' class='goto'}}<div class='goto-btn'>{{t 'add'}}</div>{{/link-to}}
     </div>
   {{else unless currentUser.email_verified}}
     <div class='well'>
       <div>{{t 'tips.email-verification'}}</div>
-      {{#link-to 'account.verifications' class='goto'}}<div class='goto-btn'>{{t 'navigation.verifications'}}</div>{{/link-to}}
+      {{#link-to 'account.verifications' class='goto'}}<div class='goto-btn'>{{t 'verify'}}</div>{{/link-to}}
     </div>
   {{else unless currentUser.phone_number_verified}}
     <div class='well'>
       <div>{{t 'tips.phone-number-verification'}}</div>
-      {{#link-to 'account.verifications' class='goto'}}<div class='goto-btn'>{{t 'navigation.verifications'}}</div>{{/link-to}}
+      {{#link-to 'account.verifications' class='goto'}}<div class='goto-btn'>{{t 'verify'}}</div>{{/link-to}}
     </div>
   {{/unless}}
 
@@ -43,7 +43,7 @@
           </div>
         {{/link-to}}
       {{/each}}
-      {{#link-to 'account.hosted-events' class='goto'}}<div class='goto-btn'>{{t 'navigation.hosted-events'}}</div>{{/link-to}}
+      {{#link-to 'account.hosted-events' class='goto'}}<div class='goto-btn'>{{t 'see-all'}}</div>{{/link-to}}
     </div>
   {{/if}}
 
@@ -59,7 +59,7 @@
           </div>
         {{/link-to}}
       {{/each}}
-      {{#link-to 'account.attended-events' class='goto'}}<div class='goto-btn'>{{t 'navigation.attended-events'}}</div>{{/link-to}}
+      {{#link-to 'account.attended-events' class='goto'}}<div class='goto-btn'>{{t 'see-all'}}</div>{{/link-to}}
     </div>
   {{/if}}
 
@@ -75,7 +75,7 @@
           </div>
         {{/link-to}}
       {{/each}}
-      {{#link-to 'search' class='goto'}}<div class='goto-btn'>{{t 'navigation.nearby-events'}}</div>{{/link-to}}
+      {{#link-to 'search' class='goto'}}<div class='goto-btn'>{{t 'see-more'}}</div>{{/link-to}}
     </div>
   {{/unless}}
 
@@ -84,7 +84,7 @@
       <label>{{t 'infos.last-achievement'}}</label>
       <div class="line-separator"></div>
       <div>{{infos.last_achievement}}</div>
-      {{#link-to 'account.achievements' class='goto'}}<div class='goto-btn'>{{t 'navigation.achievements'}}</div>{{/link-to}}
+      {{#link-to 'account.achievements' class='goto'}}<div class='goto-btn'>{{t 'see-all'}}</div>{{/link-to}}
     </div>
   {{/if}}
 </div>

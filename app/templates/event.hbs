@@ -64,10 +64,11 @@
         {{profile-link profile=model.host}}
         <div>{{model.host.short_description}}</div>
         {{#unless displayHostContact}}
-        {{#if confirmed}}
+          {{#if confirmed}}
             <div class="host-contact">
               <button {{action 'display_host_contact'}}>
-                {{t 'contact-infos'}}
+                <span class='glyphicon glyphicon-envelope'></span>
+                <span class='glyphicon glyphicon-earphone'></span>
               </button>
             </div>
           {{/if}}

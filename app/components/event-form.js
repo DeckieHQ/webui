@@ -1,8 +1,9 @@
 import Ember from 'ember';
-import EmberValidations from 'ember-validations';
-import { validator } from 'ember-validations';
+import EmberValidations, { validator } from 'ember-validations';
 
 export default Ember.Component.extend(EmberValidations, {
+  i18n: Ember.inject.service(),
+
   init: function() {
     this._super.apply(this, arguments);
 
@@ -14,16 +15,20 @@ export default Ember.Component.extend(EmberValidations, {
     if (begin_at) {
       this.set('begin_at_hour', moment(begin_at).hour().toString());
       this.set('begin_at_minute', moment(begin_at).minute().toString());
+
+      if (end_at) {
+        this.set('addEndDate', true);
+        this.set('end_at_hour', moment(end_at).hour().toString());
+        this.set('end_at_minute', moment(end_at).minute().toString());
+      } else {
+        let default_end_at = moment(begin_at).add(4, 'h');
+        this.set('model.end_at', default_end_at.toDate());
+        this.set('end_at_hour', moment(default_end_at).hour().toString());
+        this.set('end_at_minute', moment(default_end_at).minute().toString());
+      }
     } else {
       this.set('begin_at_hour', '19');
       this.set('begin_at_minute', '0');
-    }
-
-    if (end_at) {
-      this.set('addEndDate', true);
-      this.set('end_at_hour', moment(end_at).hour().toString());
-      this.set('end_at_minute', moment(end_at).minute().toString());
-    } else {
       this.set('end_at_hour', '22');
       this.set('end_at_minute', '30');
     }
@@ -102,38 +107,12 @@ export default Ember.Component.extend(EmberValidations, {
           end_at = moment(end_at);
           end_at.hour(end_at_hour).minute(end_at_minute);
 
-          if (begin_at > end_at) {
-            // TODO: trad
-            return "you can't do this!"
+          if (begin_at > end_at && this.model.get('addEndDate')) {
+            return this.get('i18n').t("error.end-at");
           }
         }
       })
     },
-    begin_at_hour: {
-      presence: true,
-    },
-    begin_at_minute: {
-      presence: true,
-      numericality: {
-        onlyInteger: true,
-        greaterThanOrEqualTo: 0,
-        lessThanOrEqualTo: 59
-      }
-    },
-    end_at_hour: {
-      numericality: {
-        onlyInteger: true,
-        greaterThanOrEqualTo: 0,
-        lessThanOrEqualTo: 23
-      }
-    },
-    end_at_minute: {
-      numericality: {
-        onlyInteger: true,
-        greaterThanOrEqualTo: 0,
-        lessThanOrEqualTo: 59
-      }
-    }
   },
 
   addEndDate: false,
@@ -191,22 +170,22 @@ export default Ember.Component.extend(EmberValidations, {
   ],
 
   hours: [
-    { value: '0', label: '00h' }, { value: '1', label: '01h' }, { value: '2', label: '02h' },
-    { value: '3', label: '03h' }, { value: '4', label: '04h' }, { value: '5', label: '05h' },
-    { value: '6', label: '06h' }, { value: '7', label: '07h' }, { value: '8', label: '08h' },
-    { value: '9', label: '09h' }, { value: '10', label: '10h' }, { value: '11', label: '11h' },
-    { value: '12', label: '12h' }, { value: '13', label: '13h' }, { value: '14', label: '14h' },
-    { value: '15', label: '15h' }, { value: '16', label: '16h' }, { value: '17', label: '17h' },
-    { value: '18', label: '18h' }, { value: '19', label: '19h' }, { value: '20', label: '20h' },
-    { value: '21', label: '21h' }, { value: '22', label: '22h' }, { value: '23', label: '23h' },
+    { value: '0', label: 'hour.00h' }, { value: '1', label: 'hour.01h' }, { value: '2', label: 'hour.02h' },
+    { value: '3', label: 'hour.03h' }, { value: '4', label: 'hour.04h' }, { value: '5', label: 'hour.05h' },
+    { value: '6', label: 'hour.06h' }, { value: '7', label: 'hour.07h' }, { value: '8', label: 'hour.08h' },
+    { value: '9', label: 'hour.09h' }, { value: '10', label: 'hour.10h' }, { value: '11', label: 'hour.11h' },
+    { value: '12', label: 'hour.12h' }, { value: '13', label: 'hour.13h' }, { value: '14', label: 'hour.14h' },
+    { value: '15', label: 'hour.15h' }, { value: '16', label: 'hour.16h' }, { value: '17', label: 'hour.17h' },
+    { value: '18', label: 'hour.18h' }, { value: '19', label: 'hour.19h' }, { value: '20', label: 'hour.20h' },
+    { value: '21', label: 'hour.21h' }, { value: '22', label: 'hour.22h' }, { value: '23', label: 'hour.23h' },
   ],
 
   minutes: [
-    { value: '0', label: '00' }, { value: '5', label: '05' },
-    { value: '10', label: '10' }, { value: '15', label: '15' },
-    { value: '20', label: '20' }, { value: '25', label: '25' },
-    { value: '30', label: '30' }, { value: '35', label: '35' },
-    { value: '40', label: '40' }, { value: '45', label: '45' },
-    { value: '50', label: '50' }, { value: '55', label: '55' },
+    { value: '0', label: 'minute.00' }, { value: '5', label: 'minute.05' },
+    { value: '10', label: 'minute.10' }, { value: '15', label: 'minute.15' },
+    { value: '20', label: 'minute.20' }, { value: '25', label: 'minute.25' },
+    { value: '30', label: 'minute.30' }, { value: '35', label: 'minute.35' },
+    { value: '40', label: 'minute.40' }, { value: '45', label: 'minute.45' },
+    { value: '50', label: 'minute.50' }, { value: '55', label: 'minute.55' },
   ],
 });

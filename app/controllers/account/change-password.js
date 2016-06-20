@@ -1,8 +1,9 @@
 import Ember from 'ember';
-import EmberValidations from 'ember-validations';
+import EmberValidations, { validator } from 'ember-validations';
 
 export default Ember.Controller.extend(EmberValidations, {
-  //TODO: add password confirmation validation
+  i18n: Ember.inject.service(),
+
   validations: {
     "model.current_password": {
       presence: true
@@ -11,7 +12,12 @@ export default Ember.Controller.extend(EmberValidations, {
       presence: true
     },
     "model.confirm_password": {
-      presence: true
+      presence: true,
+      inline: validator(function() {
+        if (this.model.get('model.password') != this.model.get('model.confirm_password')) {
+          return this.get('i18n').t("error.password-confirm");
+        }
+      })
     },
   },
 

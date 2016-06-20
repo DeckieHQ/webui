@@ -287,6 +287,10 @@ export default {
     "party": "Fun",
     "serious": "Sérieuse"
   },
+  "error": {
+    "password-confirm": "n'est pas égal au nouveau mot de passe",
+    "end-at": "la date de fin doit être supérieure à la date de début",
+  },
   "edit": "Editer",
   "remove": "Supprimer",
   "cancel": "Annuler",
@@ -313,5 +317,22 @@ export default {
     otherThan: "ne dois pas être {{count}}",
     odd: "doit être impair",
     even: "doit être pair"
+  },
+  "month": {
+    "january": "janvier", "february": "février", "march": "mars",
+    "april": "avril", "may": "mai", "june": "juin",
+    "jully": "juillet", "august": "août", "september": "septembre",
+    "october": "octobre", "november": "novembre", "december": "decembre"
+  },
+  "hour": {
+    "00h": "00h", "01h": "01h", "02h": "02h", "03h": "03h", "04h": "04h",
+    "05h": "05h", "06h": "06h", "07h": "07h", "08h": "08h", "09h": "09h",
+    "10h": "10h", "11h": "11h", "12h": "12h", "13h": "13h", "14h": "14h",
+    "15h": "15h", "16h": "16h", "17h": "17h", "18h": "18h", "19h": "19h",
+    "20h": "20h", "21h": "21h", "22h": "22h", "23h": "23h",
+  },
+  "minute": {
+    "00": "00", "05": "05", "10": "10", "15": "15", "20": "20", "25": "25",
+    "30": "30", "35": "35", "40": "40", "45": "45", "50": "50", "55": "55"
   }
 };

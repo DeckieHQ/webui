@@ -17,8 +17,8 @@ export default {
     "contact": "contact",
   },
   "welcome": {
-    "title": "Rencontrez des personnes jouant au mêmes jeux que vous",
-    "button": "Chercher un évennement près de chez moi",
+    "title": "Rencontrez des personnes pour jouer à vos jeux préférés",
+    "button": "Voir les parties les plus proches",
     "access": "Accéder",
     "find-events": {
       "title": "Trouver des parties",
@@ -26,7 +26,7 @@ export default {
     },
     "create-events": {
       "title": "Organiser des parties",
-      "content": "Vous détenez le dernier jeu du moment pas encore sorti? Organisez une partie sur Deckie en quelques clics. Sélectionnez une ambiance attendue, un niveau requis, sortez un tonnelet pour vos invités et vous être paré.",
+      "content": "N'attendez plus qu'on vous propose une scéance de jeu. Organisez une partie sur Deckie en quelques clics. Sélectionnez une ambiance attendue, un niveau requis, sortez un tonnelet pour vos invités et vous être paré.",
     },
     "beta": {
       "title": "Deckie est en version beta",
@@ -68,6 +68,9 @@ export default {
     },
     "hosted-events": {
       "empty": "Vous n'avez encore organisé aucune partie"
+    },
+    "attended-events": {
+      "empty": "Vous n'êtes inscris a aucune partie"
     }
   },
   "login": {

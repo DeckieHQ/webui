@@ -78,17 +78,30 @@ export default Ember.Component.extend(EmberValidations, {
         lessThanOrEqualTo: 'model.capacity'
       }
     },
+    "model.short_description": {
+      length: {
+        maximum: 256,
+      },
+    },
+    "model.short_description": {
+      length: {
+        maximum: 8192,
+      },
+    },
     "model.street": {
       presence: true
     },
     "model.postcode": {
-      presence: true
+      presence: true,
+      length: { maximum: 10 }
     },
     "model.city": {
-      presence: true
+      presence: true,
+      length: { maximum: 64 }
     },
     "model.country": {
-      presence: true
+      presence: true,
+      length: { maximum: 64 }
     },
     "model.begin_at": {
       presence: true

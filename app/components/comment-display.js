@@ -6,6 +6,7 @@ export default Ember.Component.extend(EmberValidations, {
 
   validations: {
     "comment.message": {
+      presence: true,
       length: { maximum: 200 }
     }
   },

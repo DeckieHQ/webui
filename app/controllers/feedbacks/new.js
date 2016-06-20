@@ -4,10 +4,16 @@ import EmberValidations from 'ember-validations';
 export default Ember.Controller.extend(EmberValidations, {
   validations: {
     "model.title": {
-      presence: true
+      presence: true,
+      length: {
+        maximum: 128
+      }
     },
     "model.description": {
-      presence: true
+      presence: true,
+      length: {
+        maximum: 8192
+      }
     }
   },
   actions: {

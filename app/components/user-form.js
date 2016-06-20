@@ -29,10 +29,12 @@ export default Ember.Component.extend(EmberValidations, {
       })
     },
     "model.first_name": {
-      presence: true
+      presence: true,
+      length: { maximum: 64 }
     },
     "model.last_name": {
-      presence: true
+      presence: true,
+      length: { maximum: 64 }
     },
     "model.culture": {
       presence: true

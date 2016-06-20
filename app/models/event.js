@@ -8,7 +8,7 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   ambiance: DS.attr(),
   level: DS.attr(),
   capacity: DS.attr(),
-  min_capacity: DS.attr(),
+  min_capacity: DS.attr('number', { defaultValue: 0 }),
   begin_at: DS.attr('date'),
   end_at: DS.attr('date'),
   opened: DS.attr(),

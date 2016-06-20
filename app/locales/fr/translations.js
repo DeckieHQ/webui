@@ -71,6 +71,9 @@ export default {
     },
     "attended-events": {
       "empty": "Vous n'êtes inscris a aucune partie"
+    },
+    "password": {
+      "updated": "Votre mot de passe a bien été mis à jour"
     }
   },
   "login": {
@@ -134,7 +137,7 @@ export default {
     },
     "phonenumber": {
       "label": "Numéro de téléphone",
-      "placeholder": "Entrer numéro de téléphone"
+      "placeholder": "Format: +33611223344"
     },
     "culture": {
       "label": "Langue",

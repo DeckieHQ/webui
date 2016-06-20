@@ -6,5 +6,6 @@ export default AuthenticatedRoute.extend({
     var model = this.currentModel;
     model.rollbackAttributes();
     model.set('current_password', null);
+    this.controllerFor('account.personnal-information').set('updated', false);
   },
 });

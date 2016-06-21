@@ -14,6 +14,8 @@ function init() {
 
     heroku apps:create $app --region eu --buildpack \
       https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/emberjs.tgz
+
+    git remote add $app "https://git.heroku.com/$app.git"
 }
 
 function configure() {
@@ -25,10 +27,16 @@ function configure() {
     done
 
     if [ "$CUSTOM_DOMAIN" ]; then
+        heroku domains:clear --app $app
+
         if [ $build == "production" ]; then
             api_domain_name="api.$CUSTOM_DOMAIN"
+
+            heroku domains:add --app $app "www.$CUSTOM_DOMAIN"
         else
             api_domain_name="$build-api.$CUSTOM_DOMAIN"
+
+            heroku domains:add --app $app "$build.$CUSTOM_DOMAIN"
         fi
     else
         api_domain_name="$api.herokuapp.com"
@@ -37,11 +45,29 @@ function configure() {
     heroku config:set --app $app API_URL="http://$api_domain_name"
 }
 
+function deploy() {
+    heroku config:set REBUILD_ALL=true --app $app
+
+    heroku plugins:install https://github.com/heroku/heroku-repo.git
+
+    heroku repo:purge_cache -a $app
+
+    git push $app master
+
+    heroku config:unset REBUILD_ALL --app $app
+}
+
+function upgrade() {
+    echo "Upgrading dynos..."
+
+    heroku dyno:type hobby --app $app
+}
+
 function clean() {
     heroku apps:destroy --app $app --confirm $app
 }
 
-for supported_cmd in init configure deploy clean
+for supported_cmd in init configure deploy upgrade clean
 do
     if [ "$cmd" == $supported_cmd ]; then
         if [ ! $build ]; then
@@ -56,6 +82,6 @@ do
     fi
 done
 
-echo "usage: bash scripts/heroku.sh [init|configure|deploy|clean] build"
+echo "usage: bash scripts/heroku.sh [init|configure|deploy|upgrade|clean] build"
 
 exit -1

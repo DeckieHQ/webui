@@ -129,6 +129,8 @@ export default Ember.Component.extend(EmberValidations, {
       let model = this.get('model');
       let password = this.get('password');
 
+      model.set('culture', 'fr');
+
       this.set('showCustomError', true);
 
       let afterSave;

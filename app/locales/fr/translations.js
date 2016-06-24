@@ -184,7 +184,8 @@ export default {
     "host": "Hôte",
     "location": "Lieu",
     "add-end-date": "Ajouter une date de fin:",
-    "auto-accept": "Validation automatique:"
+    "auto-accept": "Validation automatique:",
+    "confirm-quit": "Etes vous sûr de vouloir quitter cette partie?"
   },
   "comment": {
     "private": "Rendre le commentaire privé:",
@@ -285,7 +286,7 @@ export default {
     "party": "Jeu de collaboration",
     "board": "Jeu de plateau",
     "role-playing": "Jeu de rôles",
-    "card": "Jeu de carte",
+    "card": "Jeu de cartes",
     "dice": "Jeu de dès",
     "miniature": "Jeu de figurines",
     "strategy": "Jeu de stratégie"
@@ -321,10 +322,10 @@ export default {
   "event-leave": "a quitté la partie",
   "event-update": "a mis à jour la partie",
   "event-cancel": "a annulé la partie",
-  "event-ready": "la partie est prête",
-  "event-not_ready": "la partie n'est plus prête",
-  "event-remove_full": "la partie est pleine",
-  "event-remove_start": "la partie a commencée",
+  "event-ready": "a assez de participants et aura bien lieu",
+  "event-not_ready": "la partie n'a plus assez de participants et n'aura pas lieu si personne ne s'inscrit",
+  "event-remove_full": "est complète, votre inscription n'a pas été retenue",
+  "event-remove_start": "a commencée, votre inscription n'a pas été retenue a temps",
   "event-comment": "a commenté la partie",
   "comment-comment": "a commenté le commentaire",
   "User not found in database": "Ce compte n'existe pas",

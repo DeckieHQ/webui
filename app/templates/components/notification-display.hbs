@@ -3,8 +3,13 @@
     {{avatar-display notification.action.actor}}
   </div>
   <div class="content">
-    <span class="actor">{{notification.action.actor.display_name}}</span>
-    {{t notification.type}}
-    <span class="title">"{{notification.action.title}}"</span>
+    {{#if no_actor}}
+      <span class="title">"{{notification.action.title}}"</span>
+      {{t notification.type}}
+    {{else}}
+      <span class="actor">{{notification.action.actor.display_name}}</span>
+      {{t notification.type}}
+      <span class="title">"{{notification.action.title}}"</span>
+    {{/if}}
   </div>
 </div>

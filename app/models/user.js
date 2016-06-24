@@ -17,4 +17,5 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   profile: DS.belongsTo('profile'),
   hosted_events: DS.hasMany('event'),
   submissions: DS.hasMany('submission'),
+  preferences: DS.belongsTo('preference'),
 });

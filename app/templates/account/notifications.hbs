@@ -1,35 +1,47 @@
 <div class='well'>
-  {{t 'notifications.preferences'}}
+  <label>{{t 'notifications.preferences'}}</label>
   <form>
     <div class='row'>
       <div class='col-md-4'>
         <div>
-          {{input type="checkbox"}}event-submit
+          {{input type="checkbox" checked=event_submit}}event-submit
         </div>
         <div>
-          {{input type="checkbox"}}event-unsubmit
+          {{input type="checkbox" checked=event_unsubmit}}event-unsubmit
         </div>
         <div>
-          {{input type="checkbox"}}event-join
-        </div>
-      </div>
-      <div class='col-md-4'>
-        <div>
-          {{input type="checkbox"}}event-leave
+          {{input type="checkbox" checked=event_join}}event-join
         </div>
         <div>
-          {{input type="checkbox"}}event-update
-        </div>
-        <div>
-          {{input type="checkbox"}}event-cancel
+          {{input type="checkbox" checked=event_leave}}event-leave
         </div>
       </div>
       <div class='col-md-4'>
         <div>
-          {{input type="checkbox"}}event-comment
+          {{input type="checkbox" checked=event_update}}event-update
         </div>
         <div>
-          {{input type="checkbox"}}comment-comment
+          {{input type="checkbox" checked=event_cancel}}event-cancel
+        </div>
+        <div>
+          {{input type="checkbox" checked=event_ready}}event-ready
+        </div>
+        <div>
+          {{input type="checkbox" checked=event_not_ready}}event-not_ready
+        </div>
+      </div>
+      <div class='col-md-4'>
+        <div>
+          {{input type="checkbox" checked=event_remove_full}}event-remove_full
+        </div>
+        <div>
+          {{input type="checkbox" checked=event_remove_start}}event-remove_start
+        </div>
+        <div>
+          {{input type="checkbox" checked=event_comment}}event-comment
+        </div>
+        <div>
+          {{input type="checkbox" checked=comment_comment}}comment-comment
         </div>
       </div>
     </div>

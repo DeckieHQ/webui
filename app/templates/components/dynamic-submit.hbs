@@ -2,7 +2,7 @@
   <button {{action 'submit'}} class="btn btn-warning">
     {{t 'submit.retry'}}
   </button>
-  {{errorMessage}}
+  {{t errorMessage}}
 {{else}}
   <button {{action 'submit'}} class="btn-submit" disabled={{isSaving}}>
     {{#if isSaving}}
@@ -10,7 +10,7 @@
     {{else if isSaved}}
       <span class="glyphicon glyphicon-ok"></span>
     {{else}}
-    {{t 'submit.ok'}}
+      {{t 'submit.ok'}}
     {{/if}}
   </button>
 {{/if}}

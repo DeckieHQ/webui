@@ -40,7 +40,8 @@ export default Ember.Component.extend(EmberValidations, {
       presence: true
     },
     password: {
-      presence: true
+      presence: true,
+      length: { minimum: 8 }
     },
     birthday: {
       inline: validator(function() {

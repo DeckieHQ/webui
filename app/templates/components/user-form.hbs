@@ -16,7 +16,11 @@
   </div>
   {{birthday_error}}
 
-  {{validated-input label="user.phonenumber.label" placeholder="user.phonenumber.placeholder" value=model.phone_number serverErrors=model.errors.phone_number errors=errors.model.phone_number name="phoneNumber"}}
+  <div class="clearfix"></div>
+
+  <label>{{t 'user.phonenumber.label'}}</label>
+  <span>{{t 'optional'}}</span>
+  {{validated-input placeholder="user.phonenumber.placeholder" value=model.phone_number serverErrors=model.errors.phone_number errors=errors.model.phone_number name="phoneNumber"}}
   <!-- {{validated-select label="user.culture.label" options=cultures value=model.culture serverErrors=model.errors.culture errors=errors.model.culture}} -->
 
   {{validated-input label="user.password.label" type="password" placeholder=passwordPlaceHolder value=password serverErrors=passwordErrors errors=errors.password}}

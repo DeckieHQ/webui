@@ -20,7 +20,7 @@ export default Ember.Component.extend({
     let displayErrors = this.get('errors') || [];
     let serverErrors = this.get('serverErrors') || [];
 
-    serverErrors.forEach(e => displayErrors.push(e.message));
+    serverErrors.forEach(e => displayErrors.push(this.get('i18n').t(e.message)));
 
     return displayErrors;
   }.property('errors', 'serverErrors'),

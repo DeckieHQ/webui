@@ -9,7 +9,8 @@ export default Ember.Controller.extend(EmberValidations, {
       presence: true
     },
     "model.password": {
-      presence: true
+      presence: true,
+      length: { minimum: 8 }
     },
     "model.confirm_password": {
       presence: true,

@@ -138,8 +138,9 @@ export default Ember.Component.extend(EmberValidations, {
 
       if (this.get('transition')) {
         afterSave = () => {
-          this.get('session').authenticate('authenticator:devise', model.get('email'), password);
-          this.get('targetObject').send('transition');
+          this.get('session').authenticate('authenticator:devise', model.get('email'), password).then(
+            () => this.get('targetObject').send('transition')
+          );
         }
       } else if (this.get('alreadyCreated')) {
         afterSave = () => {

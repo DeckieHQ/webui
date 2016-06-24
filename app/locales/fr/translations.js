@@ -333,6 +333,7 @@ export default {
   "The adapter rejected the commit because it was invalid": "Une erreur est survenue",
   "has already been taken": "Un compte avec cet email existe déjà",
   "is an invalid number": "Erreur de format, devrait être de la forme +33611223344",
+  "password-forgotten": "Mot de passe oublié?",
   "undefined": "",
   errors: {
     inclusion: "n'est pas inclu dans la liste",

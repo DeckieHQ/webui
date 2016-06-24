@@ -2,5 +2,9 @@
   {{validated-input label="user.email.label" placeholder="user.email.placeholder" value=email errors=errors.email name="email"}}
   {{validated-input label="user.password.label" placeholder="user.password.placeholder.enter" type="password" value=password errors=errors.password}}
 
+  <div class='password-forgotten'>
+    {{#link-to 'password-forgotten'}}{{t 'password-forgotten'}}{{/link-to}}
+  </div>
+
   {{dynamic-submit actionOnSubmit="authenticate"}}
 </form>

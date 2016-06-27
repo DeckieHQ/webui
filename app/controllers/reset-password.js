@@ -23,7 +23,11 @@ export default Ember.Controller.extend(EmberValidations, {
 
   actions: {
     submit: function(defer) {
-      this.send('save', this, defer);
+      let params = {
+        afterSave: () => this.set('success', true),
+        fail: () => this.set('invalidToken', true)
+      }
+      this.send('save', this, defer, params);
     }
   }
 });

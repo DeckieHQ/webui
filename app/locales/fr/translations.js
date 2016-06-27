@@ -260,6 +260,7 @@ export default {
     "category": "Type de jeu",
     "ambiance": "Ambiance attendue",
     "level": "Niveau minimum requis",
+    "email": "Email"
   },
   "placeholder": {
     "title": "Entrer un titre",
@@ -277,6 +278,7 @@ export default {
     "postcode": "Code postal",
     "city": "Ville",
     "country": "Pays",
+    "email": "Entrer email"
   },
   "culture": {
     "fr": "Français",
@@ -308,6 +310,9 @@ export default {
     "email": "email invalide",
     "date": "date invalide",
   },
+  "email-reset-sent": "Un lien pour changer votre mot de passe vous a été envoyé par email",
+  "new-password-updated": "Votre mot de passe a été mis à jour, vous n'avez plus qu'à vous connecter",
+  "invalid-token": "Ce lien n'est plus valide",
   "optional": "(optionnel)",
   "edit": "Editer",
   "remove": "Supprimer",
@@ -331,6 +336,7 @@ export default {
   "User not found in database": "Ce compte n'existe pas",
   "Invalid email or password": "L'email et le mot de passe ne correspondent pas",
   "The adapter rejected the commit because it was invalid": "Une erreur est survenue",
+  "Adapter operation failed": "Une erreur est survenue",
   "has already been taken": "Un compte avec cet email existe déjà",
   "is an invalid number": "Erreur de format, devrait être de la forme +33611223344",
   "password-forgotten": "Mot de passe oublié?",

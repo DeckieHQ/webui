@@ -8,10 +8,12 @@
         <ul class='nav navbar-nav navbar-right'>
           {{#if session.isAuthenticated}}
             <li>{{notifications-box class='notifications_count'}}</li>
+            <li>{{#link-to 'search'}}{{t 'navigation.search'}}{{/link-to}}</li>
             <li>{{#link-to 'events.new'}}{{t 'navigation.events'}}{{/link-to}}</li>
             <li>{{#link-to 'account.dashboard'}}{{t 'navigation.account'}}{{/link-to}}</li>
             <li><a href="#" {{action 'logout'}}>{{t 'navigation.logout'}}</a></li>
           {{else}}
+            <li>{{#link-to 'search'}}{{t 'navigation.search'}}{{/link-to}}</li>
             <li>{{#link-to 'registration'}}{{t 'navigation.registration'}}{{/link-to}}</li>
             <li>{{#link-to 'login'}}{{t 'navigation.login'}}{{/link-to}}</li>
           {{/if}}

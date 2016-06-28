@@ -41,8 +41,13 @@ export default Ember.Route.extend({
 
   actions: {
     sessionAuthenticated() {
-      // this._populateCurrentUser().then(user => this.transitionTo('search'));
       this._populateCurrentUser();
+    },
+
+    sessionInvalidated() {
+      //TODO: not observed
+      this.get('currentUser').set('content', null);
+      this.transitionTo('index');
     },
 
     transition_to(record) {

@@ -7,7 +7,7 @@ export function initialize(instance) {
   });
 
   session.on('invalidationSucceeded', function() {
-    applicationRoute.transitionTo('index');
+    applicationRoute.send('sessionInvalidated');
   });
 };
 

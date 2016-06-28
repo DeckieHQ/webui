@@ -5,6 +5,10 @@ export default Ember.Service.extend({
   currentUser: Ember.inject.service(),
   i18n: Ember.inject.service(),
 
+  valueObserver: Ember.observer('currentUser.content', function(sender, key, value, rev) {
+
+  }),
+
   init() {
     this._super(...arguments);
     if (!navigator.geolocation) { return this._loadSearch(); }
@@ -42,6 +46,7 @@ export default Ember.Service.extend({
   },
 
   hosted_events: function(){
+    console.log('toto');
     if (this.get('currentUser').content) {
       return this.get('currentUser').get('hosted_events').then(
         (events) => {
@@ -49,7 +54,7 @@ export default Ember.Service.extend({
         }
       );
     }
-  }.property(),
+  }.property('valueObserver'),
 
   submissions: function(){
     if (this.get('currentUser').content) {
@@ -59,7 +64,7 @@ export default Ember.Service.extend({
         }
       );
     }
-  }.property(),
+  }.property('currentUser.content'),
 
   last_achievement: function(){
     if (this.get('currentUser').content) {
@@ -71,5 +76,5 @@ export default Ember.Service.extend({
         }
       );
     }
-  }.property(),
+  }.property('currentUser.content'),
 });

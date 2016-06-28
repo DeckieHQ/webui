@@ -21,11 +21,11 @@ export default Ember.Controller.extend(EmberValidations, {
 
   isHost: function() {
     return this.get('currentUser').get('profile.id') == this.get('model.host.id');
-  }.property(),
+  }.property('currentUser.content'),
 
   isMember: function() {
     return this.get('isHost') || this.get('confirmed');
-  }.property('confirmed'),
+  }.property('confirmed', 'isHost'),
 
   displayPrivateComments: function() {
     return this.get('isMember') && (this.get('model.private_comments_count') > 0)

@@ -6,6 +6,10 @@ export default ApplicationAdapter.extend({
     return 'user';
   },
 
+  urlForFindRecord(id, modelName, snapshot) {
+    return this._buildURL(modelName, id) + '?include=profile';
+  },
+
   urlForUpdateRecord: function(id, modelName, snapshot) {
     return this._buildURL(modelName, '');
   },

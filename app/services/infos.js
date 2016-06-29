@@ -5,8 +5,12 @@ export default Ember.Service.extend({
   currentUser: Ember.inject.service(),
   i18n: Ember.inject.service(),
 
-  valueObserver: Ember.observer('currentUser.content', function(sender, key, value, rev) {
-
+  userObserver: Ember.observer('currentUser.content', function(sender, key, value, rev) {
+    if (!this.get('currentUser').content) {
+      this.set('hosted_events', null);
+      this.set('submissions', null);
+      this.set('last_achievement', null);
+    }
   }),
 
   init() {
@@ -46,7 +50,6 @@ export default Ember.Service.extend({
   },
 
   hosted_events: function(){
-    console.log('toto');
     if (this.get('currentUser').content) {
       return this.get('currentUser').get('hosted_events').then(
         (events) => {
@@ -54,7 +57,7 @@ export default Ember.Service.extend({
         }
       );
     }
-  }.property('valueObserver'),
+  }.property('currentUser.content'),
 
   submissions: function(){
     if (this.get('currentUser').content) {
@@ -68,7 +71,9 @@ export default Ember.Service.extend({
 
   last_achievement: function(){
     if (this.get('currentUser').content) {
-      return this.get('currentUser').get('profile').get('achievements').then(
+      return this.get('currentUser').get('profile').then(
+        (profile) => profile.get('achievements')
+      ).then(
         (achievements) => {
           let last_achievement = achievements.get('lastObject')
           let translated = this.get('i18n').t('achievement.'+last_achievement.get('name'));

@@ -2,17 +2,8 @@ import Ember from 'ember';
 import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
 export default Ember.Route.extend({
-  //TODO: gérer le clean des formulaires si pas de submits
-
-  // deactivate: function() {
-  //   let model = this.get('controller.model');
-  //   model.rollbackAttributes();
-  // },
-
-  session: Ember.inject.service('session'),
-
+  session: Ember.inject.service(),
   moment: Ember.inject.service(),
-
   i18n: Ember.inject.service(),
 
   beforeModel(transition) {
@@ -45,7 +36,6 @@ export default Ember.Route.extend({
     },
 
     sessionInvalidated() {
-      //TODO: not observed
       this.get('currentUser').set('content', null);
       this.transitionTo('index');
     },

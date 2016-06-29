@@ -26,6 +26,12 @@ function configure() {
         heroku config:set --app $app $(heroku config:get $key --app $api -s)
     done
 
+    if [ "$SSL" ]; then
+        ssl_prefix="https"
+    else
+        ssl_prefix="http"
+    fi
+
     if [ "$CUSTOM_DOMAIN" ]; then
         heroku domains:clear --app $app
 
@@ -33,6 +39,8 @@ function configure() {
             api_domain_name="api.$CUSTOM_DOMAIN"
 
             heroku domains:add --app $app "www.$CUSTOM_DOMAIN"
+
+            ssl_prefix="https"
         else
             api_domain_name="$build-api.$CUSTOM_DOMAIN"
 
@@ -42,7 +50,7 @@ function configure() {
         api_domain_name="$api.herokuapp.com"
     fi
 
-    heroku config:set --app $app API_URL="http://$api_domain_name"
+    heroku config:set --app $app API_URL="$ssl_prefix://$api_domain_name"
 }
 
 function deploy() {

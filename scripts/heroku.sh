@@ -26,19 +26,19 @@ function configure() {
         heroku config:set --app $app $(heroku config:get $key --app $api -s)
     done
 
-    if [ "$SSL" ]; then
-        ssl_prefix="https"
-    else
-        ssl_prefix="http"
-    fi
-
     if [ "$CUSTOM_DOMAIN" ]; then
         heroku domains:clear --app $app
+
+        if [ $build == "staging" ]; then
+            ssl_prefix="https"
+        fi
 
         if [ $build == "production" ]; then
             api_domain_name="api.$CUSTOM_DOMAIN"
 
             heroku domains:add --app $app "www.$CUSTOM_DOMAIN"
+
+            heroku domains:add --app $app "$CUSTOM_DOMAIN"
 
             ssl_prefix="https"
         else

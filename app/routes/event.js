@@ -21,6 +21,8 @@ export default Ember.Route.extend({
         .then((submission) => {
           if (submission) {
             return this.controllerFor('event').set('user_submission', submission);
+          } else {
+            return this.controllerFor('event').set('user_submission', null);
           }
         })
         .then(() => {
@@ -28,6 +30,8 @@ export default Ember.Route.extend({
 
           if (isHost) {
             return model.query('submissions', { include: 'profile' });
+          } else {
+            this.controllerFor('event').set('submissions', null);
           }
         })
         .then((submissions) => {

@@ -5,6 +5,7 @@ export default Ember.Route.extend({
     var controller = this.get('controller');
     controller.set('message', null);
     controller.set('isPrivate', false);
+    controller.set('displayHostContact', false);
   },
 
   session: Ember.inject.service(),

@@ -22,7 +22,7 @@ export default Ember.Controller.extend(EmberValidations, {
 
   isHost: function() {
     return this.get('currentUser').get('profile.id') == this.get('model.host.id');
-  }.property('currentUser.content'),
+  }.property('currentUser.content', 'model.host'),
 
   isMember: function() {
     return this.get('isHost') || this.get('confirmed');
@@ -47,7 +47,11 @@ export default Ember.Controller.extend(EmberValidations, {
   }.property('status'),
 
   pendingSubmissions: function() {
-    return this.get('submissions').filter((s) => s.get('status') == 'pending');
+    if (this.get('submissions')) {
+      return this.get('submissions').filter((s) => s.get('status') == 'pending');
+    } else {
+      return null;
+    }
   }.property('submissions'),
 
   full: Ember.computed('model.attendees.length', function() {

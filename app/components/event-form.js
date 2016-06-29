@@ -3,6 +3,7 @@ import EmberValidations, { validator } from 'ember-validations';
 
 export default Ember.Component.extend(EmberValidations, {
   i18n: Ember.inject.service(),
+  infos: Ember.inject.service(),
 
   init: function() {
     this._super.apply(this, arguments);
@@ -154,6 +155,10 @@ export default Ember.Component.extend(EmberValidations, {
           } else {
             model.set('end_at', null);
           }
+        },
+        afterSave: () => {
+          this.get('currentUser').get('hosted_events').pushObject(this.get('model'));
+          this.get('infos').setHostedEvents();
         }
       };
 

@@ -13,6 +13,26 @@ export default Ember.Service.extend({
     }
   }),
 
+  setHostedEvents() {
+    if (this.get('currentUser').content) {
+      return this.get('currentUser').get('hosted_events').then(
+        (events) => {
+          this.set('hosted_events', events.slice(0, 3));
+        }
+      );
+    }
+  },
+
+  setSubmissions() {
+    if (this.get('currentUser').content) {
+      return this.get('currentUser').content.query('submissions', { include: 'event' }).then(
+        (submissions) => {
+          this.set('submissions', submissions.slice(0, 3));
+        }
+      );
+    }
+  },
+
   init() {
     this._super(...arguments);
     if (!navigator.geolocation) { return this._loadSearch(); }

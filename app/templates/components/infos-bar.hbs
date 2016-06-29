@@ -39,7 +39,7 @@
         {{#link-to 'event' event class='event'}}
           <div>
             <div>
-              {{event.title}}
+              <span class={{if event.ready 'ready'}}>{{event.title}}</span>
               {{#if event.hasPendingSubmissions}}
                 <span class='glyphicon glyphicon-alert warning'>{{event.pendingSubmissionsCount}}</span>
               {{/if}}
@@ -59,7 +59,7 @@
       {{#each infos.submissions as |submission|}}
         {{#link-to 'event' submission.event class='event'}}
           <div>
-            <div>{{submission.event.title}}</div>
+            <div class={{submission.status}}>{{submission.event.title}}</div>
             <div class='begin_at'>({{moment-from-now submission.event.begin_at}})</div>
           </div>
         {{/link-to}}

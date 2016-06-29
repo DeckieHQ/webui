@@ -12,6 +12,7 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   begin_at: DS.attr('date'),
   end_at: DS.attr('date'),
   opened: DS.attr(),
+  ready: DS.attr(),
   description: DS.attr(),
   short_description: DS.attr(),
   attendees_count: DS.attr(),

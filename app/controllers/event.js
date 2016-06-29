@@ -4,6 +4,7 @@ import EmberValidations from 'ember-validations';
 export default Ember.Controller.extend(EmberValidations, {
   session: Ember.inject.service(),
   i18n: Ember.inject.service(),
+  infos: Ember.inject.service(),
 
   validations: {
     message: {
@@ -70,6 +71,8 @@ export default Ember.Controller.extend(EmberValidations, {
           afterSave: () => {
             this.set('user_submission', submission);
             this.get('model').get('attendees').reload();
+            this.get('currentUser').get('submissions').pushObject(submission);
+            this.get('infos').setSubmissions();
           },
           model: submission
         };
@@ -83,7 +86,10 @@ export default Ember.Controller.extend(EmberValidations, {
     quit_event: function() {
       if (confirm(this.get('i18n').t('event.confirm-quit'))) {
         this.get('user_submission').destroyRecord().then(
-          () => this.set('user_submission', null)
+          () => {
+            this.set('user_submission', null);
+            this.get('infos').setSubmissions();
+          }
         );
       }
     },

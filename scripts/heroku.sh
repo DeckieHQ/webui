@@ -65,6 +65,10 @@ function deploy() {
     heroku config:unset REBUILD_ALL --app $app
 }
 
+function env() {
+    heroku config --app $app -s
+}
+
 function upgrade() {
     echo "Upgrading dynos..."
 
@@ -75,7 +79,7 @@ function clean() {
     heroku apps:destroy --app $app --confirm $app
 }
 
-for supported_cmd in init configure deploy upgrade clean
+for supported_cmd in init configure deploy env upgrade clean
 do
     if [ "$cmd" == $supported_cmd ]; then
         if [ ! $build ]; then
@@ -90,6 +94,6 @@ do
     fi
 done
 
-echo "usage: bash scripts/heroku.sh [init|configure|deploy|upgrade|clean] build"
+echo "usage: bash scripts/heroku.sh [init|configure|deploy|env|upgrade|clean] build"
 
 exit -1

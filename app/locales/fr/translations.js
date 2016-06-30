@@ -10,7 +10,7 @@ export default {
     "index": "Retour à l'acceuil",
     "profile": "Mon profil",
     "personnal": "Mes informations",
-    "search": "Voir les parties"
+    "search": "Rechercher un évennement"
   },
   "footer": {
     "incorporated": "pas encore incorporée",

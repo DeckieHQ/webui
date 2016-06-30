@@ -3,19 +3,13 @@ import Ember from 'ember';
 
 import ENV from '../config/environment';
 
-function getTemplate(templateName) {
-  return document.querySelector('#' + templateName + '-template').innerHTML;
-}
-
-function getHeader(title) {
-  return '<label>' + title + '</label>';
-}
-
 let Search = Ember.Object.extend({
   result: { hits: [] }
 });
 
 export default Ember.Route.extend({
+  i18n: Ember.inject.service(),
+
   model() {
     return Search.create();
   },
@@ -46,15 +40,12 @@ export default Ember.Route.extend({
         widgets = [
         instantsearch.widgets.searchBox({
           container: '#search-input',
-          placeholder: 'Search for events'
+          placeholder: this.get('i18n').t('placeholder.search')
         }),
         instantsearch.widgets.hits({
           container: '#hits',
           hitsPerPage: 10,
-          templates: {
-            item: getTemplate('hit'),
-            empty: getTemplate('no-results')
-          }
+          templates: { item: this.templateFor('hit'), empty: this.templateFor('no-results') }
         }),
         instantsearch.widgets.stats({
           container: '#stats'
@@ -62,14 +53,37 @@ export default Ember.Route.extend({
         instantsearch.widgets.pagination({
           container: '#pagination'
         }),
+        instantsearch.widgets.numericRefinementList({
+          container: '#full',
+          attributeName: 'full',
+          options: [
+            { name: this.get('i18n').t('label.all') },
+            { start: 0, end: 0, name: this.get('i18n').t('label.hide-full') }
+          ],
+          autoHideContainer: false
+        }),
+        instantsearch.widgets.numericRefinementList({
+          container: '#auto-accept',
+          attributeName: 'auto_accept',
+          options: [
+            { name: this.get('i18n').t('label.all') },
+            { start: 1, end: 1, name: this.get('i18n').t('label.auto-accept') },
+            { start: 0, end: 0, name: this.get('i18n').t('label.manual') }
+          ],
+          templates: {
+            header: this.labelFor('invitation')
+          },
+          autoHideContainer: false
+        }),
         instantsearch.widgets.refinementList({
           container: '#category',
           attributeName: 'category',
           limit: 10,
           operator: 'or',
           templates: {
-            header: getHeader('Category:')
-          }
+            header: this.labelFor('category')
+          },
+          autoHideContainer: false
         }),
         instantsearch.widgets.refinementList({
           container: '#ambiance',
@@ -77,8 +91,9 @@ export default Ember.Route.extend({
           limit: 10,
           operator: 'or',
           templates: {
-            header: getHeader('Expected ambiance:')
-          }
+            header: this.labelFor('ambiance')
+          },
+          autoHideContainer: false
         }),
         instantsearch.widgets.refinementList({
           container: '#level',
@@ -86,20 +101,40 @@ export default Ember.Route.extend({
           limit: 10,
           operator: 'or',
           templates: {
-            header: getHeader('Minimum level required:')
-          }
+            header: this.labelFor('level')
+          },
+          autoHideContainer: false
         })
       ];
       widgets.forEach(search.addWidget, search);
 
       search.start();
 
-      search.helper.on('result', this.eventsHandler(this));
+      search.helper.on('result', this.resultsHandler(this));
     });
   },
-  eventsHandler: function(context) {
+  resultsHandler: function(context) {
     return function(results) {
       context.modelFor('search').set('result', results);
+
+      ['category', 'ambiance', 'level'].forEach(facet => {
+        document
+        .querySelector(`#${facet}`)
+        .querySelectorAll("input[type='checkbox']").forEach(input => {
+          let label = context.get('i18n').t(`${facet}.${input.value}`),
+             parent = input.parentElement;
+
+          parent.innerHTML = parent.innerHTML.replace(`>${input.value}`, `>${label}`);
+        });
+      });
     }
+  },
+  labelFor: function(refinementName) {
+    let label = this.get('i18n').t(`label.${refinementName}`);
+
+    return `<label>${label}<label>`;
+  },
+  templateFor: function(templateName) {
+    return document.querySelector(`#${templateName}-template`).innerHTML;
   }
 });

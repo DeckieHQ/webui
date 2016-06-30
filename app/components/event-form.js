@@ -168,7 +168,7 @@ export default Ember.Component.extend(EmberValidations, {
 
   ambiances: [
     { value: 'relaxed', label: 'ambiance.relaxed' },
-    { value: 'party', label: 'ambiance.party' },
+    { value: 'party',   label: 'ambiance.party'   },
     { value: 'serious', label: 'ambiance.serious' }
   ],
 

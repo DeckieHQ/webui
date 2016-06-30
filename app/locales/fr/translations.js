@@ -183,13 +183,13 @@ export default {
     "accept": "Accepter",
     "host": "Hôte",
     "location": "Lieu",
-    "add-end-date": "Ajouter une date de fin:",
-    "auto-accept": "Validation automatique:",
+    "add-end-date": "Ajouter une date de fin",
+    "auto-accept": "Validation automatique",
     "confirm-quit": "Etes vous sûr de vouloir quitter cette partie?"
   },
   "comment": {
-    "private": "Rendre le commentaire privé:",
-    "show-privates": "N'afficher que les commentaires privés:"
+    "private": "Rendre le commentaire privé :",
+    "show-privates": "N'afficher que les commentaires privés :"
   },
   "submissions": {
     "empty": "Aucune demande de participation en attente.",
@@ -232,7 +232,7 @@ export default {
     }
   },
   "tips": {
-    "register": "Pas encore de compte?",
+    "register": "Pas encore de compte ?",
     "short-description": "Ajoutez une description courte pour votre profil",
     "avatar": "Ajoutez une photo de profil",
     "phone-number": "Ajoutez un numéro de téléphone",
@@ -260,7 +260,12 @@ export default {
     "category": "Type de jeu",
     "ambiance": "Ambiance attendue",
     "level": "Niveau minimum requis",
-    "email": "Email"
+    "email": "Email",
+    "all": "Tous",
+    "invitation": "Invitation",
+    "auto-accept": "Automatique",
+    "manual": "Manuelle",
+    "hide-full": "Masquer les évennements complets"
   },
   "placeholder": {
     "title": "Entrer un titre",
@@ -278,7 +283,8 @@ export default {
     "postcode": "Code postal",
     "city": "Ville",
     "country": "Pays",
-    "email": "Entrer email"
+    "email": "Entrer email",
+    "search": "Cherchez un évennement..."
   },
   "culture": {
     "fr": "Français",
@@ -289,7 +295,7 @@ export default {
     "board": "Jeu de plateau",
     "role-playing": "Jeu de rôles",
     "card": "Jeu de cartes",
-    "dice": "Jeu de dès",
+    "dice": "Jeu de dés",
     "miniature": "Jeu de figurines",
     "strategy": "Jeu de stratégie"
   },
@@ -300,7 +306,7 @@ export default {
     "expert": "Expert"
   },
   "ambiance": {
-    "relaxed": "Décontracté",
+    "relaxed": "Décontractée",
     "party": "Fun",
     "serious": "Sérieuse"
   },
@@ -339,7 +345,7 @@ export default {
   "Adapter operation failed": "Une erreur est survenue",
   "has already been taken": "Un compte avec cet email existe déjà",
   "is an invalid number": "Erreur de format, devrait être de la forme +33611223344",
-  "password-forgotten": "Mot de passe oublié?",
+  "password-forgotten": "Mot de passe oublié ?",
   "undefined": "",
   errors: {
     inclusion: "n'est pas inclu dans la liste",

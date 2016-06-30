@@ -133,12 +133,7 @@
             <div class='short-description'>
              {{model.short_description}}
             </div>
-            <div class='categories'>
-              <span class='icon-tags'></span>
-              <span>{{model.category}}</span>,
-              <span>{{model.ambiance}}</span>, for
-              <span>{{model.level}}</span> !
-            </div>
+            {{display-categories event=model}}
           </div>
           <div class='col-lg-3'>
             <div class="attendees">

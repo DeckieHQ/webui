@@ -1,6 +1,10 @@
 <div id='search' class='col-md-10'>
   <div class='row'>
     <div class='col-lg-3 well'>
+      <div id="full" class="facet"></div>
+      <hr>
+      <div id="auto-accept" class="facet"></div>
+      <hr>
       <div id="category" class="facet"></div>
       <hr>
       <div id="ambiance" class="facet"></div>
@@ -47,12 +51,7 @@
                   <div class='description'>
                    {{event.short_description}}
                   </div>
-                  <div class='categories'>
-                    <span class='icon-tags'></span>
-                    <span>{{event.category}}</span>,
-                    <span>{{event.ambiance}}</span>, for
-                    <span>{{event.level}}</span> !
-                  </div>
+                  {{display-categories event=event}}
                   <div class='host'>
                     <span class='avatar-small'>
                       {{avatar-display profile=event.host}}

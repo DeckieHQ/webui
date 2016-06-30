@@ -30,12 +30,7 @@
             <div class='description'>
              {{submission.event.short_description}}
             </div>
-            <div class='categories'>
-              <span class='icon-tags'></span>
-              <span>{{submission.event.category}}</span>,
-              <span>{{submission.event.ambiance}}</span>, for
-              <span>{{submission.event.level}}</span> !
-            </div>
+            {{display-categories event=submission.event}}
             <div class='host'>
               <span class='avatar-small'>
                 {{avatar-display profile=submission.event.host}}
@@ -57,7 +52,7 @@
       <div class='no-event'>{{t 'account.attended-events.empty'}}</div>
       <hr>
       <div class='create'>
-        {{#link-to 'events.new' class='goto'}}{{t 'navigation.search'}}{{/link-to}}
+        {{#link-to 'search' class='goto'}}{{t 'navigation.search'}}{{/link-to}}
       </div>
     </div>
   {{/each}}

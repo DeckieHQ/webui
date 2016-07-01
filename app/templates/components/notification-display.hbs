@@ -1,6 +1,6 @@
 <div {{action 'transition_to'}} class="notification {{if notification.viewed 'viewed'}}">
   <div class="avatar">
-    {{avatar-display notification.action.actor}}
+    {{avatar-display profile=notification.action.actor}}
   </div>
   <div class="content">
     {{#if no_actor}}

@@ -56,9 +56,9 @@ function configure() {
 function deploy() {
     heroku config:set REBUILD_ALL=true --app $app
 
-    heroku plugins:install https://github.com/heroku/heroku-repo.git
+    #heroku plugins:install https://github.com/heroku/heroku-repo.git
 
-    heroku repo:purge_cache -a $app
+    #heroku repo:purge_cache -a $app
 
     git push $app master
 

@@ -34,6 +34,10 @@
   color: #f0ad4e;
 }
 
+.success {
+  color: #449d44;
+}
+
 #verify {
   @extend .well, .col-lg-6, .col-lg-offset-3;
   text-align: center;
@@ -68,7 +72,7 @@
 }
 
 .success {
-  color: green;
+  color: #449d44;
   text-align: center;
 }
 

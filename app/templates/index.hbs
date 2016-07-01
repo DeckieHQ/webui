@@ -1,7 +1,13 @@
 <div id="welcome">
   <div id='welcome-container'>
     <div class='welcome'>
-      <h1>{{t 'welcome.title'}}</h1>
+      <h1>
+        <span>{{t 'welcome.title.meet'}}</span>
+        <span class='success'>{{t 'welcome.title.people'}}</span>
+        <span>{{t 'welcome.title.play'}}</span>
+        <span class='success'>{{t 'welcome.title.game'}}</span>
+        <span>{{t 'welcome.title.favorite'}}</span>
+      </h1>
 
       {{#link-to 'search'}}<button class="btn btn-success btn-lg">{{t 'welcome.button'}}</button>{{/link-to}}
     </div>

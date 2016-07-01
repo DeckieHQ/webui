@@ -1,6 +1,6 @@
 export default {
   "navigation": {
-    "events": "Créer un évennement",
+    "events": "Créer une partie",
     "feedbacks": "Envoyer votre avis",
     "account": "Mon Compte",
     "registration": "Inscription",
@@ -10,14 +10,20 @@ export default {
     "index": "Retour à l'acceuil",
     "profile": "Mon profil",
     "personnal": "Mes informations",
-    "search": "Rechercher un évennement"
+    "search": "Rechercher une partie"
   },
   "footer": {
     "incorporated": "pas encore incorporée",
     "contact": "contact",
   },
   "welcome": {
-    "title": "Rencontrez des personnes pour jouer à vos jeux préférés",
+    "title": {
+      "meet": "Rencontrez des",
+      "people": "gens",
+      "play": "pour jouer à vos",
+      "game": "jeux",
+      "favorite": "préférés",
+    },
     "button": "Voir les parties les plus proches",
     "access": "Accéder",
     "find-events": {

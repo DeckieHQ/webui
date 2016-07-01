@@ -36,6 +36,7 @@ Router.map(function() {
   this.route('feedbacks', function() {
     this.route('new');
   });
+  this.route('notification', { path: '/notification/:notification_id' });
   this.route('feedback-sent');
 });
 

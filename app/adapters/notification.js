@@ -6,6 +6,10 @@ export default ApplicationAdapter.extend({
     return this._buildURL('user/'+modelName);
   },
 
+  urlForFindRecord(id, modelName) {
+    return this._buildURL(modelName, id)+'?include=action';
+  },
+
   updateRecord(store, type, snapshot) {
     var url = this.buildURL(type.modelName, snapshot.id, snapshot, 'updateRecord') + '/view';
 

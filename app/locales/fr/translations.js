@@ -24,19 +24,20 @@ export default {
       "game": "jeux",
       "favorite": "préférés",
     },
+    "beta-tmp": "(Créez ou rejoignez des parties qui commenceront à partir du 7 juillet)",
     "button": "Voir les parties les plus proches",
     "access": "Accéder",
     "find-events": {
       "title": "Trouver des parties",
-      "content": "Rencontrez des gens qui jouent à vos jeux préférés. Deckie vous sélectionne les parties à côté de chez vous. Affinez la sélection par type de jeu, ambiance attendue ou niveau requis.",
+      "content": "Rencontrez des gens qui jouent à tous types de jeux (ludiques, cartes, jeu de rôle...). Deckie vous sélectionne les parties les plus proches de vous. Affinez la sélection par type de jeu, ambiance attendue ou niveau requis et choisissez la partie qui vous convient le mieux.",
     },
     "create-events": {
       "title": "Organiser des parties",
-      "content": "N'attendez plus qu'on vous propose une scéance de jeu. Organisez une partie sur Deckie en quelques clics. Sélectionnez une ambiance attendue, un niveau requis, sortez un tonnelet pour vos invités et vous être paré.",
+      "content": "Vous voulez jouer à un jeu bien précis? N'attendez plus qu'on vous propose. Organisez une partie sur Deckie en quelques clics. Sélectionnez une ambiance attendue, un niveau requis et le nombre de places disponibles et vous pret à rencontrer des gens interessés par le même jeu.",
     },
     "beta": {
       "title": "Deckie est en version beta",
-      "content": "Deckie lance sa beta ouverte début juillet. Inscrivez vous, créez ou participez à des parties pour un lancement officiel début septembre.",
+      "content": "Deckie lance sa beta ouverte début juillet. Inscrivez vous, créez et rejoignez des parties qui commenceront à partir du 7 juillet. La beta durera tout l'été pour un lancement officiel fin août au retour des vacances. D'ici là n'hésitez pas à nous envoyer vos avis pour améliorer la plateforme (bugs, suggestions, encouragements...).",
     },
   },
   "search": {

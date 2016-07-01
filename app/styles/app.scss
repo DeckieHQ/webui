@@ -260,10 +260,13 @@
 
 .host-contact {
   text-align: center;
+  margin-top: 5px;
 }
 
 .host-contact > button {
-  @extend .btn, .btn-sm, .btn-warning;
+  @extend .btn, .btn-sm, .btn-info;
+  background-color: #337ab7;
+  border-color: #337ab7;
 }
 
 .accept-submission > button {
@@ -273,7 +276,9 @@
 
 .attendee-contact > button {
   vertical-align: -webkit-baseline-middle;
-  @extend .btn, .btn-xs, .btn-warning;
+  @extend .btn, .btn-xs, .btn-info;
+  background-color: #337ab7;
+  border-color: #337ab7;
 }
 
 .no-account-container {

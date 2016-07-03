@@ -298,24 +298,24 @@ export default {
     "en": "English"
   },
   "category": {
-    "party": "Jeu de collaboration",
     "board": "Jeu de plateau",
     "role-playing": "Jeu de rôles",
     "card": "Jeu de cartes",
     "dice": "Jeu de dés",
     "miniature": "Jeu de figurines",
+    "video": "Jeux Vidéo",
+    "outdoor": "Jeux en plein air",
     "strategy": "Jeu de stratégie"
   },
   "level": {
     "beginner": "Débutant",
     "intermediate": "Intermédiaire",
     "advanced": "Avancé",
-    "expert": "Expert"
   },
   "ambiance": {
     "relaxed": "Décontractée",
-    "party": "Fun",
-    "serious": "Sérieuse"
+    "serious": "Sérieuse",
+    "teasing": "Fun",
   },
   "error": {
     "password-confirm": "n'est pas égal au nouveau mot de passe",

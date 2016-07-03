@@ -168,25 +168,25 @@ export default Ember.Component.extend(EmberValidations, {
 
   ambiances: [
     { value: 'relaxed', label: 'ambiance.relaxed' },
-    { value: 'party',   label: 'ambiance.party'   },
-    { value: 'serious', label: 'ambiance.serious' }
+    { value: 'serious', label: 'ambiance.serious' },
+    { value: 'teasing', label: 'ambiance.teasing' },
   ],
 
   categories: [
-    { value: 'party', label: 'category.party' },
-    { value: 'board', label: 'category.board' },
+    { value: 'board',     label: 'category.board' },
     { value: 'role-playing', label: 'category.role-playing' },
-    { value: 'card', label: 'category.card' },
-    { value: 'dice', label: 'category.dice' },
+    { value: 'card',      label: 'category.card' },
+    { value: 'dice',      label: 'category.dice' },
     { value: 'miniature', label: 'category.miniature' },
-    { value: 'strategy', label: 'category.strategy' },
+    { value: 'strategy',  label: 'category.strategy' },
+    { value: 'video',     label: 'category.video' },
+    { value: 'outdoor',   label: 'category.outdoor' },
   ],
 
   levels: [
     { value: 'beginner', label: 'level.beginner' },
     { value: 'intermediate', label: 'level.intermediate' },
-    { value: 'advanced', label: 'level.advanced' },
-    { value: 'expert', label: 'level.expert' },
+    { value: 'advanced', label: 'level.advanced' }
   ],
 
   hours: [

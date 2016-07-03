@@ -118,7 +118,7 @@
               </div>
               <div class="time">
                 <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                {{moment-format model.begin_at 'HH:MM'}}
+                {{moment-format model.begin_at 'HH:mm'}}
               </div>
               <div class="place">
                 <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
@@ -129,7 +129,7 @@
         </div>
         <div class='row social'>
           <div class='col-lg-6'>
-            {{facebook-share fb-layout="button" fb-title=model.title}}
+            {{facebook-share fb-layout="button"}}
           </div>
         </div>
         <div class='row body'>

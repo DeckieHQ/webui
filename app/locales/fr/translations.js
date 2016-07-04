@@ -7,7 +7,7 @@ export default {
     "login": "Connexion",
     "logout": "Deconnexion",
     "verifications": "Mes vérifications",
-    "index": "Retour à l'acceuil",
+    "index": "Retour à l'accueil",
     "profile": "Mon profil",
     "personnal": "Mes informations",
     "search": "Rechercher une partie"
@@ -33,11 +33,11 @@ export default {
     },
     "create-events": {
       "title": "Organiser des parties",
-      "content": "Vous voulez jouer à un jeu bien précis? N'attendez plus qu'on vous propose. Organisez une partie sur Deckie en quelques clics. Sélectionnez une ambiance attendue, un niveau requis et le nombre de places disponibles et vous pret à rencontrer des gens interessés par le même jeu.",
+      "content": "Vous voulez jouer à un jeu bien précis? N'attendez plus qu'on vous propose. Organisez une partie sur Deckie en quelques clics. Sélectionnez une ambiance attendue, un niveau requis et le nombre de places disponibles et vous êtes prêts à rencontrer des gens intéressés par le même jeu.",
     },
     "beta": {
       "title": "Deckie est en version beta",
-      "content": "Deckie lance sa beta ouverte début juillet. Inscrivez vous, créez et rejoignez des parties qui commenceront à partir du 7 juillet. La beta durera tout l'été pour un lancement officiel fin août au retour des vacances. D'ici là n'hésitez pas à nous envoyer vos avis pour améliorer la plateforme (bugs, suggestions, encouragements...).",
+      "content": "Deckie lance sa beta ouverte début juillet. Inscrivez-vous, créez et rejoignez des parties qui commenceront à partir du 7 juillet. La beta durera tout l'été pour un lancement officiel fin août au retour des vacances. D'ici là n'hésitez pas à nous envoyer vos avis pour améliorer la plateforme (bugs, suggestions, encouragements...).",
     },
   },
   "search": {
@@ -59,7 +59,7 @@ export default {
     "event-ready": "la partie est prête",
     "event-not_ready": "la partie n'est plus prête",
     "event-remove_full": "la partie est pleine",
-    "event-remove_start": "la partie a commencée",
+    "event-remove_start": "la partie a commencé",
     "event-comment": "a commenté la partie",
     "comment-comment": "a commenté le commentaire",
   },
@@ -72,7 +72,7 @@ export default {
       "password": "Changer mot de passe",
       "hosted-events": "Parties Hébergées",
       "notifications": "Notifications",
-      "attended-events": "Parties auquelles je participe",
+      "attended-events": "Parties auxquelles je participe",
       "nearby-events": "Plus d'évenements",
       "achievements": "Faits d'armes"
     },
@@ -89,7 +89,7 @@ export default {
       "empty": "Vous n'avez encore organisé aucune partie"
     },
     "attended-events": {
-      "empty": "Vous n'êtes inscris a aucune partie"
+      "empty": "Vous n'êtes inscrits à aucune partie"
     },
     "password": {
       "updated": "Votre mot de passe a bien été mis à jour"
@@ -99,11 +99,11 @@ export default {
     "title": "Se connecter",
     "no-account": "Pas de compte ?",
     "create-account": "Créer un compte",
-    "have-account": "Déjà inscris ?",
+    "have-account": "Déjà inscrit ?",
   },
   "infos": {
     "hosted-events": "Parties hébergées",
-    "attended-events": "Parties auquelles je participe",
+    "attended-events": "Parties auxquelles je participe",
     "nearby-events": "Parties proches",
     "last-achievement": "Dernier fait d'armes",
   },
@@ -175,12 +175,12 @@ export default {
       "empty": "Aucune description brève pour cet évennement.",
     },
     "count": "Participants : {{attendees-count}} / {{capacity}}",
-    "min-attendee": "Cette partie aura lieu seulement s'il y a au moins {{min}} inscris.",
+    "min-attendee": "Cette partie aura lieu seulement s'il y a au moins {{min}} inscrits.",
     "closed": "Cette partie est terminée",
     "edit": "Editer la partie",
     "submission": {
       "pending": "Votre inscription est en attente de validation par l'hôte",
-      "confirmed": "Vous êtes inscris à cette partie"
+      "confirmed": "Vous êtes inscrits à cette partie"
     },
     "quit": "Quitter la partie",
     "full": "Cette partie est déjà complète",
@@ -196,7 +196,8 @@ export default {
   },
   "comment": {
     "private": "Rendre le commentaire privé :",
-    "show-privates": "N'afficher que les commentaires privés :"
+    "show-privates": "N'afficher que les commentaires privés :",
+    "confirm-delete": "Vous allez supprimer le commentaire, continuer?"
   },
   "submissions": {
     "empty": "Aucune demande de participation en attente.",
@@ -254,8 +255,8 @@ export default {
     "new-password": "Nouveau mot de passe",
     "confirm-password": "Confirmer le nouveau mot de passe",
     "comment": "Commentaire",
-    "min-capacity": "Minimum inscris",
-    "capacity": "Places disponibles",
+    "min-capacity": "Minimum inscrits",
+    "capacity": "Maximum inscrits",
     "date": "Date",
     "end-date": "Date de fin",
     "street": "Adresse",
@@ -283,7 +284,7 @@ export default {
     "new-password": "Entrer un nouveau mot de passe",
     "confirm-password": "Confirmer le nouveau mot de passe",
     "comment": "Entrer un commentaire",
-    "min-capacity": "Nombre d'inscris minimum pour démarrer",
+    "min-capacity": "Nombre d'inscrits minimum pour démarrer",
     "capacity": "Capacité maximum",
     "date": "Sélectionner une date",
     "street": "Entrer une adresse",

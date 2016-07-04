@@ -185,7 +185,7 @@ export default {
     },
     "quit": "Quitter la partie",
     "full": "Cette partie est déjà complète",
-    "join": "Rejoindre la partie",
+    "join": "Rejoindre",
     "pending-submissions": "Inscriptions en attente",
     "empty-pending-submissions": "Pas d'inscriptions en attente",
     "accept": "Accepter",

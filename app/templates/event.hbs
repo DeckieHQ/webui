@@ -31,8 +31,7 @@
           <div>{{t 'event.full'}}</div>
         {{else}}
           <div>
-            {{t 'event.join'}}
-            {{dynamic-submit actionOnSubmit="join_event"}}
+            {{dynamic-submit actionOnSubmit="join_event" submitLabel="event.join"}}
           </div>
         {{/unless}}
       </div>

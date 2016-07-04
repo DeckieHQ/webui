@@ -9,6 +9,8 @@
       <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
     {{else if isSaved}}
       <span class="glyphicon glyphicon-ok"></span>
+    {{else if submitLabel}}
+      {{t submitLabel}}
     {{else}}
       {{t 'submit.ok'}}
     {{/if}}

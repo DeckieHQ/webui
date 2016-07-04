@@ -74,9 +74,13 @@ export default Ember.Controller.extend(EmberValidations, {
         let params = {
           afterSave: () => {
             this.set('user_submission', submission);
-            this.get('model').get('attendees').reload();
             this.get('currentUser').get('submissions').pushObject(submission);
             this.get('infos').setSubmissions();
+            if (submission.get('status') == 'confirmed') {
+              let count = this.get('model.attendees_count') + 1;
+              this.set('model.attendees_count', count);
+              this.get('model').get('attendees').reload();
+            }
           },
           model: submission
         };
@@ -89,10 +93,16 @@ export default Ember.Controller.extend(EmberValidations, {
 
     quit_event: function() {
       if (confirm(this.get('i18n').t('event.confirm-quit'))) {
+        let status = this.get('status');
         this.get('user_submission').destroyRecord().then(
           () => {
             this.set('user_submission', null);
             this.get('infos').setSubmissions();
+            if (status == 'confirmed') {
+              let count = this.get('model.attendees_count') - 1;
+              this.set('model.attendees_count', count);
+              this.get('model').get('attendees').reload();
+            }
           }
         );
       }
@@ -117,6 +127,8 @@ export default Ember.Controller.extend(EmberValidations, {
       submission.save().then(() => {
         submission.set('status', 'confirmed');
         this.notifyPropertyChange('submissions');
+        let count = this.get('model.attendees_count') + 1;
+        this.set('model.attendees_count', count);
         this.get('model').get('attendees').reload();
       });
     },

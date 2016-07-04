@@ -5,5 +5,5 @@ export default Ember.Component.extend({
 
   plusOne: function () {
     return this.get('count') + 1;
-  }.property()
+  }.property('count')
 });

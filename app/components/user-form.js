@@ -130,6 +130,11 @@ export default Ember.Component.extend(EmberValidations, {
       let model = this.get('model');
       let password = this.get('password');
 
+      if(this.get('model.phone_number')[0] != '+') {
+        let phone_number = '+33' + this.get('model.phone_number').substring(1);
+        this.set('model.phone_number', phone_number);
+      }
+
       model.set('culture', 'fr');
 
       this.set('showCustomError', true);

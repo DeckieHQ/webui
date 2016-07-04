@@ -15,7 +15,14 @@ export default Ember.Service.extend({
 
   setHostedEvents() {
     if (this.get('currentUser').content) {
-      return this.get('currentUser').get('hosted_events').then(
+      let params = {
+        sort: 'begin_at',
+        filters: {
+          opened: true
+        }
+      }
+
+      return this.get('currentUser').content.query('hosted_events', params).then(
         (events) => {
           this.set('hosted_events', events.slice(0, 3));
         }
@@ -25,7 +32,17 @@ export default Ember.Service.extend({
 
   setSubmissions() {
     if (this.get('currentUser').content) {
-      return this.get('currentUser').content.query('submissions', { include: 'event' }).then(
+      let params = {
+        sort: 'event.begin_at',
+        filters: {
+          event: {
+            opened: true
+          }
+        },
+        include: 'event'
+      }
+
+      return this.get('currentUser').content.query('submissions', params).then(
         (submissions) => {
           this.set('submissions', submissions.slice(0, 3));
         }
@@ -71,7 +88,14 @@ export default Ember.Service.extend({
 
   hosted_events: function(){
     if (this.get('currentUser').content) {
-      return this.get('currentUser').get('hosted_events').then(
+      let params = {
+        sort: 'begin_at',
+        filters: {
+          opened: true
+        }
+      }
+
+      return this.get('currentUser').content.query('hosted_events', params).then(
         (events) => {
           this.set('hosted_events', events.slice(0, 3));
         }
@@ -81,7 +105,17 @@ export default Ember.Service.extend({
 
   submissions: function(){
     if (this.get('currentUser').content) {
-      return this.get('currentUser').content.query('submissions', { include: 'event' }).then(
+      let params = {
+        sort: 'event.begin_at',
+        filters: {
+          event: {
+            opened: true
+          }
+        },
+        include: 'event'
+      }
+
+      return this.get('currentUser').content.query('submissions', params).then(
         (submissions) => {
           this.set('submissions', submissions.slice(0, 3));
         }

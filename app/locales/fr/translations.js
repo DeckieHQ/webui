@@ -292,7 +292,7 @@ export default {
     "city": "Ville",
     "country": "Pays",
     "email": "Entrer email",
-    "search": "Cherchez un évennement..."
+    "search": "Nom de jeu, Ville, Code postal..."
   },
   "culture": {
     "fr": "Français",

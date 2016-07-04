@@ -11,11 +11,13 @@
 </div>
 
 <div class='verification'>
-  {{#if model.phone_number_verified}}
+  {{#unless model.phone_number}}
+    {{t 'account.phone-number.empty'}}
+  {{else if model.phone_number_verified}}
     {{t 'account.phone-number.verified'}}
     <span class='verified'></span>
   {{else}}
     {{t 'account.phone-number.verify'}}
     {{dynamic-submit actionOnSubmit="verify_phone_number" class='verify'}}
-  {{/if}}
+  {{/unless}}
 </div>

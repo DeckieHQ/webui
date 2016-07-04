@@ -78,7 +78,8 @@ export default {
     },
     "phone-number": {
       "verified": "Votre numéro de téléphone est bien vérifié",
-      "verify": "Vérifier votre numéro de téléphone:"
+      "verify": "Vérifier votre numéro de téléphone :",
+      "empty": "Votre numéro de téléphone n'est pas renseigné"
     },
     "email": {
       "verified": "Votre email est bien vérifié",

@@ -101,7 +101,10 @@ export default Ember.Controller.extend(EmberValidations, {
     delete_event: function() {
       if (confirm(this.get('i18n').t('event.confirm-delete'))) {
         this.get('model').destroyRecord().then(
-          () => this.transitionToRoute('index')
+          () => {
+            this.get('infos').setHostedEvents();
+            return this.transitionToRoute('index');
+          }
         );
       }
     },

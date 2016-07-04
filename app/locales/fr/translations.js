@@ -184,6 +184,7 @@ export default {
       "confirmed": "Vous êtes inscrits à cette partie"
     },
     "quit": "Quitter la partie",
+    "delete": "Annuler la partie",
     "full": "Cette partie est déjà complète",
     "join": "Rejoindre",
     "pending-submissions": "Inscriptions en attente",
@@ -193,7 +194,8 @@ export default {
     "location": "Lieu",
     "add-end-date": "Ajouter une date de fin",
     "auto-accept": "Validation automatique",
-    "confirm-quit": "Etes vous sûr de vouloir quitter cette partie?"
+    "confirm-quit": "Etes vous sûr de vouloir quitter cette partie ?",
+    "confirm-delete": "Etes vous sûr de vouloir annuler cette partie ?"
   },
   "comment": {
     "private": "Rendre le commentaire privé :",

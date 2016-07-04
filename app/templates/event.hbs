@@ -13,6 +13,9 @@
           <div>{{t 'event.closed'}}</div>
         {{else if isHost}}
           {{#link-to 'event.edit'}}<button class="btn btn-warning">{{t 'event.edit'}}</button>{{/link-to}}
+          <button {{action 'delete_event'}} class="event-delete">
+            {{t 'event.delete'}}
+          </button>
         {{else if pending}}
           <div>{{t 'event.submission.pending'}}</div>
           <div>

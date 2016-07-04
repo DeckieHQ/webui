@@ -98,6 +98,14 @@ export default Ember.Controller.extend(EmberValidations, {
       }
     },
 
+    delete_event: function() {
+      if (confirm(this.get('i18n').t('event.confirm-delete'))) {
+        this.get('model').destroyRecord().then(
+          () => this.transitionToRoute('index')
+        );
+      }
+    },
+
     display_host_contact: function() {
       this.set('displayHostContact', true);
     },

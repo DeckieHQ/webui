@@ -298,13 +298,16 @@ export default {
     "en": "English"
   },
   "category": {
+    "playful": "Jeu ludique",
+    "ambiance": "Jeu d'ambiance",
+    "deck-building": "Jeu de cartes à collectionner",
     "board": "Jeu de plateau",
     "role-playing": "Jeu de rôles",
     "card": "Jeu de cartes",
     "dice": "Jeu de dés",
     "miniature": "Jeu de figurines",
-    "video": "Jeux Vidéo",
-    "outdoor": "Jeux en plein air",
+    "video": "Jeu vidéo",
+    "outdoor": "Jeu en plein air",
     "strategy": "Jeu de stratégie"
   },
   "level": {

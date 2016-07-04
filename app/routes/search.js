@@ -71,7 +71,7 @@ export default Ember.Route.extend({
             { start: 0, end: 0, name: this.get('i18n').t('label.manual') }
           ],
           templates: {
-            header: this.labelFor('invitation')
+            header: this.labelFor('submission')
           },
           autoHideContainer: false
         }),

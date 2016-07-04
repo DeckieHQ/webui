@@ -30,6 +30,7 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   attendees: DS.hasMany('profile'),
   submissions: DS.hasMany('submission'),
   user_submission: DS.belongsTo('submission'),
+  invitations: DS.hasMany('invitation'),
 
   pendingSubmissionsCount: Ember.computed('submissions_count', 'attendees_count', function() {
     return this.get('submissions_count') - this.get('attendees_count');

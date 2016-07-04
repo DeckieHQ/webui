@@ -273,7 +273,8 @@ export default {
     "level": "Niveau minimum requis",
     "email": "Email",
     "all": "Tous",
-    "invitation": "Invitation",
+    "invitation": "Invitation par email",
+    "submission": "Validation d'inscription",
     "auto-accept": "Automatique",
     "manual": "Manuelle",
     "hide-full": "Masquer les évennements complets"
@@ -295,7 +296,8 @@ export default {
     "city": "Ville",
     "country": "Pays",
     "email": "Entrer email",
-    "search": "Nom de jeu, Ville, Code postal..."
+    "search": "Nom de jeu, Ville, Code postal...",
+    "invitation": "Entrer l'email de l'invité",
   },
   "culture": {
     "fr": "Français",

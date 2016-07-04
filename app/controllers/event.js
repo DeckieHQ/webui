@@ -131,6 +131,21 @@ export default Ember.Controller.extend(EmberValidations, {
       this.set('displayHostContact', true);
     },
 
+    send_invitation: function(defer) {
+      let invitation = this.store.createRecord('invitation', {
+        email: this.get('email'),
+      });
+
+      let params = {
+        afterSave: () => {
+          this.set('email', null);
+        },
+        model: invitation
+      }
+
+      this.send('save', this, defer, params);
+    },
+
     accept_submission: function(submission) {
       submission.save().then(() => {
         submission.set('status', 'confirmed');

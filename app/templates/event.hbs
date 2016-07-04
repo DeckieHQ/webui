@@ -66,6 +66,16 @@
         </div>
       {{/if}}
 
+      {{#if isMember}}
+        <div class='well'>
+          <form>
+            {{validated-input label="label.invitation" placeholder="placeholder.invitation" value=email errors=errors.email}}
+
+            {{dynamic-submit actionOnSubmit="send_invitation"}}
+          </form>
+        </div>
+      {{/if}}
+
       <div class='well'>
         <b>{{t 'event.host'}}</b>
         <div class='line-separator'></div>

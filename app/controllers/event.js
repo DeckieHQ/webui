@@ -24,12 +24,20 @@ export default Ember.Controller.extend(EmberValidations, {
     return this.get('currentUser').get('profile.id') == this.get('model.host.id');
   }.property('currentUser.content', 'model.host'),
 
+  isModerator: function() {
+    return this.get('currentUser.moderator');
+  }.property('currentUser.moderator'),
+
   isMember: function() {
     return this.get('isHost') || this.get('confirmed');
   }.property('confirmed', 'isHost'),
 
+  isAbleToEdit: function() {
+    return this.get('isModerator') || (this.get('isHost') && this.get('model.opened'));
+  }.property('isModerator', 'isHost', 'model.opened'),
+
   displayPrivateComments: function() {
-    return this.get('isMember') && (this.get('model.private_comments_count') > 0)
+    return this.get('isMember') && this.get('model.private_comments_count') > 0
   }.property('isMember'),
 
   status: function() {

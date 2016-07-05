@@ -11,32 +11,38 @@
       <div class='well'>
         {{#unless model.opened}}
           <div>{{t 'event.closed'}}</div>
-        {{else if isHost}}
+        {{/unless}}
+
+        {{#unless isHost}}
+          {{#if pending}}
+            <div>{{t 'event.submission.pending'}}</div>
+            <div>
+              <button {{action 'quit_event'}} class="btn btn-danger">
+                {{t 'event.quit'}}
+              </button>
+            </div>
+          {{else if confirmed}}
+            {{t 'event.submission.confirmed'}}
+            <div>
+              <button {{action 'quit_event'}} class="btn btn-danger">
+                {{t 'event.quit'}}
+              </button>
+            </div>
+          {{else if full}}
+            <div>{{t 'event.full'}}</div>
+          {{else}}
+            <div>
+              {{dynamic-submit actionOnSubmit="join_event" submitLabel="event.join"}}
+            </div>
+          {{/if}}
+        {{/unless}}
+
+        {{#if isAbleToEdit}}
           {{#link-to 'event.edit'}}<button class="btn btn-warning">{{t 'event.edit'}}</button>{{/link-to}}
           <button {{action 'delete_event'}} class="event-delete">
             {{t 'event.delete'}}
           </button>
-        {{else if pending}}
-          <div>{{t 'event.submission.pending'}}</div>
-          <div>
-            <button {{action 'quit_event'}} class="btn btn-danger">
-              {{t 'event.quit'}}
-            </button>
-          </div>
-        {{else if confirmed}}
-          {{t 'event.submission.confirmed'}}
-          <div>
-            <button {{action 'quit_event'}} class="btn btn-danger">
-              {{t 'event.quit'}}
-            </button>
-          </div>
-        {{else if full}}
-          <div>{{t 'event.full'}}</div>
-        {{else}}
-          <div>
-            {{dynamic-submit actionOnSubmit="join_event" submitLabel="event.join"}}
-          </div>
-        {{/unless}}
+        {{/if}}
       </div>
 
       {{#if isHost}}
@@ -182,9 +188,9 @@
       {{/if}}
 
       {{#if onlyPrivates}}
-        {{comments-list isPrivate=true event=model isHost=isHost}}
+        {{comments-list isPrivate=true event=model isHost=isHost isModerator=isModerator}}
       {{else}}
-        {{comments-list event=model isHost=isHost}}
+        {{comments-list event=model isHost=isHost isModerator=isModerator}}
       {{/if}}
     </div>
   </div>

@@ -11,13 +11,17 @@ export default Ember.Component.extend(EmberValidations, {
     }
   },
 
-  canDelete: function() {
-    return this.get('currentUser').get('profile.id') == this.get('comment.author.id') || this.get('isHost');
-  }.property('comment'),
-
   isOwner: function() {
     return this.get('currentUser').get('profile.id') == this.get('comment.author.id');
   }.property('comment'),
+
+  isAbleToUpdate: function() {
+    return this.get('isModerator') || this.get('isOwner');
+  }.property('isModerator', 'isOwner'),
+
+  isAbleToDelete: function() {
+    return this.get('isModerator') || this.get('isOwner') || this.get('isHost');
+  }.property('isModerator', 'isOwner', 'isHost'),
 
   isUpdating: false,
 

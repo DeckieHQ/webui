@@ -18,11 +18,11 @@ module.exports = function(environment) {
       // when it is created
     },
     contentSecurityPolicy: {
-      'default-src': "'none'",
-      'script-src': "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com",
+      'default-src': "'self' *.facebook.com",
+      'script-src': "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com *.facebook.net",
       'font-src': "'self' fonts.gstatic.com",
       'connect-src': "*",//"'self' maps.gstatic.com",
-      'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com *.cloudinary.com",
+      'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com *.cloudinary.com *.facebook.com",
       'style-src': "'self' 'unsafe-inline' fonts.googleapis.com maps.gstatic.com"
     },
     apiURL: process.env.API_URL,

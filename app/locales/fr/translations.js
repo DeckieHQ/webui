@@ -176,7 +176,7 @@ export default {
     "short-description": {
       "empty": "Aucune description brève pour cet évennement.",
     },
-    "count": "Participants : {{attendees-count}} / {{capacity}}",
+    "count": "Inscrits : {{attendees-count}} / {{capacity}}",
     "min-attendee": "Cette partie aura lieu seulement s'il y a au moins {{min}} inscrits.",
     "closed": "Cette partie est terminée",
     "edit": "Editer la partie",

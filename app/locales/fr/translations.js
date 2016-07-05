@@ -333,6 +333,10 @@ export default {
     "serious": "Sérieuse",
     "teasing": "Fun",
   },
+  "categories": {
+    "ambiance": "ambiance",
+    "level": "niveau",
+  },
   "error": {
     "password-confirm": "n'est pas égal au nouveau mot de passe",
     "end-at": "la date de fin doit être supérieure à la date de début",

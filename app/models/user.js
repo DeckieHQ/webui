@@ -14,6 +14,7 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   email_verified: DS.attr(),
   notifications_count: DS.attr(),
   phone_number_verified: DS.attr(),
+  moderator: DS.attr(),
   profile: DS.belongsTo('profile'),
   hosted_events: DS.hasMany('event'),
   submissions: DS.hasMany('submission'),

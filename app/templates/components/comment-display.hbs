@@ -6,14 +6,14 @@
 
     <div class='col-lg-2 align-right'>
       {{#unless isUpdating}}
-        {{#if isOwner}}
+        {{#if isAbleToUpdate}}
           <span {{action 'toggle_update_comment' comment}} class="icon-pencil">
             <div class='alt'>{{t 'edit'}}</div>
           </span>
         {{/if}}
       {{/unless}}
 
-      {{#if canDelete}}
+      {{#if isAbleToDelete}}
         <span {{action 'delete_comment' comment}} class="icon-remove">
           <div class='alt'>{{t 'remove'}}</div>
         </span>

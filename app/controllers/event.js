@@ -132,13 +132,20 @@ export default Ember.Controller.extend(EmberValidations, {
     },
 
     send_invitation: function(defer) {
+      this.set('emailSent', false);
+      this.set('emailError', false);
       let invitation = this.store.createRecord('invitation', {
         email: this.get('email'),
+        event: this.get('model')
       });
 
       let params = {
         afterSave: () => {
           this.set('email', null);
+          this.set('emailSent', true);
+        },
+        fail: () => {
+          this.set('emailError', true);
         },
         model: invitation
       }

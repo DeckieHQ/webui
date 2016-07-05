@@ -364,6 +364,8 @@ export default {
   "password-forgotten": "Mot de passe oublié ?",
   "undefined": "",
   "is invalid": "n'est pas valide",
+  "email-sent": "Invitation envoyée",
+  "email-error": "email invalide ou invitation déjà envoyée",
   errors: {
     inclusion: "n'est pas inclu dans la liste",
     exclusion: "est réservé",

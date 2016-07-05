@@ -71,7 +71,11 @@
         <div class='well'>
           <form>
             {{validated-input label="label.invitation" placeholder="placeholder.invitation" value=email errors=errors.email}}
-
+            {{#if emailSent}}
+              <div class='email-sent'>{{t 'email-sent'}}</div>
+            {{else if emailError}}
+              <div class='email-error'>{{t 'email-error'}}</div>
+            {{/if}}
             {{dynamic-submit actionOnSubmit="send_invitation"}}
           </form>
         </div>

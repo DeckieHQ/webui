@@ -10,7 +10,8 @@ export default {
     "index": "Retour à l'accueil",
     "profile": "Mon profil",
     "personnal": "Mes informations",
-    "search": "Rechercher une partie"
+    "search": "Rechercher une partie",
+    "event": "Voir ma partie"
   },
   "footer": {
     "incorporated": "pas encore incorporée",
@@ -195,7 +196,12 @@ export default {
     "add-end-date": "Ajouter une date de fin",
     "auto-accept": "Validation automatique",
     "confirm-quit": "Etes vous sûr de vouloir quitter cette partie ?",
-    "confirm-delete": "Etes vous sûr de vouloir annuler cette partie ?"
+    "confirm-delete": "Etes vous sûr de vouloir annuler cette partie ?",
+    "created": "Votre partie a bien été créée",
+    "tips": {
+      "invitation": "Deckie est en version beta et le nombre d'utilisateurs est encore faible, augmentez les chances de remplir votre partie et aidez nous à faire connaitre la plateforme en invitant vos amis par email à votre partie.",
+      "profile": "Une partie hébergée par un hôte au profil rempli a plus de chances d'avoir des participants, améliorez votre profil dès maintenant"
+    }
   },
   "comment": {
     "private": "Rendre le commentaire privé :",

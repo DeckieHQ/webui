@@ -3,6 +3,7 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   no_actor: function() {
     let type = this.get('notification.type');
+
     return type == 'event-ready' || type == 'event-not_ready' || type == 'event-remove_full' || type == 'event-remove_start';
   }.property(),
 

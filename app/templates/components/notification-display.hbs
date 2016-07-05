@@ -7,7 +7,11 @@
       <span class="title">"{{notification.action.title}}"</span>
       {{t notification.type}}
     {{else}}
-      <span class="actor">{{notification.action.actor.display_name}}</span>
+      {{#if notification.action.actor.moderator}}
+        <span class="actor moderator">{{notification.action.actor.display_tag}}</span>
+      {{else}}
+        <span class="actor">{{notification.action.actor.display_tag}}</span>
+      {{/if}}
       {{t notification.type}}
       <span class="title">"{{notification.action.title}}"</span>
     {{/if}}

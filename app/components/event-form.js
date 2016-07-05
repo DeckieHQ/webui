@@ -140,7 +140,7 @@ export default Ember.Component.extend(EmberValidations, {
       this.set('showCustomError', true);
 
       let params = {
-        transitionToModel: true,
+        transitionToModel: this.get('alreadyCreated'),
         beforeSave: () => {
           let begin_at_hour = this.get('begin_at_hour');
           let begin_at_minute = this.get('begin_at_minute');
@@ -161,6 +161,9 @@ export default Ember.Component.extend(EmberValidations, {
         afterSave: () => {
           this.get('currentUser').get('hosted_events').pushObject(this.get('model'));
           this.get('infos').setHostedEvents();
+          if (!this.get('alreadyCreated')) {
+            this.get('targetObject').transitionToRoute('event-created', model);
+          }
         }
       };
 

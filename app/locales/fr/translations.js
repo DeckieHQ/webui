@@ -305,6 +305,7 @@ export default {
   },
   "category": {
     "playful": "Jeu ludique",
+    "party": "Jeu collaboratif",
     "ambiance": "Jeu d'ambiance",
     "deck-building": "Jeu de cartes à collectionner",
     "board": "Jeu de plateau",

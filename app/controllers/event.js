@@ -136,6 +136,7 @@ export default Ember.Controller.extend(EmberValidations, {
       this.set('emailError', false);
       let invitation = this.store.createRecord('invitation', {
         email: this.get('email'),
+        message: " ",
         event: this.get('model')
       });
 

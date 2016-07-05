@@ -6,6 +6,9 @@ export default Ember.Route.extend({
     controller.set('message', null);
     controller.set('isPrivate', false);
     controller.set('displayHostContact', false);
+    controller.set('email', null);
+    controller.set('emailSent', false);
+    controller.set('emailError', false);
   },
 
   session: Ember.inject.service(),

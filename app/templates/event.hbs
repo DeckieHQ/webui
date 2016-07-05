@@ -11,9 +11,7 @@
       <div class='well'>
         {{#unless model.opened}}
           <div>{{t 'event.closed'}}</div>
-        {{/unless}}
-
-        {{#unless isHost}}
+        {{else unless isHost}}
           {{#if pending}}
             <div>{{t 'event.submission.pending'}}</div>
             <div>
@@ -38,10 +36,13 @@
         {{/unless}}
 
         {{#if isAbleToEdit}}
-          {{#link-to 'event.edit'}}<button class="btn btn-warning">{{t 'event.edit'}}</button>{{/link-to}}
-          <button {{action 'delete_event'}} class="event-delete">
+          {{#link-to 'event.edit'}}
+            <div class="event-edit">{{t 'event.edit'}}</div>
+          {{/link-to}}
+          <div class="clearfix"></div>
+          <div {{action 'delete_event'}} class="event-delete">
             {{t 'event.delete'}}
-          </button>
+          </div>
         {{/if}}
       </div>
 

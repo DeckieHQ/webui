@@ -377,6 +377,7 @@ export default {
   "is invalid": "n'est pas valide",
   "email-sent": "Invitation envoyée",
   "email-error": "email invalide ou invitation déjà envoyée",
+  "facebook-share": "Partager la partie sur Facebook",
   errors: {
     inclusion: "n'est pas inclu dans la liste",
     exclusion: "est réservé",

@@ -8,6 +8,10 @@ export default Ember.Controller.extend(EmberValidations, {
     }
   }.property('currentUser.profile.short_description', 'currentUser.profile.avatar_url'),
 
+  eventUrl: function() {
+    return 'https://www.deckie.fr/event/' + this.get('model.id');
+  }.property('model'),
+
   actions: {
     send_invitation: function(defer) {
       this.set('emailSent', false);

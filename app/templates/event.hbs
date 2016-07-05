@@ -181,22 +181,24 @@
         {{/if}}
       </div>
 
-      <div class='well'>
-        <form>
-          {{validated-input label="label.comment" placeholder="placeholder.comment" value=message errors=errors.message}}
+      {{#if isAuthenticated}}
+        <div class='well'>
+          <form>
+            {{validated-input label="label.comment" placeholder="placeholder.comment" value=message errors=errors.message}}
 
-          <div class='align-right inline-block'>
-            {{#if isMember}}
-              <div>
-                {{t 'comment.private'}}
-                {{input type="checkbox" checked=isPrivate}}
-              </div>
-            {{/if}}
+            <div class='align-right inline-block'>
+              {{#if isMember}}
+                <div>
+                  {{t 'comment.private'}}
+                  {{input type="checkbox" checked=isPrivate}}
+                </div>
+              {{/if}}
 
-            {{dynamic-submit actionOnSubmit="comment"}}
-          </div>
-        </form>
-      </div>
+              {{dynamic-submit actionOnSubmit="comment"}}
+            </div>
+          </form>
+        </div>
+      {{/if}}
 
       {{#if displayPrivateComments}}
         <div>

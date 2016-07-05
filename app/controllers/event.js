@@ -36,6 +36,10 @@ export default Ember.Controller.extend(EmberValidations, {
     return this.get('isModerator') || (this.get('isHost') && this.get('model.opened'));
   }.property('isModerator', 'isHost', 'model.opened'),
 
+  isAuthenticated: function() {
+    return this.get('session.isAuthenticated');
+  }.property('session.isAuthenticated'),
+
   displayPrivateComments: function() {
     return this.get('isMember') && this.get('model.private_comments_count') > 0
   }.property('isMember'),

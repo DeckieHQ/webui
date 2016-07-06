@@ -158,7 +158,7 @@ export default {
     },
     "phonenumber": {
       "label": "Numéro de téléphone",
-      "placeholder": "Format : 0611223344"
+      "placeholder": "Format : +33611223344"
     },
     "culture": {
       "label": "Langue",
@@ -371,7 +371,7 @@ export default {
   "The adapter rejected the commit because it was invalid": "Une erreur est survenue",
   "Adapter operation failed": "Une erreur est survenue",
   "has already been taken": "Un compte avec cet email existe déjà",
-  "is an invalid number": "Erreur de format, devrait être de la forme 0611223344",
+  "is an invalid number": "Erreur de format, devrait être de la forme +3311223344",
   "password-forgotten": "Mot de passe oublié ?",
   "undefined": "",
   "is invalid": "n'est pas valide",

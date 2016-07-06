@@ -5,7 +5,7 @@ export default {
     "account": "Mon Compte",
     "registration": "Inscription",
     "login": "Connexion",
-    "logout": "Deconnexion",
+    "logout": "Déconnexion",
     "verifications": "Mes vérifications",
     "index": "Retour à l'accueil",
     "profile": "Mon profil",
@@ -38,7 +38,7 @@ export default {
     },
     "beta": {
       "title": "Deckie est en version beta",
-      "content": "Deckie lance sa beta ouverte début juillet. Inscrivez-vous, créez et rejoignez des parties qui commenceront à partir du 7 juillet. La beta durera tout l'été pour un lancement officiel fin août au retour des vacances. D'ici là n'hésitez pas à nous envoyer vos avis pour améliorer la plateforme (bugs, suggestions, encouragements...).",
+      "content": "Deckie lance sa beta ouverte début juillet. Inscrivez-vous, créez et rejoignez des parties qui commenceront à partir du 7 juillet. La beta durera tout l'été pour un lancement officiel fin août au retour des vacances. D'ici là n'hésitez pas à nous envoyer vos avis pour améliorer la plateforme (bugs, suggestions, encouragements, etc...).",
     },
   },
   "search": {
@@ -84,7 +84,7 @@ export default {
     },
     "email": {
       "verified": "Votre email est bien vérifié",
-      "verify": "Vérifier email:",
+      "verify": "Vérifier email :",
       "verification-sent": "Un email de vérification vous a été envoyé."
     },
     "hosted-events": {

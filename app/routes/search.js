@@ -118,14 +118,15 @@ export default Ember.Route.extend({
       context.modelFor('search').set('result', results);
 
       ['category', 'ambiance', 'level'].forEach(facet => {
-        document
-        .querySelector(`#${facet}`)
-        .querySelectorAll("input[type='checkbox']").forEach(input => {
-          let label = context.get('i18n').t(`${facet}.${input.value}`),
-             parent = input.parentElement;
+        let inputs = document.querySelector(`#${facet}`).querySelectorAll("input[type='checkbox']");
 
-          parent.innerHTML = parent.innerHTML.replace(`>${input.value}`, `>${label}`);
-        });
+        for (var i = 0, len = inputs.length; i < len; i++) {
+          let label = context.get('i18n').t(`${facet}.${inputs[i].value}`),
+             parent = inputs[i].parentElement;
+
+          parent.innerHTML = parent.innerHTML.replace(`>${inputs[i].value}`, `>${label}`);
+          i = i++;
+        }
       });
     }
   },

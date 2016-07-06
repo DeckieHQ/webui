@@ -342,6 +342,7 @@ export default {
     "end-at": "la date de fin doit être supérieure à la date de début",
     "email": "email invalide",
     "date": "date invalide",
+    "min-max": "doit être inférieur ou égal au maximum"
   },
   "email-reset-sent": "Un lien pour changer votre mot de passe vous a été envoyé par email",
   "new-password-updated": "Votre mot de passe a été mis à jour, vous n'avez plus qu'à vous connecter",

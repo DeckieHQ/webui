@@ -76,10 +76,14 @@ export default Ember.Component.extend(EmberValidations, {
       numericality: {
         onlyInteger: true,
         greaterThanOrEqualTo: 0,
-        lessThanOrEqualTo: 'model.capacity',
-        //TODO: put that in i18n
-        messages: { lessThanOrEqualTo: "doit être inférieur ou égal au maximum d'inscrits" }
-      }
+      },
+      inline: validator(function() {
+        let max = this.model.get('model.capacity');
+        let min = this.model.get('model.min_capacity');
+        if (min > max) {
+          return this.get('i18n').t("error.min-max");
+        }
+      })
     },
     "model.short_description": {
       length: {

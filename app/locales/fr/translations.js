@@ -74,7 +74,7 @@ export default {
       "hosted-events": "Parties Hébergées",
       "notifications": "Notifications",
       "attended-events": "Parties auxquelles je participe",
-      "nearby-events": "Plus d'évenements",
+      "nearby-events": "Plus de parties",
       "achievements": "Faits d'armes"
     },
     "phone-number": {
@@ -174,7 +174,7 @@ export default {
   },
   "event": {
     "short-description": {
-      "empty": "Aucune description brève pour cet évennement.",
+      "empty": "Aucune description brève pour cette partie.",
     },
     "count": "Inscrits : {{attendees-count}} / {{capacity}}",
     "min-attendee": "Cette partie aura lieu seulement s'il y a au moins {{min}} inscrits.",
@@ -244,7 +244,7 @@ export default {
     "condition": {
       "early-registration": "s'inscrire avant le lancement officiel.",
       "first-feedback": "envoyer un avis (contructif) sur la plateforme.",
-      "early-event": "organiser un évènement avant le lancement officiel.",
+      "early-event": "organiser une partie avant le lancement officiel.",
       "verified-profile": "vérifier son profil.",
     }
   },

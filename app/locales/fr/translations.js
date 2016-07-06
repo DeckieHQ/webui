@@ -379,6 +379,8 @@ export default {
   "email-sent": "Invitation envoyée",
   "email-error": "email invalide ou invitation déjà envoyée",
   "facebook-share": "Partager la partie sur Facebook",
+  "pending": "Votre inscription est en attente de validation par l'hôte",
+  "confirmed": "Vous êtes inscrits à cette partie",
   errors: {
     inclusion: "n'est pas inclu dans la liste",
     exclusion: "est réservé",

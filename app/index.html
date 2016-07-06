@@ -6,7 +6,6 @@
     <title>Deckie</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta property="fb:app_id" content="830987660380332">
 
     {{content-for 'head'}}
 
@@ -20,6 +19,24 @@
 
     <script src="assets/vendor.js"></script>
     <script src="assets/deckie-web.js"></script>
+
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '616112168552023',
+          xfbml      : true,
+          version    : 'v2.6'
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
 
     {{content-for 'body-footer'}}
   </body>

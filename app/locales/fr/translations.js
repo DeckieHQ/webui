@@ -85,7 +85,7 @@ export default {
     "email": {
       "verified": "Votre email est bien vérifié",
       "verify": "Vérifier email :",
-      "verification-sent": "Un email de vérification vous a été envoyé."
+      "verification-sent": "Un email de vérification vous a été envoyé par email (pour une obscure raison il a tendance à arriver dans les spams, n'oubliez pas de vérifier)."
     },
     "hosted-events": {
       "empty": "Vous n'avez encore organisé aucune partie"

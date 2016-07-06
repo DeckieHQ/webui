@@ -67,7 +67,7 @@
         </div>
       {{/if}}
 
-      {{#if isMember}}
+      {{#if isAbleToInvite}}
         <div class='well'>
           <form>
             {{validated-input label="label.invitation" placeholder="placeholder.invitation" value=email errors=errors.email}}

@@ -74,7 +74,7 @@
     font-size: 3em
     text-align: center
 
-    span
+    .capacity
       padding: .5em
       border-radius: 50%
       color: #449d44
@@ -83,6 +83,10 @@
 
       background-color: rgba(255,255,255,.5)
       box-shadow: 0 0 30px -5px rgba(0,0,0,.25)
+
+      .icon-player
+        @extend .glyphicon, .glyphicon-user
+        font-size: 0.75em
 
   .description
     margin-top: 2em

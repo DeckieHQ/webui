@@ -4,7 +4,7 @@
       {{#unless minCapacityReached}}
         <div class='min-capacity'>
           <span class='glyphicon glyphicon-warning-sign'></span>
-          {{t 'event.min-attendee' min=model.min_capacity}}
+          {{t 'event.min-attendee' min=minPlayersCount}}
         </div>
       {{/unless}}
 
@@ -159,15 +159,22 @@
           </div>
         </div> -->
         <div class='row body'>
-          <div class='col-lg-9'>
+          <div class='col-lg-8'>
             <div class='short-description'>
              {{model.short_description}}
             </div>
             {{display-categories event=model}}
           </div>
-          <div class='col-lg-3'>
+          <div class='col-lg-4'>
             <div class="attendees">
-              <span>{{plus-one count=model.attendees_count}} / {{plus-one count=model.capacity}}</span>
+              <span class='capacity'>
+                {{plus-one count=model.attendees_count}}
+                /
+                {{plus-one count=model.min_capacity}}
+                -
+                {{plus-one count=model.capacity}}
+                <span class='icon-player'></span>
+              </span>
             </div>
           </div>
         </div>

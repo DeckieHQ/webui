@@ -43,7 +43,14 @@
             <div class="clearfix"></div>
 
             <div class="attendees">
-              <span>{{plus-one count=event.attendees_count}} / {{plus-one count=event.capacity}}</span>
+              <span class='capacity'>
+                {{plus-one count=event.attendees_count}}
+                /
+                {{plus-one count=event.min_capacity}}
+                -
+                {{plus-one count=event.capacity}}
+                <span class='icon-player'></span>
+              </span>
             </div>
 
             <div class="hide categories">

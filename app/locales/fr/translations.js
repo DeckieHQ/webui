@@ -177,7 +177,7 @@ export default {
       "empty": "Aucune description brève pour cette partie.",
     },
     "count": "Inscrits : {{attendees-count}} / {{capacity}}",
-    "min-attendee": "Cette partie aura lieu seulement s'il y a au moins {{min}} inscrits.",
+    "min-attendee": "Cette partie aura lieu seulement s'il y a au moins {{min}} joueurs.",
     "closed": "Cette partie est terminée",
     "edit": "Editer la partie",
     "submission": {

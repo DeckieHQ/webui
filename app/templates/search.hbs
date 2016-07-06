@@ -47,7 +47,7 @@
               </div>
 
               <div class='row body'>
-                <div class='col-lg-9'>
+                <div class='col-lg-8'>
                   <div class='description'>
                    {{event.short_description}}
                   </div>
@@ -60,9 +60,16 @@
                     <span>{{name-display profile=event.host}}</span>
                   </div>
                 </div>
-                <div class='col-lg-3'>
+                <div class='col-lg-4'>
                   <div class="attendees">
-                    <span>{{plus-one count=event.attendees_count}} / {{plus-one count=event.capacity}}</span>
+                    <span class='capacity'>
+                      {{plus-one count=event.attendees_count}}
+                      /
+                      {{plus-one count=event.min_capacity}}
+                      -
+                      {{plus-one count=event.capacity}}
+                      <span class='icon-player'></span>
+                    </span>
                   </div>
                 </div>
               </div>

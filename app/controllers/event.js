@@ -98,6 +98,7 @@ export default Ember.Controller.extend(EmberValidations, {
         let params = {
           afterSave: () => {
             this.set('user_submission', submission);
+            this.notifyPropertyChange('user_submission');
             this.get('currentUser').get('submissions').pushObject(submission);
             this.get('infos').setSubmissions();
             if (submission.get('status') == 'confirmed') {

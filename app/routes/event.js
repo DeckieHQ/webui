@@ -9,6 +9,7 @@ export default Ember.Route.extend({
     controller.set('email', null);
     controller.set('emailSent', false);
     controller.set('emailError', false);
+    controller.set('user_submission', "");
   },
 
   session: Ember.inject.service(),

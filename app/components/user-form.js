@@ -5,6 +5,7 @@ import { validator } from 'ember-validations';
 export default Ember.Component.extend(EmberValidations, {
   session: Ember.inject.service(),
   i18n: Ember.inject.service(),
+  store: Ember.inject.service(),
 
   init: function() {
     this._super.apply(this, arguments);
@@ -144,8 +145,11 @@ export default Ember.Component.extend(EmberValidations, {
       if (this.get('transition')) {
         afterSave = () => {
           this.get('session').authenticate('authenticator:devise', model.get('email'), password).then(
-            () => this.get('targetObject').send('transition')
-          );
+            () => this.get('store').find('user', '')
+          ).then(user => {
+            this.get('currentUser').set('content', user);
+            this.get('targetObject').send('transition');
+          })
         }
       } else if (this.get('alreadyCreated')) {
         afterSave = () => {

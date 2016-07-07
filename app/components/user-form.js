@@ -155,7 +155,7 @@ export default Ember.Component.extend(EmberValidations, {
       } else {
         afterSave = () => {
           this.get('session').authenticate('authenticator:devise', model.get('email'), password);
-          this.get('targetObject').transitionToRoute('search');
+          this.get('targetObject').transitionToRoute('user-created');
         }
       }
 

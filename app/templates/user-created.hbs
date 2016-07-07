@@ -1,0 +1,20 @@
+<div id='user-created' class='col-lg-6 col-lg-offset-3 well'>
+  <h1>{{t 'welcome.on-deckie'}}</h1>
+
+  <hr>
+
+  <div>
+    {{t 'welcome.new-user'}}
+  </div>
+
+  <hr>
+
+  <div class='gotos'>
+    {{#link-to 'search' class='goto-search'}}
+      <span class='btn btn-success'>{{t 'navigation.search'}}</span>
+    {{/link-to}}
+    {{#link-to 'events.new'}}
+      <span class='btn btn-success'>{{t 'navigation.events'}}</span>
+    {{/link-to}}
+  </div>
+</div>

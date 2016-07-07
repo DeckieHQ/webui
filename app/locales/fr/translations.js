@@ -25,6 +25,8 @@ export default {
       "game": "jeux",
       "favorite": "préférés",
     },
+    "on-deckie": "Bienvenue sur Deckie",
+    "new-user": "Nous sommes encore en version beta et donc notre nombre d'utilisateurs est encore limité. Néanmoins vous pouvez dès à présent rejoindre une partie ou créer la votre et inviter vos amis par email pour nous aider à faire grandir la plateforme. Nous espérons réunir en un même endroit passionés et joueurs occasionnels pour jouer tous ensemble. Merci d'avoir rejoint Deckie, à bientôt et bon jeu. :)",
     "beta-tmp": "(Créez ou rejoignez des parties qui commenceront à partir du 7 juillet)",
     "button": "Voir les parties les plus proches",
     "access": "Accéder",

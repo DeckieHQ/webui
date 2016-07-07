@@ -16,6 +16,10 @@ export default Ember.Controller.extend(EmberValidations, {
 
   isPrivate: false,
 
+  eventUrl: function() {
+    return 'https://www.deckie.fr/event/' + this.get('model.id');
+  }.property('model'),
+
   minPlayersCount: function() {
     return this.get('model.min_capacity') + 1;
   }.property('model.min_capacity'),

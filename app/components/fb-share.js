@@ -7,14 +7,15 @@ export default fbComponent.extend({
       url: this.get('url'),
       componentName: 'facebook-share'
     });
-    if (this.get('useFacebookUi')) { return; } // doesn't need a click handler
+    if (this.get('useFacebookUi')) { return; }
     var self = this;
     function showDialog(FB) {
+      let title = self.get('title');
       FB.ui(
         {
           method: 'share',
           href: self.get('url'),
-          title: 'toto',
+          title: title,
         },
         function(response) {
           if (response && !response.error_code) {

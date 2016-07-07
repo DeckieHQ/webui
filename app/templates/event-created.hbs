@@ -8,7 +8,7 @@
   <div class='row'>
     <div class='col-lg-8'>
       <div class='event-title'>{{#link-to 'event' model}}{{model.title}}{{/link-to}}</div>
-      {{#fb-share tagName="a" url=eventUrl title='MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAa'}}
+      {{#fb-share tagName="a" url=eventUrl title=model.title}}
         <img class='fb-logo' src='/assets/images/fb-share.png'>
         <span class='fb-share'>{{t 'facebook-share'}}</span>
       {{/fb-share}}

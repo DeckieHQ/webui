@@ -19,7 +19,7 @@ module.exports = function(environment) {
     },
     contentSecurityPolicy: {
       'default-src': "'self' *.facebook.com",
-      'script-src': "'self' 'unsafe-eval' *.googleapis.com maps.gstatic.com *.facebook.net",
+      'script-src': "'self' 'unsafe-eval' 'unsafe-inline' *.googleapis.com maps.gstatic.com *.facebook.net",
       'font-src': "'self' fonts.gstatic.com",
       'connect-src': "*",//"'self' maps.gstatic.com",
       'img-src': "'self' *.googleapis.com maps.gstatic.com csi.gstatic.com *.cloudinary.com *.facebook.com",

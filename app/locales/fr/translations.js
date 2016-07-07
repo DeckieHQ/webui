@@ -40,7 +40,7 @@ export default {
     },
     "beta": {
       "title": "Deckie est en version beta",
-      "content": "Deckie lance sa beta ouverte début juillet. Inscrivez-vous, créez et rejoignez des parties qui commenceront à partir du 7 juillet. La beta durera tout l'été pour un lancement officiel fin août au retour des vacances. D'ici là n'hésitez pas à nous envoyer vos avis pour améliorer la plateforme (bugs, suggestions, encouragements, etc...).",
+      "content": "Nous sommes actuellement en version beta et donc le nombre d'utilisateurs est encore limité. C'est pourquoi nous avons besoin de vous, rejoignez ou créez des parties puis publiez les sur Facebook et invitez vos amis par email pour nous aider à faire grandir la plateforme. Il reste encore quelques bugs donc n'hésitez pas à nous en faire part si vous en voyez ou à nous faire des suggestions d'améliorations.",
     },
   },
   "search": {

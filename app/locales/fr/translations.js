@@ -199,7 +199,7 @@ export default {
     "confirm-delete": "Etes vous sûr de vouloir annuler cette partie ?",
     "created": "Votre partie a bien été créée",
     "tips": {
-      "invitation": "Deckie est en version beta et le nombre d'utilisateurs est encore faible, augmentez les chances de remplir votre partie et aidez nous à faire connaitre la plateforme en invitant vos amis par email à votre partie.",
+      "invitation": "Deckie est en version beta et le nombre d'utilisateurs est encore faible, augmentez les chances de remplir votre partie et aidez nous à faire connaitre la plateforme en invitant vos amis par email.",
       "profile": "Une partie hébergée par un hôte au profil rempli a plus de chances d'avoir des participants, améliorez votre profil dès maintenant"
     }
   },

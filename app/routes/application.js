@@ -72,7 +72,6 @@ export default Ember.Route.extend({
           if (params.fail) {
             params.fail();
           }
-          console.log(reason);
           context.set("showErrors", true);
           defer.reject(reason);
         })

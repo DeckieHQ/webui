@@ -1,7 +1,7 @@
 {{#if label}}
   <label>{{t label}}</label>
 {{/if}}
-{{input value=value type=type focus-out="showError" class="form-control" classBinding="showErrors" placeholder=translatedPlaceholder name=name}}
+{{input value=value type=type focus-out="showError" class="form-control" classBinding="showErrors" placeholder=translatedPlaceholder name=name data-role="test"}}
 {{#if showErrors}}
   {{displayErrors}}
 {{/if}}

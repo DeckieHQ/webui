@@ -16,9 +16,11 @@ export default Ember.Component.extend({
 
   classNames: ['form-group'],
 
+  attributeBindings: ['data-role'],
+
   displayErrors: function() {
     let displayErrors = this.get('errors') || [];
-    let serverErrors = this.get('serverErrors') || [];
+    let serverErrors  = this.get('serverErrors') || [];
 
     serverErrors.forEach(e => displayErrors.push(this.get('i18n').t(e.message)));
 

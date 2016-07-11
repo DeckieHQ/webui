@@ -7,13 +7,12 @@ module.exports = function(defaults) {
     // Add options here
   });
 
-  app.import('bower_components/bootstrap-datepicker/js/locales/bootstrap-datepicker.fr.js');
-
   app.import('vendor/instantsearch/instantsearch.js');
   app.import('vendor/instantsearch/instantsearch.css');
   app.import('vendor/instantsearch/instantsearch.js.map');
   app.import('vendor/places/places.js');
   app.import('vendor/places/places.js.map');
+
 
   // Use `app.import` to add additional libraries to the generated
   // output files.

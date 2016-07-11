@@ -4,17 +4,11 @@ import ENV from '../config/environment';
 
 export default Ember.Route.extend({
   model: function() {
-    if (!navigator.geolocation) { return this._loadSearch(); }
-
-    let self = this;
-
-    return new Promise(function(resolve, reject) {
-      navigator.geolocation.getCurrentPosition(resolve, reject);
-    }).then(function(position) {
-      return self._loadSearch(position.coords);
-    }).catch(function(err) {
-      return self._loadSearch();
-    });
+    return this.store.find('location', '').then(
+      (location) => this._loadSearch(location)
+    ).catch(
+      () => this._loadSearch()
+    );
   },
   _loadSearch: function(coords = null) {
     let client = instantsearch(ENV.algolia).client,
@@ -22,7 +16,7 @@ export default Ember.Route.extend({
          searchParams = {};
 
      if (coords != null) {
-       searchParams = { aroundLatLng: `${coords.latitude}, ${coords.longitude}` };
+       searchParams = { aroundLatLng: `${coords.get('latitude')}, ${coords.get('longitude')}` };
      }
 
     return new Promise(function(resolve, reject) {

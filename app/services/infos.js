@@ -4,6 +4,7 @@ import ENV from '../config/environment';
 export default Ember.Service.extend({
   currentUser: Ember.inject.service(),
   i18n: Ember.inject.service(),
+  store: Ember.inject.service(),
 
   userObserver: Ember.observer('currentUser.content', function(sender, key, value, rev) {
     if (!this.get('currentUser').content) {
@@ -52,17 +53,11 @@ export default Ember.Service.extend({
 
   init() {
     this._super(...arguments);
-    if (!navigator.geolocation) { return this._loadSearch(); }
-
-    let self = this;
-
-    return new Promise(function(resolve, reject) {
-      navigator.geolocation.getCurrentPosition(resolve, reject);
-    }).then(function(position) {
-      return self._loadSearch(position.coords);
-    }).catch(function(err) {
-      return self._loadSearch();
-    });
+    return this.get('store').find('location', '').then(
+      (location) => this._loadSearch(location)
+    ).catch(
+      () => this._loadSearch()
+    );
   },
 
   _loadSearch: function(coords = null) {
@@ -71,7 +66,7 @@ export default Ember.Service.extend({
          searchParams = {};
 
      if (coords != null) {
-       searchParams = { aroundLatLng: `${coords.latitude}, ${coords.longitude}` };
+       searchParams = { aroundLatLng: `${coords.get('latitude')}, ${coords.get('longitude')}` };
      }
 
      let self = this;

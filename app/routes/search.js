@@ -14,17 +14,11 @@ export default Ember.Route.extend({
     return Search.create();
   },
   afterModel: function() {
-    if (!navigator.geolocation) { return this._loadSearch(); }
-
-    let self = this;
-
-    return new Promise(function(resolve, reject) {
-      navigator.geolocation.getCurrentPosition(resolve, reject);
-    }).then(function(position) {
-      return self.instantSearch(position.coords);
-    }).catch(function(err) {
-      return self.instantSearch();
-    });
+    this.store.find('location', '').then(
+      (location) => this.instantSearch(location)
+    ).catch(
+      () => this.instantSearch()
+    );
   },
   instantSearch: function(coords) {
     Ember.run.scheduleOnce('afterRender', this, function () {
@@ -32,7 +26,7 @@ export default Ember.Route.extend({
 
       if (coords != null) {
         initParameters.searchParameters = {
-          aroundLatLng: `${coords.latitude}, ${coords.longitude}`
+          aroundLatLng: `${coords.get('latitude')}, ${coords.get('longitude')}`
         };
       }
 

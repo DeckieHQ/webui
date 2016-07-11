@@ -11,7 +11,10 @@ export default {
     "profile": "Mon profil",
     "personnal": "Mes informations",
     "search": "Rechercher une partie",
-    "event": "Voir ma partie"
+    "event": "Voir ma partie",
+    "notifications": "Notifications",
+    "hosted-events": "Parties hébergées",
+    "attended-events": "Parties auxquelles je participe"
   },
   "footer": {
     "incorporated": "pas encore incorporée",

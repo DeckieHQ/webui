@@ -1,6 +1,6 @@
 <div id='search' class='col-md-10'>
   <div class='row'>
-    <div class='col-lg-3 well'>
+    <div class='col-md-3 well'>
       <div id="full" class="facet"></div>
       <hr>
       <div id="category" class="facet"></div>
@@ -12,7 +12,7 @@
       <div id="auto-accept" class="facet"></div>
     </div>
 
-    <div class='col-lg-9'>
+    <div class='col-md-9'>
       <div id="search-input"></div>
 
       <div id="stats" class='hide'></div>
@@ -25,10 +25,10 @@
 
             {{#link-to 'event' event.objectID}}
               <div class='row head'>
-                <div class='col-lg-6'>
+                <div class='col-xs-12 col-md-6'>
                   <h3>{{event.title}}</h3>
                 </div>
-                <div class='col-lg-6'>
+                <div class='col-xs-12 col-md-6'>
                   <div class="details">
                     <div class="date">
                       <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
@@ -46,8 +46,8 @@
                 </div>
               </div>
 
-              <div class='row body'>
-                <div class='col-lg-8'>
+              <div class='row'>
+                <div class='col-xs-12 col-md-8'>
                   <div class='description'>
                    {{event.short_description}}
                   </div>
@@ -60,7 +60,7 @@
                     <span>{{name-display profile=event.host}}</span>
                   </div>
                 </div>
-                <div class='col-lg-4'>
+                <div class='col-xs-12 col-md-4'>
                   <div class="attendees">
                     <span class='capacity'>
                       {{plus-one count=event.attendees_count}}
@@ -85,7 +85,7 @@
   </div>
 </div>
 
-<div class='col-md-2'>
+<div class='hidden-xs col-md-2'>
   {{infos-bar hide_events_nearby=true}}
 </div>
 

@@ -2,20 +2,28 @@
   <nav class='navbar navbar-default'>
     <div class='container-fluid'>
       <div class='navbar-header'>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
         {{#link-to 'index' class='navbar-brand'}}Deckie{{/link-to}}
       </div>
-      <div>
+      <div class="collapse navbar-collapse">
         <ul class='nav navbar-nav navbar-right'>
           {{#if session.isAuthenticated}}
-            <li>{{notifications-box class='notifications_count'}}</li>
-            <li>{{#link-to 'search'}}{{t 'navigation.search'}}{{/link-to}}</li>
-            <li>{{#link-to 'events.new'}}{{t 'navigation.events'}}{{/link-to}}</li>
-            <li>{{#link-to 'account.dashboard'}}{{t 'navigation.account'}}{{/link-to}}</li>
-            <li><a href="#" {{action 'logout'}}>{{t 'navigation.logout'}}</a></li>
+            <li class='hidden-xs' data-toggle="collapse" data-target=".navbar-collapse.in">{{notifications-box class='notifications_count'}}</li>
+            <li data-toggle="collapse" data-target=".navbar-collapse.in">{{#link-to 'search'}}{{t 'navigation.search'}}{{/link-to}}</li>
+            <li data-toggle="collapse" data-target=".navbar-collapse.in">{{#link-to 'events.new'}}{{t 'navigation.events'}}{{/link-to}}</li>
+            <li data-toggle="collapse" data-target=".navbar-collapse.in">{{#link-to 'account.dashboard'}}{{t 'navigation.account'}}{{/link-to}}</li>
+            <li class='hidden-sm hidden-md hidden-lg' data-toggle="collapse" data-target=".navbar-collapse.in">{{#link-to 'account.hosted-events'}}{{t 'navigation.hosted-events'}}{{/link-to}}</li>
+            <li class='hidden-sm hidden-md hidden-lg' data-toggle="collapse" data-target=".navbar-collapse.in">{{#link-to 'account.attended-events'}}{{t 'navigation.attended-events'}}{{/link-to}}</li>
+            <li class='hidden-sm hidden-md hidden-lg' data-toggle="collapse" data-target=".navbar-collapse.in">{{#link-to 'account.notifications'}}{{t 'navigation.notifications'}}{{/link-to}}</li>
+            <li data-toggle="collapse" data-target=".navbar-collapse.in"><a href="#" {{action 'logout'}}>{{t 'navigation.logout'}}</a></li>
           {{else}}
-            <li>{{#link-to 'search'}}{{t 'navigation.search'}}{{/link-to}}</li>
-            <li>{{#link-to 'registration'}}{{t 'navigation.registration'}}{{/link-to}}</li>
-            <li>{{#link-to 'login'}}{{t 'navigation.login'}}{{/link-to}}</li>
+            <li data-toggle="collapse" data-target=".navbar-collapse.in">{{#link-to 'search'}}{{t 'navigation.search'}}{{/link-to}}</li>
+            <li data-toggle="collapse" data-target=".navbar-collapse.in">{{#link-to 'registration'}}{{t 'navigation.registration'}}{{/link-to}}</li>
+            <li data-toggle="collapse" data-target=".navbar-collapse.in">{{#link-to 'login'}}{{t 'navigation.login'}}{{/link-to}}</li>
           {{/if}}
           <li>{{#link-to 'feedbacks.new'}}{{t 'navigation.feedbacks'}}{{/link-to}}</li>
         </ul>

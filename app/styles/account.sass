@@ -51,10 +51,6 @@
       .head
         margin-bottom: 0.75em
 
-      .body
-        display: flex
-        align-items: center
-
       h3
         margin: 0
 
@@ -64,10 +60,16 @@
       .pending
         color: #f0ad4e
 
+      @media (max-width: 768px)
+        .details
+          text-align: left
+
+      @media (min-width: 769px)
+        .details
+          text-align: right
+
       .details
         font-size: 1.5em
-
-        text-align: right
 
         div
           display: inline-block

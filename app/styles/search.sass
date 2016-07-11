@@ -32,18 +32,20 @@
     .head
       margin-bottom: 0.75em
 
-    .body
-      display: flex
-      align-items: center
-
     h3
       color: #449d44
       margin: 0
 
+    @media (max-width: 768px)
+      .details
+        text-align: left
+
+    @media (min-width: 769px)
+      .details
+        text-align: right
+
     .details
       font-size: 1.5em
-
-      text-align: right
 
       div
         display: inline-block

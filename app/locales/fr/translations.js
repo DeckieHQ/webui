@@ -270,7 +270,7 @@ export default {
     "confirm-password": "Confirmer le nouveau mot de passe",
     "comment": "Commentaire",
     "min-capacity": "Minimum inscrits",
-    "capacity": "Maximum inscrits",
+    "capacity": "Places disponibles",
     "date": "Date",
     "end-date": "Date de fin",
     "street": "Adresse",

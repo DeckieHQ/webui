@@ -70,7 +70,7 @@
       {{#if isAbleToInvite}}
         <div class='well'>
           <form>
-            {{validated-input label="label.invitation" placeholder="placeholder.invitation" value=email errors=errors.email}}
+            {{validated-textarea rows=3 label="label.invitation" placeholder="placeholder.invitation" value=email errors=errors.email}}
             {{#if emailSent}}
               <div class='email-sent'>{{t 'email-sent'}}</div>
             {{else if emailError}}

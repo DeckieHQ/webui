@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import _ from 'lodash';
 import EmberValidations from 'ember-validations';
 import ENV from '../config/environment';
 
@@ -15,26 +16,27 @@ export default Ember.Controller.extend(EmberValidations, {
 
   actions: {
     send_invitation: function(defer) {
-      this.set('emailSent', false);
+      this.set('emailSent',  false);
       this.set('emailError', false);
-      let invitation = this.store.createRecord('invitation', {
-        email: this.get('email'),
-        message: " ",
-        event: this.get('model')
+
+      let event = this.get('model'),
+          store = this.store,
+          emails = this.get('email').split(',').join(' ')
+            .split(';').join(' ').split('-').join(' ')
+            .split('_').join(' ').split('"').join(' ')
+            .split('<').join(' ').split('>').join(' ')
+            .split(/\s+/).filter(Boolean)
+
+      let invitations = _.map(emails, email => {
+        return store.createRecord('invitation', { email: email, event: event })
+        .save().then(() => { return; }).catch(() => { return; });
       });
+      return Promise.all(invitations).then(() => {
+        this.set('email',     null);
+        this.set('emailSent', true);
 
-      let params = {
-        afterSave: () => {
-          this.set('email', null);
-          this.set('emailSent', true);
-        },
-        fail: () => {
-          this.set('emailError', true);
-        },
-        model: invitation
-      }
-
-      this.send('save', this, defer, params);
+        defer.resolve();
+      });
     },
   }
 })

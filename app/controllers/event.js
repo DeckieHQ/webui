@@ -155,7 +155,11 @@ export default Ember.Controller.extend(EmberValidations, {
 
       let event = this.get('model'),
           store = this.store,
-          emails = this.get('email').split(',');
+          emails = this.get('email').split(',').join(' ')
+            .split(';').join(' ').split('-').join(' ')
+            .split('_').join(' ').split('"').join(' ')
+            .split('<').join(' ').split('>').join(' ')
+            .split(/\s+/)
 
       let invitations = _.map(emails, email => {
         return store.createRecord('invitation', { email: email, event: event })

@@ -293,10 +293,15 @@
 
 .no-account-container {
   height: 245px;
-  border-left: 1px solid #b4b4b4;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+@media (min-width: 768px) {
+  .no-account-container {
+    border-left: 1px solid #b4b4b4;
+  }
 }
 
 .no-account {

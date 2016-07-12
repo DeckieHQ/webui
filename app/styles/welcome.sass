@@ -11,9 +11,16 @@
     align-items: center
     justify-content: center
 
+    @media (max-width: 768px)
+      .welcome
+        width: 80%
+
+    @media (min-width: 769px)
+      .welcome
+        width: 60%
+
     .welcome
       text-align: center
-      width: 60%
 
       h1
         font-weight: bold

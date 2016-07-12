@@ -170,10 +170,12 @@
               <span class='capacity'>
                 {{plus-one count=model.attendees_count}}
                 /
-                {{plus-one count=model.min_capacity}}
-                -
-                {{plus-one count=model.capacity}}
-                <span class='icon-player'></span>
+                <span class='min-max'>
+                  {{plus-one count=model.min_capacity}}
+                  {{t 'to'}}
+                  {{plus-one count=model.capacity}}
+                  <span class='icon-player'></span>
+                </span>
               </span>
             </div>
           </div>

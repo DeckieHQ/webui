@@ -44,10 +44,12 @@
               <span class='capacity'>
                 {{plus-one count=submission.event.attendees_count}}
                 /
-                {{plus-one count=submission.event.min_capacity}}
-                -
-                {{plus-one count=submission.event.capacity}}
-                <span class='icon-player'></span>
+                <span class='min-max'>
+                  {{plus-one count=submission.event.min_capacity}}
+                  {{t 'to'}}
+                  {{plus-one count=submission.event.capacity}}
+                  <span class='icon-player'></span>
+                </span>
               </span>
             </div>
           </div>

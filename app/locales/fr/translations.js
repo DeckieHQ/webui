@@ -386,6 +386,7 @@ export default {
   "facebook-share": "Partager la partie sur Facebook",
   "pending": "Votre inscription est en attente de validation par l'hôte",
   "confirmed": "Vous êtes inscrits à cette partie",
+  "to": "à",
   errors: {
     inclusion: "n'est pas inclu dans la liste",
     exclusion: "est réservé",

@@ -65,10 +65,12 @@
                     <span class='capacity'>
                       {{plus-one count=event.attendees_count}}
                       /
-                      {{plus-one count=event.min_capacity}}
-                      -
-                      {{plus-one count=event.capacity}}
-                      <span class='icon-player'></span>
+                      <span class='min-max'>
+                        {{plus-one count=event.min_capacity}}
+                        {{t 'to'}}
+                        {{plus-one count=event.capacity}}
+                        <span class='icon-player'></span>
+                      </span>
                     </span>
                   </div>
                 </div>

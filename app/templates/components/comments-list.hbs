@@ -1,3 +1,13 @@
 {{#each comments as |comment|}}
   {{comment-display comment=comment isHost=isHost isModerator=isModerator}}
 {{/each}}
+
+<div id='paginate'>
+  {{#each count as |number|}}
+    {{#if (eq number comments.meta.pagination.self.number)}}
+      <span class='page self'>{{number}}</span>
+    {{else}}
+      <span {{action 'paginate' number}} class='page'>{{number}}</span>
+    {{/if}}
+  {{/each}}
+</div>

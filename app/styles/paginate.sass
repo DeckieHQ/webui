@@ -1,0 +1,20 @@
+#paginate
+  margin-bottom: 2em
+  text-align: center
+
+  .page
+    @extend .well
+    border-color: #449d44
+    padding: 1em
+    margin-right: .25em
+
+    &:hover
+      border-color: #449d44
+      transform: scale(1.01)
+      background-color: rgba(#449d44, 0.2)
+      cursor: pointer
+
+  .page.self
+    background: #449d44
+    color: white
+    cursor: default

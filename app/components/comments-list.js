@@ -9,6 +9,10 @@ export default Ember.Component.extend({
       include: 'author',
       filters: {
         privates: this.get('isPrivate')
+      },
+      page: {
+        number: 1,
+        size:10
       }
     };
 
@@ -18,4 +22,31 @@ export default Ember.Component.extend({
       )
     ;
   },
+
+  count: Ember.computed('comments.meta.pagination.last.number', 'model.meta.pagination.self.number', function() {
+    const total = this.get('comments.meta.pagination.last.number') || this.get('comments.meta.pagination.self.number');
+    if (!total) return [];
+    return new Array(total+1).join('x').split('').map((e,i) => i+1);
+  }),
+
+  actions: {
+    paginate: function(number) {
+      let params = {
+        include: 'author',
+        filters: {
+          privates: this.get('isPrivate')
+        },
+        page: {
+          number: number,
+          size:10
+        }
+      };
+
+      return this.get('event').query('comments', params)
+        .then((comments) =>
+          this.set('comments', comments)
+        )
+      ;
+    },
+  }
 });

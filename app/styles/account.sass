@@ -3,7 +3,7 @@
     @extend .well, .success
 
   .success
-    color: #449d44
+    color: $green
 
   .verification
     @extend .well
@@ -55,10 +55,10 @@
         margin: 0
 
       h3.confirmed
-        color: #449d44
+        color: $green
 
       .pending
-        color: #f0ad4e
+        color: $orange
 
       @media (max-width: 768px)
         .details
@@ -114,7 +114,7 @@
         .capacity
           padding: .5em
           border-radius: 50%
-          color: #449d44
+          color: $green
           display: inline-block
           margin: auto
           background-color: rgba(255,255,255,.5)
@@ -130,15 +130,15 @@
 
       &:hover
         a
-          border-color: #449d44
+          border-color: $green
           transform: scale(1.01)
-          background-color: rgba(#449d44, 0.2)
+          background-color: rgba($green, 0.2)
 
     .pending-submission
       margin-top: 1em
 
       .some
-        color: #f0ad4e
+        color: $orange
 
       .empty
         font-style: italic

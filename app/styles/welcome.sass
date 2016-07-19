@@ -28,6 +28,8 @@
       .beta-tmp
         margin-top: 2em
 
+      .goto-welcome
+        @extend .btn-green, .btn-lg
 
   #suggested-events
     margin: 1em 0
@@ -75,7 +77,7 @@
         .capacity
           padding: .5em
           border-radius: 50%
-          color: #449d44
+          color: $green
           display: inline-block
           margin: auto
           background-color: rgba(255,255,255,.5)
@@ -111,8 +113,8 @@
           display: inline-block
 
           padding: .5em .75em
-          border: 1px solid #449d44
-          color: #449d44
+          border: 1px solid $green
+          color: $green
           transition: all ease .25s
           font-size: 1.25em
 
@@ -120,12 +122,12 @@
 
       &:hover
         .well
-          border-color: #449d44
+          border-color: $green
           transform: scale(1.01)
 
         .my-btn
           color: white
-          background-color: #449d44
+          background-color: $green
 
   .box
     padding-right: 5vw
@@ -138,7 +140,7 @@
     align-items: center
 
     .goto
-      @extend .btn, .btn-success
+      @extend .btn, .btn-green
       margin-top: 2em
 
   #about

@@ -7,6 +7,7 @@ export default Ember.Component.extend({
 
     let params = {
       include: 'author',
+      sort: '-created_at',
       filters: {
         privates: this.get('isPrivate')
       },
@@ -33,6 +34,7 @@ export default Ember.Component.extend({
     paginate: function(number) {
       let params = {
         include: 'author',
+        sort: '-created_at',
         filters: {
           privates: this.get('isPrivate')
         },

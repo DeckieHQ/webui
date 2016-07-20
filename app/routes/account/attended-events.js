@@ -3,6 +3,14 @@ import AuthenticatedRoute from '../authenticated-route';
 
 export default AuthenticatedRoute.extend({
   model: function() {
-    return this.modelFor('account').query('submissions', { include: 'event' });
+    let params = {
+      include: 'event',
+      sort: 'event.begin_at',
+      filters: {
+        event: 'opened'
+      },
+    };
+
+    return this.modelFor('account').query('submissions', params);
   }
 });

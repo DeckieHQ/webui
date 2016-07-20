@@ -93,7 +93,7 @@ export default {
       "verification-sent": "Un email de vérification vous a été envoyé par email (pour une obscure raison il a tendance à arriver dans les spams, n'oubliez pas de vérifier)."
     },
     "hosted-events": {
-      "empty": "Vous n'avez encore organisé aucune partie"
+      "empty": "Vous n'avez aucune partie organisée en cours"
     },
     "attended-events": {
       "empty": "Vous n'êtes inscrits à aucune partie"
@@ -225,7 +225,7 @@ export default {
   },
   "email": {
     "already-verified": "Votre email est déjà vérifié",
-    "verified": "Votre numéro de téléphone a bien été vérifié",
+    "verified": "Votre email a bien été vérifié",
     "verify-fail": "Ce lien n'est plus valide",
     "enter-token": "Code de validation"
   },

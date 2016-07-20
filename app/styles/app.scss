@@ -55,7 +55,7 @@
 }
 
 .error {
-  color: red;
+  color: $red;
 }
 
 .warning {
@@ -88,7 +88,7 @@
 }
 
 .show-errors {
-  border-color: red;
+  border-color: $red;
 }
 
 .ais-search-box--input {
@@ -236,7 +236,7 @@
 
 .icon-remove:hover {
   cursor: pointer;
-  color: red;
+  color: $red;
 }
 
 .icon-pencil {

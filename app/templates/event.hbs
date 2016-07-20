@@ -15,14 +15,14 @@
           {{#if pending}}
             <div>{{t 'event.submission.pending'}}</div>
             <div>
-              <button {{action 'quit_event'}} class="btn btn-danger">
+              <button {{action 'quit_event'}} class="btn-red">
                 {{t 'event.quit'}}
               </button>
             </div>
           {{else if confirmed}}
             {{t 'event.submission.confirmed'}}
             <div>
-              <button {{action 'quit_event'}} class="btn btn-danger">
+              <button {{action 'quit_event'}} class="btn-red">
                 {{t 'event.quit'}}
               </button>
             </div>

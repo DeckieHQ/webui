@@ -68,7 +68,13 @@
     </div>
   {{else}}
     <div class="well">
-      <div class='no-event'>{{t 'account.attended-events.empty'}}</div>
+      <div class='no-event'>
+        {{#if opened}}
+          {{t 'account.attended-events.empty-opened'}}
+        {{else}}
+          {{t 'account.attended-events.empty-closed'}}
+        {{/if}}
+      </div>
       <hr>
       <div class='create'>
         {{#link-to 'search' class='goto'}}{{t 'navigation.search'}}{{/link-to}}

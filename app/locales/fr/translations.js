@@ -93,10 +93,12 @@ export default {
       "verification-sent": "Un email de vérification vous a été envoyé par email (pour une obscure raison il a tendance à arriver dans les spams, n'oubliez pas de vérifier)."
     },
     "hosted-events": {
-      "empty": "Vous n'avez aucune partie organisée en cours"
+      "empty-opened": "Vous n'avez aucune partie organisée en cours",
+      "empty-closed": "Vous n'avez aucune partie organisée terminée"
     },
     "attended-events": {
-      "empty": "Vous n'êtes inscrits à aucune partie"
+      "empty-opened": "Vous n'êtes inscrits à aucune partie",
+      "empty-closed": "Vous n'avez terminé aucune partie"
     },
     "password": {
       "updated": "Votre mot de passe a bien été mis à jour"

@@ -208,6 +208,10 @@ export default {
       "profile": "Une partie hébergée par un hôte au profil rempli a plus de chances d'avoir des participants, améliorez votre profil dès maintenant"
     }
   },
+  "events": {
+    "opened": "Parties en cours",
+    "closed": "Parties terminées"
+  },
   "comment": {
     "private": "Rendre le commentaire privé :",
     "show-privates": "N'afficher que les commentaires privés :",

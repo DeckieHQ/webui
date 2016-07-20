@@ -41,6 +41,18 @@
 
   #hosted-events,
   #attended-events
+    .tabs
+      text-align: center
+      margin-bottom: 1em
+
+      .tab
+        @extend .btn, .btn-default
+
+      .tab.opened
+        @extend .btn, .btn-info
+        background-color: #337ab7
+        border-color: #337ab7
+
     .hit
       a
         @extend .well

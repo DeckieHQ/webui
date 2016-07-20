@@ -1,11 +1,21 @@
 <div id="attended-events">
+  <div class='row tabs'>
+    <div class='col-xs-12 col-md-6'>
+      <span class={{if opened 'tab opened' 'tab'}} {{action 'toggle_events'}}>{{t 'events.opened'}}</span>
+    </div>
+    <div class='col-xs-12 col-md-6'>
+      <span class={{unless opened 'tab opened' 'tab'}} {{action 'toggle_events'}}>{{t 'events.closed'}}</span>
+    </div>
+  </div>
   {{#each model as |submission|}}
     <div class='hit'>
       {{#link-to 'event' submission.event}}
         <div class='row head'>
           <div class='col-xs-12 col-md-6'>
             <h3 class={{submission.status}}>{{submission.event.title}}</h3>
-            <div class={{submission.status}}>{{t submission.status}}</div>
+            {{#if opened}}
+              <div class={{submission.status}}>{{t submission.status}}</div>
+            {{/if}}
           </div>
           <div class='col-xs-12 col-md-6'>
             <div class="details">

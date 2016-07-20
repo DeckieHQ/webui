@@ -7,7 +7,9 @@ export default AuthenticatedRoute.extend({
       include: 'event',
       sort: 'event.begin_at',
       filters: {
-        event: 'opened'
+        event: {
+          opened: true
+        }
       },
     };
 

@@ -1,4 +1,12 @@
 <div id="hosted-events">
+  <div class='row tabs'>
+    <div class='col-xs-12 col-md-6'>
+      <span class={{if opened 'tab opened' 'tab'}} {{action 'toggle_events'}}>{{t 'events.opened'}}</span>
+    </div>
+    <div class='col-xs-12 col-md-6'>
+      <span class={{unless opened 'tab opened' 'tab'}} {{action 'toggle_events'}}>{{t 'events.closed'}}</span>
+    </div>
+  </div>
   {{#each model as |event|}}
     <div class="hit">
       {{#link-to 'event' event}}
@@ -37,13 +45,15 @@
 
               <span>{{name-display profile=event.host}}</span>
             </div>
-            <div class='pending-submission'>
-              {{#if event.hasPendingSubmissions}}
-                <span class='some'>{{t 'submissions.count' count=event.pendingSubmissionsCount}}</span>
-              {{else}}
-                <span class='empty'>{{t 'submissions.empty'}}</span>
-              {{/if}}
-            </div>
+            {{#if opened}}
+              <div class='pending-submission'>
+                {{#if event.hasPendingSubmissions}}
+                  <span class='some'>{{t 'submissions.count' count=event.pendingSubmissionsCount}}</span>
+                {{else}}
+                  <span class='empty'>{{t 'submissions.empty'}}</span>
+                {{/if}}
+              </div>
+            {{/if}}
           </div>
           <div class='col-xs-12 col-md-4'>
             <div class="attendees">

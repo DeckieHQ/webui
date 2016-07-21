@@ -191,6 +191,7 @@ export default {
       "pending": "Votre inscription est en attente de validation par l'hôte",
       "confirmed": "Vous êtes inscrits à cette partie"
     },
+    "not-found": "La partie n'existe pas ou a été annulée.",
     "quit": "Quitter la partie",
     "delete": "Annuler la partie",
     "full": "Cette partie est déjà complète",

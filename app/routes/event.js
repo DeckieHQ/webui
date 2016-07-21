@@ -15,7 +15,9 @@ export default Ember.Route.extend({
   session: Ember.inject.service(),
 
   model: function(params) {
-    return this.store.find('event', params.event_id);
+    return this.store.find('event', params.event_id).catch(
+      () => this.transitionTo('event-not-found')
+    );
   },
 
   afterModel(model) {

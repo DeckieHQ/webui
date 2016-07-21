@@ -39,6 +39,7 @@ Router.map(function() {
   });
   this.route('notification', { path: '/notification/:notification_id' });
   this.route('feedback-sent');
+  this.route('event-not-found');
 });
 
 export default Router;

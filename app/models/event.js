@@ -32,9 +32,14 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   user_submission: DS.belongsTo('submission'),
   invitations: DS.hasMany('invitation'),
 
+  shortPostcode: Ember.computed('postcode', function() {
+    return this.get('postcode').substring(0, 2);
+  }),
+
   pendingSubmissionsCount: Ember.computed('submissions_count', 'attendees_count', function() {
     return this.get('submissions_count') - this.get('attendees_count');
   }),
+
   hasPendingSubmissions: Ember.computed('pendingSubmissionsCount', function() {
     return this.get('pendingSubmissionsCount') > 0;
   }),

@@ -1,77 +1,79 @@
-<div id='event-created' class='col-lg-6 col-lg-offset-3 well'>
-  <div class='row'>
-    <div class='col-lg-12 success'>{{t 'event.created'}}</div>
-  </div>
-
-  <hr>
-
-  <div class='row'>
-    <div class='col-lg-8'>
-      <div class='event-title'>{{#link-to 'event' model}}{{model.title}}{{/link-to}}</div>
-      {{#fb-share tagName="a" url=eventUrl title=model.title}}
-        <img class='fb-logo' src='/assets/images/fb-share.png'>
-        <span class='fb-share'>{{t 'facebook-share'}}</span>
-      {{/fb-share}}
-
-      <div class='categories'>{{display-categories event=model}}</div>
-    </div>
-    <div class='col-lg-4'>
-      <div class="details">
-        <div class="date">
-          <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-          {{moment-format model.begin_at 'DD MMMM'}}
-        </div>
-        <div class="time">
-          <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-          {{moment-format model.begin_at 'HH:mm'}}
-        </div>
-        <div class="place">
-          <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-          {{capitalize model.city}}
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <hr>
-
-  <div class='row'>
-    <div class='col-lg-12 tips'>
-      {{t 'event.tips.invitation'}}
-    </div>
-    <form>
-      <div class='col-lg-9'>
-        {{validated-input placeholder="placeholder.invitation" value=email errors=errors.email}}
-        {{#if emailSent}}
-          <div class='email-sent'>{{t 'email-sent'}}</div>
-        {{else if emailError}}
-          <div class='email-error'>{{t 'email-error'}}</div>
-        {{/if}}
-      </div>
-      <div class='col-lg-3'>
-        {{dynamic-submit actionOnSubmit="send_invitation"}}
-      </div>
-    </form>
-  </div>
-
-  <hr>
-
-  {{#if profileMissing}}
+<div id='event-created' class='row'>
+  <div class='col-lg-6 col-lg-offset-3 well'>
     <div class='row'>
-      <div class='col-lg-12 tips'>
-        {{t 'event.tips.profile'}}
+      <div class='col-lg-12 success'>{{t 'event.created'}}</div>
+    </div>
+
+    <hr>
+
+    <div class='row'>
+      <div class='col-lg-8'>
+        <div class='event-title'>{{#link-to 'event' model}}{{model.title}}{{/link-to}}</div>
+        {{#fb-share tagName="a" url=eventUrl title=model.title}}
+          <img class='fb-logo' src='/assets/images/fb-share.png'>
+          <span class='fb-share'>{{t 'facebook-share'}}</span>
+        {{/fb-share}}
+
+        <div class='categories'>{{display-categories event=model}}</div>
       </div>
-      <div class='col-lg-12 center-text'>
-        {{#link-to 'account.profile' target="_blank"}}<div class='goto-profile'>{{t 'navigation.profile'}}</div>{{/link-to}}
+      <div class='col-lg-4'>
+        <div class="details">
+          <div class="date">
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+            {{moment-format model.begin_at 'DD MMMM'}}
+          </div>
+          <div class="time">
+            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+            {{moment-format model.begin_at 'HH:mm'}}
+          </div>
+          <div class="place">
+            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+            {{capitalize model.city}}
+          </div>
+        </div>
       </div>
     </div>
 
     <hr>
-  {{/if}}
 
-  <div class='row'>
-    <div class='col-lg-12 center-text'>
-      {{#link-to 'event' model}}<div class='goto-event'>{{t 'navigation.event'}}</div>{{/link-to}}
+    <div class='row'>
+      <div class='col-lg-12 tips'>
+        {{t 'event.tips.invitation'}}
+      </div>
+      <form>
+        <div class='col-lg-9'>
+          {{validated-input placeholder="placeholder.invitation" value=email errors=errors.email}}
+          {{#if emailSent}}
+            <div class='email-sent'>{{t 'email-sent'}}</div>
+          {{else if emailError}}
+            <div class='email-error'>{{t 'email-error'}}</div>
+          {{/if}}
+        </div>
+        <div class='col-lg-3'>
+          {{dynamic-submit actionOnSubmit="send_invitation"}}
+        </div>
+      </form>
+    </div>
+
+    <hr>
+
+    {{#if profileMissing}}
+      <div class='row'>
+        <div class='col-lg-12 tips'>
+          {{t 'event.tips.profile'}}
+        </div>
+        <div class='col-lg-12 center-text'>
+          {{#link-to 'account.profile' target="_blank"}}<div class='goto-profile'>{{t 'navigation.profile'}}</div>{{/link-to}}
+        </div>
+      </div>
+
+      <hr>
+    {{/if}}
+
+    <div class='row'>
+      <div class='col-lg-12 center-text'>
+        {{#link-to 'event' model}}<div class='goto-event'>{{t 'navigation.event'}}</div>{{/link-to}}
+      </div>
     </div>
   </div>
 </div>

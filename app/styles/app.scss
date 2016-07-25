@@ -67,7 +67,6 @@
 }
 
 #verify {
-  @extend .well, .col-lg-6, .col-lg-offset-3;
   text-align: center;
 
   .success {
@@ -79,7 +78,7 @@
   }
 
   .goto {
-    @extend .btn, .btn-green;
+    @extend .btn-green;
   }
 }
 
@@ -124,7 +123,7 @@
 
 .update-avatar-button {
   margin-top: 1vh;
-  @extend .btn, .btn-xs, .btn-orange;
+  @extend .btn-xs, .btn-orange;
 }
 
 #shadow {
@@ -299,7 +298,7 @@
 
 .accept-submission > button {
   vertical-align: -webkit-baseline-middle;
-  @extend .btn, .btn-xs, .btn-green;
+  @extend .btn-xs, .btn-green;
 }
 
 .attendee-contact > button {
@@ -364,7 +363,7 @@
 }
 
 .btn-submit {
-  @extend .btn, .btn-green;
+  @extend .btn-green;
   width: 100px;
 }
 

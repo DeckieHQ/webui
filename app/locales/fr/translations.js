@@ -17,6 +17,7 @@ export default {
     "attended-events": "Parties auxquelles je participe"
   },
   "footer": {
+    "follow-us": "Suivez nous sur :",
     "incorporated": "pas encore incorporée",
     "contact": "contact",
   },

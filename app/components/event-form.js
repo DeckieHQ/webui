@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import EmberValidations, { validator } from 'ember-validations';
+import _ from 'lodash/lodash';
 
 export default Ember.Component.extend(EmberValidations, {
   i18n: Ember.inject.service(),
@@ -110,9 +111,6 @@ export default Ember.Component.extend(EmberValidations, {
       presence: true,
       length: { maximum: 64 }
     },
-    "model.begin_at": {
-      presence: true
-    },
     end_at: {
       inline: validator(function() {
         let end_at_hour = this.model.end_at_hour;
@@ -135,31 +133,61 @@ export default Ember.Component.extend(EmberValidations, {
     },
   },
 
+  time_slots: [
+    { date: null, hour: '19', minute: '30' },
+    { date: null, hour: '19', minute: '30' },
+    { date: null, hour: '19', minute: '30' },
+    { date: null, hour: '19', minute: '30' },
+    { date: null, hour: '19', minute: '30' }
+  ],
+
   addEndDate: false,
 
   actions: {
     save_event: function(defer) {
       let model = this.get('model');
 
+      if(this.get('model.event_type') === 'flexible') {
+        model.set('begin_at', null);
+        model.set('flexible', true);
+
+        let new_time_slots = [];
+
+        this.get('time_slots').forEach((time_slot) => {
+            if (time_slot.date) {
+              let new_time_slot = moment(time_slot.date);
+              new_time_slot.hour(time_slot.hour).minute(time_slot.minute);
+              new_time_slots.push(new_time_slot.toDate());
+            }
+          }
+        )
+
+        model.set('new_time_slots', new_time_slots)
+      }
+
       this.set('showCustomError', true);
 
       let params = {
         transitionToModel: this.get('alreadyCreated'),
         beforeSave: () => {
-          let begin_at_hour = this.get('begin_at_hour');
-          let begin_at_minute = this.get('begin_at_minute');
-          let begin_at = moment(model.get('begin_at'));
-          begin_at.hour(begin_at_hour).minute(begin_at_minute);
-          model.set('begin_at', begin_at.toDate());
+          if(this.get('model.event_type') === 'normal') {
+            model.set('flexible', false);
+            
+            let begin_at_hour = this.get('begin_at_hour');
+            let begin_at_minute = this.get('begin_at_minute');
+            let begin_at = moment(model.get('begin_at'));
+            begin_at.hour(begin_at_hour).minute(begin_at_minute);
+            model.set('begin_at', begin_at.toDate());
 
-          if (this.get('addEndDate')) {
-            let end_at_hour = this.get('end_at_hour');
-            let end_at_minute = this.get('end_at_minute');
-            let end_at = moment(model.get('end_at'));
-            end_at.hour(end_at_hour).minute(end_at_minute);
-            model.set('end_at', end_at.toDate());
-          } else {
-            model.set('end_at', null);
+            if (this.get('addEndDate')) {
+              let end_at_hour = this.get('end_at_hour');
+              let end_at_minute = this.get('end_at_minute');
+              let end_at = moment(model.get('end_at'));
+              end_at.hour(end_at_hour).minute(end_at_minute);
+              model.set('end_at', end_at.toDate());
+            } else {
+              model.set('end_at', null);
+            }
           }
         },
         afterSave: () => {

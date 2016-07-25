@@ -280,6 +280,7 @@ export default {
     "min-capacity": "Minimum inscrits",
     "capacity": "Places disponibles",
     "date": "Date",
+    "date-flexible": "Sondage de date",
     "end-date": "Date de fin",
     "street": "Adresse",
     "postcode": "Code postal",

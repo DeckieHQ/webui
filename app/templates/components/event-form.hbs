@@ -33,6 +33,7 @@
 
   <div class='row'>
     <div class='col-lg-12'>
+      {{radio-button value='normal' checked=model.event_type}}
       <label>{{t 'label.date'}}</label>
     </div>
   </div>
@@ -76,6 +77,35 @@
         {{validated-select options=minutes value=end_at_minute errors=errors.end_at_minute}}
       </div>
     </div>
+  {{/if}}
+
+  <hr>
+
+  <div class='row'>
+    <div class='col-lg-12'>
+      {{radio-button value='flexible' checked=model.event_type}}
+      <label>{{t 'label.date-flexible'}}</label>
+    </div>
+  </div>
+
+  {{#if (eq model.event_type 'flexible')}}
+    {{#each time_slots as |time_slot|}}
+      <div class='row'>
+        <div class='col-lg-6'>
+          {{validated-date placeholder="placeholder.date" value=time_slot.date}}
+        </div>
+        <div class='col-lg-3'>
+          {{validated-select options=hours value=time_slot.hour}}
+        </div>
+        <div class='col-lg-3'>
+          {{validated-select options=minutes value=time_slot.minute}}
+        </div>
+      </div>
+    {{/each}}
+
+    {{#each time_slots as |time_slot|}}
+        <p>{{time_slot.date}}</p>
+    {{/each}}
   {{/if}}
 
   <hr>

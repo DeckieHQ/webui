@@ -367,7 +367,9 @@ export default {
     "date": "date invalide",
     "min-max": "doit être inférieur ou égal au maximum"
   },
-  "event-date-flexible": "Chosissez jusqu'à 5 date sur lesquels les joueurs pourront s'inscrire. Vous pourrez ensuite choisir la date qui vous convient le mieux selon les inscrits à chaque créneau.",
+  "is-flexible": "Vous avez choisis un sondage pour la date de cette partie.",
+  "see-time-slots": "Voir le sondage",
+  "event-date-flexible": "Choisissez jusqu'à 5 date sur lesquels les joueurs pourront s'inscrire. Vous pourrez ensuite choisir la date qui vous convient le mieux selon les inscrits à chaque créneau.",
   "email-reset-sent": "Un lien pour changer votre mot de passe vous a été envoyé par email",
   "new-password-updated": "Votre mot de passe a été mis à jour, vous n'avez plus qu'à vous connecter",
   "invalid-token": "Ce lien n'est plus valide",

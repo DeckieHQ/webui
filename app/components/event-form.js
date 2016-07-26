@@ -115,7 +115,7 @@ export default Ember.Component.extend(EmberValidations, {
       inline: validator(function() {
         if (this.model.get('model.flexible')) {
           let new_time_slots = this.model.get('model.new_time_slots');
-          if (new_time_slots.length < 1) {
+          if (new_time_slots && new_time_slots.length < 1) {
             return this.get('i18n').t("error.empty-time-slots");
           }
         }
@@ -155,6 +155,14 @@ export default Ember.Component.extend(EmberValidations, {
     { date: null, hour: '19', minute: '30', placeholder: 'placeholder.date-option-4' },
     { date: null, hour: '19', minute: '30', placeholder: 'placeholder.date-option-5' }
   ],
+
+  showDate: function() {
+    return !this.get('alreadyCreated') || !this.get('model.flexible');
+  }.property('model.flexible', 'alreadyCreated'),
+
+  showDateFlexible: function() {
+    return !this.get('alreadyCreated') || this.get('model.flexible');
+  }.property('model.flexible', 'alreadyCreated'),
 
   addEndDate: false,
 

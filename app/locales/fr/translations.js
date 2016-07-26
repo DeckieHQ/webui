@@ -367,6 +367,7 @@ export default {
     "date": "date invalide",
     "min-max": "doit être inférieur ou égal au maximum"
   },
+  "make-event-private": "Ne pas afficher la partie dans la recherche publique",
   "is-flexible": "Vous avez choisis un sondage pour la date de cette partie.",
   "see-time-slots": "Voir le sondage",
   "event-date-flexible": "Choisissez jusqu'à 5 date sur lesquels les joueurs pourront s'inscrire. Vous pourrez ensuite choisir la date qui vous convient le mieux selon les inscrits à chaque créneau.",

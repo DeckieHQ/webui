@@ -72,6 +72,15 @@
   }
 }
 
+.set-private {
+  display: flex;
+  align-items: center;
+
+  .goto {
+    margin-left: auto;
+  }
+}
+
 .warning {
   color: $orange;
 }

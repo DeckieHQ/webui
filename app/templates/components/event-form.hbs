@@ -154,8 +154,9 @@
   </div>
 
   <div class='row'>
-    <div class='col-lg-12'>
-      <div class='align-right'>{{dynamic-submit actionOnSubmit="save_event"}}</div>
+    <div class='col-lg-12 set-private'>
+      <div>{{t 'make-event-private'}} {{input type="checkbox" checked=model.private}}</div>
+      <div class='goto'>{{dynamic-submit actionOnSubmit="save_event"}}</div>
     </div>
   </div>
 </form>

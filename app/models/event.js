@@ -33,6 +33,7 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   submissions: DS.hasMany('submission'),
   user_submission: DS.belongsTo('submission'),
   invitations: DS.hasMany('invitation'),
+  private: DS.attr('boolean', { defaultValue: false }),
 
   event_type: Ember.computed('flexible', function() {
     return this.get('flexible') ? 'flexible' : 'normal';

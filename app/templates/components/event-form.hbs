@@ -89,10 +89,16 @@
   </div>
 
   {{#if (eq model.event_type 'flexible')}}
+    <div>{{t 'event-date-flexible'}}</div>
+    <div>
+      {{#if showCustomError}}
+        <span class='error'>{{errors.model.new_time_slots}}</span>
+      {{/if}}
+    </div>
     {{#each time_slots as |time_slot|}}
       <div class='row'>
         <div class='col-lg-6'>
-          {{validated-date placeholder="placeholder.date" value=time_slot.date}}
+          {{validated-date placeholder=time_slot.placeholder value=time_slot.date}}
         </div>
         <div class='col-lg-3'>
           {{validated-select options=hours value=time_slot.hour}}
@@ -101,10 +107,6 @@
           {{validated-select options=minutes value=time_slot.minute}}
         </div>
       </div>
-    {{/each}}
-
-    {{#each time_slots as |time_slot|}}
-        <p>{{time_slot.date}}</p>
     {{/each}}
   {{/if}}
 

@@ -67,6 +67,17 @@
         </div>
       {{/if}}
 
+      {{#if model.flexible}}
+        <div class='well'>
+          <b>{{t 'event.date-options'}}</b>
+          <div class='line-separator'></div>
+
+          {{#each time_slots as |time_slot index|}}
+            <div>{{moment-format time_slot.begin_at 'DD MMMM'}}</div>
+          {{/each}}
+        </div>
+      {{/if}}
+
       {{#if isAbleToInvite}}
         <div class='well'>
           <form>

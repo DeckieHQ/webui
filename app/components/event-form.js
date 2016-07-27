@@ -115,7 +115,7 @@ export default Ember.Component.extend(EmberValidations, {
       inline: validator(function() {
         if (this.model.get('model.flexible')) {
           let new_time_slots = this.model.get('model.new_time_slots');
-          if (new_time_slots && new_time_slots.length < 1) {
+          if (new_time_slots && new_time_slots.length < 2) {
             return this.get('i18n').t("error.empty-time-slots");
           }
         }

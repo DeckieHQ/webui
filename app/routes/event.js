@@ -23,30 +23,37 @@ export default Ember.Route.extend({
   afterModel(model) {
     let isAuthenticated = this.get('session.isAuthenticated');
 
-    if (isAuthenticated) {
-      return model.get('user_submission')
-        .then((submission) => {
-          if (submission) {
-            return this.controllerFor('event').set('user_submission', submission);
-          } else {
-            return this.controllerFor('event').set('user_submission', null);
-          }
-        })
-        .then(() => {
-          let isHost = this.get('currentUser').get('profile.id') == model.get('host.id');
+    if (model.get('flexible')) {
+      return model.get('time_slots').then((time_slots) => {
+        return this.controllerFor('event').set('time_slots', time_slots);
+      })
+      .then(() => {
+        if (isAuthenticated) {
+          return model.get('user_submission')
+            .then((submission) => {
+              if (submission) {
+                return this.controllerFor('event').set('user_submission', submission);
+              } else {
+                return this.controllerFor('event').set('user_submission', null);
+              }
+            })
+            .then(() => {
+              let isHost = this.get('currentUser').get('profile.id') == model.get('host.id');
 
-          if (isHost) {
-            return model.query('submissions', { include: 'profile' });
-          } else {
-            this.controllerFor('event').set('submissions', null);
-          }
-        })
-        .then((submissions) => {
-          if (submissions) {
-            return this.controllerFor('event').set('submissions', submissions);
-          }
-        })
-      ;
+              if (isHost) {
+                return model.query('submissions', { include: 'profile' });
+              } else {
+                this.controllerFor('event').set('submissions', null);
+              }
+            })
+            .then((submissions) => {
+              if (submissions) {
+                return this.controllerFor('event').set('submissions', submissions);
+              }
+            })
+          ;
+        }
+      })
     }
   },
 });

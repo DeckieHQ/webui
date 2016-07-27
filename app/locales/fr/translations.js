@@ -184,6 +184,7 @@ export default {
     "short-description": {
       "empty": "Aucune description brève pour cette partie.",
     },
+    "date-options": "Choix de date",
     "count": "Inscrits : {{attendees-count}} / {{capacity}}",
     "min-attendee": "Cette partie aura lieu seulement s'il y a au moins {{min}} joueurs.",
     "closed": "Cette partie est terminée",

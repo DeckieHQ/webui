@@ -117,6 +117,14 @@ export default Ember.Controller.extend(EmberValidations, {
       }
     },
 
+    show_time_slots: function() {
+      this.set('displayTimeSlots', true);
+    },
+
+    hide_time_slots: function() {
+      this.set('displayTimeSlots', false);
+    },
+
     quit_event: function() {
       if (confirm(this.get('i18n').t('event.confirm-quit'))) {
         let status = this.get('status');

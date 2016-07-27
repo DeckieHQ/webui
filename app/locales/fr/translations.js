@@ -184,6 +184,7 @@ export default {
     "short-description": {
       "empty": "Aucune description brève pour cette partie.",
     },
+    "join-flexible": "Cette partie a plusieurs choix de date possibles, vous pouvez vous inscrire selon vos disponibilités, la date finale sera choisie par l'hôte selon les participants.",
     "date-options": "Choix de date",
     "count": "Inscrits : {{attendees-count}} / {{capacity}}",
     "min-attendee": "Cette partie aura lieu seulement s'il y a au moins {{min}} joueurs.",

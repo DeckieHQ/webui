@@ -18,14 +18,20 @@
       </div>
       <div class='col-lg-4'>
         <div class="details">
-          <div class="date">
+          {{#if model.flexible}}
             <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-            {{moment-format model.begin_at 'DD MMMM'}}
-          </div>
-          <div class="time">
-            <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-            {{moment-format model.begin_at 'HH:mm'}}
-          </div>
+            {{t 'date-flexible-from'}}
+            {{moment-format model.begin_at_range.min 'DD MMMM'}}
+          {{else}}
+            <div class="date">
+              <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+              {{moment-format model.begin_at 'DD MMMM'}}
+            </div>
+            <div class="time">
+              <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+              {{moment-format model.begin_at 'HH:mm'}}
+            </div>
+          {{/if}}
           <div class="place">
             <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
             {{capitalize model.city}}

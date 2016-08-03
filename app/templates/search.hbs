@@ -30,14 +30,20 @@
                 </div>
                 <div class='col-xs-12 col-md-6'>
                   <div class="details">
-                    <div class="date">
+                    {{#if event.flexible}}
                       <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                      {{moment-format event.begin_at 'DD MMMM'}}
-                    </div>
-                    <div class="time">
-                      <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                      {{moment-format event.begin_at 'HH:mm'}}
-                    </div>
+                      {{t 'date-flexible-from'}}
+                      {{moment-format event.begin_at_range.min 'DD MMMM'}}
+                    {{else}}
+                      <div class="date">
+                        <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                        {{moment-format event.begin_at 'DD MMMM'}}
+                      </div>
+                      <div class="time">
+                        <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                        {{moment-format event.begin_at 'HH:mm'}}
+                      </div>
+                    {{/if}}
                     <div class="place">
                       <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
                       {{capitalize event.city}} {{short-postcode postcode=event.postcode}}

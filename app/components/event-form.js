@@ -78,8 +78,8 @@ export default Ember.Component.extend(EmberValidations, {
         greaterThanOrEqualTo: 0,
       },
       inline: validator(function() {
-        let max = this.model.get('model.capacity');
-        let min = this.model.get('model.min_capacity');
+        let max = Number(this.model.get('model.capacity'));
+        let min = Number(this.model.get('model.min_capacity'));
         if (min > max) {
           return this.get('i18n').t("error.min-max");
         }

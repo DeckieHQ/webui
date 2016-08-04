@@ -142,6 +142,10 @@ export default Ember.Controller.extend(EmberValidations, {
       }
     },
 
+    join_time_slot: function() {
+      console.log('toto');
+    },
+
     delete_event: function() {
       if (confirm(this.get('i18n').t('event.confirm-delete'))) {
         this.get('model').destroyRecord().then(

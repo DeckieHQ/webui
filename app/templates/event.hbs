@@ -267,7 +267,10 @@
 
       <div class='row'>
         <div class='col-lg-12'>
-          en cours de dev
+          {{#each time_slots as |time_slot|}}
+            {{moment-format time_slot.begin_at 'DD MMMM'}}
+            <input type="checkbox" checked={{time_slot.member}} onclick={{action "join_time_slot"}} />
+          {{/each}}
         </div>
       </div>
     </div>

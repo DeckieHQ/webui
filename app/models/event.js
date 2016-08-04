@@ -35,6 +35,7 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   invitations: DS.hasMany('invitation'),
   private: DS.attr('boolean', { defaultValue: false }),
   time_slots: DS.hasMany('time-slot'),
+  time_slots_members: DS.hasMany('profile'),
 
   event_type: Ember.computed('flexible', function() {
     return this.get('flexible') ? 'flexible' : 'normal';

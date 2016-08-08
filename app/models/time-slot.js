@@ -5,4 +5,5 @@ export default DS.Model.extend({
   begin_at: DS.attr(),
   member: DS.attr(),
   members: DS.hasMany('profile'),
+  time_slot_submissions: DS.hasMany('time-slot-submission'),
 });

@@ -142,8 +142,19 @@ export default Ember.Controller.extend(EmberValidations, {
       }
     },
 
-    join_time_slot: function() {
-      console.log('toto');
+    join_time_slot: function(time_slot) {
+      if (time_slot.get('member')) {
+        //TODO: see how to delete time_slot_submission
+        console.log('a coder');
+      } else {
+        let submission = this.store.createRecord('time-slot-submission', {
+          time_slot: time_slot
+        });
+
+        let defer = Ember.RSVP.defer();
+
+        this.send('save', this, defer, { model: submission });
+      }
     },
 
     delete_event: function() {

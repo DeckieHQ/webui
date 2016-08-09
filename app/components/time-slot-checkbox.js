@@ -26,14 +26,17 @@ export default Ember.Component.extend({
       let time_slot = this.get('time_slot');
 
       if (time_slot.get('member')) {
-        //TODO: see how to delete time_slot_submission
-        console.log('a coder');
+        this.get('member.time_slot_submissions').forEach((time_slot_submission) => {
+          if (time_slot_submission.get('time_slot.id') == time_slot.id) {
+            return time_slot_submission.destroyRecord();
+          }
+        })
       } else {
         let submission = this.get('store').createRecord('time-slot-submission', {
           time_slot: time_slot
         });
 
-        submission.save();
+        return submission.save();
       }
     }
   }

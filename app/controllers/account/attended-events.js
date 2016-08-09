@@ -1,11 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Controller.extend({
-  type: 'opened',
+  eventsType: 'opened',
+
+  displayFlexibles: function() {
+    return this.get('eventsType') == 'flexible';
+  }.property('eventsType'),
 
   emptyLabel: function() {
     return `account.attended-events.empty-${this.get('type')}`;
-  }.property('type'),
+  }.property('eventsType'),
 
   actions: {
     toggleOpenedEvents: function() {
@@ -20,11 +24,9 @@ export default Ember.Controller.extend({
 
         return profile.query('time_slot_submissions', params);
       }).then(timeSlotSubmissions => {
-        console.log(timeSlotSubmissions);
-        
         this.set('model', timeSlotSubmissions);
 
-        this.set('type', 'flexible');
+        this.set('eventsType', 'flexible');
       });
     }
   },
@@ -36,12 +38,10 @@ export default Ember.Controller.extend({
 
       params.filters.event.opened = false;
     }
-    return this.get('currentUser').content.query('submissions', params).then(
-      (submissions) => {
-        this.set('model', submissions);
+    return this.get('currentUser').content.query('submissions', params).then(submissions => {
+      this.set('model', submissions);
 
-        this.set('type', opened ? 'opened' : 'closed');
-      }
-    );
+      this.set('eventsType', opened ? 'opened' : 'closed');
+    });
   }
  });

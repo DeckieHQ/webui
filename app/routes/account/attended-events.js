@@ -12,7 +12,6 @@ export default AuthenticatedRoute.extend({
         }
       },
     };
-
     return this.modelFor('account').query('submissions', params);
   }
 });

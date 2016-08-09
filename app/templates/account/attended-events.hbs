@@ -1,17 +1,17 @@
 <div id="attended-events">
   <div class='row tabs'>
     <div class='col-xs-12 col-md-4'>
-      <span class={{if (eq type 'opened') 'tab opened' 'tab'}} {{action 'toggleOpenedEvents'}}>{{t 'events.opened'}}</span>
+      <span class={{if (eq eventsType 'opened') 'tab opened' 'tab'}} {{action 'toggleOpenedEvents'}}>{{t 'events.opened'}}</span>
     </div>
     <div class='col-xs-12 col-md-4'>
-      <span class={{if (eq type 'closed') 'tab opened' 'tab'}} {{action 'toggleClosedEvents'}}>{{t 'events.closed'}}</span>
+      <span class={{if (eq eventsType 'closed') 'tab opened' 'tab'}} {{action 'toggleClosedEvents'}}>{{t 'events.closed'}}</span>
     </div>
     <div class='col-xs-12 col-md-4'>
-      <span class={{if (eq type 'flexible') 'tab opened' 'tab'}} {{action 'toggleFlexibleEvents'}}>{{t 'events.flexible'}}</span>
+      <span class={{if (eq eventsType 'flexible') 'tab opened' 'tab'}} {{action 'toggleFlexibleEvents'}}>{{t 'events.flexible'}}</span>
     </div>
   </div>
   {{#each model as |submission|}}
-    {{#if (eq type 'flexible') }}
+    {{#if displayFlexibles }}
       {{display-account-event event=submission.time_slot.event status='flexible'}}
     {{else}}
       {{display-account-event event=submission.event status=submission.status}}

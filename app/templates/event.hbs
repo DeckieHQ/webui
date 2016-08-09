@@ -28,6 +28,13 @@
             </div>
           {{else if full}}
             <div>{{t 'event.full'}}</div>
+          {{else if isFlexibleMember}}
+            <div>
+              <div>{{t 'event.is-flexible-member'}}</div>
+              <button {{action 'show_time_slots'}} class="btn-green">
+                {{t 'tamere'}}
+              </button>
+            </div>
           {{else if model.flexible}}
             <div>
               <div>{{t 'event.join-flexible'}}</div>
@@ -294,7 +301,7 @@
               {{/each}}
             </tr>
             {{/each}}
-            {{#unless isFlexibleMember}}
+            {{#unless (or isHost isFlexibleMember)}}
               <tr>
                 <td>{{currentUser.profile.display_name}}</td>
                 {{#each time_slots as |time_slot|}}

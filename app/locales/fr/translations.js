@@ -99,7 +99,8 @@ export default {
     },
     "attended-events": {
       "empty-opened": "Vous n'êtes inscrits à aucune partie",
-      "empty-closed": "Vous n'avez terminé aucune partie"
+      "empty-closed": "Vous n'avez terminé aucune partie",
+      "empty-flexible": "Vous n'êtes inscrits à aucune partie flexible"
     },
     "password": {
       "updated": "Votre mot de passe a bien été mis à jour"
@@ -192,7 +193,7 @@ export default {
     "edit": "Editer la partie",
     "submission": {
       "pending": "Votre inscription est en attente de validation par l'hôte",
-      "confirmed": "Vous êtes inscrits à cette partie"
+      "confirmed": "Vous êtes inscrits à cette partie",
     },
     "not-found": "La partie n'existe pas ou a été annulée.",
     "quit": "Quitter la partie",
@@ -216,7 +217,8 @@ export default {
   },
   "events": {
     "opened": "Parties en cours",
-    "closed": "Parties terminées"
+    "closed": "Parties terminées",
+    "flexible": "Parties flexibles"
   },
   "comment": {
     "private": "Rendre le commentaire privé :",
@@ -412,6 +414,7 @@ export default {
   "facebook-share": "Partager la partie sur Facebook",
   "pending": "Votre inscription est en attente de validation par l'hôte",
   "confirmed": "Vous êtes inscrits à cette partie",
+  "flexible": "Cet évennement est en attente de validation d'un créneau horaire par l'hôte",
   "to": "à",
   errors: {
     inclusion: "n'est pas inclu dans la liste",

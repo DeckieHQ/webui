@@ -28,6 +28,10 @@ export default Ember.Component.extend({
       if (time_slot.get('member')) {
         this.get('member.time_slot_submissions').forEach((time_slot_submission) => {
           if (time_slot_submission.get('time_slot.id') == time_slot.id) {
+            let count = time_slot.get('members_count') - 1;
+            time_slot.set('members_count', count);
+            time_slot.set('member', false);
+
             return time_slot_submission.destroyRecord();
           }
         })
@@ -36,7 +40,11 @@ export default Ember.Component.extend({
           time_slot: time_slot
         });
 
-        return submission.save();
+        return submission.save().then(() => {
+          let count = time_slot.get('members_count') + 1;
+          time_slot.set('members_count', count);
+          time_slot.set('member', true);
+        });
       }
     }
   }

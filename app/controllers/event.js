@@ -83,6 +83,18 @@ export default Ember.Controller.extend(EmberValidations, {
     return this.get('model.attendees.length') >= this.get('model.capacity');
   }),
 
+  isFlexibleMember: function() {
+    let isMember = false;
+
+    this.get('time_slots').forEach((time_slot => {
+      if (time_slot.get('member')) {
+        isMember = true;
+      }
+    }));
+
+    return isMember;
+  }.property('time_slots'),
+
   actions: {
     join_event: function(defer) {
       if (!this.get('session.isAuthenticated')) {

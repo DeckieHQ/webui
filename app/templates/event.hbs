@@ -294,6 +294,14 @@
               {{/each}}
             </tr>
             {{/each}}
+            {{#unless isFlexibleMember}}
+              <tr>
+                <td>{{currentUser.profile.display_name}}</td>
+                {{#each time_slots as |time_slot|}}
+                  <td>{{time-slot-checkbox time_slot=time_slot member=currentUser.profile}}</td>
+                {{/each}}
+              </tr>
+            {{/unless}}
           </table>
         </div>
       </div>

@@ -24,11 +24,21 @@ export default Ember.Route.extend({
     let isAuthenticated = this.get('session.isAuthenticated');
 
     if (model.get('flexible')) {
-      return model.get('time_slots_members').then((time_slots_members) => {
-        return this.controllerFor('event').set('time_slots_members', time_slots_members);
+      let params = {
+        include: 'time_slot_submissions',
+      };
+
+      return model.query('time_slots_members', params).then((time_slots_members) => {
+        this.controllerFor('event').set('time_slots_members', time_slots_members);
+
+        return time_slots_members.forEach((member) => member.get('time_slot_submissions'))
       })
       .then(() => {
-        return model.get('time_slots').then((time_slots) => {
+        let params = {
+          sort: 'begin_at',
+        };
+
+        return model.query('time_slots', params).then((time_slots) => {
           return this.controllerFor('event').set('time_slots', time_slots);
         })
       })

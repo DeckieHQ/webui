@@ -28,7 +28,7 @@
             </div>
           {{else if full}}
             <div>{{t 'event.full'}}</div>
-          {{else if isFlexibleMember}}
+          {{else if (or isFlexibleMember isNewFlexibleMember)}}
             <div>
               <div>{{t 'event.is-flexible-member'}}</div>
               <button {{action 'show_time_slots'}} class="btn-green">

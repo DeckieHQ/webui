@@ -93,7 +93,7 @@ export default Ember.Controller.extend(EmberValidations, {
     }));
 
     return isMember;
-  }.property('time_slots.[].member'),
+  }.property('time_slots'),
 
   actions: {
     join_event: function(defer) {
@@ -134,6 +134,15 @@ export default Ember.Controller.extend(EmberValidations, {
     },
 
     hide_time_slots: function() {
+      let isMember = false;
+
+      this.get('time_slots').forEach((time_slot => {
+        if (time_slot.get('member')) {
+          isMember = true;
+        }
+      }));
+
+      this.set('isNewFlexibleMember', isMember);
       this.set('displayTimeSlots', false);
     },
 

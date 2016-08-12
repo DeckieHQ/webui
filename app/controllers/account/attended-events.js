@@ -8,7 +8,7 @@ export default Ember.Controller.extend({
   }.property('eventsType'),
 
   emptyLabel: function() {
-    return `account.attended-events.empty-${this.get('type')}`;
+    return `account.attended-events.empty-${this.get('eventsType')}`;
   }.property('eventsType'),
 
   actions: {

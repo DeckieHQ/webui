@@ -13,6 +13,7 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   new_time_slots: DS.attr(),
   begin_at: DS.attr('date'),
   end_at: DS.attr('date'),
+  begin_at_range: DS.attr(),
   opened: DS.attr(),
   ready: DS.attr(),
   description: DS.attr(),

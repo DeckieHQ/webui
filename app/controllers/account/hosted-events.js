@@ -18,6 +18,7 @@ export default Ember.Controller.extend({
       return this.get('currentUser').content.query('hosted_events', params).then(
         (events) => {
           this.set('model', events);
+
           this.toggleProperty('opened');
         }
       );

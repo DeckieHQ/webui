@@ -408,6 +408,7 @@ export default {
   "event-remove_full": "est complète, votre inscription n'a pas été retenue",
   "event-remove_start": "a commencée, votre inscription n'a pas été retenue a temps",
   "event-comment": "a commenté la partie",
+  "timeslot-confirm": "a validé la date pour la partie",
   "comment-comment": "a commenté le commentaire",
   "User not found in database": "Ce compte n'existe pas",
   "Invalid email or password": "L'email et le mot de passe ne correspondent pas",

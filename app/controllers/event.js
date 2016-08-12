@@ -93,7 +93,7 @@ export default Ember.Controller.extend(EmberValidations, {
     }));
 
     return isMember;
-  }.property('time_slots'),
+  }.property('time_slots.[].member'),
 
   actions: {
     join_event: function(defer) {
@@ -135,6 +135,10 @@ export default Ember.Controller.extend(EmberValidations, {
 
     hide_time_slots: function() {
       this.set('displayTimeSlots', false);
+    },
+
+    pick_time_slot: function(time_slot) {
+      console.log('toto');
     },
 
     quit_event: function() {

@@ -3,22 +3,30 @@ import Ember from 'ember';
 export default Ember.Component.extend({
   store: Ember.inject.service(),
 
+  classNameBindings: ['isChecked'],
+
   isChecked: function () {
     let isChecked = false;
 
     let timeSlotId = this.get('time_slot.id');
 
-    this.get('member.time_slot_submissions').forEach((time_slot_submission) => {
-      if (time_slot_submission.get('time_slot.id') == timeSlotId) {
-        isChecked = true;
-      }
-    })
+    let submissions = this.get('member.time_slot_submissions');
+
+    if (submissions) {
+      submissions.forEach((time_slot_submission) => {
+        if (time_slot_submission.get('time_slot.id') == timeSlotId) {
+          isChecked = true;
+        }
+      })
+    }
 
     return isChecked;
   }.property('member.time_slot_submissions', 'time_slot'),
 
   disabled: function () {
-    return this.get('currentUser.profile.id') != this.get('member.id');
+    return this.get('currentUser.content') ?
+      this.get('currentUser.profile.id') != this.get('member.id') :
+      true
   }.property('currentUser', 'member'),
 
   actions: {

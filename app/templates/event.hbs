@@ -32,7 +32,7 @@
             <div>
               <div>{{t 'event.is-flexible-member'}}</div>
               <button {{action 'show_time_slots'}} class="btn-green">
-                {{t 'tamere'}}
+                {{t 'event.see-my-time_slots'}}
               </button>
             </div>
           {{else if model.flexible}}
@@ -97,7 +97,11 @@
           {{/each}}
 
           <div class='time-slots-details'>
-            <span class='details' {{action 'show_time_slots'}}>Details</span>
+            {{#if isHost}}
+              <span class='btn-green' {{action 'show_time_slots'}}>{{t 'see-or-choose'}}</span>
+            {{else}}
+              <span class='details' {{action 'show_time_slots'}}>{{t 'see'}}</span>
+            {{/if}}
           </div>
         </div>
       {{/if}}
@@ -274,42 +278,58 @@
   <div id='time-slots'>
     <div id='time-slots-box' class='well'>
       <div class='row'>
-        <div class='col-lg-11'>
-          Sondage de date
+        <div class='col-lg-11 date-survey'>
+          {{t 'event.date-survey'}}
         </div>
         <div class='col-lg-1'>
-          <span {{action 'hide_time_slots'}} class="icon-remove"></span>
+          <span {{action 'hide_time_slots'}} class="icon-remove hide-time-slots"></span>
         </div>
       </div>
 
       <div class='row'>
         <div class='col-lg-12'>
-          <table>
-            <tr>
-              <td></td>
-              {{#each time_slots as |time_slot|}}
-                <td>
-                  {{moment-format time_slot.begin_at 'DD MMMM'}}
-                </td>
-              {{/each}}
-            </tr>
-            {{#each time_slots_members as |member|}}
-            <tr>
-              <td>{{member.display_name}}</td>
-              {{#each time_slots as |time_slot|}}
-                <td>{{time-slot-checkbox time_slot=time_slot member=member}}</td>
-              {{/each}}
-            </tr>
+          <div class='row time-slots-date'>
+            <div class='col-md-2'></div>
+            {{#each time_slots as |time_slot|}}
+              <div class='col-md-2 center-text'>
+                {{moment-format time_slot.begin_at 'DD MMMM'}}
+              </div>
             {{/each}}
-            {{#unless (or isHost isFlexibleMember)}}
-              <tr>
-                <td>{{currentUser.profile.display_name}}</td>
+          </div>
+          {{#unless (or isHost isFlexibleMember)}}
+            {{#if currentUser}}
+              <div class='row'>
+                <div class='col-md-2'>{{profile-link profile=currentUser.profile}}</div>
                 {{#each time_slots as |time_slot|}}
-                  <td>{{time-slot-checkbox time_slot=time_slot member=currentUser.profile}}</td>
+                  <div class='col-md-2 center-text'>{{time-slot-checkbox time_slot=time_slot member=currentUser.profile class='time-slot-checkbox new'}}</div>
                 {{/each}}
-              </tr>
-            {{/unless}}
-          </table>
+              </div>
+            {{/if}}
+          {{/unless}}
+          {{#each time_slots_members as |member|}}
+            <div class='row time-slot-member'>
+              <div class='col-md-2'>{{profile-link profile=member}}</div>
+              {{#each time_slots as |time_slot|}}
+                <div class='col-md-2 center-text'>{{time-slot-checkbox time_slot=time_slot member=member class='time-slot-checkbox'}}</div>
+              {{/each}}
+            </div>
+          {{/each}}
+          {{#unless currentUser}}
+            <div class='col-lg-12 login-required'>
+              <span>{{t 'event.login-required'}}</span>
+              {{#link-to 'login' class='go-to-login'}}{{t 'navigation.login'}}{{/link-to}}
+            </div>
+          {{/unless}}
+          {{#if isHost}}
+            <div class='row choose-time-slot'>
+              <div class='col-md-2'>{{t 'event.choose-time-slot'}}</div>
+              {{#each time_slots as |time_slot|}}
+                <div class='col-md-2 center-text'>
+                  <span class='btn-green btn-xs' {{action "pick_time_slot" time_slot}}>{{t 'choose'}}</span>
+                </div>
+              {{/each}}
+            </div>
+          {{/if}}
         </div>
       </div>
     </div>

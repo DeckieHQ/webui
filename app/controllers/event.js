@@ -138,7 +138,13 @@ export default Ember.Controller.extend(EmberValidations, {
     },
 
     pick_time_slot: function(time_slot) {
-      console.log('toto');
+      if (confirm(this.get('i18n').t('event.confirm-time-slot'))) {
+        time_slot.save().then(() => {
+          window.location.reload(true);
+        }).catch(() => {
+          window.location.reload(true);
+        })
+      }
     },
 
     quit_event: function() {

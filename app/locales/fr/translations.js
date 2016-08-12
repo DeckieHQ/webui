@@ -197,6 +197,7 @@ export default {
     },
     "date-survey": "Sondage de date",
     "choose-time-slot": "Choisir une date finale",
+    "confirm-time-slot": "Une fois le créneau validé le sondage ne sera plus accessible, continuer?",
     "login-required": "Vous devez être connecté pour vous inscrire à ces créneaux",
     "is-flexible-member": "Vous êtes inscrits à des créneaux sur cette partie.",
     "see-my-time_slots": "Voir mes créneaux",

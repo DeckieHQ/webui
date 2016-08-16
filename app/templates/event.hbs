@@ -211,18 +211,7 @@
             {{display-categories event=model}}
           </div>
           <div class='col-xs-12 col-md-4'>
-            <div class="attendees">
-              <span class='capacity'>
-                {{plus-one count=model.attendees_count}}
-                /
-                <span class='min-max'>
-                  {{plus-one count=model.min_capacity}}
-                  {{t 'to'}}
-                  {{plus-one count=model.capacity}}
-                  <span class='icon-player'></span>
-                </span>
-              </span>
-            </div>
+            {{plus-one event=model}}
           </div>
         </div>
 

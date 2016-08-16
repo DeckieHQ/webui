@@ -69,6 +69,10 @@ export default {
     "event-remove_start": "la partie a commencé",
     "event-comment": "a commenté la partie",
     "comment-comment": "a commenté le commentaire",
+    "time_slot-join": "a rejoint le créneau horaire",
+    "time_slot-leave": "a quitté le créneau horaire",
+    "time_slot-confirm": "a confirmé le créneau horaire",
+    "time_slot-cancel": "a annulé le créneau horaire"
   },
   "account": {
     "navigation": {

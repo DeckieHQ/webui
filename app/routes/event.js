@@ -39,6 +39,16 @@ export default Ember.Route.extend({
         };
 
         return model.query('time_slots', params).then((time_slots) => {
+          let isMember = false;
+
+          time_slots.forEach((time_slot => {
+            if (time_slot.get('member')) {
+              isMember = true;
+            }
+          }));
+
+          this.controllerFor('event').set('isFlexibleMember', isMember);
+
           return this.controllerFor('event').set('time_slots', time_slots);
         })
       })

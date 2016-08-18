@@ -1,18 +1,35 @@
 <div id="welcome">
   <div id='welcome-container'>
-    <div class='welcome'>
-      <h1>
-        <span>{{t 'welcome.title.meet'}}</span>
-        <span class='success'>{{t 'welcome.title.people'}}</span>
-        <span>{{t 'welcome.title.play'}}</span>
-        <span class='success'>{{t 'welcome.title.game'}}</span>
-        <span>{{t 'welcome.title.favorite'}}</span>
-      </h1>
+    <div class='row'>
+      <div class='col-md-6 col-xs-12'>
+        <div class='welcome left'>
+          <h1>
+            <!-- <span>{{t 'welcome.title.meet'}}</span>
+            <span class='success'>{{t 'welcome.title.people'}}</span>
+            <span>{{t 'welcome.title.play'}}</span>
+            <span class='success'>{{t 'welcome.title.game'}}</span>
+            <span>{{t 'welcome.title.favorite'}}</span> -->
+            <span>Organisez vos parties de jeu entre amis en toute simplicité</span>
+          </h1>
 
-      {{#link-to 'search'}}<button class="goto-welcome">{{t 'welcome.button'}}</button>{{/link-to}}
-      <!-- <h4 class='beta-tmp'>
-        {{t 'welcome.beta-tmp'}}
-      </h4> -->
+          {{#link-to 'events.new'}}<button class="goto-welcome">{{t 'welcome.create'}}</button>{{/link-to}}
+          <!-- <h4 class='beta-tmp'>
+            {{t 'welcome.beta-tmp'}}
+          </h4> -->
+        </div>
+      </div>
+      <div class='col-md-6 col-xs-12'>
+        <div class='welcome right'>
+          <h1>
+            <span>Trouvez de nouvelles personnes avec qui jouer à vos jeux préférés</span>
+          </h1>
+
+          {{#link-to 'search'}}<button class="goto-welcome">{{t 'welcome.see'}}</button>{{/link-to}}
+          <!-- <h4 class='beta-tmp'>
+            {{t 'welcome.beta-tmp'}}
+          </h4> -->
+        </div>
+      </div>
     </div>
   </div>
 

@@ -11,14 +11,6 @@
     align-items: center
     justify-content: center
 
-    // @media (max-width: 768px)
-    //   .welcome
-    //     width: 80%
-    //
-    // @media (min-width: 769px)
-    //   .welcome
-    //     width: 60%
-
     .welcome
       text-align: center
 
@@ -161,14 +153,30 @@
     margin-right: -15px
     align-items: center
 
+    h3
+      font-weight: bold
+      margin-bottom: 1em
+
     .goto
       @extend .btn-green
       margin-top: 2em
+
+    @media (max-width: 768px)
+      .goto
+        margin-bottom: 1em
 
   #about
     @extend .box
     background-color: #e3e3e3
 
+
+    @media (min-width: 769px)
+      .about-row
+        width: 100%
+
+    .about-item
+      font-size: 1.25em
+      margin-bottom: .5em
 
   #beta
     @extend .box

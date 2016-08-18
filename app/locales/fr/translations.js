@@ -27,7 +27,12 @@ export default {
       "find": "Trouvez de nouvelles personnes pour jouer a vos jeux préférés",
     },
     "on-deckie": "Bienvenue sur Deckie",
-    "new-user": "Nous sommes encore en version beta et donc notre nombre d'utilisateurs est encore faible pour rencontrer de nouveaux joueurs. Néanmoins vous pouvez organiser vos parties en toute simplicité avec notre sondage de date et inviter vos amis par email et partage Facebook pour nous aider à faire connaitre et grandir la plateforme. Il reste encore quelques bugs donc n'hésitez pas à nous en faire part si vous en voyez ou pour toute suggestion d'amélioration. A vous de jouer :)",
+    "new-user": `Nous sommes encore en version beta et donc notre nombre d'utilisateurs est encore faible
+                 pour rencontrer de nouveaux joueurs. Néanmoins vous pouvez organiser vos parties en toute
+                 simplicité avec notre sondage de date et inviter vos amis par email et partage Facebook
+                 pour nous aider à faire connaitre et grandir la plateforme. Il reste encore quelques bugs
+                 donc n'hésitez pas à nous en faire part si vous en voyez ou pour toute suggestion d'amélioration.
+                 A bientôt et bon jeu :)`,
     "beta-tmp": "(Créez ou rejoignez des parties qui commenceront à partir du 7 juillet)",
     "create": "Organiser une partie",
     "see": "Voir les parties",
@@ -46,7 +51,12 @@ export default {
     },
     "beta": {
       "title": "Deckie est en version beta",
-      "content": "Nous sommes encore en version beta et notre nombre d'utilisateurs est encore faible pour rencontrer de nouveaux joueurs. Néanmoins vous pouvez organiser vos parties en toute simplicité avec notre sondage de date et inviter vos amis par email et partage Facebook pour nous aider à faire connaitre et grandir la plateforme. Il reste encore quelques bugs donc n'hésitez pas à nous en faire part si vous en voyez ou pour toute suggestion d'amélioration. A vous de jouer :)",
+      "content": `Nous sommes encore en version beta et donc notre nombre d'utilisateurs est encore faible
+                  pour rencontrer de nouveaux joueurs. Néanmoins vous pouvez organiser vos parties en toute
+                  simplicité avec notre sondage de date et inviter vos amis par email et partage Facebook
+                  pour nous aider à faire connaitre et grandir la plateforme. Il reste encore quelques bugs
+                  donc n'hésitez pas à nous en faire part si vous en voyez ou pour toute suggestion d'amélioration.
+                  A bientôt et bon jeu :)`,
     },
   },
   "search": {

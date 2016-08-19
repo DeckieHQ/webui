@@ -445,6 +445,7 @@ export default {
   "confirmed": "Vous êtes inscrits à cette partie",
   "flexible": "Cet évennement est en attente de validation d'un créneau horaire par l'hôte",
   "to": "à",
+  "at": "à",
   errors: {
     inclusion: "n'est pas inclu dans la liste",
     exclusion: "est réservé",

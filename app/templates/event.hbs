@@ -265,23 +265,23 @@
 
 {{#if displayTimeSlots}}
   <div id='time-slots'>
-    <div id='time-slots-box' class='well'>
+    <div id='time-slots-box' class='well big'>
       <div class='row'>
-        <div class='col-lg-11 date-survey'>
+        <div class='col-md-11 date-survey'>
           {{t 'event.date-survey'}}
         </div>
-        <div class='col-lg-1'>
+        <div class='col-md-1'>
           <span {{action 'hide_time_slots'}} class="icon-remove hide-time-slots"></span>
         </div>
       </div>
 
       <div class='row'>
-        <div class='col-lg-12'>
+        <div class='col-md-12'>
           <div class='row time-slots-date'>
             <div class='col-md-2'></div>
             {{#each time_slots as |time_slot|}}
               <div class='col-md-2 center-text'>
-                {{moment-format time_slot.begin_at 'DD MMMM'}}
+                {{moment-format time_slot.begin_at 'DD/MM'}} {{t 'at'}} {{moment-format time_slot.begin_at 'HH:mm'}}
               </div>
             {{/each}}
           </div>
@@ -304,7 +304,7 @@
             </div>
           {{/each}}
           {{#unless currentUser}}
-            <div class='col-lg-12 login-required'>
+            <div class='col-md-12 login-required'>
               <span>{{t 'event.login-required'}}</span>
               {{#link-to 'login' class='go-to-login'}}{{t 'navigation.login'}}{{/link-to}}
             </div>
@@ -320,6 +320,96 @@
             </div>
           {{/if}}
         </div>
+      </div>
+    </div>
+    <div id='time-slots-box' class='well small'>
+      <div class='row'>
+        <div class='col-xs-10 date-survey'>
+          {{t 'event.date-survey'}}
+        </div>
+        <div class='col-xs-2'>
+          <span {{action 'hide_time_slots'}} class="icon-remove hide-time-slots"></span>
+        </div>
+      </div>
+
+      <div class='time-slots-small'>
+          {{#each time_slots as |time_slot|}}
+            <div class='row slot'>
+              <div class='col-xs-3'>
+                {{time_slot.members_count}}
+                <span class='icon-player'></span>
+              </div>
+              <div class='col-xs-7'>
+                {{moment-format time_slot.begin_at 'DD/MM'}} {{t 'at'}} {{moment-format time_slot.begin_at 'HH:mm'}}
+              </div>
+              {{#if isHost}}
+                <div class='col-xs-2'>
+                  <span class='btn-green btn-xs' {{action "pick_time_slot" time_slot}}><span class='glyphicon glyphicon-ok'></span></span>
+                </div>
+              {{else if currentUser}}
+                <div class='col-xs-2'>
+                  {{time-slot-checkbox time_slot=time_slot member=currentUser.profile class='time-slot-checkbox new'}}
+                </div>
+              {{/if}}
+            </div>
+          {{/each}}
+          {{#unless currentUser}}
+            <div class='login-required-small'>
+              <div>{{t 'event.login-required'}}</div>
+              {{#link-to 'login' class='go-to-login'}}{{t 'navigation.login'}}{{/link-to}}
+            </div>
+          {{/unless}}
+          <!-- {{#unless currentUser}}
+            <div class='time-slots-date'>
+              {{#each time_slots as |time_slot|}}
+                <div class='row'>
+                  <div class='col-xs-3'>
+                    {{time_slot.members_count}}
+                    <span class='icon-player'></span>
+                  </div>
+                  <div class='col-xs-9'>
+                    {{moment-format time_slot.begin_at 'DD/MM'}} {{t 'at'}} {{moment-format time_slot.begin_at 'HH:mm'}}
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+            <div class='login-required-small'>
+              <div>{{t 'event.login-required'}}</div>
+              {{#link-to 'login' class='go-to-login'}}{{t 'navigation.login'}}{{/link-to}}
+            </div>
+          {{else if isHost}}
+            <div class='choose-time-slot-small'>
+              {{#each time_slots as |time_slot|}}
+                <div class='row pick-slot'>
+                  <div class='col-xs-3'>
+                    {{time_slot.members_count}}
+                    <span class='icon-player'></span>
+                  </div>
+                  <div class='col-xs-7'>
+                    {{moment-format time_slot.begin_at 'DD/MM'}} {{t 'at'}} {{moment-format time_slot.begin_at 'HH:mm'}}
+                  </div>
+                  <div class='col-xs-2'>
+                    <span class='btn-green btn-xs' {{action "pick_time_slot" time_slot}}><span class='glyphicon glyphicon-ok'></span></span>
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+          {{else}}
+            <div class='join-slot-small'>
+              {{#each time_slots as |time_slot|}}
+                <div class='row'>
+                  <div class='col-xs-3'>
+                    {{time_slot.members_count}}
+                    <span class='icon-player'></span>
+                  </div>
+                  <div class='col-xs-7'>
+                    {{moment-format time_slot.begin_at 'DD/MM'}} {{t 'at'}} {{moment-format time_slot.begin_at 'HH:mm'}}
+                  </div>
+                  <div class='col-xs-2'>{{time-slot-checkbox time_slot=time_slot member=currentUser.profile class='time-slot-checkbox new'}}</div>
+                </div>
+              {{/each}}
+            </div>
+          {{/unless}} -->
       </div>
     </div>
     <div id='shadow'></div>

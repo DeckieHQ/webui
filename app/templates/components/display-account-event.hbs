@@ -1,0 +1,57 @@
+<div class='hit'>
+  {{#link-to 'event' event}}
+    <div class='row head'>
+      <div class='col-xs-12 col-md-6'>
+        {{#if event.flexible}}
+          <h3>{{event.title}}</h3>
+        {{else}}
+          <h3 class={{status}}>{{event.title}}</h3>
+        {{/if}}
+        {{#if event.opened}}
+          <div class={{status}}>{{t status}}</div>
+        {{/if}}
+      </div>
+      <div class='col-xs-12 col-md-6'>
+        <div class="details">
+          {{#if event.flexible}}
+            <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+            {{t 'date-flexible-from'}}
+            {{moment-format event.begin_at_range.min 'DD MMMM'}}
+          {{else}}
+            <div class="date">
+              <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+              {{moment-format event.begin_at 'DD MMMM'}}
+            </div>
+            <div class="time">
+              <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+              {{moment-format event.begin_at 'HH:mm'}}
+            </div>
+          {{/if}}
+          <div class="place">
+            <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+            {{capitalize event.city}} {{short-postcode postcode=event.postcode}}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class='row'>
+      <div class='col-xs-12 col-md-8'>
+        <div class='description'>
+         {{event.short_description}}
+        </div>
+        {{display-categories event=event}}
+        <div class='host'>
+          <span class='avatar-small'>
+            {{avatar-display profile=event.host}}
+          </span>
+
+          <span>{{name-display profile=event.host}}</span>
+        </div>
+      </div>
+      <div class='col-xs-12 col-md-4'>
+        {{plus-one event=event}}
+      </div>
+    </div>
+  {{/link-to}}
+</div>

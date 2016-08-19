@@ -31,54 +31,95 @@
 
   <hr>
 
-  <div class='row'>
-    <div class='col-lg-12'>
-      <label>{{t 'label.date'}}</label>
-    </div>
-  </div>
-
-  <div class='row'>
-    <div class='col-lg-6'>
-      {{validated-date placeholder="placeholder.date" value=model.begin_at errors=errors.model.begin_at}}
-    </div>
-    <div class='col-lg-3'>
-      {{validated-select options=hours value=begin_at_hour errors=errors.begin_at_hour}}
-    </div>
-    <div class='col-lg-3'>
-      {{validated-select options=minutes value=begin_at_minute errors=errors.begin_at_minute}}
-    </div>
-  </div>
-
-  <div class='row'>
-    <div class='col-lg-12'>
-      {{t 'event.add-end-date'}} {{input type="checkbox" checked=addEndDate}}
-    </div>
-  </div>
-
-  {{#if addEndDate}}
+  {{#if showDate}}
     <div class='row'>
       <div class='col-lg-12'>
-        <label>{{t 'label.end-date'}}</label>
-        {{#if showCustomError}}
-          <span class='error'>{{errors.end_at}}</span>
-        {{/if}}
+        {{#unless alreadyCreated}}{{radio-button value='normal' checked=model.event_type}}{{/unless}}
+        <label>{{t 'label.date'}}</label>
       </div>
     </div>
 
     <div class='row'>
       <div class='col-lg-6'>
-        {{validated-date placeholder="placeholder.date" value=model.end_at errors=errors.model.end_at}}
+        {{validated-date placeholder="placeholder.date" value=model.begin_at errors=errors.model.begin_at disabled=(eq model.event_type 'flexible')}}
       </div>
       <div class='col-lg-3'>
-        {{validated-select options=hours value=end_at_hour errors=errors.end_at_hour}}
+        {{validated-select options=hours value=begin_at_hour errors=errors.begin_at_hour disabled=(eq model.event_type 'flexible')}}
       </div>
       <div class='col-lg-3'>
-        {{validated-select options=minutes value=end_at_minute errors=errors.end_at_minute}}
+        {{validated-select options=minutes value=begin_at_minute errors=errors.begin_at_minute disabled=(eq model.event_type 'flexible')}}
       </div>
     </div>
+
+    <div class='row'>
+      <div class="col-lg-12 {{if (eq model.event_type 'flexible') 'disabled'}}">
+        {{t 'event.add-end-date'}} {{input type="checkbox" checked=addEndDate disabled=(eq model.event_type 'flexible')}}
+      </div>
+    </div>
+
+    {{#if addEndDate}}
+      <div class='row'>
+        <div class='col-lg-12'>
+          <label class="{{if (eq model.event_type 'flexible') 'disabled'}}">{{t 'label.end-date'}}</label>
+          {{#if showCustomError}}
+            <span class='error'>{{errors.end_at}}</span>
+          {{/if}}
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-lg-6'>
+          {{validated-date placeholder="placeholder.date" value=model.end_at errors=errors.model.end_at disabled=(eq model.event_type 'flexible')}}
+        </div>
+        <div class='col-lg-3'>
+          {{validated-select options=hours value=end_at_hour errors=errors.end_at_hour disabled=(eq model.event_type 'flexible')}}
+        </div>
+        <div class='col-lg-3'>
+          {{validated-select options=minutes value=end_at_minute errors=errors.end_at_minute disabled=(eq model.event_type 'flexible')}}
+        </div>
+      </div>
+    {{/if}}
+
+    <hr>
   {{/if}}
 
-  <hr>
+  {{#if showDateFlexible}}
+    <div class='row'>
+      <div class='col-lg-12'>
+        {{#unless alreadyCreated}}{{radio-button value='flexible' checked=model.event_type}}{{/unless}}
+        <label>{{t 'label.date-flexible'}}</label>
+      </div>
+    </div>
+
+    {{#if alreadyCreated}}
+      <div class='see-time-slots'>
+        <div>{{t 'is-flexible'}}</div>
+        <div class='goto'>{{t 'see-time-slots'}}</div>
+      </div>
+    {{else if (eq model.event_type 'flexible')}}
+      <div>{{t 'event-date-flexible'}}</div>
+      <div>
+        {{#if showCustomError}}
+          <span class='error'>{{errors.model.new_time_slots}}</span>
+        {{/if}}
+      </div>
+      {{#each time_slots as |time_slot|}}
+        <div class='row'>
+          <div class='col-lg-6'>
+            {{validated-date placeholder=time_slot.placeholder value=time_slot.date}}
+          </div>
+          <div class='col-lg-3'>
+            {{validated-select options=hours value=time_slot.hour}}
+          </div>
+          <div class='col-lg-3'>
+            {{validated-select options=minutes value=time_slot.minute}}
+          </div>
+        </div>
+      {{/each}}
+    {{/if}}
+
+    <hr>
+  {{/if}}
 
   <div class='row'>
     <div class='col-lg-12'>
@@ -113,8 +154,9 @@
   </div>
 
   <div class='row'>
-    <div class='col-lg-12'>
-      <div class='align-right'>{{dynamic-submit actionOnSubmit="save_event"}}</div>
+    <div class='col-lg-12 set-private'>
+      <div>{{t 'make-event-private'}} {{input type="checkbox" checked=model.private}}</div>
+      <div class='goto'>{{dynamic-submit actionOnSubmit="save_event"}}</div>
     </div>
   </div>
 </form>

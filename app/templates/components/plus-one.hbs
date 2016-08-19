@@ -1,1 +1,11 @@
-{{plusOne}}
+<div class="attendees">
+  <span class='capacity'>
+    {{#if (not event.flexible)}}
+      {{attendeesCount}} /
+    {{/if}}
+    <span class='min-max'>
+      {{minCapacity}} {{t 'to'}} {{capacity}}
+      <span class='icon-player'></span>
+    </span>
+  </span>
+</div>

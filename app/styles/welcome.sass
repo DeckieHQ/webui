@@ -4,32 +4,46 @@
     margin-right: -15px
     margin-top: -20px
     height: 450px
-    background: url('/assets/images/background-2.jpg')
+    background: url('/assets/images/background-3.png')
     background-repeat: no-repeat
     background-size: 100% 100%
     display: flex
     align-items: center
     justify-content: center
 
-    @media (max-width: 768px)
-      .welcome
-        width: 80%
-
-    @media (min-width: 769px)
-      .welcome
-        width: 60%
-
     .welcome
       text-align: center
 
       h1
+        font-size: 2em
         font-weight: bold
+        margin-bottom: 2em
+
+      @media (max-width: 768px)
+        h1
+          font-size: 1.5em
+          margin-bottom: 1em
 
       .beta-tmp
         margin-top: 2em
 
       .goto-welcome
         @extend .btn-green, .btn-lg
+
+    @media (min-width: 769px)
+      .welcome.left
+        padding-left: 2em
+
+      .welcome.right
+        padding-right: 2em
+
+    @media (max-width: 768px)
+      .welcome.left
+        padding: 0 1em
+
+      .welcome.right
+        margin-top: 5em
+        padding: 0 1em
 
   #suggested-events
     margin: 1em 0
@@ -139,14 +153,30 @@
     margin-right: -15px
     align-items: center
 
+    h3
+      font-weight: bold
+      margin-bottom: 1em
+
     .goto
       @extend .btn-green
       margin-top: 2em
+
+    @media (max-width: 768px)
+      .goto
+        margin-bottom: 1em
 
   #about
     @extend .box
     background-color: #e3e3e3
 
+
+    @media (min-width: 769px)
+      .about-row
+        width: 100%
+
+    .about-item
+      font-size: 1.25em
+      margin-bottom: .5em
 
   #beta
     @extend .box

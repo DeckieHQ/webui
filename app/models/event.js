@@ -9,8 +9,11 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   level: DS.attr(),
   capacity: DS.attr(),
   min_capacity: DS.attr('number', { defaultValue: 0 }),
+  flexible: DS.attr('boolean', { defaultValue: false }),
+  new_time_slots: DS.attr(),
   begin_at: DS.attr('date'),
   end_at: DS.attr('date'),
+  begin_at_range: DS.attr(),
   opened: DS.attr(),
   ready: DS.attr(),
   description: DS.attr(),
@@ -31,6 +34,13 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   submissions: DS.hasMany('submission'),
   user_submission: DS.belongsTo('submission'),
   invitations: DS.hasMany('invitation'),
+  private: DS.attr('boolean', { defaultValue: false }),
+  time_slots: DS.hasMany('time-slot'),
+  time_slots_members: DS.hasMany('profile'),
+
+  event_type: Ember.computed('flexible', function() {
+    return this.get('flexible') ? 'flexible' : 'normal';
+  }),
 
   shortPostcode: Ember.computed('postcode', function() {
     return this.get('postcode').substring(0, 2);

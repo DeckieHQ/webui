@@ -28,6 +28,20 @@
             </div>
           {{else if full}}
             <div>{{t 'event.full'}}</div>
+          {{else if (or isFlexibleMember isNewFlexibleMember)}}
+            <div>
+              <div>{{t 'event.is-flexible-member'}}</div>
+              <button {{action 'show_time_slots'}} class="btn-green">
+                {{t 'event.see-my-time_slots'}}
+              </button>
+            </div>
+          {{else if model.flexible}}
+            <div>
+              <div>{{t 'event.join-flexible'}}</div>
+              <button {{action 'show_time_slots'}} class="btn-green">
+                {{t 'event.join'}}
+              </button>
+            </div>
           {{else}}
             <div>
               {{dynamic-submit actionOnSubmit="join_event" submitLabel="event.join"}}
@@ -64,6 +78,31 @@
               </div>
             </div>
           {{/each}}
+        </div>
+      {{/if}}
+
+      {{#if model.flexible}}
+        <div class='well'>
+          <b>{{t 'event.date-options'}}</b>
+          <div class='line-separator'></div>
+
+          {{#each time_slots as |time_slot index|}}
+            <div class='inline-block'>
+              <div>{{moment-format time_slot.begin_at 'DD/MM'}} {{t 'at'}} {{moment-format time_slot.begin_at 'HH:mm'}}</div>
+              <div class='members-count'>
+                {{time_slot.members_count}}
+                <span class='icon-player'></span>
+              </div>
+            </div>
+          {{/each}}
+
+          <div class='time-slots-details'>
+            {{#if isHost}}
+              <span class='btn-green' {{action 'show_time_slots'}}>{{t 'see-or-choose'}}</span>
+            {{else}}
+              <span class='details' {{action 'show_time_slots'}}>{{t 'see'}}</span>
+            {{/if}}
+          </div>
         </div>
       {{/if}}
 
@@ -135,14 +174,20 @@
           </div>
           <div class='col-xs-12 col-md-6'>
             <div class="details">
-              <div class="date">
+              {{#if model.flexible}}
                 <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                {{moment-format model.begin_at 'DD MMMM'}}
-              </div>
-              <div class="time">
-                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                {{moment-format model.begin_at 'HH:mm'}}
-              </div>
+                {{t 'date-flexible-from'}}
+                {{moment-format model.begin_at_range.min 'DD MMMM'}}
+              {{else}}
+                <div class="date">
+                  <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                  {{moment-format model.begin_at 'DD MMMM'}}
+                </div>
+                <div class="time">
+                  <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                  {{moment-format model.begin_at 'HH:mm'}}
+                </div>
+              {{/if}}
               <div class="place">
                 <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
                 {{capitalize model.city}} {{short-postcode postcode=model.postcode}}
@@ -166,18 +211,7 @@
             {{display-categories event=model}}
           </div>
           <div class='col-xs-12 col-md-4'>
-            <div class="attendees">
-              <span class='capacity'>
-                {{plus-one count=model.attendees_count}}
-                /
-                <span class='min-max'>
-                  {{plus-one count=model.min_capacity}}
-                  {{t 'to'}}
-                  {{plus-one count=model.capacity}}
-                  <span class='icon-player'></span>
-                </span>
-              </span>
-            </div>
+            {{plus-one event=model}}
           </div>
         </div>
 
@@ -228,3 +262,156 @@
 <div class='hidden-xs col-md-2'>
   {{infos-bar}}
 </div>
+
+{{#if displayTimeSlots}}
+  <div id='time-slots'>
+    <div id='time-slots-box' class='well big'>
+      <div class='row'>
+        <div class='col-md-11 date-survey'>
+          {{t 'event.date-survey'}}
+        </div>
+        <div class='col-md-1'>
+          <span {{action 'hide_time_slots'}} class="icon-remove hide-time-slots"></span>
+        </div>
+      </div>
+
+      <div class='row'>
+        <div class='col-md-12'>
+          <div class='row time-slots-date'>
+            <div class='col-md-2'></div>
+            {{#each time_slots as |time_slot|}}
+              <div class='col-md-2 center-text'>
+                {{moment-format time_slot.begin_at 'DD/MM'}} {{t 'at'}} {{moment-format time_slot.begin_at 'HH:mm'}}
+              </div>
+            {{/each}}
+          </div>
+          {{#unless (or isHost isFlexibleMember)}}
+            {{#if currentUser}}
+              <div class='row'>
+                <div class='col-md-2'>{{profile-link profile=currentUser.profile}}</div>
+                {{#each time_slots as |time_slot|}}
+                  <div class='col-md-2 center-text'>{{time-slot-checkbox time_slot=time_slot member=currentUser.profile class='time-slot-checkbox new'}}</div>
+                {{/each}}
+              </div>
+            {{/if}}
+          {{/unless}}
+          {{#each time_slots_members as |member|}}
+            <div class='row time-slot-member'>
+              <div class='col-md-2'>{{profile-link profile=member}}</div>
+              {{#each time_slots as |time_slot|}}
+                <div class='col-md-2 center-text'>{{time-slot-checkbox time_slot=time_slot member=member class='time-slot-checkbox'}}</div>
+              {{/each}}
+            </div>
+          {{/each}}
+          {{#unless currentUser}}
+            <div class='col-md-12 login-required'>
+              <span>{{t 'event.login-required'}}</span>
+              {{#link-to 'login' class='go-to-login'}}{{t 'navigation.login'}}{{/link-to}}
+            </div>
+          {{/unless}}
+          {{#if isHost}}
+            <div class='row choose-time-slot'>
+              <div class='col-md-2'>{{t 'event.choose-time-slot'}}</div>
+              {{#each time_slots as |time_slot|}}
+                <div class='col-md-2 center-text'>
+                  <span class='btn-green btn-xs' {{action "pick_time_slot" time_slot}}>{{t 'choose'}}</span>
+                </div>
+              {{/each}}
+            </div>
+          {{/if}}
+        </div>
+      </div>
+    </div>
+    <div id='time-slots-box' class='well small'>
+      <div class='row'>
+        <div class='col-xs-10 date-survey'>
+          {{t 'event.date-survey'}}
+        </div>
+        <div class='col-xs-2'>
+          <span {{action 'hide_time_slots'}} class="icon-remove hide-time-slots"></span>
+        </div>
+      </div>
+
+      <div class='time-slots-small'>
+          {{#each time_slots as |time_slot|}}
+            <div class='row slot'>
+              <div class='col-xs-3'>
+                {{time_slot.members_count}}
+                <span class='icon-player'></span>
+              </div>
+              <div class='col-xs-7'>
+                {{moment-format time_slot.begin_at 'DD/MM'}} {{t 'at'}} {{moment-format time_slot.begin_at 'HH:mm'}}
+              </div>
+              {{#if isHost}}
+                <div class='col-xs-2'>
+                  <span class='btn-green btn-xs' {{action "pick_time_slot" time_slot}}><span class='glyphicon glyphicon-ok'></span></span>
+                </div>
+              {{else if currentUser}}
+                <div class='col-xs-2'>
+                  {{time-slot-checkbox time_slot=time_slot member=currentUser.profile class='time-slot-checkbox new'}}
+                </div>
+              {{/if}}
+            </div>
+          {{/each}}
+          {{#unless currentUser}}
+            <div class='login-required-small'>
+              <div>{{t 'event.login-required'}}</div>
+              {{#link-to 'login' class='go-to-login'}}{{t 'navigation.login'}}{{/link-to}}
+            </div>
+          {{/unless}}
+          <!-- {{#unless currentUser}}
+            <div class='time-slots-date'>
+              {{#each time_slots as |time_slot|}}
+                <div class='row'>
+                  <div class='col-xs-3'>
+                    {{time_slot.members_count}}
+                    <span class='icon-player'></span>
+                  </div>
+                  <div class='col-xs-9'>
+                    {{moment-format time_slot.begin_at 'DD/MM'}} {{t 'at'}} {{moment-format time_slot.begin_at 'HH:mm'}}
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+            <div class='login-required-small'>
+              <div>{{t 'event.login-required'}}</div>
+              {{#link-to 'login' class='go-to-login'}}{{t 'navigation.login'}}{{/link-to}}
+            </div>
+          {{else if isHost}}
+            <div class='choose-time-slot-small'>
+              {{#each time_slots as |time_slot|}}
+                <div class='row pick-slot'>
+                  <div class='col-xs-3'>
+                    {{time_slot.members_count}}
+                    <span class='icon-player'></span>
+                  </div>
+                  <div class='col-xs-7'>
+                    {{moment-format time_slot.begin_at 'DD/MM'}} {{t 'at'}} {{moment-format time_slot.begin_at 'HH:mm'}}
+                  </div>
+                  <div class='col-xs-2'>
+                    <span class='btn-green btn-xs' {{action "pick_time_slot" time_slot}}><span class='glyphicon glyphicon-ok'></span></span>
+                  </div>
+                </div>
+              {{/each}}
+            </div>
+          {{else}}
+            <div class='join-slot-small'>
+              {{#each time_slots as |time_slot|}}
+                <div class='row'>
+                  <div class='col-xs-3'>
+                    {{time_slot.members_count}}
+                    <span class='icon-player'></span>
+                  </div>
+                  <div class='col-xs-7'>
+                    {{moment-format time_slot.begin_at 'DD/MM'}} {{t 'at'}} {{moment-format time_slot.begin_at 'HH:mm'}}
+                  </div>
+                  <div class='col-xs-2'>{{time-slot-checkbox time_slot=time_slot member=currentUser.profile class='time-slot-checkbox new'}}</div>
+                </div>
+              {{/each}}
+            </div>
+          {{/unless}} -->
+      </div>
+    </div>
+    <div id='shadow'></div>
+  </div>
+{{/if}}

@@ -39,8 +39,7 @@
     hr
       margin: 0
 
-  #hosted-events,
-  #attended-events
+  #hosted-events, #attended-events
     .tabs
       text-align: center
       margin-bottom: 1em
@@ -65,11 +64,12 @@
 
       h3
         margin: 0
-
-      h3.confirmed
         color: $green
 
-      .pending
+      .confirmed
+        color: $green
+
+      .pending,.flexible
         color: $orange
 
       @media (max-width: 768px)

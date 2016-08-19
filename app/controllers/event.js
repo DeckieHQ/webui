@@ -117,6 +117,33 @@ export default Ember.Controller.extend(EmberValidations, {
       }
     },
 
+    show_time_slots: function() {
+      this.set('displayTimeSlots', true);
+    },
+
+    hide_time_slots: function() {
+      let isMember = false;
+
+      this.get('time_slots').forEach((time_slot => {
+        if (time_slot.get('member')) {
+          isMember = true;
+        }
+      }));
+
+      this.set('isNewFlexibleMember', isMember);
+      this.set('displayTimeSlots', false);
+    },
+
+    pick_time_slot: function(time_slot) {
+      if (confirm(this.get('i18n').t('event.confirm-time-slot'))) {
+        time_slot.save().then(() => {
+          window.location.reload(true);
+        }).catch(() => {
+          window.location.reload(true);
+        })
+      }
+    },
+
     quit_event: function() {
       if (confirm(this.get('i18n').t('event.confirm-quit'))) {
         let status = this.get('status');

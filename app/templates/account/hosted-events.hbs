@@ -16,14 +16,20 @@
           </div>
           <div class='col-xs-12 col-md-6'>
             <div class="details">
-              <div class="date">
+              {{#if event.flexible}}
                 <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                {{moment-format event.begin_at 'DD MMMM'}}
-              </div>
-              <div class="time">
-                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                {{moment-format event.begin_at 'HH:mm'}}
-              </div>
+                {{t 'date-flexible-from'}}
+                {{moment-format event.begin_at_range.min 'DD MMMM'}}
+              {{else}}
+                <div class="date">
+                  <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                  {{moment-format event.begin_at 'DD MMMM'}}
+                </div>
+                <div class="time">
+                  <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                  {{moment-format event.begin_at 'HH:mm'}}
+                </div>
+              {{/if}}
               <div class="place">
                 <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
                 {{capitalize event.city}} {{short-postcode postcode=event.postcode}}
@@ -45,29 +51,20 @@
 
               <span>{{name-display profile=event.host}}</span>
             </div>
-            {{#if opened}}
-              <div class='pending-submission'>
-                {{#if event.hasPendingSubmissions}}
-                  <span class='some'>{{t 'submissions.count' count=event.pendingSubmissionsCount}}</span>
-                {{else}}
-                  <span class='empty'>{{t 'submissions.empty'}}</span>
-                {{/if}}
-              </div>
+            {{#if event.opened}}
+              {{#if (not event.flexible) }}
+                <div class='pending-submission'>
+                  {{#if event.hasPendingSubmissions}}
+                    <span class='some'>{{t 'submissions.count' count=event.pendingSubmissionsCount}}</span>
+                  {{else}}
+                    <span class='empty'>{{t 'submissions.empty'}}</span>
+                  {{/if}}
+                </div>
+              {{/if}}
             {{/if}}
           </div>
           <div class='col-xs-12 col-md-4'>
-            <div class="attendees">
-              <span class='capacity'>
-                {{plus-one count=event.attendees_count}}
-                /
-                <span class='min-max'>
-                  {{plus-one count=event.min_capacity}}
-                  {{t 'to'}}
-                  {{plus-one count=event.capacity}}
-                  <span class='icon-player'></span>
-                </span>
-              </span>
-            </div>
+            {{plus-one event=event}}
           </div>
         </div>
       {{/link-to}}

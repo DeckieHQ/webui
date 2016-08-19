@@ -1,18 +1,24 @@
 <div id="welcome">
   <div id='welcome-container'>
-    <div class='welcome'>
-      <h1>
-        <span>{{t 'welcome.title.meet'}}</span>
-        <span class='success'>{{t 'welcome.title.people'}}</span>
-        <span>{{t 'welcome.title.play'}}</span>
-        <span class='success'>{{t 'welcome.title.game'}}</span>
-        <span>{{t 'welcome.title.favorite'}}</span>
-      </h1>
+    <div class='row'>
+      <div class='col-md-6 col-xs-12'>
+        <div class='welcome left'>
+          <h1>
+            <span>{{t 'welcome.title.create'}}</span>
+          </h1>
 
-      {{#link-to 'search'}}<button class="goto-welcome">{{t 'welcome.button'}}</button>{{/link-to}}
-      <!-- <h4 class='beta-tmp'>
-        {{t 'welcome.beta-tmp'}}
-      </h4> -->
+          {{#link-to 'events.new'}}<button class="goto-welcome">{{t 'welcome.create'}}</button>{{/link-to}}
+        </div>
+      </div>
+      <div class='col-md-6 col-xs-12'>
+        <div class='welcome right'>
+          <h1>
+            <span>{{t 'welcome.title.find'}}</span>
+          </h1>
+
+          {{#link-to 'search'}}<button class="goto-welcome">{{t 'welcome.see'}}</button>{{/link-to}}
+        </div>
+      </div>
     </div>
   </div>
 
@@ -26,14 +32,20 @@
             </span>
 
             <div class="details">
-              <div class="date">
+              {{#if event.flexible}}
                 <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                {{moment-format event.begin_at 'DD MMMM'}}
-              </div>
-              <div class="time">
-                <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                {{moment-format event.begin_at 'HH:mm'}}
-              </div>
+                {{t 'date-flexible-from'}}
+                {{moment-format event.begin_at_range.min 'DD MMMM'}}
+              {{else}}
+                <div class="date">
+                  <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                  {{moment-format event.begin_at 'DD MMMM'}}
+                </div>
+                <div class="time">
+                  <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+                  {{moment-format event.begin_at 'HH:mm'}}
+                </div>
+              {{/if}}
               <div class="place">
                 <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
                 {{capitalize event.city}} {{short-postcode postcode=event.postcode}}
@@ -42,18 +54,7 @@
 
             <div class="clearfix"></div>
 
-            <div class="attendees">
-              <span class='capacity'>
-                {{plus-one count=event.attendees_count}}
-                /
-                <span class='min-max'>
-                  {{plus-one count=event.min_capacity}}
-                  {{t 'to'}}
-                  {{plus-one count=event.capacity}}
-                  <span class='icon-player'></span>
-                </span>
-              </span>
-            </div>
+            {{plus-one event=event}}
 
             <div class="hide categories">
               <span class="category">{{event.category}}</span>
@@ -97,18 +98,32 @@
   </div>
 
   <div id='about'>
-    <div class="row">
-      <div class='col-xs-12 col-md-6'>
-        <h3>{{t 'welcome.find-events.title'}}</h3>
-        <div>{{t 'welcome.find-events.content'}}</div>
-        {{#link-to 'search'}}<div class='goto'>{{t 'navigation.search'}}</div>{{/link-to}}
+    <div class='row about-row'>
+    <div class='col-xs-12 col-md-6'>
+      <h3>{{t 'welcome.find-events'}}</h3>
+      <div>
+        <div class='about-item'>{{t 'welcome.about-item.all-kind'}}</div>
+        <div class='about-item'>
+          <b>{{t 'welcome.about-item.geolocation'}}</b>
+          {{t 'welcome.about-item.of-events'}}
+        </div>
+        <div class='about-item'>{{t 'welcome.about-item.search-by'}}</div>
       </div>
-      <div class='col-xs-12 col-md-6'>
-        <h3>{{t 'welcome.create-events.title'}}</h3>
-        <div>{{t 'welcome.create-events.content'}}</div>
-        {{#link-to 'events.new'}}<div class='goto'>{{t 'navigation.events'}}</div>{{/link-to}}
-      </div>
+      {{#link-to 'search'}}<div class='goto'>{{t 'welcome.see'}}</div>{{/link-to}}
     </div>
+    <div class='col-xs-12 col-md-6'>
+      <h3>{{t 'welcome.create-events'}}</h3>
+      <div>
+        <div class='about-item'>
+          <b>{{t 'welcome.about-item.survey'}}</b>
+          {{t 'welcome.about-item.for-date'}}
+        </div>
+        <div class='about-item'>{{t 'welcome.about-item.invitations'}}</div>
+        <div class='about-item'>{{t 'welcome.about-item.private'}}</div>
+      </div>
+      {{#link-to 'events.new'}}<div class='goto'>{{t 'welcome.create'}}</div>{{/link-to}}
+    </div>
+  </div>
   </div>
 
   <div id='beta'>

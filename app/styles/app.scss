@@ -58,6 +58,29 @@
   color: $red;
 }
 
+.disabled {
+  opacity: 0.5;
+}
+
+.see-time-slots {
+  display: flex;
+  align-items: center;
+
+  .goto {
+    @extend .btn-orange, .btn-sm;
+    margin-left: auto;
+  }
+}
+
+.set-private {
+  display: flex;
+  align-items: center;
+
+  .goto {
+    margin-left: auto;
+  }
+}
+
 .warning {
   color: $orange;
 }

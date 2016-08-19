@@ -1,6 +1,6 @@
 export default {
   "navigation": {
-    "events": "Créer une partie",
+    "events": "Organiser une partie",
     "feedbacks": "Envoyer votre avis",
     "account": "Mon Compte",
     "registration": "Inscription",
@@ -23,28 +23,40 @@ export default {
   },
   "welcome": {
     "title": {
-      "meet": "Rencontrez des",
-      "people": "gens",
-      "play": "pour jouer à vos",
-      "game": "jeux",
-      "favorite": "préférés",
+      "create": "Organisez vos parties de jeu entre amis en toute simplicité",
+      "find": "Trouvez de nouvelles personnes pour jouer a vos jeux préférés",
     },
     "on-deckie": "Bienvenue sur Deckie",
-    "new-user": "Nous sommes encore en version beta et donc notre nombre d'utilisateurs est encore limité. Néanmoins vous pouvez dès à présent rejoindre une partie ou créer la votre et inviter vos amis par email pour nous aider à faire grandir la plateforme. Nous espérons réunir en un même endroit passionés et joueurs occasionnels pour jouer tous ensemble. Merci d'avoir rejoint Deckie, à bientôt et bon jeu. :)",
+    "new-user": `Nous sommes encore en version beta et donc notre nombre d'utilisateurs est encore faible
+                 pour rencontrer de nouveaux joueurs. Néanmoins vous pouvez organiser vos parties en toute
+                 simplicité avec notre sondage de date et inviter vos amis par email et partage Facebook
+                 pour nous aider à faire connaitre et grandir la plateforme. Il reste encore quelques bugs
+                 donc n'hésitez pas à nous en faire part si vous en voyez ou pour toute suggestion d'amélioration.
+                 A bientôt et bon jeu :)`,
     "beta-tmp": "(Créez ou rejoignez des parties qui commenceront à partir du 7 juillet)",
-    "button": "Voir les parties les plus proches",
+    "create": "Organiser une partie",
+    "see": "Voir les parties",
     "access": "Accéder",
-    "find-events": {
-      "title": "Trouver des parties",
-      "content": "Rencontrez des gens qui jouent à tous types de jeux (ludiques, cartes, jeu de rôle...). Deckie vous sélectionne les parties les plus proches de vous. Affinez la sélection par type de jeu, ambiance attendue ou niveau requis et choisissez la partie qui vous convient le mieux.",
-    },
-    "create-events": {
-      "title": "Organiser des parties",
-      "content": "Vous voulez jouer à un jeu bien précis? N'attendez plus qu'on vous propose. Organisez une partie sur Deckie en quelques clics. Sélectionnez une ambiance attendue, un niveau requis et le nombre de places disponibles et vous êtes prêts à rencontrer des gens intéressés par le même jeu.",
+    "find-events": "Trouver des parties",
+    "create-events": "Organiser des parties",
+    "about-item": {
+      "all-kind": "Tous types de jeux (ludique, cartes, jeu de rôle...)",
+      "geolocation": "Géolocalisation",
+      "of-events": "des parties",
+      "search-by": "Rechercher par ambiance et niveau attendus",
+      "survey": "Sondage",
+      "for-date": "pour le choix de date",
+      "invitations": "Invitations par liste d'emails et partage Facebook",
+      "private": "Parties publiques ou privées",
     },
     "beta": {
       "title": "Deckie est en version beta",
-      "content": "Nous sommes actuellement en version beta et donc le nombre d'utilisateurs est encore limité. C'est pourquoi nous avons besoin de vous, rejoignez ou créez des parties puis publiez les sur Facebook et invitez vos amis par email pour nous aider à faire grandir la plateforme. Il reste encore quelques bugs donc n'hésitez pas à nous en faire part si vous en voyez ou à nous faire des suggestions d'améliorations.",
+      "content": `Nous sommes encore en version beta et donc notre nombre d'utilisateurs est encore faible
+                  pour rencontrer de nouveaux joueurs. Néanmoins vous pouvez organiser vos parties en toute
+                  simplicité avec notre sondage de date et inviter vos amis par email et partage Facebook
+                  pour nous aider à faire connaitre et grandir la plateforme. Il reste encore quelques bugs
+                  donc n'hésitez pas à nous en faire part si vous en voyez ou pour toute suggestion d'amélioration.
+                  A bientôt et bon jeu :)`,
     },
   },
   "search": {
@@ -69,6 +81,10 @@ export default {
     "event-remove_start": "la partie a commencé",
     "event-comment": "a commenté la partie",
     "comment-comment": "a commenté le commentaire",
+    "time_slot-join": "a rejoint le créneau horaire",
+    "time_slot-leave": "a quitté le créneau horaire",
+    "time_slot-confirm": "a confirmé le créneau horaire",
+    "time_slot-cancel": "a annulé le créneau horaire"
   },
   "account": {
     "navigation": {
@@ -99,7 +115,8 @@ export default {
     },
     "attended-events": {
       "empty-opened": "Vous n'êtes inscrits à aucune partie",
-      "empty-closed": "Vous n'avez terminé aucune partie"
+      "empty-closed": "Vous n'avez terminé aucune partie",
+      "empty-flexible": "Vous n'êtes inscrits à aucune partie flexible"
     },
     "password": {
       "updated": "Votre mot de passe a bien été mis à jour"
@@ -184,14 +201,22 @@ export default {
     "short-description": {
       "empty": "Aucune description brève pour cette partie.",
     },
+    "join-flexible": "Cette partie a plusieurs choix de date possibles, vous pouvez vous inscrire selon vos disponibilités, la date finale sera choisie par l'hôte selon les participants.",
+    "date-options": "Choix de date",
     "count": "Inscrits : {{attendees-count}} / {{capacity}}",
     "min-attendee": "Cette partie aura lieu seulement s'il y a au moins {{min}} joueurs.",
     "closed": "Cette partie est terminée",
     "edit": "Editer la partie",
     "submission": {
       "pending": "Votre inscription est en attente de validation par l'hôte",
-      "confirmed": "Vous êtes inscrits à cette partie"
+      "confirmed": "Vous êtes inscrits à cette partie",
     },
+    "date-survey": "Sondage de date",
+    "choose-time-slot": "Choisir une date finale",
+    "confirm-time-slot": "Une fois le créneau validé le sondage ne sera plus accessible, continuer?",
+    "login-required": "Vous devez être connecté pour vous inscrire à ces créneaux",
+    "is-flexible-member": "Vous êtes inscrits à des créneaux sur cette partie.",
+    "see-my-time_slots": "Voir mes créneaux",
     "not-found": "La partie n'existe pas ou a été annulée.",
     "quit": "Quitter la partie",
     "delete": "Annuler la partie",
@@ -214,7 +239,8 @@ export default {
   },
   "events": {
     "opened": "Parties en cours",
-    "closed": "Parties terminées"
+    "closed": "Parties terminées",
+    "flexible": "Parties flexibles"
   },
   "comment": {
     "private": "Rendre le commentaire privé :",
@@ -279,7 +305,8 @@ export default {
     "comment": "Commentaire",
     "min-capacity": "Minimum inscrits",
     "capacity": "Places disponibles",
-    "date": "Date",
+    "date": "Date de la partie",
+    "date-flexible": "Sondage pour le choix de la date",
     "end-date": "Date de fin",
     "street": "Adresse",
     "postcode": "Code postal",
@@ -310,6 +337,11 @@ export default {
     "min-capacity": "Nombre d'inscrits minimum pour démarrer",
     "capacity": "Capacité maximum",
     "date": "Sélectionner une date",
+    "date-option-1": "Date (option 1)",
+    "date-option-2": "Date (option 2)",
+    "date-option-3": "Date (option 3)",
+    "date-option-4": "Date (option 4)",
+    "date-option-5": "Date (option 5)",
     "street": "Entrer une adresse",
     "postcode": "Code postal",
     "city": "Ville",
@@ -351,21 +383,34 @@ export default {
     "level": "niveau",
   },
   "error": {
+    "empty-time-slots": "vous devez sélectionner au moins 2 créneaux",
     "password-confirm": "n'est pas égal au nouveau mot de passe",
-    "end-at": "la date de fin doit être supérieure à la date de début",
+    "end-at": {
+      "no-begin-at": "une date de début est nécessaire",
+      "too-soon": "la date de fin doit être supérieure à la date de début",
+    },
     "email": "email invalide",
     "date": "date invalide",
     "min-max": "doit être inférieur ou égal au maximum"
   },
+  "date-flexible-from": "Au choix à partir du",
+  "date-flexible-from-sm": "A partir du",
+  "make-event-private": "Ne pas afficher la partie dans la recherche publique",
+  "is-flexible": "Vous avez choisis un sondage pour la date de cette partie.",
+  "see-time-slots": "Voir le sondage",
+  "event-date-flexible": "Choisissez jusqu'à 5 date sur lesquels les joueurs pourront s'inscrire. Vous pourrez ensuite choisir la date qui vous convient le mieux selon les inscrits à chaque créneau.",
   "email-reset-sent": "Un lien pour changer votre mot de passe vous a été envoyé par email",
   "new-password-updated": "Votre mot de passe a été mis à jour, vous n'avez plus qu'à vous connecter",
   "invalid-token": "Ce lien n'est plus valide",
   "optional": "(optionnel)",
   "edit": "Editer",
+  "choose": "Choisir",
   "remove": "Supprimer",
   "cancel": "Annuler",
   "add": "Ajouter",
   "verify": "Vérifier",
+  "see": "Voir",
+  "see-or-choose": "Voir / choisir",
   "see-all": "Voir tous",
   "see-more": "Voir plus",
   "event-submit": "a demandé à participer à",
@@ -379,6 +424,10 @@ export default {
   "event-remove_full": "est complète, votre inscription n'a pas été retenue",
   "event-remove_start": "a commencée, votre inscription n'a pas été retenue a temps",
   "event-comment": "a commenté la partie",
+  "time_slot-join": "a rejoint le créneau horaire",
+  "time_slot-leave": "a quitté le créneau horaire",
+  "time_slot-confirm": "a validé la date pour la partie",
+  "time_slot-cancel": "a annulé le créneau horaire",
   "comment-comment": "a commenté le commentaire",
   "User not found in database": "Ce compte n'existe pas",
   "Invalid email or password": "L'email et le mot de passe ne correspondent pas",
@@ -394,7 +443,9 @@ export default {
   "facebook-share": "Partager la partie sur Facebook",
   "pending": "Votre inscription est en attente de validation par l'hôte",
   "confirmed": "Vous êtes inscrits à cette partie",
+  "flexible": "Cet évennement est en attente de validation d'un créneau horaire par l'hôte",
   "to": "à",
+  "at": "à",
   errors: {
     inclusion: "n'est pas inclu dans la liste",
     exclusion: "est réservé",

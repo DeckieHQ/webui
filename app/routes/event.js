@@ -10,6 +10,7 @@ export default Ember.Route.extend({
     controller.set('emailSent', false);
     controller.set('emailError', false);
     controller.set('user_submission', "");
+    controller.set('displayTimeSlots', false);
   },
 
   session: Ember.inject.service(),

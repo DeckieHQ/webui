@@ -88,7 +88,7 @@
 
           {{#each time_slots as |time_slot index|}}
             <div class='inline-block'>
-              <div>{{moment-format time_slot.begin_at 'DD MMMM'}}</div>
+              <div>{{moment-format time_slot.begin_at 'DD/MM'}} {{t 'at'}} {{moment-format time_slot.begin_at 'HH:mm'}}</div>
               <div class='members-count'>
                 {{time_slot.members_count}}
                 <span class='icon-player'></span>

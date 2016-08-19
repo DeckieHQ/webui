@@ -427,7 +427,7 @@ export default {
   "time_slot-join": "a rejoint le créneau horaire",
   "time_slot-leave": "a quitté le créneau horaire",
   "time_slot-confirm": "a validé la date pour la partie",
-  "time_slot-cancel": "a annulé le créneau horaire"
+  "time_slot-cancel": "a annulé le créneau horaire",
   "comment-comment": "a commenté le commentaire",
   "User not found in database": "Ce compte n'existe pas",
   "Invalid email or password": "L'email et le mot de passe ne correspondent pas",

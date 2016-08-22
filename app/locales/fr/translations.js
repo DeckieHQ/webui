@@ -394,7 +394,7 @@ export default {
     "min-max": "doit être inférieur ou égal au maximum"
   },
   "date-flexible-from": "Au choix à partir du",
-  "date-flexible-from-sm": "A partir du",
+  "date-flexible-from-sm": "À partir du",
   "make-event-private": "Ne pas afficher la partie dans la recherche publique",
   "is-flexible": "Vous avez choisis un sondage pour la date de cette partie.",
   "see-time-slots": "Voir le sondage",

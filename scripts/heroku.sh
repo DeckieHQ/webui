@@ -60,7 +60,7 @@ function deploy() {
 
     #heroku repo:purge_cache -a $app
 
-    git push $app master
+    git push -f $app master
 
     heroku config:unset REBUILD_ALL --app $app
 }

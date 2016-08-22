@@ -1,4 +1,5 @@
 import Ember from 'ember';
+import _ from 'lodash';
 
 export default Ember.Controller.extend({
   eventsType: 'opened',
@@ -24,7 +25,22 @@ export default Ember.Controller.extend({
 
         return profile.query('time_slot_submissions', params);
       }).then(timeSlotSubmissions => {
-        this.set('model', timeSlotSubmissions);
+        let ids = [];
+        let submissions = [];
+
+        timeSlotSubmissions.forEach((submission) => {
+          submission.get('time_slot').then((timeSlot) => timeSlot.get('event'))
+          .then((event) => {
+            let eventId = event.get('id');
+
+            if (!_.includes(ids, eventId)) {
+              ids.push(eventId);
+              submissions.pushObject(submission);
+            }
+          });
+        });
+
+        this.set('model', submissions);
 
         this.set('eventsType', 'flexible');
       });

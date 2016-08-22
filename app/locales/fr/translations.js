@@ -443,7 +443,7 @@ export default {
   "facebook-share": "Partager la partie sur Facebook",
   "pending": "Votre inscription est en attente de validation par l'hôte",
   "confirmed": "Vous êtes inscrits à cette partie",
-  "flexible": "Cet évennement est en attente de validation d'un créneau horaire par l'hôte",
+  "flexible": "Vous êtes inscrits à des créneaux de date sur cette partie, elle sera validée dès que l'hôte aura choisie la date finale",
   "to": "à",
   "at": "à",
   errors: {

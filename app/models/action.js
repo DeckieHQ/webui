@@ -6,4 +6,5 @@ export default DS.Model.extend({
   type: DS.attr(),
   actor: DS.belongsTo('profile'),
   resource: DS.belongsTo('resource'),
+  top_resource: DS.belongsTo('event'),
 });

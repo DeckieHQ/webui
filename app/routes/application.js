@@ -44,6 +44,11 @@ export default Ember.Route.extend({
       this.transitionTo(record.get('constructor.modelName'), record);
     },
 
+    goto_event_time_slots(event) {
+      this.controllerFor('event').set('displayTimeSlots', true);
+      this.transitionTo('event', event);
+    },
+
     save(context, defer, params = {}) {
       let self = this;
 

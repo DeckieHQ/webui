@@ -94,7 +94,7 @@
     {{#if alreadyCreated}}
       <div class='see-time-slots'>
         <div>{{t 'is-flexible'}}</div>
-        <div class='goto'>{{t 'see-time-slots'}}</div>
+        <div class='goto' {{action 'see_time_slots'}}>{{t 'see-time-slots'}}</div>
       </div>
     {{else if (eq model.event_type 'flexible')}}
       <div>{{t 'event-date-flexible'}}</div>

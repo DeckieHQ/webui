@@ -168,6 +168,10 @@ export default Ember.Component.extend(EmberValidations, {
   addEndDate: false,
 
   actions: {
+    see_time_slots: function() {
+      this.get('targetObject').send('goto_event_time_slots', this.get('model'));
+    },
+
     save_event: function(defer) {
       let model = this.get('model');
 

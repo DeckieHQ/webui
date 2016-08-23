@@ -11,7 +11,6 @@ export default fbComponent.extend({
     var self = this;
     function showDialog(FB) {
       let title = self.get('title');
-      let image = self.get('image');
       FB.ui(
         {
           method: 'share',

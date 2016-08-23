@@ -113,8 +113,9 @@ export default Ember.Component.extend(EmberValidations, {
     },
     "model.new_time_slots": {
       inline: validator(function() {
-        if (this.model.get('model.flexible')) {
+        if (!this.get('alreadyCreated') && this.model.get('model.flexible')) {
           let new_time_slots = this.model.get('model.new_time_slots');
+
           if (new_time_slots && new_time_slots.length < 2) {
             return this.get('i18n').t("error.empty-time-slots");
           }
@@ -223,7 +224,6 @@ export default Ember.Component.extend(EmberValidations, {
           }
         }
       };
-
       this.get('targetObject').send('save', this, defer, params);
     }
   },

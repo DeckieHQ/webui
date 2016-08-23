@@ -46,36 +46,36 @@ export default Ember.Route.extend({
 
     save(context, defer, params = {}) {
       let self = this;
+
       let model = params.model || context.get('model');
 
       return context.validate()
-        .then(() => {
-          if (params.beforeSave) {
-            params.beforeSave();
-          }
-          return model.save();
-        })
-        .then(() => {
-          if (params.afterSave) {
-            return params.afterSave();
-          }
-        })
-        .then(defer.resolve)
-        .then(() => {
-          if (params.transitionToRecord) {
-            self.transitionTo(params.transitionToRecord.constructor.modelName, params.transitionToRecord)
-          } else if (params.transitionToModel) {
-            self.transitionTo(model.constructor.modelName, model)
-          }
-        })
-        .catch((reason) => {
-          if (params.fail) {
-            params.fail();
-          }
-          context.set("showErrors", true);
-          defer.reject(reason);
-        })
-      ;
+      .then(() => {
+        if (params.beforeSave) {
+          params.beforeSave();
+        }
+        return model.save();
+      })
+      .then(() => {
+        if (params.afterSave) {
+          return params.afterSave();
+        }
+      })
+      .then(defer.resolve)
+      .then(() => {
+        if (params.transitionToRecord) {
+          self.transitionTo(params.transitionToRecord.constructor.modelName, params.transitionToRecord)
+        } else if (params.transitionToModel) {
+          self.transitionTo(model.constructor.modelName, model)
+        }
+      })
+      .catch(reason => {
+        if (params.fail) { params.fail(); }
+
+        context.set("showErrors", true);
+
+        defer.reject(reason);
+      });
     }
   }
 });

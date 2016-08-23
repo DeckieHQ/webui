@@ -16,8 +16,7 @@ export default fbComponent.extend({
         {
           method: 'share',
           href: self.get('url'),
-          title: title,
-          image: image,
+          title: title
         },
         function(response) {
           if (response && !response.error_code) {

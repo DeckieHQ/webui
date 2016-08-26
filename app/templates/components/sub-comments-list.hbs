@@ -1,0 +1,12 @@
+{{#each subComments as |subComment|}}
+  {{subComment.message}}
+{{/each}}
+<form>
+  {{validated-input placeholder="placeholder.comment" value=message errors=errors.message}}
+
+  <div class='align-right inline-block'>
+    <div>
+      {{dynamic-submit actionOnSubmit="comment"}}
+    </div>
+  </div>
+</form>

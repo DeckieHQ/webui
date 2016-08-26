@@ -3,10 +3,14 @@ import EmberValidations from 'ember-validations';
 
 export default Ember.Component.extend(EmberValidations, {
   i18n: Ember.inject.service(),
+  store: Ember.inject.service(),
 
   validations: {
     "comment.message": {
       presence: true,
+      length: { maximum: 200 }
+    },
+    message: {
       length: { maximum: 200 }
     }
   },
@@ -56,6 +60,23 @@ export default Ember.Component.extend(EmberValidations, {
       if (confirm(this.get('i18n').t('comment.confirm-delete'))) {
         comment.destroyRecord();
       }
-    }
+    },
+
+    comment: function(defer) {
+      let subComment = this.get('store').createRecord('sub-comment', {
+        message: this.get('message'),
+        author: this.get('currentUser').get('profile'),
+        comment: this.get('comment')
+      });
+
+      let params = {
+        afterSave: () => {
+          this.set('message', null);
+        },
+        model: subComment
+      }
+
+      this.get('targetObject').get('targetObject').send('save', this, defer, params);
+    },
   }
 });

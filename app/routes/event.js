@@ -80,6 +80,32 @@ export default Ember.Route.extend({
           ;
         }
       })
+    } else {
+      if (isAuthenticated) {
+        return model.get('user_submission')
+          .then((submission) => {
+            if (submission) {
+              return this.controllerFor('event').set('user_submission', submission);
+            } else {
+              return this.controllerFor('event').set('user_submission', null);
+            }
+          })
+          .then(() => {
+            let isHost = this.get('currentUser').get('profile.id') == model.get('host.id');
+
+            if (isHost) {
+              return model.query('submissions', { include: 'profile' });
+            } else {
+              this.controllerFor('event').set('submissions', null);
+            }
+          })
+          .then((submissions) => {
+            if (submissions) {
+              return this.controllerFor('event').set('submissions', submissions);
+            }
+          })
+        ;
+      }
     }
   },
 });

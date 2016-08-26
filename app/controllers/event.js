@@ -83,6 +83,8 @@ export default Ember.Controller.extend(EmberValidations, {
     return this.get('model.attendees.length') >= this.get('model.capacity');
   }),
 
+  showComments: true,
+
   actions: {
     join_event: function(defer) {
       if (!this.get('session.isAuthenticated')) {
@@ -211,6 +213,8 @@ export default Ember.Controller.extend(EmberValidations, {
     },
 
     comment: function(defer) {
+      this.set('showComments', false);
+
       let comment = this.store.createRecord('comment', {
         message: this.get('message'),
         private: this.get('isPrivate'),
@@ -222,6 +226,7 @@ export default Ember.Controller.extend(EmberValidations, {
         afterSave: () => {
           this.set('message', null);
           this.set('isPrivate', false);
+          this.set('showComments', true);
         },
         model: comment
       }

@@ -246,10 +246,12 @@
         </div>
       {{/if}}
 
-      {{#if onlyPrivates}}
-        {{comments-list isPrivate=true event=model isHost=isHost isModerator=isModerator}}
-      {{else}}
-        {{comments-list event=model isHost=isHost isModerator=isModerator}}
+      {{#if showComments}}
+        {{#if onlyPrivates}}
+          {{comments-list isPrivate=true event=model isHost=isHost isModerator=isModerator}}
+        {{else}}
+          {{comments-list event=model isHost=isHost isModerator=isModerator}}
+        {{/if}}
       {{/if}}
     </div>
   </div>

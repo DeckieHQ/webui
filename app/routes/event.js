@@ -53,7 +53,6 @@ export default Ember.Route.extend({
           return this.controllerFor('event').set('time_slots', time_slots);
         })
       })
-      .then(() => model.get('comments'))
       .then(() => {
         if (isAuthenticated) {
           return model.get('user_submission')

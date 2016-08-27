@@ -18,10 +18,7 @@ export default Ember.Component.extend({
     };
 
     return this.get('event').query('comments', params)
-      .then((comments) =>
-        this.set('comments', comments)
-      )
-    ;
+      .then((comments) => this.set('comments', comments))
   },
 
   count: Ember.computed('comments.meta.pagination.last.number', 'model.meta.pagination.self.number', function() {

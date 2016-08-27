@@ -1,5 +1,5 @@
 {{#each subComments as |subComment|}}
-  {{subComment.message}}
+  {{sub-comment-display comment=subComment isHost=isHost isModerator=isModerator}}
 {{/each}}
 <form>
   {{validated-input placeholder="placeholder.comment" value=message errors=errors.message}}

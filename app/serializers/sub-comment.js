@@ -1,7 +1,7 @@
 import ApplicationSerializer from '../serializers/application';
 
 export default ApplicationSerializer.extend({
-  modelNameFromPayloadKey(key) {
+  modelNameFromPayloadKey() {
     return "sub-comment";
-  },
+  }
 });

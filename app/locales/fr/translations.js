@@ -283,11 +283,15 @@ export default {
     "first-feedback": "Mon opinion compte",
     "early-event": "Ambassadeur",
     "verified-profile": "Papiers en règles",
+    "first-invitation": "J'invite mes ami",
+    "first-flexible-event": "Je suis flexible",
     "condition": {
       "early-registration": "s'inscrire avant le lancement officiel.",
       "first-feedback": "envoyer un avis (contructif) sur la plateforme.",
       "early-event": "organiser une partie avant le lancement officiel.",
       "verified-profile": "vérifier son profil.",
+      "first-invitation": "inviter un ami à une partie",
+      "first-flexible-event": "créer une partie avec choix de la date"
     }
   },
   "tips": {

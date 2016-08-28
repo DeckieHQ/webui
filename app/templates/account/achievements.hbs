@@ -46,4 +46,26 @@
       <span class='no'></span>
     {{/if}}
   </div>
+  <div class='achievement'>
+    <div>
+      <div>{{t 'achievement.first-invitation'}}</div>
+      <div class='condition'>{{t 'achievement.granted-by'}} {{t 'achievement.condition.first-invitation'}}</div>
+    </div>
+    {{#if firstInvitation}}
+      <span class='ok'></span>
+    {{else}}
+      <span class='no'></span>
+    {{/if}}
+  </div>
+  <div class='achievement'>
+    <div>
+      <div>{{t 'achievement.first-flexible-event'}}</div>
+      <div class='condition'>{{t 'achievement.granted-by'}} {{t 'achievement.condition.first-flexible-event'}}</div>
+    </div>
+    {{#if firstFlexibleEvent}}
+      <span class='ok'></span>
+    {{else}}
+      <span class='no'></span>
+    {{/if}}
+  </div>
 </div>

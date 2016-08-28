@@ -24,4 +24,16 @@ export default Ember.Controller.extend({
       (achievement) => achievement.get('name') === 'verified-profile'
     );
   }.property(),
+
+  firstInvitation: function() {
+    return this.get('model').find(
+      (achievement) => achievement.get('name') === 'first-invitation'
+    );
+  }.property(),
+
+  firstFlexibleEvent: function() {
+    return this.get('model').find(
+      (achievement) => achievement.get('name') === 'first-flexible-event'
+    );
+  }.property(),
  });

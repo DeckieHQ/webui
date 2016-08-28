@@ -8,4 +8,9 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   created_at: DS.attr(),
   event: DS.belongsTo('event'),
   comments: DS.hasMany('sub-comment'),
+  comments_count: DS.attr(),
+
+  hasSubComments: Ember.computed('comments_count', function() {
+    return this.get('comments_count') > 0;
+  }),
 });

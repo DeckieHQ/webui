@@ -15,6 +15,8 @@ export default Ember.Component.extend(EmberValidations, {
 
     if (nextPage) {
       return (nextPage - 1) * 10;
+    } else {
+      return 0;
     }
   }.property('nextPage'),
 
@@ -26,9 +28,16 @@ export default Ember.Component.extend(EmberValidations, {
         comment: this.get('comment')
       });
 
+      let subComments = this.get('subComments');
+      let count = this.get('displayedSubCommentsCount');
+      let total = this.get('comment.comments_count');
+
       let params = {
         afterSave: () => {
           this.set('message', null);
+          this.set('displayedSubCommentsCount', count+1)
+          this.set('comment.comments_count', total+1);
+          this.set('subComments', subComments.pushObjects([subComment]));
         },
         model: subComment
       }

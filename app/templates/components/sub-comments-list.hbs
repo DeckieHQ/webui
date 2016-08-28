@@ -5,7 +5,7 @@
     </div>
   {{/if}}
 {{else if comment.hasSubComments}}
-  <div {{action 'display_sub_comments'}} class='display-sub-comments'>{{t 'comment.display-sub-comments'}}</div>
+  <div {{action 'display_sub_comments'}} class='display-sub-comments'>{{t 'comment.display-sub-comments' total=comment.comments_count}}</div>
 {{else}}
   <div {{action 'display_sub_comments'}} class='display-sub-comments'>{{t 'comment.make-sub-comment'}}</div>
 {{/if}}
@@ -28,13 +28,3 @@
     </form>
   </div>
 {{/if}}
-
-<div id='paginate'>
-  {{#each count as |number|}}
-    {{#if (eq number comments.meta.pagination.self.number)}}
-      <span class='page self'>{{number}}</span>
-    {{else}}
-      <span {{action 'paginate' number}} class='page'>{{number}}</span>
-    {{/if}}
-  {{/each}}
-</div>

@@ -11,6 +11,7 @@ export default Ember.Route.extend({
     controller.set('emailError', false);
     controller.set('user_submission', "");
     controller.set('displayTimeSlots', false);
+    console.log('toto');
   },
 
   session: Ember.inject.service(),
@@ -77,6 +78,7 @@ export default Ember.Route.extend({
                 return this.controllerFor('event').set('submissions', submissions);
               }
             })
+            .then(() => this.controllerFor("event").set('displayComments', true))
           ;
         }
       })
@@ -104,8 +106,15 @@ export default Ember.Route.extend({
               return this.controllerFor('event').set('submissions', submissions);
             }
           })
+          .then(() => this.controllerFor("event").set('displayComments', true))
         ;
       }
     }
   },
+
+  actions: {
+    willTransition: function(transition) {
+      this.get('controller').set('displayComments', false);
+    }
+  }
 });

@@ -246,7 +246,7 @@ export default {
     "private": "Rendre le commentaire privé :",
     "show-privates": "N'afficher que les commentaires privés :",
     "confirm-delete": "Vous allez supprimer le commentaire, continuer?",
-    "display-sub-comments": "Répondre / voir les réponses",
+    "display-sub-comments": "Répondre / voir les réponses ({{total}})",
     "make-sub-comment": "Répondre",
     "see-more-sub-comments": "Voir plus de réponses {{count}}/{{total}}"
   },

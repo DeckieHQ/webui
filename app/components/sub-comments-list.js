@@ -45,6 +45,15 @@ export default Ember.Component.extend(EmberValidations, {
       this.get('targetObject').get('targetObject').get('targetObject').send('save', this, defer, params);
     },
 
+    delete_comment: function(comment) {
+      this.get('subComments').removeObject(comment);
+      let count = this.get('displayedSubCommentsCount');
+      let total = this.get('comment.comments_count');
+      this.set('displayedSubCommentsCount', count-1)
+      this.set('comment.comments_count', total-1);
+      comment.destroyRecord();
+    },
+
     display_sub_comments: function() {
       this.set('displaySubComments', true);
 

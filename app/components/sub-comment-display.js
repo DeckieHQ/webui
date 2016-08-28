@@ -55,7 +55,7 @@ export default Ember.Component.extend(EmberValidations, {
 
     delete_comment: function(comment) {
       if (confirm(this.get('i18n').t('comment.confirm-delete'))) {
-        comment.destroyRecord();
+        this.get('targetObject').send('delete_comment', comment);
       }
     },
   }

@@ -42,7 +42,7 @@ export default Ember.Controller.extend(EmberValidations, {
   }.property('confirmed', 'isHost'),
 
   isAbleToEdit: function() {
-    return this.get('isModerator') || (this.get('isHost') && this.get('model.opened'));
+    return (this.get('isModerator') || this.get('isHost')) && this.get('model.opened');
   }.property('isModerator', 'isHost', 'model.opened'),
 
   isAbleToInvite: function() {

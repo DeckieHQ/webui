@@ -1,0 +1,30 @@
+{{#if displaySubComments}}
+  {{#if nextPage}}
+    <div {{action 'see_previous_sub_comments'}} class='display-sub-comments'>
+      {{t 'comment.see-more-sub-comments' count=displayedSubCommentsCount total=comment.comments_count}}
+    </div>
+  {{/if}}
+{{else if comment.hasSubComments}}
+  <div {{action 'display_sub_comments'}} class='display-sub-comments'>{{t 'comment.display-sub-comments' total=comment.comments_count}}</div>
+{{else}}
+  <div {{action 'display_sub_comments'}} class='display-sub-comments'>{{t 'comment.make-sub-comment'}}</div>
+{{/if}}
+
+
+{{#if displaySubComments}}
+  <div class='sub-comments'>
+    {{#each subComments as |subComment|}}
+      {{sub-comment-display comment=subComment isHost=isHost isModerator=isModerator}}
+      <hr>
+    {{/each}}
+    <form>
+      {{validated-input placeholder="placeholder.comment" value=message errors=errors.message}}
+
+      <div class='align-right inline-block'>
+        <div>
+          {{dynamic-submit actionOnSubmit="comment"}}
+        </div>
+      </div>
+    </form>
+  </div>
+{{/if}}

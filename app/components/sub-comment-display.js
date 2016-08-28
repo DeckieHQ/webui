@@ -10,9 +10,6 @@ export default Ember.Component.extend(EmberValidations, {
       presence: true,
       length: { maximum: 200 }
     },
-    message: {
-      length: { maximum: 200 }
-    }
   },
 
   isOwner: function() {
@@ -58,25 +55,8 @@ export default Ember.Component.extend(EmberValidations, {
 
     delete_comment: function(comment) {
       if (confirm(this.get('i18n').t('comment.confirm-delete'))) {
-        comment.destroyRecord();
+        this.get('targetObject').send('delete_comment', comment);
       }
-    },
-
-    comment: function(defer) {
-      let subComment = this.get('store').createRecord('sub-comment', {
-        message: this.get('message'),
-        author: this.get('currentUser').get('profile'),
-        comment: this.get('comment')
-      });
-
-      let params = {
-        afterSave: () => {
-          this.set('message', null);
-        },
-        model: subComment
-      }
-
-      this.get('targetObject').get('targetObject').send('save', this, defer, params);
     },
   }
 });

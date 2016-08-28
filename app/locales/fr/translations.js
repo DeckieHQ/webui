@@ -80,7 +80,7 @@ export default {
     "event-remove_full": "la partie est pleine",
     "event-remove_start": "la partie a commencé",
     "event-comment": "a commenté la partie",
-    "comment-comment": "a commenté le commentaire",
+    "comment-comment": "a répondu au commentaire",
     "time_slot-join": "a rejoint le créneau horaire",
     "time_slot-leave": "a quitté le créneau horaire",
     "time_slot-confirm": "a confirmé le créneau horaire",
@@ -245,7 +245,10 @@ export default {
   "comment": {
     "private": "Rendre le commentaire privé :",
     "show-privates": "N'afficher que les commentaires privés :",
-    "confirm-delete": "Vous allez supprimer le commentaire, continuer?"
+    "confirm-delete": "Vous allez supprimer le commentaire, continuer?",
+    "display-sub-comments": "Répondre / voir les réponses ({{total}})",
+    "make-sub-comment": "Répondre",
+    "see-more-sub-comments": "Voir plus de réponses {{count}}/{{total}}"
   },
   "submissions": {
     "empty": "Aucune demande de participation en attente.",
@@ -428,7 +431,7 @@ export default {
   "time_slot-leave": "a quitté le créneau horaire",
   "time_slot-confirm": "a validé la date pour la partie",
   "time_slot-cancel": "a annulé le créneau horaire",
-  "comment-comment": "a commenté le commentaire",
+  "comment-comment": "a répondu au commentaire",
   "User not found in database": "Ce compte n'existe pas",
   "Invalid email or password": "L'email et le mot de passe ne correspondent pas",
   "The adapter rejected the commit because it was invalid": "Une erreur est survenue",

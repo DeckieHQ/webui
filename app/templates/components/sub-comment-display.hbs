@@ -1,4 +1,4 @@
-<div id='comment' class='well'>
+<div id='comment'>
   <div class='row'>
     <div class='col-xs-10'>
       {{profile-link profile=comment.author}}
@@ -42,7 +42,6 @@
       {{else}}
         <div>{{comment.message}}</div>
       {{/if}}
-      {{sub-comments-list comment=comment isHost=isHost isModerator=isModerator}}
     </div>
   </div>
 </div>

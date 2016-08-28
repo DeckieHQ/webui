@@ -11,7 +11,6 @@ export default Ember.Route.extend({
     controller.set('emailError', false);
     controller.set('user_submission', "");
     controller.set('displayTimeSlots', false);
-    console.log('toto');
   },
 
   session: Ember.inject.service(),

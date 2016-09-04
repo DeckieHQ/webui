@@ -453,6 +453,7 @@ export default {
   "flexible": "Vous êtes inscrits à des créneaux de date sur cette partie, elle sera validée dès que l'hôte aura choisie la date finale",
   "to": "à",
   "at": "à",
+  "must be an array from 2 to 5 unique datetime values above 24 hours from current datetime.": "Le premier choix de date doit être dans 24 heures ou plus.",
   errors: {
     inclusion: "n'est pas inclu dans la liste",
     exclusion: "est réservé",

@@ -101,6 +101,7 @@
       <div>
         {{#if showCustomError}}
           <span class='error'>{{errors.model.new_time_slots}}</span>
+          <span class='error'>{{t model.errors.new_time_slots.firstObject.message}}</span>
         {{/if}}
       </div>
       {{#each time_slots as |time_slot|}}

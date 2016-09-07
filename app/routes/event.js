@@ -77,7 +77,6 @@ export default Ember.Route.extend({
                 return this.controllerFor('event').set('submissions', submissions);
               }
             })
-            .then(() => this.controllerFor("event").set('displayComments', true))
           ;
         }
       })
@@ -105,7 +104,6 @@ export default Ember.Route.extend({
               return this.controllerFor('event').set('submissions', submissions);
             }
           })
-          .then(() => this.controllerFor("event").set('displayComments', true))
         ;
       }
     }
@@ -114,6 +112,13 @@ export default Ember.Route.extend({
   actions: {
     willTransition: function(transition) {
       this.get('controller').set('displayComments', false);
+    },
+
+    didTransition: function() {
+      let self = this;
+      Ember.run.later( function() {
+        self.get('controller').set('displayComments', true);
+      }, 500);
     }
   }
 });

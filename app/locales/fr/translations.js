@@ -243,7 +243,7 @@ export default {
     "flexible": "Parties flexibles"
   },
   "comment": {
-    "login-required": "Vous devez être connecté pour commenter.",
+    "login-required": "Vous devez être connecté pour répondre.",
     "private": "Rendre le commentaire privé :",
     "show-privates": "N'afficher que les commentaires privés :",
     "confirm-delete": "Vous allez supprimer le commentaire, continuer?",

@@ -3,12 +3,17 @@ import EmberValidations from 'ember-validations';
 
 export default Ember.Component.extend(EmberValidations, {
   store: Ember.inject.service(),
+  session: Ember.inject.service(),
 
   validations: {
     message: {
       length: { maximum: 200 }
     }
   },
+
+  isAuthenticated: function() {
+    return this.get('session.isAuthenticated');
+  }.property('session.isAuthenticated'),
 
   displayedSubCommentsCount: function() {
     let nextPage = this.get('nextPage');

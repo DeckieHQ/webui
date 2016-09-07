@@ -5,9 +5,17 @@
     </div>
   {{/if}}
 {{else if comment.hasSubComments}}
-  <div {{action 'display_sub_comments'}} class='display-sub-comments'>{{t 'comment.display-sub-comments' total=comment.comments_count}}</div>
-{{else}}
-  <div {{action 'display_sub_comments'}} class='display-sub-comments'>{{t 'comment.make-sub-comment'}}</div>
+  <div {{action 'display_sub_comments'}} class='display-sub-comments'>
+    {{#if isAuthenticated}}
+      {{t 'comment.display-sub-comments' total=comment.comments_count}}
+    {{else}}
+      {{t 'comment.display-sub-comments-anonymous' total=comment.comments_count}}
+    {{/if}}
+  </div>
+{{else if isAuthenticated}}
+  <div {{action 'display_sub_comments'}} class='display-sub-comments'>
+    {{t 'comment.make-sub-comment'}}
+  </div>
 {{/if}}
 
 
@@ -17,14 +25,20 @@
       {{sub-comment-display comment=subComment isHost=isHost isModerator=isModerator}}
       <hr>
     {{/each}}
-    <form>
-      {{validated-input placeholder="placeholder.comment" value=message errors=errors.message}}
+    {{#if isAuthenticated}}
+      <form>
+        {{validated-input placeholder="placeholder.comment" value=message errors=errors.message}}
 
-      <div class='align-right inline-block'>
-        <div>
-          {{dynamic-submit actionOnSubmit="comment"}}
+        <div class='align-right inline-block'>
+          <div>
+            {{dynamic-submit actionOnSubmit="comment"}}
+          </div>
         </div>
+      </form>
+    {{else}}
+      <div>
+        {{t 'comment.login-required'}}
       </div>
-    </form>
+    {{/if}}
   </div>
 {{/if}}

@@ -18,7 +18,16 @@ export default fbComponent.extend({
           href: self.get('url'),
           title: title,
           description: description,
-          image: 'https://www.deckie.fr/assets/images/avatar-a2fc5859bbeb404f9104c07c508d648c.jpg',
+          media: [
+            {
+              type: 'image',
+              href: 'https://www.deckie.fr',
+              src: 'https://www.deckie.fr/assets/images/avatar-a2fc5859bbeb404f9104c07c508d648c.jpg',
+              width: '300',
+              height: '300',
+            }
+          ],
+          // image: 'https://www.deckie.fr/assets/images/avatar-a2fc5859bbeb404f9104c07c508d648c.jpg',
         },
         function(response) {
           if (response && !response.error_code) {

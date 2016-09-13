@@ -18,9 +18,6 @@ export default fbComponent.extend({
           href: self.get('url'),
           title: title,
           description: description,
-          'og:image': 'https://www.deckie.fr/assets/images/avatar-a2fc5859bbeb404f9104c07c508d648c.jpg',
-          'og:image:width': '300',
-          'og:image:height': '300',
         },
         function(response) {
           if (response && !response.error_code) {

@@ -1,14 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  headTags: [{
-    type: 'meta',
-    tagId: 'meta-og-description',
-    attrs: {
-      property: 'og:description',
-      content: 'youhou rouki tes trop fort',
-    }
-  }],
+  // headTags: [{
+  //   type: 'meta',
+  //   tagId: 'meta-og-description',
+  //   attrs: {
+  //     property: 'og:description',
+  //     content: 'youhou rouki tes trop fort',
+  //   }
+  // }],
 
   deactivate: function() {
     var controller = this.get('controller');
@@ -25,6 +25,19 @@ export default Ember.Route.extend({
   session: Ember.inject.service(),
 
   model: function(params) {
+    window.prerenderReady = false;
+
+    let headTags = [{
+        type: 'meta',
+        tagId: 'meta-og-description',
+        attrs: {
+          property: 'og:description',
+          content: 'youhou rouki tes trop fort',
+        }
+      }];
+
+    this.set('headTags', headTags);
+
     return this.store.find('event', params.event_id).catch(
       () => this.transitionTo('event-not-found')
     );
@@ -126,6 +139,7 @@ export default Ember.Route.extend({
     didTransition: function() {
       let self = this;
       Ember.run.later( function() {
+        window.prerenderReady = true;
         self.get('controller').set('displayComments', true);
       }, 500);
     }

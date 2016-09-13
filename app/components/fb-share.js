@@ -11,11 +11,16 @@ export default fbComponent.extend({
     var self = this;
     function showDialog(FB) {
       let title = self.get('title');
+      let description =  self.get('description');
       FB.ui(
         {
           method: 'share',
           href: self.get('url'),
-          title: title
+          title: title,
+          description: description,
+          image: "https://www.deckie.fr/assets/images/avatar-a2fc5859bbeb404f9104c07c508d648c.jpg",
+          'image:width': 300,
+          'image:height': 300,
         },
         function(response) {
           if (response && !response.error_code) {

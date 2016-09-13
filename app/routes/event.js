@@ -1,16 +1,6 @@
 import Ember from 'ember';
-import RouteMetaMixin from 'ember-cli-meta-tags/mixins/route-meta';
 
-export default Ember.Route.extend(RouteMetaMixin, {
-  headTags: [{
-    type: 'meta',
-    tagId: 'meta-og-description',
-    attrs: {
-      property: 'og:description',
-      content: 'Toto'
-    }
-  }],
-
+export default Ember.Route.extend({
   deactivate: function() {
     var controller = this.get('controller');
     controller.set('message', null);

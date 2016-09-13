@@ -1,6 +1,15 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
+  headTags: [{
+    type: 'meta',
+    tagId: 'meta-og-description',
+    attrs: {
+      property: 'og:description',
+      content: 'youhou rouki tes trop fort',
+    }
+  }],
+
   deactivate: function() {
     var controller = this.get('controller');
     controller.set('message', null);

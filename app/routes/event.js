@@ -1,6 +1,16 @@
 import Ember from 'ember';
+import RouteMetaMixin from 'ember-cli-meta-tags/mixins/route-meta';
 
 export default Ember.Route.extend({
+  meta: function() {
+    return {
+      'property': {
+        'og:title': 'toto',
+        'og:description': 'toto',
+      },
+    };
+  },
+
   deactivate: function() {
     var controller = this.get('controller');
     controller.set('message', null);

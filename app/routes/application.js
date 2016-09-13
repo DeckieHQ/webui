@@ -6,21 +6,21 @@ export default Ember.Route.extend({
   moment: Ember.inject.service(),
   i18n: Ember.inject.service(),
 
-  headTags: [{
-    type: 'meta',
-    tagId: 'meta-og-name',
-    attrs: {
-      property: 'og:name',
-      content: 'Ice-T'
-    }
-  },{
-    type: 'meta',
-    tagId: 'meta-og-description',
-    attrs: {
-      property: 'og:description',
-      content: 'Toto'
-    }
-  }],
+  // headTags: [{
+  //   type: 'meta',
+  //   tagId: 'meta-og-name',
+  //   attrs: {
+  //     property: 'og:name',
+  //     content: 'Ice-T'
+  //   }
+  // },{
+  //   type: 'meta',
+  //   tagId: 'meta-og-description',
+  //   attrs: {
+  //     property: 'og:description',
+  //     content: 'Toto'
+  //   }
+  // }],
 
   beforeModel(transition) {
     this._switchLocale('fr');

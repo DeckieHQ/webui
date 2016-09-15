@@ -25,8 +25,6 @@ export default Ember.Route.extend({
   session: Ember.inject.service(),
 
   model: function(params) {
-    window.prerenderReady = false;
-
     return this.store.find('event', params.event_id).catch(
       () => this.transitionTo('event-not-found')
     );
@@ -128,7 +126,6 @@ export default Ember.Route.extend({
     didTransition: function() {
       let self = this;
       Ember.run.later( function() {
-        window.prerenderReady = true;
         self.get('controller').set('displayComments', true);
       }, 500);
     }

@@ -332,7 +332,8 @@ export default {
     "submission": "Validation d'inscription",
     "auto-accept": "Automatique",
     "manual": "Manuelle",
-    "hide-full": "Masquer les évennements complets"
+    "hide-full": "Masquer les évennements complets",
+    "contact-email": "Email de contact"
   },
   "placeholder": {
     "title": "Entrer un titre",
@@ -358,6 +359,7 @@ export default {
     "email": "Entrer email",
     "search": "Nom de jeu, Ville, Code postal...",
     "invitation": "Entrer un ou plusieurs emails de gens à inviter",
+    "contact-email": "Entrer un email de contact"
   },
   "culture": {
     "fr": "Français",
@@ -402,6 +404,7 @@ export default {
     "date": "date invalide",
     "min-max": "doit être inférieur ou égal au maximum"
   },
+  "feedback-email": "Si vous êtes d'accord pour qu'on revienne vers vous en fonction de votre avis (clarifications, échanges d'idées...) merci de nous laisser votre contact.",
   "date-flexible-from": "Au choix à partir du",
   "date-flexible-from-sm": "À partir du",
   "make-event-private": "Ne pas afficher la partie dans la recherche publique",

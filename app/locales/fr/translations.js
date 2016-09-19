@@ -393,6 +393,35 @@ export default {
     "ambiance": "ambiance",
     "level": "niveau",
   },
+  "policy": {
+    "infos": "En vous inscrivant vous acceptez notre",
+    "title": "Politique de confidentialité",
+    "description": `Deckie attache une grande importance à la protection et au respect de votre vie privée.
+                    Les données personnelles que nous recoltons sont dans le seul but d'améliorer le fonctionnement de la plateforme
+                    et ne sont aucunement destinées à une revente à des services exterieurs. Vous trouverez ci-dessous les
+                    différentes données que nous récoltons, comment elles sont utilisées par la plateforme et qui peut y accéder.`,
+    "geolocation": "Géolocalisation",
+    "geolocation-description": `Votre position est automatiquement récupérée pour vous proposer en premier résultats les parties les plus
+                                proche de votre position. Cette position n'est pas stockée et personne d'autre ne peut y accéder.`,
+    "email": "Email",
+    "email-description": `Votre email sert d'abord d'identifiant de connection et de moyen de contact pour la plateforme.
+                          Les emails que vous recevez de Deckie peuvent être paramétrés dans le menu notifications et/ou préférences.
+                          Lorsque vous rejoignez une partie, seul l'hôte de la partie peut accéder à votre email une fois votre inscription validée.
+                          De la même manière si vous organisez une partie les personnes inscrites et validées peuvent accéder à votre email. Ce dispositif
+                          est mis en place pour permettre aux joueurs participants à une même partie de se contacter. Dans le futur
+                          nous développerons un système de messagerie qui rendra votre email totalement invisible aux autres utilisateurs.`,
+    "name": "Nom et prénom",
+    "name-description": `Votre nom et prénom sont là dans le but de rassurer les différentes personnes participants à une même partie.
+                         Néanmoins seul votre prénom et la première lettre de votre nom sont affichées (ex "Thomas D").`,
+    "phone-number": "Numéro de téléphone",
+    "phone-number-description": `Votre numéro de téléphone est une donnée optionnelle. Les personnes pouvant y accéder sont
+                                 les mêmes que celles qui peuvent accéder à votre email, c'est à dire l'hôte d'une partie
+                                 auquelle vous participez et les inscrits validés d'une partie que vous organisez.`,
+    "birthday": "Date de naissance",
+    "birthday-description": `Pour l'instant votre date de naissance ne sert qu'à vérifier que vous êtes majeur pour vous inscrire
+                             sur le site. A terme il pourra être utilisé pour affiner une recherche de partie par tranche d'âge.
+                             Seul votre âge est suceptible un jour d'être affiché mais jamais votre date de naissance complète.`
+  },
   "error": {
     "empty-time-slots": "vous devez sélectionner au moins 2 créneaux",
     "password-confirm": "n'est pas égal au nouveau mot de passe",

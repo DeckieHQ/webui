@@ -40,6 +40,7 @@ Router.map(function() {
   this.route('notification', { path: '/notification/:notification_id' });
   this.route('feedback-sent');
   this.route('event-not-found');
+  this.route('policy');
 });
 
 export default Router;

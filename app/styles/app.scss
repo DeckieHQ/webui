@@ -30,6 +30,18 @@
   }
 }
 
+.policy-link {
+  @include unstyled-link();
+}
+
+.policy-infos {
+  vertical-align: -webkit-baseline-middle;
+}
+
+.user-submit {
+  float: right;
+}
+
 #comment {
   .utils {
     text-align: right;

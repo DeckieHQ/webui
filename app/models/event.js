@@ -28,7 +28,7 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   country: DS.attr(),
   latitude: DS.attr(),
   longitude: DS.attr(),
-  auto_accept: DS.attr('boolean', { defaultValue: true }),
+  auto_accept: DS.attr('boolean', { defaultValue: false }),
   comments: DS.hasMany('comment'),
   attendees: DS.hasMany('profile'),
   submissions: DS.hasMany('submission'),

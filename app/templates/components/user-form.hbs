@@ -1,35 +1,60 @@
-<form>
-  {{validated-input label="user.email.label" placeholder="user.email.placeholder" value=model.email serverErrors=model.errors.email errors=errors.model.email name="email"}}
-  {{validated-input label="user.firstname.label" placeholder="user.firstname.placeholder" value=model.first_name serverErrors=model.errors.first_name errors=errors.model.first_name name="firstName"}}
-  {{validated-input label="user.lastname.label" placeholder="user.lastname.placeholder" value=model.last_name serverErrors=model.errors.last_name errors=errors.model.last_name name="lastName"}}
+<div id='user-form'>
+  {{#unless alreadyCreated}}
+    <div class='row tabs'>
+      <div class={{unless model.organization 'col-xs-12 col-md-6 tab opened' 'col-xs-12 col-md-6 tab'}}>
+        <div {{action 'toggle_organization'}}>{{t 'user.individual'}}</div>
+      </div>
+      <div class={{if model.organization 'col-xs-12 col-md-6 tab opened' 'col-xs-12 col-md-6 tab'}}>
+        <div {{action 'toggle_organization'}}>{{t 'user.organization'}}</div>
+      </div>
 
-  <label>{{t 'user.birthday.label'}}</label>
-  {{#if showCustomError}}
-    <span class='error'>{{errors.birthday}}</span>
-  {{/if}}
-  <div class="birthday form-group col-sm-12">
-    <div class="col-sm-4">{{validated-input placeholder="user.day.placeholder" value=day errors=errors.day}}</div>
-    <div class="col-sm-4">
-      {{validated-select options=months placeholder=monthPlaceHolder value=month errors=errors.month}}
+      <div class='col-md-12'>
+        <hr>
+      </div>
     </div>
-    <div class="col-sm-4">{{validated-input placeholder="user.year.placeholder" value=year errors=errors.year}}</div>
-  </div>
-  {{birthday_error}}
+  {{/unless}}
 
-  <div class="clearfix"></div>
+  <form>
+    {{validated-input label="user.email.label" placeholder="user.email.placeholder" value=model.email serverErrors=model.errors.email errors=errors.model.email name="email"}}
 
-  <label>{{t 'user.phonenumber.label'}}</label>
-  <span>{{t 'optional'}}</span>
-  {{validated-input placeholder="user.phonenumber.placeholder" value=model.phone_number serverErrors=model.errors.phone_number errors=errors.model.phone_number name="phoneNumber"}}
-  <!-- {{validated-select label="user.culture.label" options=cultures value=model.culture serverErrors=model.errors.culture errors=errors.model.culture}} -->
+    {{#if model.organization}}
+      {{validated-input label="user.name.label" placeholder="user.name.placeholder" value=model.first_name serverErrors=model.errors.first_name errors=errors.model.first_name name="firstName"}}
+      <label>{{t 'user.phonenumber.label'}}</label>
+      <span>{{t 'optional'}}</span>
+      {{validated-input placeholder="user.phonenumber.placeholder" value=model.phone_number serverErrors=model.errors.phone_number errors=errors.model.phone_number name="phoneNumber"}}
+    {{else}}
+      {{validated-input label="user.firstname.label" placeholder="user.firstname.placeholder" value=model.first_name serverErrors=model.errors.first_name errors=errors.model.first_name name="firstName"}}
+      {{validated-input label="user.lastname.label" placeholder="user.lastname.placeholder" value=model.last_name serverErrors=model.errors.last_name errors=errors.model.last_name name="lastName"}}
 
-  {{validated-input label="user.password.label" type="password" placeholder=passwordPlaceHolder value=password serverErrors=passwordErrors errors=errors.password}}
+      <label>{{t 'user.birthday.label'}}</label>
+      {{#if showCustomError}}
+        <span class='error'>{{errors.birthday}}</span>
+      {{/if}}
+      <div class="birthday form-group col-sm-12">
+        <div class="col-sm-4">{{validated-input placeholder="user.day.placeholder" value=day errors=errors.day}}</div>
+        <div class="col-sm-4">
+          {{validated-select options=months placeholder=monthPlaceHolder value=month errors=errors.month}}
+        </div>
+        <div class="col-sm-4">{{validated-input placeholder="user.year.placeholder" value=year errors=errors.year}}</div>
+      </div>
+      {{birthday_error}}
 
-  <div class='inline-block'>
-    <div class='policy-infos'>
-      {{t 'policy.infos'}}
-      {{#link-to 'policy' target='blank'}}{{t 'policy.title'}}{{/link-to}}
+      <div class="clearfix"></div>
+
+      <label>{{t 'user.phonenumber.label'}}</label>
+      <span>{{t 'optional'}}</span>
+      {{validated-input placeholder="user.phonenumber.placeholder" value=model.phone_number serverErrors=model.errors.phone_number errors=errors.model.phone_number name="phoneNumber"}}
+      <!-- {{validated-select label="user.culture.label" options=cultures value=model.culture serverErrors=model.errors.culture errors=errors.model.culture}} -->
+    {{/if}}
+
+    {{validated-input label="user.password.label" type="password" placeholder=passwordPlaceHolder value=password serverErrors=passwordErrors errors=errors.password}}
+
+    <div class='inline-block'>
+      <div class='policy-infos'>
+        {{t 'policy.infos'}}
+        {{#link-to 'policy' target='blank'}}{{t 'policy.title'}}{{/link-to}}
+      </div>
+      {{dynamic-submit actionOnSubmit="save_user" class='user-submit'}}
     </div>
-    {{dynamic-submit actionOnSubmit="save_user" class='user-submit'}}
-  </div>
-</form>
+  </form>
+</div>

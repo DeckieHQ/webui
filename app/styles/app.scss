@@ -30,6 +30,26 @@
   }
 }
 
+#user-form {
+  .tabs {
+    padding: 0 1em 0 1em;
+    text-align: center;
+    font-size: 1em;
+    font-weight: bold;
+
+    .tab {
+      border-radius: 4px;
+      padding: 0.5em;
+      cursor: pointer;
+    }
+
+    .tab.opened {
+      color: white;
+      background-color: $green;
+    }
+  }
+}
+
 .policy-link {
   @include unstyled-link();
 }

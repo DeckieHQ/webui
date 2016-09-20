@@ -157,9 +157,15 @@ export default {
     "updated": "Votre profil a bien été mis à jour"
   },
   "user": {
+    "individual": "Particulier",
+    "organization": "Organisation",
     "email": {
       "label": "Email",
       "placeholder": "Entrer adresse email"
+    },
+    "name": {
+      "label": "Nom",
+      "placeholder": "Entrer un nom d'organisation"
     },
     "firstname": {
       "label": "Prénom",
@@ -201,6 +207,7 @@ export default {
     "short-description": {
       "empty": "Aucune description brève pour cette partie.",
     },
+    "organization-cant-join": "Vous ne pouvez pas rejoindre une partie en tant qu'organisation.",
     "join-flexible": "Cette partie a plusieurs choix de date possibles, vous pouvez vous inscrire selon vos disponibilités, la date finale sera choisie par l'hôte selon les participants.",
     "date-options": "Choix de date",
     "count": "Inscrits : {{attendees-count}} / {{capacity}}",

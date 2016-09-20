@@ -34,8 +34,13 @@ export default Ember.Component.extend(EmberValidations, {
       length: { maximum: 64 }
     },
     "model.last_name": {
-      presence: true,
-      length: { maximum: 64 }
+      presence: {
+        unless: 'model.organization'
+      },
+      length: {
+        unless: 'model.organization',
+        maximum: 64
+      }
     },
     "model.culture": {
       presence: true
@@ -46,29 +51,39 @@ export default Ember.Component.extend(EmberValidations, {
     },
     birthday: {
       inline: validator(function() {
-        let day = parseInt(this.model.day) + 1;
-        let date = [ day, this.model.month, this.model.year ].join("-");
-        let birthday = moment(date, "DD-MMMM-YYYY");
+        if (!this.model.model.get('organization')) {
+          let day = parseInt(this.model.day) + 1;
+          let date = [ day, this.model.month, this.model.year ].join("-");
+          let birthday = moment(date, "DD-MMMM-YYYY");
 
-        if (!birthday.isValid()) {
-          return this.get('i18n').t('error.date');
+          if (!birthday.isValid()) {
+            return this.get('i18n').t('error.date');
+          }
         }
       })
     },
     day: {
-      presence: true,
+      presence: {
+        unless: 'model.organization'
+      },
       numericality: {
+        unless: 'model.organization',
         onlyInteger: true,
         greaterThanOrEqualTo: 1,
         lessThanOrEqualTo: 31
       }
     },
     month: {
-      presence: true,
+      presence: {
+        unless: 'model.organization'
+      },
     },
     year: {
-      presence: true,
+      presence: {
+        unless: 'model.organization'
+      },
       numericality: {
+        unless: 'model.organization',
         onlyInteger: true,
         greaterThanOrEqualTo: moment().subtract(100, 'years').format('YYYY'),
         lessThanOrEqualTo: moment().subtract(18, 'years').format('YYYY')
@@ -123,6 +138,10 @@ export default Ember.Component.extend(EmberValidations, {
   }.property('model.errors.current_password', 'model.errors.password'),
 
   actions: {
+    toggle_organization: function() {
+      this.get('model').toggleProperty('organization');
+    },
+
     save_user: function(defer) {
       if (this.get('alreadyCreated')) {
         this.get('targetObject').set('updated', false);
@@ -165,11 +184,13 @@ export default Ember.Component.extend(EmberValidations, {
 
       let params = {
         beforeSave: () => {
-          let day = parseInt(this.get('day')) + 1;
-          let date = [ day, this.get('month'), this.get('year') ].join("-");
-          let birthday = moment(date, "DD-M-YYYY");
+          if (!model.get('organization')) {
+            let day = parseInt(this.get('day')) + 1;
+            let date = [ day, this.get('month'), this.get('year') ].join("-");
+            let birthday = moment(date, "DD-M-YYYY");
 
-          model.set('birthday', birthday.toDate());
+            model.set('birthday', birthday.toDate());
+          }
 
           if (this.get('alreadyCreated')) {
             model.set('current_password', password);

@@ -8,7 +8,9 @@
   <form>
     <div class='row'>
       <div class='col-lg-8'>
-        {{validated-input label="profile.nickname.label" placeholder="profile.nickname.placeholder" value=model.nickname serverErrors=model.errors.nickname errors=errors.model.nickname}}
+        {{#unless currentUser.organization}}
+          {{validated-input label="profile.nickname.label" placeholder="profile.nickname.placeholder" value=model.nickname serverErrors=model.errors.nickname errors=errors.model.nickname}}
+        {{/unless}}
         {{validated-textarea rows="3" maxlength=140 label="profile.short-description.label" placeholder="profile.short-description.placeholder" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
       </div>
       <div class='col-lg-4'>

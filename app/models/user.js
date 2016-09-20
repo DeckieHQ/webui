@@ -3,6 +3,7 @@ import HasManyQuery from 'ember-data-has-many-query';
 
 export default DS.Model.extend(HasManyQuery.ModelMixin, {
   email: DS.attr(),
+  organization: DS.attr('boolean', { defaultValue: false }),
   first_name: DS.attr(),
   last_name: DS.attr(),
   birthday: DS.attr('date'),

@@ -124,9 +124,13 @@ export default Ember.Service.extend({
         (profile) => profile.get('achievements')
       ).then(
         (achievements) => {
-          let last_achievement = achievements.get('lastObject')
-          let translated = this.get('i18n').t('achievement.'+last_achievement.get('name'));
-          this.set('last_achievement', translated);
+          let last_achievement = achievements.get('lastObject');
+          if (last_achievement) {
+            let translated = this.get('i18n').t('achievement.'+last_achievement.get('name'));
+            this.set('last_achievement', translated);
+          } else {
+            this.set('last_achievement', null);
+          }
         }
       );
     }

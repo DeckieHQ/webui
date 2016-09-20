@@ -12,7 +12,9 @@
         {{#unless model.opened}}
           <div>{{t 'event.closed'}}</div>
         {{else unless isHost}}
-          {{#if pending}}
+          {{#if currentUser.organization}}
+            <div>{{t 'event.organization-cant-join'}}</div>
+          {{else pending}}
             <div>{{t 'event.submission.pending'}}</div>
             <div>
               <button {{action 'quit_event'}} class="btn-red">
@@ -96,13 +98,15 @@
             </div>
           {{/each}}
 
-          <div class='time-slots-details'>
-            {{#if isHost}}
-              <span class='btn-green' {{action 'show_time_slots'}}>{{t 'see-or-choose'}}</span>
-            {{else}}
-              <span class='details' {{action 'show_time_slots'}}>{{t 'see'}}</span>
-            {{/if}}
-          </div>
+          {{#unless currentUser.organization}}
+            <div class='time-slots-details'>
+              {{#if isHost}}
+                <span class='btn-green' {{action 'show_time_slots'}}>{{t 'see-or-choose'}}</span>
+              {{else}}
+                <span class='details' {{action 'show_time_slots'}}>{{t 'see'}}</span>
+              {{/if}}
+            </div>
+          {{/unless}}
         </div>
       {{/if}}
 

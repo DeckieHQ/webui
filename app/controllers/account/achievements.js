@@ -36,4 +36,10 @@ export default Ember.Controller.extend({
       (achievement) => achievement.get('name') === 'first-flexible-event'
     );
   }.property(),
+
+  firstUnlimitedEventCapacity: function() {
+    return this.get('model').find(
+      (achievement) => achievement.get('name') === 'first-unlimited-event-capacity'
+    );
+  }.property(),
  });

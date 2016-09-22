@@ -68,4 +68,15 @@
       <span class='no'></span>
     {{/if}}
   </div>
+  <div class='achievement'>
+    <div>
+      <div>{{t 'achievement.first-unlimited-event-capacity'}}</div>
+      <div class='condition'>{{t 'achievement.granted-by'}} {{t 'achievement.condition.first-unlimited-event-capacity'}}</div>
+    </div>
+    {{#if firstUnlimitedEventCapacity}}
+      <span class='ok'></span>
+    {{else}}
+      <span class='no'></span>
+    {{/if}}
+  </div>
 </div>

@@ -1,0 +1,87 @@
+#profile
+  .hit
+    a
+      @extend .well
+      @include unstyled-link()
+      display: block
+      transition: all ease .1s
+
+    .head
+      margin-bottom: 0.75em
+
+    h3
+      margin: 0
+      color: $green
+
+    .confirmed
+      color: $green
+
+    .pending,.flexible
+      color: $orange
+
+    @media (max-width: 768px)
+      .details
+        text-align: left
+
+    @media (min-width: 769px)
+      .details
+        text-align: right
+
+    .details
+      font-size: 1.5em
+
+      > div
+        display: inline-block
+        margin: 0 .25em
+
+        &:first-child
+          margin-left: 0
+
+        &:last-child
+          margin-right: 0
+
+      .glyphicon
+        position: relative
+        top: .125em
+
+    .description
+      font-style: italic
+      margin-bottom: 0.5em
+
+    .categories
+      margin-bottom: 0.5em
+
+      .icon-tags
+        @extend .glyphicon, .glyphicon-tags
+        margin: 0 0.3em
+        font-size: 1.25em
+
+      span
+        text-transform: capitalize
+
+    .attendees
+      font-size: 3em
+      text-align: center
+
+      .capacity
+        padding: .5em
+        border-radius: 50%
+        color: $green
+        display: inline-block
+        margin: auto
+        background-color: rgba(255,255,255,.5)
+        box-shadow: 0 0 30px -5px rgba(0,0,0,.25)
+
+        .min-max
+          font-size: .75em
+          vertical-align: text-bottom
+
+          .icon-player
+            @extend .glyphicon, .glyphicon-user
+            font-size: .875em
+
+    &:hover
+      a
+        border-color: $green
+        transform: scale(1.01)
+        background-color: rgba($green, 0.2)

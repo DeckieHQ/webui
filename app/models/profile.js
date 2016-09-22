@@ -15,6 +15,7 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   contact: DS.belongsTo('contact'),
   achievements: DS.hasMany('achievement'),
   time_slot_submissions: DS.hasMany('time-slot-submission'),
+  hosted_events: DS.hasMany('event'),
 
   display_tag: Ember.computed('display_name', 'moderator', function() {
     let displayName = this.get('display_name');

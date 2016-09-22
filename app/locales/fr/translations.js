@@ -159,6 +159,7 @@ export default {
   "user": {
     "individual": "Particulier",
     "organization": "Organisation",
+    "organization-details": "(associations, bar à jeux...)",
     "email": {
       "label": "Email",
       "placeholder": "Entrer adresse email"

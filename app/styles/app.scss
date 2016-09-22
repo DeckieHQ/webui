@@ -41,6 +41,11 @@
       border-radius: 4px;
       padding: 0.5em;
       cursor: pointer;
+
+      .organization-details {
+        font-size: 0.825em;
+        font-weight: normal;
+      }
     }
 
     .tab.opened {

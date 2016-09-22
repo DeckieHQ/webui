@@ -66,8 +66,11 @@ export default Ember.Component.extend(EmberValidations, {
       },
     },
     "model.capacity": {
-      presence: true,
+      presence: {
+        unless: 'model.unlimited_capacity'
+      },
       numericality: {
+        unless: 'model.unlimited_capacity',
         onlyInteger: true,
         greaterThanOrEqualTo: 1,
         lessThanOrEqualTo: 1000
@@ -192,6 +195,12 @@ export default Ember.Component.extend(EmberValidations, {
         )
 
         model.set('new_time_slots', new_time_slots)
+      }
+
+      if(this.get('model.unlimited_capacity')) {
+        model.set('min_capacity', 0);
+        model.set('capacity', null);
+        model.set('auto_accept', true);
       }
 
       this.set('showCustomError', true);

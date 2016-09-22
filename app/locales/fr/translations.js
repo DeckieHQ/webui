@@ -211,7 +211,8 @@ export default {
     "organization-cant-join": "Vous ne pouvez pas rejoindre une partie en tant qu'organisation.",
     "join-flexible": "Cette partie a plusieurs choix de date possibles, vous pouvez vous inscrire selon vos disponibilités, la date finale sera choisie par l'hôte selon les participants.",
     "date-options": "Choix de date",
-    "count": "Inscrits : {{attendees-count}} / {{capacity}}",
+    "count": "Inscrits : {{attendees-count}}",
+    "count-ratio": "Inscrits : {{attendees-count}} / {{capacity}}",
     "min-attendee": "Cette partie aura lieu seulement s'il y a au moins {{min}} joueurs.",
     "closed": "Cette partie est terminée",
     "edit": "Editer la partie",
@@ -343,7 +344,9 @@ export default {
     "auto-accept": "Automatique",
     "manual": "Manuelle",
     "hide-full": "Masquer les évennements complets",
-    "contact-email": "Email de contact"
+    "contact-email": "Email de contact",
+    "limited-capacity": "Nombre de place limité",
+    "unlimited-capacity": "Entrée libre"
   },
   "placeholder": {
     "title": "Entrer un titre",
@@ -355,7 +358,7 @@ export default {
     "confirm-password": "Confirmer le nouveau mot de passe",
     "comment": "Entrer un commentaire",
     "min-capacity": "Nombre d'inscrits minimum pour démarrer",
-    "capacity": "Capacité maximum",
+    "capacity": "Places disponibles",
     "date": "Sélectionner une date",
     "date-option-1": "Date (option 1)",
     "date-option-2": "Date (option 2)",
@@ -443,6 +446,7 @@ export default {
     "date": "date invalide",
     "min-max": "doit être inférieur ou égal au maximum"
   },
+  "unlimited-capacity": "Entrée libre",
   "feedback-email": "Si vous êtes d'accord pour qu'on revienne vers vous en fonction de votre avis (clarifications, échanges d'idées...) merci de nous laisser votre contact.",
   "date-flexible-from": "Au choix à partir du",
   "date-flexible-from-sm": "À partir du",

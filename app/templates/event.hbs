@@ -62,7 +62,7 @@
         {{/if}}
       </div>
 
-      {{#if isHost}}
+      {{#if (and isHost (not model.auto_accept))}}
         <div class='well'>
           {{#if pendingSubmissions}}
             <b>{{t 'event.pending-submissions'}}</b>
@@ -148,7 +148,13 @@
       </div>
 
       <div class='well'>
-        <b>{{t 'event.count' attendees-count=model.attendees.length capacity=model.capacity}}</b>
+        <b>
+          {{#if model.unlimited_capacity}}
+            {{t 'event.count' attendees-count=model.attendees.length}}
+          {{else}}
+            {{t 'event.count-ratio' attendees-count=model.attendees.length capacity=model.capacity}}
+          {{/if}}
+        </b>
         {{#if model.attendees}}
           <div class='line-separator'></div>
         {{/if}}

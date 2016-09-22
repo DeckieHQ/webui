@@ -8,6 +8,7 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   ambiance: DS.attr(),
   level: DS.attr(),
   capacity: DS.attr(),
+  unlimited_capacity: DS.attr('boolean', { defaultValue: false }),
   min_capacity: DS.attr('number', { defaultValue: 0 }),
   flexible: DS.attr('boolean', { defaultValue: false }),
   new_time_slots: DS.attr(),

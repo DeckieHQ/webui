@@ -14,7 +14,7 @@
         {{else unless isHost}}
           {{#if currentUser.organization}}
             <div>{{t 'event.organization-cant-join'}}</div>
-          {{else pending}}
+          {{else if pending}}
             <div>{{t 'event.submission.pending'}}</div>
             <div>
               <button {{action 'quit_event'}} class="btn-red">

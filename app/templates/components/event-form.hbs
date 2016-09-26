@@ -66,7 +66,7 @@
       </div>
     </div>
 
-    <div class='row'>
+    <!-- <div class='row'>
       <div class="col-md-12 {{if (eq model.event_type 'flexible') 'disabled'}}">
         {{t 'event.add-end-date'}} {{input type="checkbox" checked=addEndDate disabled=(eq model.event_type 'flexible')}}
       </div>
@@ -93,7 +93,43 @@
           {{validated-select options=minutes value=end_at_minute errors=errors.end_at_minute disabled=(eq model.event_type 'flexible')}}
         </div>
       </div>
+    {{/if}} -->
+
+    <div class='row'>
+      <div class="col-md-12 {{if (eq model.event_type 'flexible') 'disabled'}}">
+        {{t 'event.make-periodic'}} {{input type="checkbox" checked=periodic disabled=(eq model.event_type 'flexible')}}
+      </div>
+    </div>
+
+    {{#if periodic}}
+    <div class='row'>
+      <div class='col-md-12'>
+        {{#if showCustomError}}
+          <span class='error'>error</span>
+        {{/if}}
+      </div>
+      <div class='col-md-4'>
+        <div>{{t 'label.periodicity'}}</div>
+        {{validated-select options=periodicityOptions value=periodicity errors=errors.periodicity disabled=(eq model.event_type 'flexible')}}
+      </div>
+      <div class='col-md-4'>
+        <div>{{t 'label.delay'}}</div>
+        {{validated-select options=delayOptions value=delay errors=errors.delay disabled=(eq model.event_type 'flexible')}}
+      </div>
+      <div class='col-md-4'>
+        <div>{{t 'label.delay'}}</div>
+        {{validated-date placeholder="placeholder.date" value=endPeriodic errors=errors.endPeriodic disabled=(eq model.event_type 'flexible')}}
+      </div>
+    </div>
     {{/if}}
+
+    <div class='row'>
+      {{#each periodicDates as |periodicDate|}}
+        <div class="col-md-12 {{if (eq model.event_type 'flexible') 'disabled'}}">
+          {{moment-format periodicDate 'DD/MM'}}
+        </div>
+      {{/each}}
+    </div>
 
     <hr>
   {{/if}}

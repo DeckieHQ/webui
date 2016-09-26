@@ -152,6 +152,9 @@ export default Ember.Component.extend(EmberValidations, {
     },
   },
 
+  periodicity: "weekly",
+  delay: "7",
+
   time_slots: [
     { date: null, hour: '19', minute: '30', placeholder: 'placeholder.date-option-1' },
     { date: null, hour: '19', minute: '30', placeholder: 'placeholder.date-option-2' },
@@ -159,6 +162,46 @@ export default Ember.Component.extend(EmberValidations, {
     { date: null, hour: '19', minute: '30', placeholder: 'placeholder.date-option-4' },
     { date: null, hour: '19', minute: '30', placeholder: 'placeholder.date-option-5' }
   ],
+
+  periodicDates: function() {
+    if (this.get('model.begin_at')) {
+      let beginAt = moment(this.get('model.begin_at'));
+      let periodicity = this.get('periodicity');
+      let delay = this.get('delay');
+      let endPeriodic = this.get('endPeriodic');
+
+      let dates = [];
+
+      for (let i = 1; i < 4; i++) {
+        var tmpDate = beginAt.clone();
+
+        switch(periodicity) {
+          case 'daily':
+            tmpDate.add(1*i, 'd');
+            break;
+          case 'weekly':
+            tmpDate.add(1*i, 'w');
+            break;
+          case 'fortnightly':
+            tmpDate.add(2*i, 'w');
+            break;
+          case 'monthly':
+            tmpDate.add(1*i, 'M');
+            break;
+          case 'bimonthly':
+            tmpDate.add(2*i, 'M');
+            break;
+          case 'trimester':
+            tmpDate.add(3*i, 'M');
+            break;
+        }
+
+        dates.push(tmpDate.toDate());
+      }
+
+      return dates;
+    }
+  }.property('periodicity', 'delay', 'endPeriodic', 'model.begin_at'),
 
   showDate: function() {
     return !this.get('alreadyCreated') || !this.get('model.flexible');
@@ -285,5 +328,26 @@ export default Ember.Component.extend(EmberValidations, {
     { value: '30', label: 'minute.30' }, { value: '35', label: 'minute.35' },
     { value: '40', label: 'minute.40' }, { value: '45', label: 'minute.45' },
     { value: '50', label: 'minute.50' }, { value: '55', label: 'minute.55' },
+  ],
+
+  periodicityOptions: [
+    { value: 'daily', label: 'periodicity-options.daily' },
+    { value: 'weekly', label: 'periodicity-options.weekly' },
+    { value: 'fortnightly', label: 'periodicity-options.fortnightly' },
+    { value: 'monthly', label: 'periodicity-options.monthly' },
+    { value: 'bimonthly', label: 'periodicity-options.bimonthly' },
+    { value: 'trimester', label: 'periodicity-options.trimester' }
+  ],
+
+  delayOptions: [
+    { value: '1', label: 'delay-options.1' },
+    { value: '2', label: 'delay-options.2' },
+    { value: '3', label: 'delay-options.3' },
+    { value: '4', label: 'delay-options.4' },
+    { value: '5', label: 'delay-options.5' },
+    { value: '7', label: 'delay-options.7' },
+    { value: '14', label: 'delay-options.14' },
+    { value: '30', label: 'delay-options.30' },
+    { value: '60', label: 'delay-options.60' },
   ],
 });

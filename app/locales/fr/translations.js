@@ -244,7 +244,8 @@ export default {
     "tips": {
       "invitation": "Deckie est en version beta et le nombre d'utilisateurs est encore faible, augmentez les chances de remplir votre partie et aidez nous à faire connaitre la plateforme en invitant vos amis par email.",
       "profile": "Une partie hébergée par un hôte au profil rempli a plus de chances d'avoir des participants, améliorez votre profil dès maintenant"
-    }
+    },
+    "make-periodic": "Rendre la partie régulière (toutes les semaines, tous les mois...)"
   },
   "events": {
     "opened": "Parties en cours",
@@ -346,7 +347,10 @@ export default {
     "hide-full": "Masquer les évennements complets",
     "contact-email": "Email de contact",
     "limited-capacity": "Nombre de place limité",
-    "unlimited-capacity": "Entrée libre"
+    "unlimited-capacity": "Entrée libre",
+    "periodicity": "Périodicité",
+    "delay": "Créer la partie",
+    "until": "Jusqu'au"
   },
   "placeholder": {
     "title": "Entrer un titre",
@@ -541,5 +545,24 @@ export default {
   "minute": {
     "00": "00", "05": "05", "10": "10", "15": "15", "20": "20", "25": "25",
     "30": "30", "35": "35", "40": "40", "45": "45", "50": "50", "55": "55"
+  },
+  "periodicity-options": {
+    "daily": "tous les jours",
+    "weekly": "toutes les semaines",
+    "fortnightly": "toutes les 2 semaines",
+    "monthly": "tous les mois",
+    "bimonthly": "tous les 2 mois",
+    "trimester": "tous les 3 mois",
+  },
+  "delay-options": {
+    "1": "la veille",
+    "2": "2 jours avant",
+    "3": "3 jours avant",
+    "4": "4 jours avant",
+    "5": "5 jours avant",
+    "7": "1 semaine avant",
+    "14": "2 semaines avant",
+    "30": "1 mois avant",
+    "60": "2 mois avant",
   }
 };

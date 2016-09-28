@@ -152,9 +152,6 @@ export default Ember.Component.extend(EmberValidations, {
     },
   },
 
-  periodicity: "weekly",
-  delay: "7",
-
   time_slots: [
     { date: null, hour: '19', minute: '30', placeholder: 'placeholder.date-option-1' },
     { date: null, hour: '19', minute: '30', placeholder: 'placeholder.date-option-2' },
@@ -163,45 +160,84 @@ export default Ember.Component.extend(EmberValidations, {
     { date: null, hour: '19', minute: '30', placeholder: 'placeholder.date-option-5' }
   ],
 
+  periodicity: "weekly",
+  until: "6",
+
   periodicDates: function() {
-    if (this.get('model.begin_at')) {
-      let beginAt = moment(this.get('model.begin_at'));
+    if (this.get('day')) {
+      let day = parseInt(this.get('day'));
+      let refDate = moment();
+
+      let begin_at_hour = this.get('begin_at_hour');
+      let begin_at_minute = this.get('begin_at_minute');
+      refDate.hour(begin_at_hour).minute(begin_at_minute);
+
       let periodicity = this.get('periodicity');
-      let delay = this.get('delay');
-      let endPeriodic = this.get('endPeriodic');
+      let until = this.get('until');
 
       let dates = [];
 
-      for (let i = 1; i < 4; i++) {
-        var tmpDate = beginAt.clone();
+      if (periodicity === 'weekly' || periodicity === 'fortnightly') {
+        let firstDate = refDate.clone();
+        let firstDateDay = firstDate.day();
 
-        switch(periodicity) {
-          case 'daily':
-            tmpDate.add(1*i, 'd');
-            break;
-          case 'weekly':
-            tmpDate.add(1*i, 'w');
-            break;
-          case 'fortnightly':
-            tmpDate.add(2*i, 'w');
-            break;
-          case 'monthly':
-            tmpDate.add(1*i, 'M');
-            break;
-          case 'bimonthly':
-            tmpDate.add(2*i, 'M');
-            break;
-          case 'trimester':
-            tmpDate.add(3*i, 'M');
-            break;
+        let daysToAdd
+          = firstDateDay === day ? 7
+          : firstDateDay < day ? day - firstDateDay
+          : 7 - (firstDateDay - day);
+
+        firstDate.add(daysToAdd, 'd');
+
+        dates.push(firstDate.toDate());
+
+        let until = parseInt(this.get('until'));
+        let endDate = firstDate.clone().add(until+1, 'M').date(1);
+
+        for (let i = 1; i < 10; i++) {
+          let tmpDate = firstDate.clone();
+          let nbWeek = periodicity === 'weekly' ? 1 : 2;
+          tmpDate.add(nbWeek*i, 'w');
+
+          dates.push(tmpDate.toDate());
+
+          // if (tmpDate >= endDate) {
+          //   break;
+          // }
         }
+      } else {
+        for (let i = 1; i < 10; i++) {
+          let tmpDate = refDate.clone();
 
-        dates.push(tmpDate.toDate());
+          if (tmpDate.date() >= 7 || tmpDate.day() > day) {
+            tmpDate.add(1*i, 'M').date(1);
+          }
+
+          let tmpDateDay = tmpDate.day();
+
+          let daysToAdd
+            = tmpDateDay === day ? 0
+            : tmpDateDay < day ? day - tmpDateDay
+            : 7 - (tmpDateDay - day);
+
+          tmpDate.add(daysToAdd, 'd');
+
+          let nbWeek
+            = periodicity === 'firstWeek' ? 0
+            : periodicity === 'secondWeek' ? 1
+            : periodicity === 'thirdWeek' ? 2
+            : 3
+
+          tmpDate.add(nbWeek, 'w');
+
+          dates.push(tmpDate.toDate());
+        }
       }
 
-      return dates;
+      return dates.sort((a, b) => {
+        return a < b ? -1 : 1;
+      });
     }
-  }.property('periodicity', 'delay', 'endPeriodic', 'model.begin_at'),
+  }.property('periodicity', 'until', 'day'),
 
   showDate: function() {
     return !this.get('alreadyCreated') || !this.get('model.flexible');
@@ -216,6 +252,10 @@ export default Ember.Component.extend(EmberValidations, {
   actions: {
     see_time_slots: function() {
       this.get('targetObject').send('goto_event_time_slots', this.get('model'));
+    },
+
+    remove_periodic_date: function(date) {
+      this.get('periodicDates').removeObject(date);
     },
 
     save_event: function(defer) {
@@ -331,23 +371,30 @@ export default Ember.Component.extend(EmberValidations, {
   ],
 
   periodicityOptions: [
-    { value: 'daily', label: 'periodicity-options.daily' },
     { value: 'weekly', label: 'periodicity-options.weekly' },
     { value: 'fortnightly', label: 'periodicity-options.fortnightly' },
-    { value: 'monthly', label: 'periodicity-options.monthly' },
-    { value: 'bimonthly', label: 'periodicity-options.bimonthly' },
-    { value: 'trimester', label: 'periodicity-options.trimester' }
+    { value: 'firstWeek', label: 'periodicity-options.firstWeek' },
+    { value: 'secondWeek', label: 'periodicity-options.secondWeek' },
+    { value: 'thirdWeek', label: 'periodicity-options.thirdWeek' },
+    { value: 'fourthWeek', label: 'periodicity-options.fourthWeek' },
   ],
 
-  delayOptions: [
-    { value: '1', label: 'delay-options.1' },
-    { value: '2', label: 'delay-options.2' },
-    { value: '3', label: 'delay-options.3' },
-    { value: '4', label: 'delay-options.4' },
-    { value: '5', label: 'delay-options.5' },
-    { value: '7', label: 'delay-options.7' },
-    { value: '14', label: 'delay-options.14' },
-    { value: '30', label: 'delay-options.30' },
-    { value: '60', label: 'delay-options.60' },
+  untilOptions: [
+    { value: '1', label: 'until-options.1' },
+    { value: '2', label: 'until-options.2' },
+    { value: '3', label: 'until-options.3' },
+    { value: '6', label: 'until-options.6' },
+    { value: '9', label: 'until-options.9' },
+    { value: '12', label: 'until-options.12' },
+  ],
+
+  daysOptions: [
+    { value: '1', label: 'monday' },
+    { value: '2', label: 'tuesday' },
+    { value: '3', label: 'wednesday' },
+    { value: '4', label: 'thursday' },
+    { value: '5', label: 'friday' },
+    { value: '6', label: 'saturday' },
+    { value: '0', label: 'sunday' }
   ],
 });

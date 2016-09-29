@@ -162,18 +162,20 @@ export default Ember.Component.extend(EmberValidations, {
 
   periodicity: "weekly",
   until: "6",
+  periodicHour: "19",
+  periodicMinute: "00",
 
   periodicDates: function() {
     if (this.get('day')) {
       let day = parseInt(this.get('day'));
       let refDate = moment();
 
-      let begin_at_hour = this.get('begin_at_hour');
-      let begin_at_minute = this.get('begin_at_minute');
+      let begin_at_hour = this.get('periodicHour');
+      let begin_at_minute = this.get('periodicMinute');
       refDate.hour(begin_at_hour).minute(begin_at_minute);
 
       let periodicity = this.get('periodicity');
-      let until = this.get('until');
+      let until = parseInt(this.get('until'));
 
       let dates = [];
 
@@ -190,22 +192,21 @@ export default Ember.Component.extend(EmberValidations, {
 
         dates.push(firstDate.toDate());
 
-        let until = parseInt(this.get('until'));
-        let endDate = firstDate.clone().add(until+1, 'M').date(1);
+        let endDate = firstDate.clone().add(until, 'M').add(1, 'w');
+        let diffWeeks = periodicity === 'weekly' ? endDate.diff(firstDate, 'w') : endDate.diff(firstDate, 'w') / 2;
 
-        for (let i = 1; i < 10; i++) {
+        for (let i = 1; i < diffWeeks; i++) {
           let tmpDate = firstDate.clone();
-          let nbWeek = periodicity === 'weekly' ? 1 : 2;
-          tmpDate.add(nbWeek*i, 'w');
+          let nbWeeks = periodicity === 'weekly' ? 1 : 2;
+          tmpDate.add(nbWeeks*i, 'w');
 
           dates.push(tmpDate.toDate());
-
-          // if (tmpDate >= endDate) {
-          //   break;
-          // }
         }
       } else {
-        for (let i = 1; i < 10; i++) {
+        let endDate = refDate.clone().add(until, 'M').add(1, 'M');
+        let diffMonths = endDate.diff(refDate, 'M')
+
+        for (let i = 1; i < diffMonths; i++) {
           let tmpDate = refDate.clone();
 
           if (tmpDate.date() >= 7 || tmpDate.day() > day) {
@@ -221,13 +222,13 @@ export default Ember.Component.extend(EmberValidations, {
 
           tmpDate.add(daysToAdd, 'd');
 
-          let nbWeek
+          let nbWeeks
             = periodicity === 'firstWeek' ? 0
             : periodicity === 'secondWeek' ? 1
             : periodicity === 'thirdWeek' ? 2
             : 3
 
-          tmpDate.add(nbWeek, 'w');
+          tmpDate.add(nbWeeks, 'w');
 
           dates.push(tmpDate.toDate());
         }

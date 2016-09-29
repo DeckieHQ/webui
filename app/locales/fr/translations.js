@@ -349,7 +349,7 @@ export default {
     "unlimited-capacity": "Entrée libre",
     "periodicity": "Tous/toutes les",
     "until": "Pendant",
-    "make-periodic": "Rendre la partie régulière (toutes les semaines, tous les mois...)"
+    "make-periodic": "Partie régulière (toutes les semaines, tous les mois...)",
   },
   "placeholder": {
     "title": "Entrer un titre",
@@ -449,6 +449,7 @@ export default {
     "date": "date invalide",
     "min-max": "doit être inférieur ou égal au maximum"
   },
+  "delete": "supprimer",
   "monday": "lun",
   "tuesday": "mar",
   "wednesday": "mer",

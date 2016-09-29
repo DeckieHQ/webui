@@ -21,17 +21,17 @@
 
   <div class='row'>
     <div class='col-md-6'>
-      {{radio-button value=false checked=model.unlimited_capacity}} {{t 'label.limited-capacity'}}
+      {{radio-button id='limited-capacity' value=false checked=model.unlimited_capacity}}
+      <label for='limited-capacity'>{{t 'label.limited-capacity'}}</label>
     </div>
     <div class='col-md-6'>
-      {{radio-button value=true checked=model.unlimited_capacity}} {{t 'label.unlimited-capacity'}}
+      {{radio-button id='unlimited-capacity' value=true checked=model.unlimited_capacity}}
+      <label for='unlimited-capacity'>{{t 'label.unlimited-capacity'}}</label>
     </div>
   </div>
 
-  <hr>
-
   {{#unless model.unlimited_capacity}}
-    <div class='row capacity'>
+    <div class='row capacity margin-top'>
       <div class='col-md-4'>
         <div>{{validated-input label='label.min-capacity' placeholder="placeholder.min-capacity" value=model.min_capacity serverErrors=model.errors.min_capacity errors=errors.model.min_capacity}}</div>
       </div>
@@ -42,9 +42,9 @@
         {{t 'event.auto-accept'}} {{input type="checkbox" checked=model.auto_accept}}
       </div>
     </div>
-
-    <hr>
   {{/unless}}
+
+  <hr>
 
   {{#if showDate}}
     <div class='row'>
@@ -145,7 +145,7 @@
   </div>
 
   {{#if (eq model.event_type 'periodic')}}
-    <div class='row'>
+    <div class='row margin-top'>
       <div class='col-md-12'>
         {{#if showCustomError}}
           <span class='error'>error</span>
@@ -167,10 +167,10 @@
           <label>Heure</label>
         </div>
         <div class='col-md-6'>
-          {{validated-select options=hours value=begin_at_hour errors=errors.begin_at_hour}}
+          {{validated-select options=hours value=periodicHour errors=errors.periodicHour}}
         </div>
         <div class='col-md-6'>
-          {{validated-select options=minutes value=begin_at_minute errors=errors.begin_at_minute}}
+          {{validated-select options=minutes value=periodicMinute errors=errors.periodicMinute}}
         </div>
       </div>
       <div class='col-md-6'>
@@ -185,9 +185,9 @@
 
     <div class='row'>
       {{#each periodicDates as |periodicDate|}}
-        <div class="col-md-6 {{if (eq model.event_type 'flexible') 'disabled'}}">
+        <div class="col-md-6 periodic-dates">
           {{moment-format periodicDate 'dddd DD MMMM YYYY'}}
-          <span {{action 'remove_periodic_date' periodicDate}}>XXX</span>
+          <span class='remove-periodic-date' {{action 'remove_periodic_date' periodicDate}}>{{t 'delete'}}</span>
         </div>
       {{/each}}
     </div>

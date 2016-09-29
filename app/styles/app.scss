@@ -408,6 +408,22 @@
   }
 }
 
+.periodic-dates {
+  display: flex;
+}
+
+.remove-periodic-date {
+  margin-left: auto;
+  cursor: pointer;
+  color: #337ab7;
+  font-size: 0.75em;
+  vertical-align: text-top;
+}
+
+.remove-periodic-date:hover {
+  text-decoration: underline;
+}
+
 .no-account {
   text-align: center;
 }

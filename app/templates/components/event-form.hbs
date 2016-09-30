@@ -1,236 +1,249 @@
-<form autocomplete="false">
-  <div class='row'>
-    <div class='col-md-12'>
-      {{validated-input label="label.title" placeholder="placeholder.title" value=model.title serverErrors=model.errors.title errors=errors.model.title}}
-    </div>
-  </div>
-
-  <div class='row'>
-    <div class='col-md-4'>
-      {{validated-select label="label.category" options=categories value=model.category serverErrors=model.errors.category errors=errors.model.category}}
-    </div>
-    <div class='col-md-4'>
-      {{validated-select label="label.ambiance" options=ambiances value=model.ambiance serverErrors=model.errors.ambiance errors=errors.model.ambiance}}
-    </div>
-    <div class='col-md-4'>
-      {{validated-select label="label.level" options=levels value=model.level serverErrors=model.errors.level errors=errors.model.level}}
-    </div>
-  </div>
-
-  <hr>
-
-  <div class='row'>
-    <div class='col-md-6'>
-      {{radio-button id='limited-capacity' value=false checked=model.unlimited_capacity}}
-      <label for='limited-capacity'>{{t 'label.limited-capacity'}}</label>
-    </div>
-    <div class='col-md-6'>
-      {{radio-button id='unlimited-capacity' value=true checked=model.unlimited_capacity}}
-      <label for='unlimited-capacity'>{{t 'label.unlimited-capacity'}}</label>
-    </div>
-  </div>
-
-  {{#unless model.unlimited_capacity}}
-    <div class='row capacity margin-top'>
-      <div class='col-md-4'>
-        <div>{{validated-input label='label.min-capacity' placeholder="placeholder.min-capacity" value=model.min_capacity serverErrors=model.errors.min_capacity errors=errors.model.min_capacity}}</div>
+<div id="event-form">
+  {{#unless alreadyCreated}}
+    <div class='row tabs'>
+      <div class={{unless isPeriodic 'col-xs-12 col-md-6 tab opened' 'col-xs-12 col-md-6 tab'}}>
+        <div {{action 'toggle_periodic'}}>{{t 'event.single-event'}}</div>
       </div>
-      <div class='col-md-4'>
-        <div>{{validated-input label='label.capacity' placeholder="placeholder.capacity" value=model.capacity serverErrors=model.errors.capacity errors=errors.model.capacity}}</div>
-      </div>
-      <div class='col-md-4 auto-accept'>
-        {{t 'event.auto-accept'}} {{input type="checkbox" checked=model.auto_accept}}
+      <div class={{if isPeriodic 'col-xs-12 col-md-6 tab opened' 'col-xs-12 col-md-6 tab'}}>
+        <div {{action 'toggle_periodic'}}>
+          {{t 'event.periodic-event'}}
+          <div class='details'>{{t 'event.periodic-details'}}</div>
+        </div>
       </div>
     </div>
+
+    <hr>
   {{/unless}}
 
-  <hr>
-
-  {{#if showDate}}
+  <form autocomplete="false">
     <div class='row'>
       <div class='col-md-12'>
-        {{#unless alreadyCreated}}{{radio-button id='normal' value='normal' checked=model.event_type}}{{/unless}}
-        <label for='normal'>{{t 'label.date'}}</label>
+        {{validated-input label="label.title" placeholder="placeholder.title" value=model.title serverErrors=model.errors.title errors=errors.model.title}}
       </div>
     </div>
+
+    <div class='row'>
+      <div class='col-md-4'>
+        {{validated-select label="label.category" options=categories value=model.category serverErrors=model.errors.category errors=errors.model.category}}
+      </div>
+      <div class='col-md-4'>
+        {{validated-select label="label.ambiance" options=ambiances value=model.ambiance serverErrors=model.errors.ambiance errors=errors.model.ambiance}}
+      </div>
+      <div class='col-md-4'>
+        {{validated-select label="label.level" options=levels value=model.level serverErrors=model.errors.level errors=errors.model.level}}
+      </div>
+    </div>
+
+    <hr>
 
     <div class='row'>
       <div class='col-md-6'>
-        {{validated-date placeholder="placeholder.date" value=model.begin_at errors=errors.model.begin_at disabled=(not-eq model.event_type 'normal')}}
+        {{radio-button id='limited-capacity' value=false checked=model.unlimited_capacity}}
+        <label for='limited-capacity'>{{t 'label.limited-capacity'}}</label>
       </div>
-      <div class='col-md-3'>
-        {{validated-select options=hours value=begin_at_hour errors=errors.begin_at_hour disabled=(not-eq model.event_type 'normal')}}
-      </div>
-      <div class='col-md-3'>
-        {{validated-select options=minutes value=begin_at_minute errors=errors.begin_at_minute disabled=(not-eq model.event_type 'normal')}}
-      </div>
-    </div>
-
-    <!-- <div class='row'>
-      <div class="col-md-12 {{if (eq model.event_type 'flexible') 'disabled'}}">
-        {{t 'event.add-end-date'}} {{input type="checkbox" checked=addEndDate disabled=(eq model.event_type 'flexible')}}
+      <div class='col-md-6'>
+        {{radio-button id='unlimited-capacity' value=true checked=model.unlimited_capacity}}
+        <label for='unlimited-capacity'>{{t 'label.unlimited-capacity'}}</label>
       </div>
     </div>
 
-    {{#if addEndDate}}
-      <div class='row'>
-        <div class='col-md-12'>
-          <label class="{{if (eq model.event_type 'flexible') 'disabled'}}">{{t 'label.end-date'}}</label>
-          {{#if showCustomError}}
-            <span class='error'>{{errors.end_at}}</span>
-          {{/if}}
+    {{#unless model.unlimited_capacity}}
+      <div class='row capacity margin-top'>
+        <div class='col-md-4'>
+          <div>{{validated-input label='label.min-capacity' placeholder="placeholder.min-capacity" value=model.min_capacity serverErrors=model.errors.min_capacity errors=errors.model.min_capacity}}</div>
+        </div>
+        <div class='col-md-4'>
+          <div>{{validated-input label='label.capacity' placeholder="placeholder.capacity" value=model.capacity serverErrors=model.errors.capacity errors=errors.model.capacity}}</div>
+        </div>
+        <div class='col-md-4 auto-accept'>
+          {{t 'event.auto-accept'}} {{input type="checkbox" checked=model.auto_accept}}
         </div>
       </div>
-
-      <div class='row'>
-        <div class='col-md-6'>
-          {{validated-date placeholder="placeholder.date" value=model.end_at errors=errors.model.end_at disabled=(eq model.event_type 'flexible')}}
-        </div>
-        <div class='col-md-3'>
-          {{validated-select options=hours value=end_at_hour errors=errors.end_at_hour disabled=(eq model.event_type 'flexible')}}
-        </div>
-        <div class='col-md-3'>
-          {{validated-select options=minutes value=end_at_minute errors=errors.end_at_minute disabled=(eq model.event_type 'flexible')}}
-        </div>
-      </div>
-    {{/if}} -->
+    {{/unless}}
 
     <hr>
-  {{/if}}
 
-  {{#if showDateFlexible}}
-    <div class='row'>
-      <div class='col-md-12'>
-        {{#unless alreadyCreated}}{{radio-button id='flexible' value='flexible' checked=model.event_type}}{{/unless}}
-        <label for='flexible'>{{t 'label.date-flexible'}}</label>
-      </div>
-    </div>
+    {{#unless isPeriodic}}
+      {{#if showDate}}
+        <div class='row'>
+          <div class='col-md-12'>
+            {{#unless alreadyCreated}}{{radio-button id='normal' value='normal' checked=model.event_type}}{{/unless}}
+            <label for='normal'>{{t 'label.date'}}</label>
+          </div>
+        </div>
 
-    {{#if alreadyCreated}}
-      <div class='see-time-slots'>
-        <div>{{t 'is-flexible'}}</div>
-        <div class='goto' {{action 'see_time_slots'}}>{{t 'see-time-slots'}}</div>
-      </div>
-    {{else if (eq model.event_type 'flexible')}}
-      <div>{{t 'event-date-flexible'}}</div>
-      <div>
-        {{#if showCustomError}}
-          <span class='error'>{{errors.model.new_time_slots}}</span>
-          <span class='error'>{{t model.errors.new_time_slots.firstObject.message}}</span>
-        {{/if}}
-      </div>
-      {{#each time_slots as |time_slot|}}
         <div class='row'>
           <div class='col-md-6'>
-            {{validated-date placeholder=time_slot.placeholder value=time_slot.date}}
+            {{validated-date placeholder="placeholder.date" value=model.begin_at errors=errors.model.begin_at disabled=(not-eq model.event_type 'normal')}}
           </div>
           <div class='col-md-3'>
-            {{validated-select options=hours value=time_slot.hour}}
+            {{validated-select options=hours value=begin_at_hour errors=errors.begin_at_hour disabled=(not-eq model.event_type 'normal')}}
           </div>
           <div class='col-md-3'>
-            {{validated-select options=minutes value=time_slot.minute}}
+            {{validated-select options=minutes value=begin_at_minute errors=errors.begin_at_minute disabled=(not-eq model.event_type 'normal')}}
           </div>
         </div>
-      {{/each}}
-    {{/if}}
 
-    <hr>
-  {{/if}}
+        <!-- <div class='row'>
+          <div class="col-md-12 {{if (eq model.event_type 'flexible') 'disabled'}}">
+            {{t 'event.add-end-date'}} {{input type="checkbox" checked=addEndDate disabled=(eq model.event_type 'flexible')}}
+          </div>
+        </div>
 
-  <div class='row'>
-    <div class='col-md-12'>
-      {{#unless alreadyCreated}}{{radio-button id="periodic" value='periodic' checked=model.event_type}}{{/unless}}
-      <label for='periodic'>{{t 'label.make-periodic'}}</label>
-    </div>
-  </div>
+        {{#if addEndDate}}
+          <div class='row'>
+            <div class='col-md-12'>
+              <label class="{{if (eq model.event_type 'flexible') 'disabled'}}">{{t 'label.end-date'}}</label>
+              {{#if showCustomError}}
+                <span class='error'>{{errors.end_at}}</span>
+              {{/if}}
+            </div>
+          </div>
 
-  {{#if (eq model.event_type 'periodic')}}
-    <div class='row margin-top'>
-      <div class='col-md-12'>
-        {{#if showCustomError}}
-          <span class='error'>error</span>
-        {{/if}}
-      </div>
-      <div class='col-md-7'>
-        <label>Choix du/des jours de la semaine</label>
-        <div>
-          {{#each daysOptions as |dayOption|}}
-            <span>
-              {{radio-button id=dayOption.label value=dayOption.value checked=day}}
-              <label for={{dayOption.label}}>{{t dayOption.label}}</label>
-            </span>
+          <div class='row'>
+            <div class='col-md-6'>
+              {{validated-date placeholder="placeholder.date" value=model.end_at errors=errors.model.end_at disabled=(eq model.event_type 'flexible')}}
+            </div>
+            <div class='col-md-3'>
+              {{validated-select options=hours value=end_at_hour errors=errors.end_at_hour disabled=(eq model.event_type 'flexible')}}
+            </div>
+            <div class='col-md-3'>
+              {{validated-select options=minutes value=end_at_minute errors=errors.end_at_minute disabled=(eq model.event_type 'flexible')}}
+            </div>
+          </div>
+        {{/if}} -->
+
+        <hr>
+      {{/if}}
+
+      {{#if showDateFlexible}}
+        <div class='row'>
+          <div class='col-md-12'>
+            {{#unless alreadyCreated}}{{radio-button id='flexible' value='flexible' checked=model.event_type}}{{/unless}}
+            <label for='flexible'>{{t 'label.date-flexible'}}</label>
+          </div>
+        </div>
+
+        {{#if alreadyCreated}}
+          <div class='see-time-slots'>
+            <div>{{t 'is-flexible'}}</div>
+            <div class='goto' {{action 'see_time_slots'}}>{{t 'see-time-slots'}}</div>
+          </div>
+        {{else if (eq model.event_type 'flexible')}}
+          <div>{{t 'event-date-flexible'}}</div>
+          <div>
+            {{#if showCustomError}}
+              <span class='error'>{{errors.model.new_time_slots}}</span>
+              <span class='error'>{{t model.errors.new_time_slots.firstObject.message}}</span>
+            {{/if}}
+          </div>
+          {{#each time_slots as |time_slot|}}
+            <div class='row'>
+              <div class='col-md-6'>
+                {{validated-date placeholder=time_slot.placeholder value=time_slot.date}}
+              </div>
+              <div class='col-md-3'>
+                {{validated-select options=hours value=time_slot.hour}}
+              </div>
+              <div class='col-md-3'>
+                {{validated-select options=minutes value=time_slot.minute}}
+              </div>
+            </div>
           {{/each}}
-        </div>
-      </div>
-      <div class='col-md-5'>
+        {{/if}}
+
+        <hr>
+      {{/if}}
+    {{else}}
+      <div class='row margin-top'>
         <div class='col-md-12'>
-          <label>Heure</label>
+          {{#if showCustomError}}
+            <span class='error'>error</span>
+          {{/if}}
+        </div>
+        <div class='col-md-7'>
+          <label>Choix du/des jours de la semaine</label>
+          <div>
+            {{#each daysOptions as |dayOption|}}
+              <span>
+                <label for={{dayOption.label}}>
+                  {{radio-button id=dayOption.label value=dayOption.value checked=day}}
+                  {{t dayOption.label}}
+                </label>
+              </span>
+            {{/each}}
+          </div>
+        </div>
+        <div class='col-md-5'>
+          <div class='col-md-12'>
+            <label>Heure</label>
+          </div>
+          <div class='col-md-6'>
+            {{validated-select options=hours value=periodicHour errors=errors.periodicHour}}
+          </div>
+          <div class='col-md-6'>
+            {{validated-select options=minutes value=periodicMinute errors=errors.periodicMinute}}
+          </div>
         </div>
         <div class='col-md-6'>
-          {{validated-select options=hours value=periodicHour errors=errors.periodicHour}}
+          <label>{{t 'label.periodicity'}}</label>
+          {{validated-select options=periodicityOptions value=periodicity errors=errors.periodicity}}
         </div>
         <div class='col-md-6'>
-          {{validated-select options=minutes value=periodicMinute errors=errors.periodicMinute}}
+          <label>{{t 'label.until'}}</label>
+          {{validated-select options=untilOptions value=until errors=errors.until}}
         </div>
       </div>
-      <div class='col-md-6'>
-        <label>{{t 'label.periodicity'}}</label>
-        {{validated-select options=periodicityOptions value=periodicity errors=errors.periodicity}}
+
+      <div class='row'>
+        {{#each periodicDates as |periodicDate|}}
+          <div class="col-md-6 periodic-dates">
+            {{moment-format periodicDate 'dddd DD MMMM YYYY'}}
+            <span class='remove-periodic-date' {{action 'remove_periodic_date' periodicDate}}>{{t 'delete'}}</span>
+          </div>
+        {{/each}}
       </div>
-      <div class='col-md-6'>
-        <label>{{t 'label.until'}}</label>
-        {{validated-select options=untilOptions value=until errors=errors.until}}
+
+      <hr>
+    {{/unless}}
+
+    <div class='row'>
+      <div class='col-md-12'>
+        {{validated-textarea rows="2" maxlength=140 label="label.short-description" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
       </div>
     </div>
 
     <div class='row'>
-      {{#each periodicDates as |periodicDate|}}
-        <div class="col-md-6 periodic-dates">
-          {{moment-format periodicDate 'dddd DD MMMM YYYY'}}
-          <span class='remove-periodic-date' {{action 'remove_periodic_date' periodicDate}}>{{t 'delete'}}</span>
-        </div>
-      {{/each}}
+      <div class='col-md-12'>
+        {{validated-textarea rows="7" label="label.description" value=model.description serverErrors=model.errors.description errors=errors.model.description}}
+      </div>
     </div>
-  {{/if}}
 
-  <hr>
+    <hr>
 
-  <div class='row'>
-    <div class='col-md-12'>
-      {{validated-textarea rows="2" maxlength=140 label="label.short-description" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
+    <div class='row'>
+      <div class='col-md-12'>
+        {{validated-input label="label.street" placeholder="placeholder.street" value=model.street serverErrors=model.errors.street errors=errors.model.street name='street'}}
+      </div>
     </div>
-  </div>
 
-  <div class='row'>
-    <div class='col-md-12'>
-      {{validated-textarea rows="7" label="label.description" value=model.description serverErrors=model.errors.description errors=errors.model.description}}
+    <div class='row'>
+      <div class='col-md-4'>
+        {{validated-input label="label.postcode" placeholder="placeholder.postcode" value=model.postcode serverErrors=model.errors.postcode errors=errors.model.postcode name='postcode'}}
+      </div>
+      <div class='col-md-4'>
+        {{validated-input label="label.city" placeholder="placeholder.city" value=model.city serverErrors=model.errors.city errors=errors.model.city name='city'}}
+      </div>
+      <div class='col-md-4'>
+        {{validated-input label="label.country" placeholder="placeholder.country" value=model.country serverErrors=model.errors.country errors=errors.model.country name='country'}}
+      </div>
     </div>
-  </div>
 
-  <hr>
-
-  <div class='row'>
-    <div class='col-md-12'>
-      {{validated-input label="label.street" placeholder="placeholder.street" value=model.street serverErrors=model.errors.street errors=errors.model.street name='street'}}
+    <div class='row'>
+      <div class='col-md-12 set-private'>
+        <div>{{t 'make-event-private'}} {{input type="checkbox" checked=model.private}}</div>
+        <div class='goto'>{{dynamic-submit actionOnSubmit="save_event"}}</div>
+      </div>
     </div>
-  </div>
-
-  <div class='row'>
-    <div class='col-md-4'>
-      {{validated-input label="label.postcode" placeholder="placeholder.postcode" value=model.postcode serverErrors=model.errors.postcode errors=errors.model.postcode name='postcode'}}
-    </div>
-    <div class='col-md-4'>
-      {{validated-input label="label.city" placeholder="placeholder.city" value=model.city serverErrors=model.errors.city errors=errors.model.city name='city'}}
-    </div>
-    <div class='col-md-4'>
-      {{validated-input label="label.country" placeholder="placeholder.country" value=model.country serverErrors=model.errors.country errors=errors.model.country name='country'}}
-    </div>
-  </div>
-
-  <div class='row'>
-    <div class='col-md-12 set-private'>
-      <div>{{t 'make-event-private'}} {{input type="checkbox" checked=model.private}}</div>
-      <div class='goto'>{{dynamic-submit actionOnSubmit="save_event"}}</div>
-    </div>
-  </div>
-</form>
+  </form>
+</div>

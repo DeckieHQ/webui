@@ -164,6 +164,7 @@ export default Ember.Component.extend(EmberValidations, {
   until: "6",
   periodicHour: "19",
   periodicMinute: "00",
+  isPeriodic: false,
 
   periodicDates: function() {
     if (this.get('day')) {
@@ -257,6 +258,10 @@ export default Ember.Component.extend(EmberValidations, {
 
     remove_periodic_date: function(date) {
       this.get('periodicDates').removeObject(date);
+    },
+
+    toggle_periodic: function() {
+      this.toggleProperty('isPeriodic');
     },
 
     save_event: function(defer) {

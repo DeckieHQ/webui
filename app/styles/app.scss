@@ -31,7 +31,8 @@
   }
 }
 
-#user-form {
+#user-form,
+#event-form {
   .tabs {
     padding: 0 1em 0 1em;
     text-align: center;
@@ -43,7 +44,7 @@
       padding: 0.5em;
       cursor: pointer;
 
-      .organization-details {
+      .details {
         font-size: 0.825em;
         font-weight: normal;
       }

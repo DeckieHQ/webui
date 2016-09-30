@@ -46,8 +46,8 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
     return this.get('type') === 'flexible' ? true : false;
   }),
 
-  periodic: Ember.computed('type', function() {
-    return this.get('type') === 'periodic' ? true : false;
+  recurrent: Ember.computed('type', function() {
+    return this.get('type') === 'recurrent' ? true : false;
   }),
 
   shortPostcode: Ember.computed('postcode', function() {

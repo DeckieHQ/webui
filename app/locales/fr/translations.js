@@ -246,8 +246,8 @@ export default {
       "profile": "Une partie hébergée par un hôte au profil rempli a plus de chances d'avoir des participants, améliorez votre profil dès maintenant"
     },
     "single-event": "Partie unique",
-    "periodic-event": "Partie régulière",
-    "periodic-details": "(toutes les semaines, tous les mois...)",
+    "recurrent-event": "Partie régulière",
+    "recurrent-details": "(toutes les semaines, tous les mois...)",
   },
   "events": {
     "opened": "Parties en cours",
@@ -350,7 +350,7 @@ export default {
     "contact-email": "Email de contact",
     "limited-capacity": "Nombre de place limité",
     "unlimited-capacity": "Entrée libre",
-    "periodicity": "Tous/toutes les",
+    "recurrentity": "Tous/toutes les",
     "until": "Pendant",
   },
   "placeholder": {
@@ -555,7 +555,7 @@ export default {
     "00": "00", "05": "05", "10": "10", "15": "15", "20": "20", "25": "25",
     "30": "30", "35": "35", "40": "40", "45": "45", "50": "50", "55": "55"
   },
-  "periodicity-options": {
+  "recurrentity-options": {
     "weekly": "semaines",
     "fortnightly": "2 semaines",
     "firstWeek": "1ère semaine du mois",

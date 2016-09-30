@@ -409,11 +409,11 @@
   }
 }
 
-.periodic-dates {
+.recurrent-dates {
   display: flex;
 }
 
-.remove-periodic-date {
+.remove-recurrent-date {
   margin-left: auto;
   cursor: pointer;
   color: #337ab7;
@@ -421,7 +421,7 @@
   vertical-align: text-top;
 }
 
-.remove-periodic-date:hover {
+.remove-recurrent-date:hover {
   text-decoration: underline;
 }
 

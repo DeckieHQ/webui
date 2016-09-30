@@ -80,7 +80,7 @@
         {{#link-to 'event' event.objectID class='event'}}
           <div>
             <div>{{event.title}}</div>
-            {{#if event.flexible}}
+            {{#if (eq event.type "flexible")}}
               <div class='begin_at'>({{t 'date-flexible-from-sm'}} {{moment-format event.begin_at_range.min 'DD MMMM'}})</div>
             {{else}}
               <div class='begin_at'>({{moment-from-now event.begin_at}})</div>

@@ -41,6 +41,10 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   host_profile: DS.belongsTo('profile', {
     inverse: 'hosted_events'
   }),
+  children: DS.hasMany('event'),
+  parent: DS.belongsTo('event', {
+    inverse: 'children'
+  }),
 
   flexible: Ember.computed('type', function() {
     return this.get('type') === 'flexible' ? true : false;

@@ -62,26 +62,28 @@
         {{/if}}
       </div>
 
-      {{#if (and isHost (not model.auto_accept))}}
-        <div class='well'>
-          {{#if pendingSubmissions}}
-            <b>{{t 'event.pending-submissions'}}</b>
-            <div class='line-separator'></div>
-          {{else}}
-            {{t 'event.empty-pending-submissions'}}
-          {{/if}}
-          {{#each pendingSubmissions as |submission|}}
-            <div class='pending-submission'>
-              {{profile-link profile=submission.profile}}
-              <div class="accept-submission">
-                <button {{action 'accept_submission' submission}}>
-                  <span class='glyphicon glyphicon-ok'></span>
-                </button>
+      {{#unless model.recurrent}}
+        {{#if (and isHost (not model.auto_accept))}}
+          <div class='well'>
+            {{#if pendingSubmissions}}
+              <b>{{t 'event.pending-submissions'}}</b>
+              <div class='line-separator'></div>
+            {{else}}
+              {{t 'event.empty-pending-submissions'}}
+            {{/if}}
+            {{#each pendingSubmissions as |submission|}}
+              <div class='pending-submission'>
+                {{profile-link profile=submission.profile}}
+                <div class="accept-submission">
+                  <button {{action 'accept_submission' submission}}>
+                    <span class='glyphicon glyphicon-ok'></span>
+                  </button>
+                </div>
               </div>
-            </div>
-          {{/each}}
-        </div>
-      {{/if}}
+            {{/each}}
+          </div>
+        {{/if}}
+      {{/unless}}
 
       {{#if model.flexible}}
         <div class='well'>
@@ -110,19 +112,21 @@
         </div>
       {{/if}}
 
-      {{#if isAbleToInvite}}
-        <div class='well'>
-          <form>
-            {{validated-textarea rows=3 label="label.invitation" placeholder="placeholder.invitation" value=email errors=errors.email}}
-            {{#if emailSent}}
-              <div class='email-sent'>{{t 'email-sent'}}</div>
-            {{else if emailError}}
-              <div class='email-error'>{{t 'email-error'}}</div>
-            {{/if}}
-            {{dynamic-submit actionOnSubmit="send_invitation"}}
-          </form>
-        </div>
-      {{/if}}
+      {{#unless model.recurrent}}
+        {{#if isAbleToInvite}}
+          <div class='well'>
+            <form>
+              {{validated-textarea rows=3 label="label.invitation" placeholder="placeholder.invitation" value=email errors=errors.email}}
+              {{#if emailSent}}
+                <div class='email-sent'>{{t 'email-sent'}}</div>
+              {{else if emailError}}
+                <div class='email-error'>{{t 'email-error'}}</div>
+              {{/if}}
+              {{dynamic-submit actionOnSubmit="send_invitation"}}
+            </form>
+          </div>
+        {{/if}}
+      {{/unless}}
 
       <div class='well'>
         <b>{{t 'event.host'}}</b>
@@ -147,23 +151,25 @@
         {{/if}}
       </div>
 
-      <div class='well'>
-        <b>
-          {{#if model.unlimited_capacity}}
-            {{t 'event.count' attendees-count=model.attendees.length}}
-          {{else}}
-            {{t 'event.count-ratio' attendees-count=model.attendees.length capacity=model.capacity}}
+      {{#unless model.recurrent}}
+        <div class='well'>
+          <b>
+            {{#if model.unlimited_capacity}}
+              {{t 'event.count' attendees-count=model.attendees.length}}
+            {{else}}
+              {{t 'event.count-ratio' attendees-count=model.attendees.length capacity=model.capacity}}
+            {{/if}}
+          </b>
+          {{#if model.attendees}}
+            <div class='line-separator'></div>
           {{/if}}
-        </b>
-        {{#if model.attendees}}
-          <div class='line-separator'></div>
-        {{/if}}
-        {{#each model.attendees as |attendee|}}
-          <div class='attendee'>
-            {{attendee-display attendee=attendee isHost=isHost}}
-          </div>
-        {{/each}}
-      </div>
+          {{#each model.attendees as |attendee|}}
+            <div class='attendee'>
+              {{attendee-display attendee=attendee isHost=isHost}}
+            </div>
+          {{/each}}
+        </div>
+      {{/unless}}
 
       <div class='well'>
         <b>{{t 'event.location'}}</b>
@@ -177,6 +183,12 @@
     </div>
 
     <div id='event' class='col-md-9'>
+      {{#if model.recurrent}}
+        <div class='well warning'>
+          <span class='glyphicon glyphicon-warning-sign'></span>
+          Ceci est un template de partie et non une partie réelle.
+        </div>
+      {{/if}}
       <div class='well'>
         <div class='row head'>
           <div class='col-xs-12 col-md-6'>
@@ -230,39 +242,47 @@
         {{/if}}
       </div>
 
-      {{#if isAuthenticated}}
-        <div class='well'>
-          <form>
-            {{validated-input label="label.comment" placeholder="placeholder.comment" value=message errors=errors.message}}
+      {{#unless model.recurrent}}
+        {{#if isAuthenticated}}
+          <div class='well'>
+            <form>
+              {{validated-input label="label.comment" placeholder="placeholder.comment" value=message errors=errors.message}}
 
-            <div class='align-right inline-block'>
-              {{#if isMember}}
-                <div>
-                  {{t 'comment.private'}}
-                  {{input type="checkbox" checked=isPrivate}}
-                </div>
-              {{/if}}
+              <div class='align-right inline-block'>
+                {{#if isMember}}
+                  <div>
+                    {{t 'comment.private'}}
+                    {{input type="checkbox" checked=isPrivate}}
+                  </div>
+                {{/if}}
 
-              {{dynamic-submit actionOnSubmit="comment"}}
-            </div>
-          </form>
-        </div>
-      {{/if}}
-
-      {{#if displayPrivateComments}}
-        <div>
-          {{t 'comment.show-privates'}}
-          {{input type="checkbox" checked=onlyPrivates}}
-        </div>
-      {{/if}}
-
-      {{#if displayComments}}
-        {{#if onlyPrivates}}
-          {{comments-list isPrivate=true event=model isHost=isHost isModerator=isModerator}}
-        {{else}}
-          {{comments-list event=model isHost=isHost isModerator=isModerator}}
+                {{dynamic-submit actionOnSubmit="comment"}}
+              </div>
+            </form>
+          </div>
         {{/if}}
-      {{/if}}
+
+        {{#if displayPrivateComments}}
+          <div>
+            {{t 'comment.show-privates'}}
+            {{input type="checkbox" checked=onlyPrivates}}
+          </div>
+        {{/if}}
+
+        {{#if displayComments}}
+          {{#if onlyPrivates}}
+            {{comments-list isPrivate=true event=model isHost=isHost isModerator=isModerator}}
+          {{else}}
+            {{comments-list event=model isHost=isHost isModerator=isModerator}}
+          {{/if}}
+        {{/if}}
+      {{else}}
+        {{#each model.children as |child|}}
+          <div class='well'>
+            {{moment-format child.begin_at 'dddd DD MMMM HH:mm'}}
+          </div>
+        {{/each}}
+      {{/unless}}
     </div>
   </div>
 </div>

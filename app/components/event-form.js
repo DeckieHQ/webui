@@ -268,8 +268,8 @@ export default Ember.Component.extend(EmberValidations, {
       let model = this.get('model');
 
       if (this.get('isRecurrent')) {
-        this.set('model.type', 'recurrent');
-        model.set('model.new_time_slots', this.get('recurrentDates'));
+        model.set('type', 'recurrent');
+        model.set('new_time_slots', this.get('recurrentDates'));
       } else if (this.get('model.type') === 'flexible') {
         model.set('begin_at', null);
         model.set('end_at', null);

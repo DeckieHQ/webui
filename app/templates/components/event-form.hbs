@@ -13,6 +13,11 @@
     </div>
 
     <hr>
+  {{else if model.recurrent}}
+    <div class='warning margin-bottom'>
+      <span class='glyphicon glyphicon-warning-sign'></span>
+      {{t 'event.recurrent-edit'}}
+    </div>
   {{/unless}}
 
   <form autocomplete="false">
@@ -65,24 +70,26 @@
 
     {{#unless isRecurrent}}
       {{#if showDate}}
-        <div class='row'>
-          <div class='col-md-12'>
-            {{#unless alreadyCreated}}{{radio-button id='normal' value='normal' checked=model.type}}{{/unless}}
-            <label for='normal'>{{t 'label.date'}}</label>
+        {{#unless (and alreadyCreated (not-eq model.type 'normal'))}}
+          <div class='row'>
+            <div class='col-md-12'>
+              {{#unless alreadyCreated}}{{radio-button id='normal' value='normal' checked=model.type}}{{/unless}}
+              <label for='normal'>{{t 'label.date'}}</label>
+            </div>
           </div>
-        </div>
 
-        <div class='row'>
-          <div class='col-md-6'>
-            {{validated-date placeholder="placeholder.date" value=model.begin_at errors=errors.model.begin_at disabled=(not-eq model.type 'normal')}}
+          <div class='row'>
+            <div class='col-md-6'>
+              {{validated-date placeholder="placeholder.date" value=model.begin_at errors=errors.model.begin_at disabled=(not-eq model.type 'normal')}}
+            </div>
+            <div class='col-md-3'>
+              {{validated-select options=hours value=begin_at_hour errors=errors.begin_at_hour disabled=(not-eq model.type 'normal')}}
+            </div>
+            <div class='col-md-3'>
+              {{validated-select options=minutes value=begin_at_minute errors=errors.begin_at_minute disabled=(not-eq model.type 'normal')}}
+            </div>
           </div>
-          <div class='col-md-3'>
-            {{validated-select options=hours value=begin_at_hour errors=errors.begin_at_hour disabled=(not-eq model.type 'normal')}}
-          </div>
-          <div class='col-md-3'>
-            {{validated-select options=minutes value=begin_at_minute errors=errors.begin_at_minute disabled=(not-eq model.type 'normal')}}
-          </div>
-        </div>
+        {{/unless}}
 
         <!-- <div class='row'>
           <div class="col-md-12 {{if (eq model.type 'flexible') 'disabled'}}">
@@ -162,7 +169,7 @@
           {{/if}}
         </div>
         <div class='col-md-7'>
-          <label>Choix du/des jours de la semaine</label>
+          <label>{{t 'event.pick-day'}}</label>
           <div>
             {{#each daysOptions as |dayOption|}}
               <span>

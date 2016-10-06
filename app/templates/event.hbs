@@ -17,46 +17,46 @@
           {{else if pending}}
             <div>{{t 'event.submission.pending'}}</div>
             <div>
-              <button {{action 'quit_event'}} class="btn-red">
+              <div {{action 'quit_event'}} class="btn-red full-width">
                 {{t 'event.quit'}}
-              </button>
+              </div>
             </div>
           {{else if confirmed}}
             {{t 'event.submission.confirmed'}}
             <div>
-              <button {{action 'quit_event'}} class="btn-red">
+              <div {{action 'quit_event'}} class="btn-red full-width">
                 {{t 'event.quit'}}
-              </button>
+              </div>
             </div>
           {{else if full}}
             <div>{{t 'event.full'}}</div>
           {{else if (or isFlexibleMember isNewFlexibleMember)}}
             <div>
               <div>{{t 'event.is-flexible-member'}}</div>
-              <button {{action 'show_time_slots'}} class="btn-green">
+              <div {{action 'show_time_slots'}} class="btn-green full-width">
                 {{t 'event.see-my-time_slots'}}
-              </button>
+              </div>
             </div>
           {{else if model.flexible}}
             <div>
               <div>{{t 'event.join-flexible'}}</div>
-              <button {{action 'show_time_slots'}} class="btn-green">
+              <div {{action 'show_time_slots'}} class="btn-green full-width">
                 {{t 'event.join'}}
-              </button>
+              </div>
             </div>
           {{else}}
-            <div>
-              {{dynamic-submit actionOnSubmit="join_event" submitLabel="event.join"}}
+            <div {{action 'join_event'}} class="btn-green full-width">
+              {{t 'event.join'}}
             </div>
           {{/if}}
         {{/unless}}
 
         {{#if isAbleToEdit}}
           {{#link-to 'event.edit'}}
-            <div class="event-edit">{{t 'event.edit'}}</div>
+            <div class="event-edit full-width">{{t 'event.edit'}}</div>
           {{/link-to}}
           <div class="clearfix"></div>
-          <div {{action 'delete_event'}} class="event-delete">
+          <div {{action 'delete_event'}} class="event-delete full-width">
             {{t 'event.delete'}}
           </div>
         {{/if}}
@@ -186,17 +186,19 @@
       {{#if model.recurrent}}
         <div class='well warning'>
           <span class='glyphicon glyphicon-warning-sign'></span>
-          Ceci est un template de partie et non une partie réelle.
+          {{t 'event.is-recurrent'}}
         </div>
       {{/if}}
       <div class='well'>
         <div class='row head'>
           <div class='col-xs-12 col-md-6'>
             <h3>{{model.title}}</h3>
-            {{#fb-share tagName="a" url=eventUrl title=model.title description=model.short_description}}
-              <img class='fb-logo' src='/assets/images/fb-share.png'>
-              <span class='fb-share'>{{t 'facebook-share'}}</span>
-            {{/fb-share}}
+            {{#unless model.recurrent}}
+              {{#fb-share tagName="a" url=eventUrl title=model.title description=model.short_description}}
+                <img class='fb-logo' src='/assets/images/fb-share.png'>
+                <span class='fb-share'>{{t 'facebook-share'}}</span>
+              {{/fb-share}}
+            {{/unless}}
           </div>
           <div class='col-xs-12 col-md-6'>
             <div class="details">
@@ -204,7 +206,7 @@
                 <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                 {{t 'date-flexible-from'}}
                 {{moment-format model.begin_at_range.min 'DD MMMM'}}
-              {{else}}
+              {{else unless model.recurrent}}
                 <div class="date">
                   <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
                   {{moment-format model.begin_at 'DD MMMM'}}
@@ -277,11 +279,7 @@
           {{/if}}
         {{/if}}
       {{else}}
-        {{#each model.children as |child|}}
-          <div class='well'>
-            {{moment-format child.begin_at 'dddd DD MMMM HH:mm'}}
-          </div>
-        {{/each}}
+        {{event-children event=model}}
       {{/unless}}
     </div>
   </div>

@@ -1,0 +1,12 @@
+<div class='well'>
+  <div class='row'>
+    {{#each children as |child|}}
+      <div class="col-md-6 recurrent-dates">
+        {{#link-to 'event' child}}
+          {{moment-format child.begin_at 'dddd DD MMMM HH:mm'}}
+        {{/link-to}}
+        <span class='remove-recurrent-date' {{action 'remove_recurrent_date' child}}>{{t 'delete'}}</span>
+      </div>
+    {{/each}}
+  </div>
+</div>

@@ -1,5 +1,5 @@
 <div id='user-form'>
-  {{#unless alreadyCreated}}
+  {{#unless (or alreadyCreated onlyIndividual)}}
     <div class='row tabs'>
       <div class={{unless model.organization 'col-xs-12 col-md-6 tab opened' 'col-xs-12 col-md-6 tab'}}>
         <div {{action 'toggle_organization'}}>{{t 'user.individual'}}</div>

@@ -37,7 +37,7 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
   private: DS.attr('boolean', { defaultValue: false }),
   time_slots: DS.hasMany('time-slot'),
   time_slots_members: DS.hasMany('profile'),
-  type: DS.attr(),
+  type: DS.attr('string', { defaultValue: 'normal' }),
   host_profile: DS.belongsTo('profile', {
     inverse: 'hosted_events'
   }),

@@ -433,6 +433,14 @@
   text-align: center;
 }
 
+.full-width {
+  width: 100%;
+}
+
+.button-full-width > button {
+  width: 100%;
+}
+
 .align-right {
   text-align: right;
 }

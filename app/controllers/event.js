@@ -80,7 +80,9 @@ export default Ember.Controller.extend(EmberValidations, {
   }.property('submissions'),
 
   full: Ember.computed('model.attendees.length', function() {
-    return this.get('model.attendees.length') >= this.get('model.capacity');
+    if (this.get('model.capacity')) {
+      return this.get('model.attendees.length') >= this.get('model.capacity');
+    }
   }),
 
   displayComments: true,
@@ -164,7 +166,9 @@ export default Ember.Controller.extend(EmberValidations, {
     },
 
     delete_event: function() {
-      if (confirm(this.get('i18n').t('event.confirm-delete'))) {
+      let message = this.get('model.recurrent') ? 'event.confirm-delete-recurrent' : 'event.confirm-delete';
+
+      if (confirm(this.get('i18n').t(message))) {
         this.get('model').destroyRecord().then(
           () => {
             this.get('infos').setHostedEvents();

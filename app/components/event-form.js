@@ -125,6 +125,13 @@ export default Ember.Component.extend(EmberValidations, {
         }
       })
     },
+    day: {
+      presence: {
+        'if': function(object, validator) {
+          return object.get('model.type') === 'recurrent';
+        }
+      }
+    },
     end_at: {
       inline: validator(function() {
         let end_at = this.model.get('model.end_at');
@@ -256,19 +263,31 @@ export default Ember.Component.extend(EmberValidations, {
       this.get('targetObject').send('goto_event_time_slots', this.get('model'));
     },
 
-    remove_recurrent_date: function(date) {
-      this.get('recurrentDates').removeObject(date);
+    add_recurrent_date: function() {
+      if (this.get('customRecurrentDate')) {
+        this.set('showCustomDateError' , false);
+        let date = moment(this.get('customRecurrentDate'));
+        let begin_at_hour = this.get('recurrentHour');
+        let begin_at_minute = this.get('recurrentMinute');
+        date.hour(begin_at_hour).minute(begin_at_minute);
+
+        this.get('recurrentDates').pushObject(date);
+        this.set('customRecurrentDate', null);
+      } else {
+        this.set('showCustomDateError' , true);
+      }
     },
 
     toggle_recurrent: function() {
       this.toggleProperty('isRecurrent');
+      let newType = this.get('isRecurrent') ? 'recurrent' : 'normal';
+      this.get('model').set('type', newType);
     },
 
     save_event: function(defer) {
       let model = this.get('model');
 
       if (this.get('isRecurrent')) {
-        model.set('type', 'recurrent');
         model.set('new_time_slots', this.get('recurrentDates'));
       } else if (this.get('model.type') === 'flexible') {
         model.set('begin_at', null);

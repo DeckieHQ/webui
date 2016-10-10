@@ -174,17 +174,17 @@
     {{else}}
       <div class='row margin-top'>
         <div class='col-md-12'>
+          <label>{{t 'event.pick-day'}}</label>
           {{#if showCustomError}}
-            <span class='error'>error</span>
+            <span class='error'>{{errors.day}}</span>
           {{/if}}
         </div>
         <div class='col-md-7'>
-          <label>{{t 'event.pick-day'}}</label>
           <div>
             {{#each daysOptions as |dayOption|}}
               <span>
-                <label for={{dayOption.label}}>
-                  {{radio-button id=dayOption.label value=dayOption.value checked=day}}
+                <label class='no-bold'>
+                  {{radio-button value=dayOption.value checked=day}}
                   {{t dayOption.label}}
                 </label>
               </span>
@@ -192,9 +192,6 @@
           </div>
         </div>
         <div class='col-md-5'>
-          <div class='col-md-12'>
-            <label>Heure</label>
-          </div>
           <div class='col-md-6'>
             {{validated-select options=hours value=recurrentHour errors=errors.recurrentHour}}
           </div>
@@ -220,6 +217,20 @@
           </div>
         {{/each}}
       </div>
+
+      {{#if recurrentDates}}
+        <div class='row'>
+          <div class='col-md-12 toto'>
+            <div class='add-recurrent-date'>
+              {{validated-date placeholder='placeholder.add-recurrent-date' value=customRecurrentDate class='recurrent-date'}}
+              <div class='goto' {{action 'add_recurrent_date'}}>{{t 'add'}}</div>
+            </div>
+            {{#if showCustomDateError}}
+              <span class='error'>{{t 'error.custom-recurrent-date-missing'}}</span>
+            {{/if}}
+          </div>
+        </div>
+      {{/if}}
 
       <hr>
     {{/unless}}

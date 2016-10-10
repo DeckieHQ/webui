@@ -224,7 +224,7 @@ export default {
       "pending": "Votre inscription est en attente de validation par l'hôte",
       "confirmed": "Vous êtes inscrits à cette partie",
     },
-    "pick-day": "Choisir le jour de la semaine.",
+    "pick-day": "Jour de la semaine",
     "recurrent-edit": "Les modifications apportées au template de cette partie se répercuteront sur toutes les parties créées à partir de celui-ci.",
     "is-recurrent": "Ceci est un template de partie régulière et non une partie en elle-même (vous ne pouvez rejoindre ou commenter un template de partie).",
     "date-survey": "Sondage de date",
@@ -361,7 +361,7 @@ export default {
     "contact-email": "Email de contact",
     "limited-capacity": "Nombre de place limité",
     "unlimited-capacity": "Entrée libre",
-    "recurrentity": "Tous/toutes les",
+    "recurrentity": "Toutes les",
     "until": "Pendant",
   },
   "placeholder": {
@@ -388,7 +388,8 @@ export default {
     "email": "Entrer email",
     "search": "Nom de jeu, Ville, Code postal...",
     "invitation": "Entrer un ou plusieurs emails de gens à inviter",
-    "contact-email": "Entrer un email de contact"
+    "contact-email": "Entrer un email de contact",
+    "add-recurrent-date": "Ajouter une date manuellement",
   },
   "culture": {
     "fr": "Français",
@@ -452,6 +453,7 @@ export default {
                              Seul votre âge est suceptible un jour d'être affiché mais jamais votre date de naissance complète.`
   },
   "error": {
+    "custom-recurrent-date-missing": "vous devez sélectionner une date à ajouter",
     "empty-time-slots": "vous devez sélectionner au moins 2 créneaux",
     "password-confirm": "n'est pas égal au nouveau mot de passe",
     "end-at": {

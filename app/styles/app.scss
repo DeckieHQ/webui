@@ -129,6 +129,26 @@
   }
 }
 
+.add-recurrent-date {
+  margin-top: 1em;
+  display: flex;
+  align-items: center;
+
+  .recurrent-date {
+    width: 80%;
+  }
+
+  .recurrent-date.form-group {
+    margin-bottom: 0px;
+  }
+
+  .goto {
+    @extend .btn-orange, .btn-sm;
+    margin-left: auto;
+  }
+}
+
+
 .set-private {
   display: flex;
   align-items: center;
@@ -451,6 +471,10 @@
 
 .birthday {
   margin-bottom: 0px;
+}
+
+.no-bold {
+  font-weight: normal;
 }
 
 .margin-bottom {

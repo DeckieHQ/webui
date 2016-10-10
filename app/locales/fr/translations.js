@@ -256,6 +256,9 @@ export default {
     "single-event": "Partie unique",
     "recurrent-event": "Partie régulière",
     "recurrent-details": "(toutes les semaines, tous les mois...)",
+    "recurrent-child": `Vous vous apprêtez à modifier une partie issue d'une partie régulière, les changements apportés ne s'appliqueront
+                        qu'à celle-ci. Pour modifier toutes les occurences de la partie allez sur le`,
+    "template-parent": "template de la partie.",
   },
   "events": {
     "opened": "Parties en cours",

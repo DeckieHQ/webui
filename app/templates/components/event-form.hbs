@@ -18,6 +18,12 @@
       <span class='glyphicon glyphicon-warning-sign'></span>
       {{t 'event.recurrent-edit'}}
     </div>
+  {{else if model.parent}}
+    <div class='warning margin-bottom'>
+      <span class='glyphicon glyphicon-warning-sign'></span>
+      {{t 'event.recurrent-child'}}
+      {{#link-to 'event' model.parent}}{{t 'event.template-parent'}}{{/link-to}}
+    </div>
   {{/unless}}
 
   <form autocomplete="false">
@@ -132,9 +138,13 @@
         </div>
 
         {{#if alreadyCreated}}
-          <div class='see-time-slots'>
-            <div>{{t 'is-flexible'}}</div>
-            <div class='goto' {{action 'see_time_slots'}}>{{t 'see-time-slots'}}</div>
+          <div class='row'>
+            <div class='col-md-12'>
+              <div class='see-time-slots'>
+                <div>{{t 'is-flexible'}}</div>
+                <div class='goto' {{action 'see_time_slots'}}>{{t 'see-time-slots'}}</div>
+              </div>
+            </div>
           </div>
         {{else if (eq model.type 'flexible')}}
           <div>{{t 'event-date-flexible'}}</div>

@@ -40,12 +40,12 @@
           {{else if model.flexible}}
             <div>
               <div>{{t 'event.join-flexible'}}</div>
-              <div {{action 'show_time_slots'}} class="btn-green full-width">
+              <div {{action 'show_time_slots'}} class={{if isAbleToEdit 'btn-green full-width margin-bottom' 'btn-green full-width'}}>
                 {{t 'event.join'}}
               </div>
             </div>
           {{else}}
-            <div {{action 'join_event'}} class="btn-green full-width">
+            <div {{action 'join_event'}} class={{if isAbleToEdit 'btn-green full-width margin-bottom' 'btn-green full-width'}}>
               {{t 'event.join'}}
             </div>
           {{/if}}
@@ -194,10 +194,12 @@
           <div class='col-xs-12 col-md-6'>
             <h3>{{model.title}}</h3>
             {{#unless model.recurrent}}
-              {{#fb-share tagName="a" url=eventUrl title=model.title description=model.short_description}}
-                <img class='fb-logo' src='/assets/images/fb-share.png'>
-                <span class='fb-share'>{{t 'facebook-share'}}</span>
-              {{/fb-share}}
+              <div class='margin-top'>
+                {{#fb-share tagName="a" url=eventUrl title=model.title description=model.short_description}}
+                  <img class='fb-logo' src='/assets/images/fb-share.png'>
+                  <span class='fb-share'>{{t 'facebook-share'}}</span>
+                {{/fb-share}}
+              </div>
             {{/unless}}
           </div>
           <div class='col-xs-12 col-md-6'>

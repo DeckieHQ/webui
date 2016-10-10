@@ -19,7 +19,7 @@ export default Ember.Service.extend({
       let params = {
         sort: 'begin_at',
         filters: {
-          opened: true
+          opened: true,
         }
       }
 

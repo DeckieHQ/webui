@@ -6,6 +6,7 @@
           {{#link-to 'account.dashboard' tagName='li'}}<a {{bind-attr href='view.href'}}>{{t 'account.navigation.dashboard'}}</a>{{/link-to}}
           {{#link-to 'account.hosted-events' tagName='li'}}<a {{bind-attr href='view.href'}}>{{t 'account.navigation.hosted-events'}}</a>{{/link-to}}
           {{#link-to 'account.attended-events' tagName='li'}}<a {{bind-attr href='view.href'}}>{{t 'account.navigation.attended-events'}}</a>{{/link-to}}
+          {{#link-to 'account.recurrent-events' tagName='li'}}<a {{bind-attr href='view.href'}}>{{t 'account.navigation.recurrent-events'}}</a>{{/link-to}}
           {{#link-to 'account.profile' tagName='li'}}<a {{bind-attr href='view.href'}}>{{t 'account.navigation.profile'}}</a>{{/link-to}}
           {{#link-to 'account.personnal-information' tagName='li'}}<a {{bind-attr href='view.href'}}>{{t 'account.navigation.personal'}}</a>{{/link-to}}
           {{#link-to 'account.achievements' tagName='li'}}<a {{bind-attr href='view.href'}}>{{t 'account.navigation.achievements'}}</a>{{/link-to}}
@@ -23,5 +24,5 @@
 </div>
 
 <div class='hidden-xs col-md-2'>
-  {{infos-bar}}
+  {{infos-bar hide_user_events=true}}
 </div>

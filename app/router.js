@@ -20,6 +20,7 @@ Router.map(function() {
     this.route('verifications');
     this.route('hosted-events');
     this.route('attended-events');
+    this.route('recurrent-events');
     this.route('notifications');
     this.route('achievements');
   });

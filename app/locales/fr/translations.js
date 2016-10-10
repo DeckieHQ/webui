@@ -14,7 +14,7 @@ export default {
     "event": "Voir ma partie",
     "notifications": "Notifications",
     "hosted-events": "Parties hébergées",
-    "attended-events": "Parties auxquelles je participe"
+    "attended-events": "Parties auxquelles je participe",
   },
   "footer": {
     "follow-us": "Suivez nous sur :",
@@ -97,7 +97,8 @@ export default {
       "notifications": "Notifications",
       "attended-events": "Parties auxquelles je participe",
       "nearby-events": "Plus de parties",
-      "achievements": "Faits d'armes"
+      "achievements": "Faits d'armes",
+      "recurrent-events": "Parties régulières",
     },
     "phone-number": {
       "verified": "Votre numéro de téléphone est bien vérifié",
@@ -112,6 +113,9 @@ export default {
     "hosted-events": {
       "empty-opened": "Vous n'avez aucune partie organisée en cours",
       "empty-closed": "Vous n'avez aucune partie organisée terminée"
+    },
+    "recurrent-events": {
+      "empty": "Vous n'avez aucune partie regulière organisée",
     },
     "attended-events": {
       "empty-opened": "Vous n'êtes inscrits à aucune partie",

@@ -1,15 +1,26 @@
-<div class="attendees">
+<div class='attendees'>
   <span class='capacity'>
     {{#if event.unlimited_capacity}}
-      <span class='min-max'>{{t 'unlimited-capacity'}}</span>
-    {{else}}
-      {{#if (not event.flexible)}}
-        {{attendeesCount}} /
-      {{/if}}
-      <span class='min-max'>
-        {{minCapacity}} {{t 'to'}} {{capacity}}
+      <div class='attendees-count'>
+        {{attendeesCount}}
         <span class='icon-player'></span>
-      </span>
+      </div>
+      <div class='min-max'>{{t 'unlimited-capacity'}}</div>
+    {{else}}
+      {{#if event.flexible}}
+        <div class='attendees-count'>
+          {{minCapacity}} {{t 'to'}} {{capacity}}
+          <span class='icon-player'></span>
+        </div>
+      {{else}}
+        <div class='attendees-count'>
+          {{attendeesCount}}
+          <span class='icon-player'></span>
+        </div>
+        <div class='min-max'>
+          {{minCapacity}} {{t 'to'}} {{capacity}}
+        </div>
+      {{/if}}
     {{/if}}
   </span>
 </div>

@@ -31,7 +31,39 @@
   }
 }
 
-#user-form {
+.attendees {
+  font-size: 3em;
+  text-align: center;
+
+  .capacity {
+    padding: .5em;
+    border-radius: 50%;
+    color: $green;
+    display: inline-block;
+    margin: auto;
+    background-color: rgba(255,255,255,.5);
+    box-shadow: 0 0 30px -5px rgba(0,0,0,.25);
+
+    .icon-player {
+      @extend .glyphicon, .glyphicon-user;
+      font-size: .75em;
+    }
+
+    .attendees-count {
+      font-size: .75em;
+      vertical-align: text-bottom;
+    }
+
+    .min-max {
+      font-size: .5em;
+      vertical-align: text-bottom;
+    }
+  }
+}
+
+
+#user-form,
+#event-form {
   .tabs {
     padding: 0 1em 0 1em;
     text-align: center;
@@ -43,7 +75,7 @@
       padding: 0.5em;
       cursor: pointer;
 
-      .organization-details {
+      .details {
         font-size: 0.825em;
         font-weight: normal;
       }
@@ -127,6 +159,26 @@
     margin-left: auto;
   }
 }
+
+.add-recurrent-date {
+  margin-top: 1em;
+  display: flex;
+  align-items: center;
+
+  .recurrent-date {
+    width: 80%;
+  }
+
+  .recurrent-date.form-group {
+    margin-bottom: 0px;
+  }
+
+  .goto {
+    @extend .btn-orange, .btn-sm;
+    margin-left: auto;
+  }
+}
+
 
 .set-private {
   display: flex;
@@ -408,12 +460,36 @@
   }
 }
 
+.recurrent-dates {
+  display: flex;
+}
+
+.remove-recurrent-date {
+  margin-left: auto;
+  cursor: pointer;
+  color: #337ab7;
+  font-size: 0.75em;
+  vertical-align: text-top;
+}
+
+.remove-recurrent-date:hover {
+  text-decoration: underline;
+}
+
 .no-account {
   text-align: center;
 }
 
 .center-text {
   text-align: center;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.button-full-width > button {
+  width: 100%;
 }
 
 .align-right {
@@ -428,11 +504,15 @@
   margin-bottom: 0px;
 }
 
+.no-bold {
+  font-weight: normal;
+}
+
 .margin-bottom {
-  margin-bottom: 20px;
+  margin-bottom: 1em;
 }
 .margin-top {
-  margin-top: 20px;
+  margin-top: 1em;
 }
 
 .event-title {

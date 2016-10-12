@@ -1,178 +1,277 @@
-<form autocomplete="false">
-  <div class='row'>
-    <div class='col-md-12'>
-      {{validated-input label="label.title" placeholder="placeholder.title" value=model.title serverErrors=model.errors.title errors=errors.model.title}}
-    </div>
-  </div>
-
-  <div class='row'>
-    <div class='col-md-4'>
-      {{validated-select label="label.category" options=categories value=model.category serverErrors=model.errors.category errors=errors.model.category}}
-    </div>
-    <div class='col-md-4'>
-      {{validated-select label="label.ambiance" options=ambiances value=model.ambiance serverErrors=model.errors.ambiance errors=errors.model.ambiance}}
-    </div>
-    <div class='col-md-4'>
-      {{validated-select label="label.level" options=levels value=model.level serverErrors=model.errors.level errors=errors.model.level}}
-    </div>
-  </div>
-
-  <hr>
-
-  <div class='row'>
-    <div class='col-md-6'>
-      {{radio-button value=false checked=model.unlimited_capacity}} {{t 'label.limited-capacity'}}
-    </div>
-    <div class='col-md-6'>
-      {{radio-button value=true checked=model.unlimited_capacity}} {{t 'label.unlimited-capacity'}}
-    </div>
-  </div>
-
-  <hr>
-
-  {{#unless model.unlimited_capacity}}
-    <div class='row capacity'>
-      <div class='col-md-4'>
-        <div>{{validated-input label='label.min-capacity' placeholder="placeholder.min-capacity" value=model.min_capacity serverErrors=model.errors.min_capacity errors=errors.model.min_capacity}}</div>
+<div id="event-form">
+  {{#unless alreadyCreated}}
+    <div class='row tabs'>
+      <div class={{unless isRecurrent 'col-xs-12 col-md-6 tab opened' 'col-xs-12 col-md-6 tab'}}>
+        <div {{action 'toggle_recurrent'}}>{{t 'event.single-event'}}</div>
       </div>
-      <div class='col-md-4'>
-        <div>{{validated-input label='label.capacity' placeholder="placeholder.capacity" value=model.capacity serverErrors=model.errors.capacity errors=errors.model.capacity}}</div>
-      </div>
-      <div class='col-md-4 auto-accept'>
-        {{t 'event.auto-accept'}} {{input type="checkbox" checked=model.auto_accept}}
+      <div class={{if isRecurrent 'col-xs-12 col-md-6 tab opened' 'col-xs-12 col-md-6 tab'}}>
+        <div {{action 'toggle_recurrent'}}>
+          {{t 'event.recurrent-event'}}
+          <div class='details'>{{t 'event.recurrent-details'}}</div>
+        </div>
       </div>
     </div>
 
     <hr>
+  {{else if model.recurrent}}
+    <div class='warning margin-bottom'>
+      <span class='glyphicon glyphicon-warning-sign'></span>
+      {{t 'event.recurrent-edit'}}
+    </div>
+  {{else if model.parent}}
+    <div class='warning margin-bottom'>
+      <span class='glyphicon glyphicon-warning-sign'></span>
+      {{t 'event.recurrent-child'}}
+      {{#link-to 'event' model.parent}}{{t 'event.template-parent'}}{{/link-to}}
+    </div>
   {{/unless}}
 
-  {{#if showDate}}
+  <form autocomplete="false">
     <div class='row'>
       <div class='col-md-12'>
-        {{#unless alreadyCreated}}{{radio-button value='normal' checked=model.event_type}}{{/unless}}
-        <label>{{t 'label.date'}}</label>
+        {{validated-input label="label.title" placeholder="placeholder.title" value=model.title serverErrors=model.errors.title errors=errors.model.title}}
       </div>
     </div>
+
+    <div class='row'>
+      <div class='col-md-4'>
+        {{validated-select label="label.category" options=categories value=model.category serverErrors=model.errors.category errors=errors.model.category}}
+      </div>
+      <div class='col-md-4'>
+        {{validated-select label="label.ambiance" options=ambiances value=model.ambiance serverErrors=model.errors.ambiance errors=errors.model.ambiance}}
+      </div>
+      <div class='col-md-4'>
+        {{validated-select label="label.level" options=levels value=model.level serverErrors=model.errors.level errors=errors.model.level}}
+      </div>
+    </div>
+
+    <hr>
 
     <div class='row'>
       <div class='col-md-6'>
-        {{validated-date placeholder="placeholder.date" value=model.begin_at errors=errors.model.begin_at disabled=(eq model.event_type 'flexible')}}
+        {{radio-button id='limited-capacity' value=false checked=model.unlimited_capacity}}
+        <label for='limited-capacity'>{{t 'label.limited-capacity'}}</label>
       </div>
-      <div class='col-md-3'>
-        {{validated-select options=hours value=begin_at_hour errors=errors.begin_at_hour disabled=(eq model.event_type 'flexible')}}
-      </div>
-      <div class='col-md-3'>
-        {{validated-select options=minutes value=begin_at_minute errors=errors.begin_at_minute disabled=(eq model.event_type 'flexible')}}
-      </div>
-    </div>
-
-    <div class='row'>
-      <div class="col-md-12 {{if (eq model.event_type 'flexible') 'disabled'}}">
-        {{t 'event.add-end-date'}} {{input type="checkbox" checked=addEndDate disabled=(eq model.event_type 'flexible')}}
+      <div class='col-md-6'>
+        {{radio-button id='unlimited-capacity' value=true checked=model.unlimited_capacity}}
+        <label for='unlimited-capacity'>{{t 'label.unlimited-capacity'}}</label>
       </div>
     </div>
 
-    {{#if addEndDate}}
-      <div class='row'>
+    {{#unless model.unlimited_capacity}}
+      <div class='row capacity margin-top'>
+        <div class='col-md-4'>
+          <div>{{validated-input label='label.min-capacity' placeholder="placeholder.min-capacity" value=model.min_capacity serverErrors=model.errors.min_capacity errors=errors.model.min_capacity}}</div>
+        </div>
+        <div class='col-md-4'>
+          <div>{{validated-input label='label.capacity' placeholder="placeholder.capacity" value=model.capacity serverErrors=model.errors.capacity errors=errors.model.capacity}}</div>
+        </div>
+        <div class='col-md-4 auto-accept'>
+          {{t 'event.auto-accept'}} {{input type="checkbox" checked=model.auto_accept}}
+        </div>
+      </div>
+    {{/unless}}
+
+    <hr>
+
+    {{#unless isRecurrent}}
+      {{#if showDate}}
+        {{#unless (and alreadyCreated (not-eq model.type 'normal'))}}
+          <div class='row'>
+            <div class='col-md-12'>
+              {{#unless alreadyCreated}}{{radio-button id='normal' value='normal' checked=model.type}}{{/unless}}
+              <label for='normal'>{{t 'label.date'}}</label>
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='col-md-6'>
+              {{validated-date placeholder="placeholder.date" value=model.begin_at errors=errors.model.begin_at disabled=(not-eq model.type 'normal')}}
+            </div>
+            <div class='col-md-3'>
+              {{validated-select options=hours value=begin_at_hour errors=errors.begin_at_hour disabled=(not-eq model.type 'normal')}}
+            </div>
+            <div class='col-md-3'>
+              {{validated-select options=minutes value=begin_at_minute errors=errors.begin_at_minute disabled=(not-eq model.type 'normal')}}
+            </div>
+          </div>
+        {{/unless}}
+
+        <!-- <div class='row'>
+          <div class="col-md-12 {{if (eq model.type 'flexible') 'disabled'}}">
+            {{t 'event.add-end-date'}} {{input type="checkbox" checked=addEndDate disabled=(eq model.type 'flexible')}}
+          </div>
+        </div>
+
+        {{#if addEndDate}}
+          <div class='row'>
+            <div class='col-md-12'>
+              <label class="{{if (eq model.type 'flexible') 'disabled'}}">{{t 'label.end-date'}}</label>
+              {{#if showCustomError}}
+                <span class='error'>{{errors.end_at}}</span>
+              {{/if}}
+            </div>
+          </div>
+
+          <div class='row'>
+            <div class='col-md-6'>
+              {{validated-date placeholder="placeholder.date" value=model.end_at errors=errors.model.end_at disabled=(eq model.type 'flexible')}}
+            </div>
+            <div class='col-md-3'>
+              {{validated-select options=hours value=end_at_hour errors=errors.end_at_hour disabled=(eq model.type 'flexible')}}
+            </div>
+            <div class='col-md-3'>
+              {{validated-select options=minutes value=end_at_minute errors=errors.end_at_minute disabled=(eq model.type 'flexible')}}
+            </div>
+          </div>
+        {{/if}} -->
+
+        <hr>
+      {{/if}}
+
+      {{#if showDateFlexible}}
+        <div class='row'>
+          <div class='col-md-12'>
+            {{#unless alreadyCreated}}{{radio-button id='flexible' value='flexible' checked=model.type}}{{/unless}}
+            <label for='flexible'>{{t 'label.date-flexible'}}</label>
+          </div>
+        </div>
+
+        {{#if alreadyCreated}}
+          <div class='row'>
+            <div class='col-md-12'>
+              <div class='see-time-slots'>
+                <div>{{t 'is-flexible'}}</div>
+                <div class='goto' {{action 'see_time_slots'}}>{{t 'see-time-slots'}}</div>
+              </div>
+            </div>
+          </div>
+        {{else if (eq model.type 'flexible')}}
+          <div>{{t 'event-date-flexible'}}</div>
+          <div>
+            {{#if showCustomError}}
+              <span class='error'>{{errors.model.new_time_slots}}</span>
+              <span class='error'>{{t model.errors.new_time_slots.firstObject.message}}</span>
+            {{/if}}
+          </div>
+          {{#each time_slots as |time_slot|}}
+            <div class='row'>
+              <div class='col-md-6'>
+                {{validated-date placeholder=time_slot.placeholder value=time_slot.date}}
+              </div>
+              <div class='col-md-3'>
+                {{validated-select options=hours value=time_slot.hour}}
+              </div>
+              <div class='col-md-3'>
+                {{validated-select options=minutes value=time_slot.minute}}
+              </div>
+            </div>
+          {{/each}}
+        {{/if}}
+
+        <hr>
+      {{/if}}
+    {{else}}
+      <div class='row margin-top'>
         <div class='col-md-12'>
-          <label class="{{if (eq model.event_type 'flexible') 'disabled'}}">{{t 'label.end-date'}}</label>
+          <label>{{t 'event.pick-day'}}</label>
           {{#if showCustomError}}
-            <span class='error'>{{errors.end_at}}</span>
+            <span class='error'>{{errors.day}}</span>
           {{/if}}
         </div>
+        <div class='col-md-7'>
+          <div>
+            {{#each daysOptions as |dayOption|}}
+              <span>
+                <label class='no-bold'>
+                  {{radio-button value=dayOption.value checked=day}}
+                  {{t dayOption.label}}
+                </label>
+              </span>
+            {{/each}}
+          </div>
+        </div>
+        <div class='col-md-5'>
+          <div class='col-md-6'>
+            {{validated-select options=hours value=recurrentHour errors=errors.recurrentHour}}
+          </div>
+          <div class='col-md-6'>
+            {{validated-select options=minutes value=recurrentMinute errors=errors.recurrentMinute}}
+          </div>
+        </div>
+        <div class='col-md-6'>
+          <label>{{t 'label.recurrentity'}}</label>
+          {{validated-select options=recurrentityOptions value=recurrentity errors=errors.recurrentity}}
+        </div>
+        <div class='col-md-6'>
+          <label>{{t 'label.until'}}</label>
+          {{validated-select options=untilOptions value=until errors=errors.until}}
+        </div>
       </div>
 
       <div class='row'>
-        <div class='col-md-6'>
-          {{validated-date placeholder="placeholder.date" value=model.end_at errors=errors.model.end_at disabled=(eq model.event_type 'flexible')}}
-        </div>
-        <div class='col-md-3'>
-          {{validated-select options=hours value=end_at_hour errors=errors.end_at_hour disabled=(eq model.event_type 'flexible')}}
-        </div>
-        <div class='col-md-3'>
-          {{validated-select options=minutes value=end_at_minute errors=errors.end_at_minute disabled=(eq model.event_type 'flexible')}}
-        </div>
+        {{#each recurrentDates as |recurrentDate|}}
+          <div class="col-md-6 recurrent-dates">
+            {{moment-format recurrentDate 'dddd DD MMMM YYYY'}}
+            <span class='remove-recurrent-date' {{action 'remove_recurrent_date' recurrentDate}}>{{t 'delete'}}</span>
+          </div>
+        {{/each}}
       </div>
-    {{/if}}
 
-    <hr>
-  {{/if}}
+      {{#if recurrentDates}}
+        <div class='row'>
+          <div class='col-md-12 toto'>
+            <div class='add-recurrent-date'>
+              {{validated-date placeholder='placeholder.add-recurrent-date' value=customRecurrentDate class='recurrent-date'}}
+              <div class='goto' {{action 'add_recurrent_date'}}>{{t 'add'}}</div>
+            </div>
+            {{#if showCustomDateError}}
+              <span class='error'>{{t 'error.custom-recurrent-date-missing'}}</span>
+            {{/if}}
+          </div>
+        </div>
+      {{/if}}
 
-  {{#if showDateFlexible}}
+      <hr>
+    {{/unless}}
+
     <div class='row'>
       <div class='col-md-12'>
-        {{#unless alreadyCreated}}{{radio-button value='flexible' checked=model.event_type}}{{/unless}}
-        <label>{{t 'label.date-flexible'}}</label>
+        {{validated-textarea rows="2" maxlength=140 label="label.short-description" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
       </div>
     </div>
 
-    {{#if alreadyCreated}}
-      <div class='see-time-slots'>
-        <div>{{t 'is-flexible'}}</div>
-        <div class='goto' {{action 'see_time_slots'}}>{{t 'see-time-slots'}}</div>
+    <div class='row'>
+      <div class='col-md-12'>
+        {{validated-textarea rows="7" label="label.description" value=model.description serverErrors=model.errors.description errors=errors.model.description}}
       </div>
-    {{else if (eq model.event_type 'flexible')}}
-      <div>{{t 'event-date-flexible'}}</div>
-      <div>
-        {{#if showCustomError}}
-          <span class='error'>{{errors.model.new_time_slots}}</span>
-          <span class='error'>{{t model.errors.new_time_slots.firstObject.message}}</span>
-        {{/if}}
-      </div>
-      {{#each time_slots as |time_slot|}}
-        <div class='row'>
-          <div class='col-md-6'>
-            {{validated-date placeholder=time_slot.placeholder value=time_slot.date}}
-          </div>
-          <div class='col-md-3'>
-            {{validated-select options=hours value=time_slot.hour}}
-          </div>
-          <div class='col-md-3'>
-            {{validated-select options=minutes value=time_slot.minute}}
-          </div>
-        </div>
-      {{/each}}
-    {{/if}}
+    </div>
 
     <hr>
-  {{/if}}
 
-  <div class='row'>
-    <div class='col-md-12'>
-      {{validated-textarea rows="2" maxlength=140 label="label.short-description" value=model.short_description serverErrors=model.errors.short_description errors=errors.model.short_description}}
+    <div class='row'>
+      <div class='col-md-12'>
+        {{validated-input label="label.street" placeholder="placeholder.street" value=model.street serverErrors=model.errors.street errors=errors.model.street name='street'}}
+      </div>
     </div>
-  </div>
 
-  <div class='row'>
-    <div class='col-md-12'>
-      {{validated-textarea rows="7" label="label.description" value=model.description serverErrors=model.errors.description errors=errors.model.description}}
+    <div class='row'>
+      <div class='col-md-4'>
+        {{validated-input label="label.postcode" placeholder="placeholder.postcode" value=model.postcode serverErrors=model.errors.postcode errors=errors.model.postcode name='postcode'}}
+      </div>
+      <div class='col-md-4'>
+        {{validated-input label="label.city" placeholder="placeholder.city" value=model.city serverErrors=model.errors.city errors=errors.model.city name='city'}}
+      </div>
+      <div class='col-md-4'>
+        {{validated-input label="label.country" placeholder="placeholder.country" value=model.country serverErrors=model.errors.country errors=errors.model.country name='country'}}
+      </div>
     </div>
-  </div>
 
-  <hr>
-
-  <div class='row'>
-    <div class='col-md-12'>
-      {{validated-input label="label.street" placeholder="placeholder.street" value=model.street serverErrors=model.errors.street errors=errors.model.street name='street'}}
+    <div class='row'>
+      <div class='col-md-12 set-private'>
+        <div>{{t 'make-event-private'}} {{input type="checkbox" checked=model.private}}</div>
+        <div class='goto'>{{dynamic-submit actionOnSubmit="save_event"}}</div>
+      </div>
     </div>
-  </div>
-
-  <div class='row'>
-    <div class='col-md-4'>
-      {{validated-input label="label.postcode" placeholder="placeholder.postcode" value=model.postcode serverErrors=model.errors.postcode errors=errors.model.postcode name='postcode'}}
-    </div>
-    <div class='col-md-4'>
-      {{validated-input label="label.city" placeholder="placeholder.city" value=model.city serverErrors=model.errors.city errors=errors.model.city name='city'}}
-    </div>
-    <div class='col-md-4'>
-      {{validated-input label="label.country" placeholder="placeholder.country" value=model.country serverErrors=model.errors.country errors=errors.model.country name='country'}}
-    </div>
-  </div>
-
-  <div class='row'>
-    <div class='col-md-12 set-private'>
-      <div>{{t 'make-event-private'}} {{input type="checkbox" checked=model.private}}</div>
-      <div class='goto'>{{dynamic-submit actionOnSubmit="save_event"}}</div>
-    </div>
-  </div>
-</form>
+  </form>
+</div>

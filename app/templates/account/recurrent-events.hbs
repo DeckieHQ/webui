@@ -1,0 +1,50 @@
+<div id="recurrent-events">
+  {{#each model as |event|}}
+    <div class="hit">
+      {{#link-to 'event' event}}
+        <div class='row head'>
+          <div class='col-xs-12 col-md-6'>
+            <h3 class='confirmed'>{{event.title}}</h3>
+          </div>
+          <div class='col-xs-12 col-md-6'>
+            <div class="details">
+              <div class="place">
+                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+                {{capitalize event.city}} {{short-postcode postcode=event.postcode}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class='row'>
+          <div class='col-xs-12 col-md-8'>
+            <div class='description'>
+             {{event.short_description}}
+            </div>
+            {{display-categories event=event}}
+            <div class='host'>
+              <span class='avatar-small'>
+                {{avatar-display profile=event.host}}
+              </span>
+
+              <span>{{name-display profile=event.host}}</span>
+            </div>
+          </div>
+          <div class='col-xs-12 col-md-4'>
+            {{plus-one event=event}}
+          </div>
+        </div>
+      {{/link-to}}
+    </div>
+  {{else}}
+    <div class="well">
+      <div class='no-event'>
+        {{t 'account.recurrent-events.empty'}}
+      </div>
+      <hr>
+      <div class='create'>
+        {{#link-to 'events.new' class='goto'}}{{t 'navigation.events'}}{{/link-to}}
+      </div>
+    </div>
+  {{/each}}
+</div>

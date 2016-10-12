@@ -14,7 +14,7 @@ export default {
     "event": "Voir ma partie",
     "notifications": "Notifications",
     "hosted-events": "Parties hébergées",
-    "attended-events": "Parties auxquelles je participe"
+    "attended-events": "Parties auxquelles je participe",
   },
   "footer": {
     "follow-us": "Suivez nous sur :",
@@ -97,7 +97,8 @@ export default {
       "notifications": "Notifications",
       "attended-events": "Parties auxquelles je participe",
       "nearby-events": "Plus de parties",
-      "achievements": "Faits d'armes"
+      "achievements": "Faits d'armes",
+      "recurrent-events": "Parties régulières",
     },
     "phone-number": {
       "verified": "Votre numéro de téléphone est bien vérifié",
@@ -112,6 +113,9 @@ export default {
     "hosted-events": {
       "empty-opened": "Vous n'avez aucune partie organisée en cours",
       "empty-closed": "Vous n'avez aucune partie organisée terminée"
+    },
+    "recurrent-events": {
+      "empty": "Vous n'avez aucune partie regulière organisée",
     },
     "attended-events": {
       "empty-opened": "Vous n'êtes inscrits à aucune partie",
@@ -215,11 +219,14 @@ export default {
     "count-ratio": "Inscrits : {{attendees-count}} / {{capacity}}",
     "min-attendee": "Cette partie aura lieu seulement s'il y a au moins {{min}} joueurs.",
     "closed": "Cette partie est terminée",
-    "edit": "Editer la partie",
+    "edit": "Editer",
     "submission": {
       "pending": "Votre inscription est en attente de validation par l'hôte",
       "confirmed": "Vous êtes inscrits à cette partie",
     },
+    "pick-day": "Jour de la semaine",
+    "recurrent-edit": "Les modifications apportées au template de cette partie se répercuteront sur toutes les parties créées à partir de celui-ci.",
+    "is-recurrent": "Ceci est un template de partie régulière et non une partie en elle-même (vous ne pouvez rejoindre ou commenter un template de partie).",
     "date-survey": "Sondage de date",
     "choose-time-slot": "Choisir une date finale",
     "confirm-time-slot": "Une fois le créneau validé le sondage ne sera plus accessible, continuer?",
@@ -228,7 +235,7 @@ export default {
     "see-my-time_slots": "Voir mes créneaux",
     "not-found": "La partie n'existe pas ou a été annulée.",
     "quit": "Quitter la partie",
-    "delete": "Annuler la partie",
+    "delete": "Annuler",
     "full": "Cette partie est déjà complète",
     "join": "Rejoindre",
     "pending-submissions": "Inscriptions en attente",
@@ -240,11 +247,18 @@ export default {
     "auto-accept": "Validation automatique",
     "confirm-quit": "Etes vous sûr de vouloir quitter cette partie ?",
     "confirm-delete": "Etes vous sûr de vouloir annuler cette partie ?",
+    "confirm-delete-recurrent": "Attention, vous vous apprêtez à supprimer un template de partie, toutes les parties créées à partir de celui-ci seront supprimées. Continuer?",
     "created": "Votre partie a bien été créée",
     "tips": {
       "invitation": "Deckie est en version beta et le nombre d'utilisateurs est encore faible, augmentez les chances de remplir votre partie et aidez nous à faire connaitre la plateforme en invitant vos amis par email.",
       "profile": "Une partie hébergée par un hôte au profil rempli a plus de chances d'avoir des participants, améliorez votre profil dès maintenant"
-    }
+    },
+    "single-event": "Partie unique",
+    "recurrent-event": "Partie régulière",
+    "recurrent-details": "(toutes les semaines, tous les mois...)",
+    "recurrent-child": `Vous vous apprêtez à modifier une partie issue d'une partie régulière, les changements apportés ne s'appliqueront
+                        qu'à celle-ci. Pour modifier toutes les occurences de la partie allez sur le`,
+    "template-parent": "template de la partie.",
   },
   "events": {
     "opened": "Parties en cours",
@@ -346,7 +360,9 @@ export default {
     "hide-full": "Masquer les évennements complets",
     "contact-email": "Email de contact",
     "limited-capacity": "Nombre de place limité",
-    "unlimited-capacity": "Entrée libre"
+    "unlimited-capacity": "Entrée libre",
+    "recurrentity": "Toutes les",
+    "until": "Pendant",
   },
   "placeholder": {
     "title": "Entrer un titre",
@@ -372,7 +388,8 @@ export default {
     "email": "Entrer email",
     "search": "Nom de jeu, Ville, Code postal...",
     "invitation": "Entrer un ou plusieurs emails de gens à inviter",
-    "contact-email": "Entrer un email de contact"
+    "contact-email": "Entrer un email de contact",
+    "add-recurrent-date": "Ajouter une date manuellement",
   },
   "culture": {
     "fr": "Français",
@@ -436,6 +453,7 @@ export default {
                              Seul votre âge est suceptible un jour d'être affiché mais jamais votre date de naissance complète.`
   },
   "error": {
+    "custom-recurrent-date-missing": "vous devez sélectionner une date à ajouter",
     "empty-time-slots": "vous devez sélectionner au moins 2 créneaux",
     "password-confirm": "n'est pas égal au nouveau mot de passe",
     "end-at": {
@@ -446,6 +464,14 @@ export default {
     "date": "date invalide",
     "min-max": "doit être inférieur ou égal au maximum"
   },
+  "delete": "supprimer",
+  "monday": "lun",
+  "tuesday": "mar",
+  "wednesday": "mer",
+  "thursday": "jeu",
+  "friday": "ven",
+  "saturday": "sam",
+  "sunday": "dim",
   "unlimited-capacity": "Entrée libre",
   "feedback-email": "Si vous êtes d'accord pour qu'on revienne vers vous en fonction de votre avis (clarifications, échanges d'idées...) merci de nous laisser votre contact.",
   "date-flexible-from": "Au choix à partir du",
@@ -541,5 +567,21 @@ export default {
   "minute": {
     "00": "00", "05": "05", "10": "10", "15": "15", "20": "20", "25": "25",
     "30": "30", "35": "35", "40": "40", "45": "45", "50": "50", "55": "55"
+  },
+  "recurrentity-options": {
+    "weekly": "semaines",
+    "fortnightly": "2 semaines",
+    "firstWeek": "1ère semaine du mois",
+    "secondWeek": "2ème semaine du mois",
+    "thirdWeek": "3ème semaine du mois",
+    "fourthWeek": "4ème semaine du mois",
+  },
+  "until-options": {
+    "1": "1 mois",
+    "2": "2 mois",
+    "3": "3 mois",
+    "6": "6 mois",
+    "9": "9 mois",
+    "12": "1 an",
   }
 };

@@ -19,7 +19,8 @@ export default Ember.Service.extend({
       let params = {
         sort: 'begin_at',
         filters: {
-          opened: true
+          not_type: 'recurrent',
+          opened: true,
         }
       }
 
@@ -86,6 +87,7 @@ export default Ember.Service.extend({
       let params = {
         sort: 'begin_at',
         filters: {
+          not_type: 'recurrent',
           opened: true
         }
       }

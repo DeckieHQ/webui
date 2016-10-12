@@ -5,8 +5,7 @@ export default AuthenticatedRoute.extend({
   model: function() {
     let params = {
       filters: {
-        not_type: 'recurrent',
-        opened: true
+        type: 'recurrent'
       },
     };
 

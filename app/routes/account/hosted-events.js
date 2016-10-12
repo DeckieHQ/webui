@@ -3,6 +3,13 @@ import AuthenticatedRoute from '../authenticated-route';
 
 export default AuthenticatedRoute.extend({
   model: function() {
-    return this.modelFor('account').get('hosted_events');
-  }
+    let params = {
+      filters: {
+        not_type: 'recurrent',
+        opened: true
+      },
+    };
+
+    return this.modelFor('account').query('hosted_events', params);
+  },
 });

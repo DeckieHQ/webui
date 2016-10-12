@@ -11,6 +11,7 @@ export default Ember.Controller.extend({
       let params = {
         sort: sort,
         filters: {
+          not_type: 'recurrent',
           opened: !opened
         }
       }

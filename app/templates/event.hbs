@@ -62,7 +62,7 @@
         {{/if}}
       </div>
 
-      {{#unless model.recurrent}}
+      {{#if model.normal}}
         {{#if (and isHost (not model.auto_accept))}}
           <div class='well'>
             {{#if pendingSubmissions}}
@@ -83,7 +83,7 @@
             {{/each}}
           </div>
         {{/if}}
-      {{/unless}}
+      {{/if}}
 
       {{#if model.flexible}}
         <div class='well'>
@@ -225,8 +225,8 @@
             </div>
           </div>
         </div>
-        <div class='row'>
-          <div class='col-xs-12 col-md-8'>
+        <div class='row body'>
+          <div class='infos col-xs-12 col-md-8'>
             <div class='short-description'>
              {{model.short_description}}
             </div>

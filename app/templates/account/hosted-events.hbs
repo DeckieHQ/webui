@@ -38,23 +38,25 @@
           </div>
         </div>
 
-        <div class='row'>
-          <div class='col-xs-12 col-md-8'>
+        <div class='row body'>
+          <div class='infos col-xs-12 col-md-8'>
             <div class='description'>
              {{event.short_description}}
             </div>
-            {{display-categories event=event}}
-            {{#if event.opened}}
-              {{#if (not event.flexible) }}
-                <div class='pending-submission'>
-                  {{#if event.hasPendingSubmissions}}
-                    <span class='some'>{{t 'submissions.count' count=event.pendingSubmissionsCount}}</span>
-                  {{else if (not event.auto_accept)}}
-                    <span class='empty'>{{t 'submissions.empty'}}</span>
-                  {{/if}}
-                </div>
+            <div>
+              {{display-categories event=event}}
+              {{#if event.opened}}
+                {{#if (not event.flexible) }}
+                  <div class='pending-submission'>
+                    {{#if event.hasPendingSubmissions}}
+                      <span class='some'>{{t 'submissions.count' count=event.pendingSubmissionsCount}}</span>
+                    {{else if (not event.auto_accept)}}
+                      <span class='empty'>{{t 'submissions.empty'}}</span>
+                    {{/if}}
+                  </div>
+                {{/if}}
               {{/if}}
-            {{/if}}
+            </div>
           </div>
           <div class='col-xs-12 col-md-4'>
             {{plus-one event=event}}

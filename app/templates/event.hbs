@@ -232,9 +232,11 @@
             </div>
             {{display-categories event=model}}
           </div>
-          <div class='col-xs-12 col-md-4 no-padding'>
-            {{plus-one event=model}}
-          </div>
+          {{#unless model.recurrent}}
+            <div class='col-xs-12 col-md-4 no-padding'>
+              {{plus-one event=model}}
+            </div>
+          {{/unless}}
         </div>
 
         {{#if model.description}}

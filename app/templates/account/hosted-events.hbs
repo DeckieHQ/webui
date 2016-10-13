@@ -44,19 +44,12 @@
              {{event.short_description}}
             </div>
             {{display-categories event=event}}
-            <div class='host'>
-              <span class='avatar-small'>
-                {{avatar-display profile=event.host}}
-              </span>
-
-              <span>{{name-display profile=event.host}}</span>
-            </div>
             {{#if event.opened}}
               {{#if (not event.flexible) }}
                 <div class='pending-submission'>
                   {{#if event.hasPendingSubmissions}}
                     <span class='some'>{{t 'submissions.count' count=event.pendingSubmissionsCount}}</span>
-                  {{else}}
+                  {{else if (not event.auto_accept)}}
                     <span class='empty'>{{t 'submissions.empty'}}</span>
                   {{/if}}
                 </div>

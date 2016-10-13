@@ -17,6 +17,14 @@ export default Ember.Controller.extend(EmberValidations, {
 
   isPrivate: false,
 
+  init: function () {
+    this._super();
+
+    Ember.run.schedule('afterRender', this, () => {
+      window.prerenderReady = true;
+    });
+  },
+
   eventUrl: function() {
     return 'https://www.deckie.fr/event/' + this.get('model.id');
   }.property('model'),

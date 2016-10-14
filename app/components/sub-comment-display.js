@@ -13,7 +13,7 @@ export default Ember.Component.extend(EmberValidations, {
   },
 
   isOwner: function() {
-    return this.get('currentUser').get('profile.id') == this.get('comment.author.id');
+    return this.get('currentUser').get('profile.id') === this.get('comment.author.id');
   }.property('comment'),
 
   isAbleToUpdate: function() {

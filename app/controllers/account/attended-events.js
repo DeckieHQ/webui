@@ -5,7 +5,7 @@ export default Ember.Controller.extend({
   eventsType: 'opened',
 
   displayFlexibles: function() {
-    return this.get('eventsType') == 'flexible';
+    return this.get('eventsType') === 'flexible';
   }.property('eventsType'),
 
   emptyLabel: function() {

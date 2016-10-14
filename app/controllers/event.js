@@ -38,7 +38,7 @@ export default Ember.Controller.extend(EmberValidations, {
   }.property('model.min_capacity', 'model.attendees_count'),
 
   isHost: function() {
-    return this.get('currentUser').get('profile.id') == this.get('model.host.id');
+    return this.get('currentUser').get('profile.id') === this.get('model.host.id');
   }.property('currentUser.content', 'model.host'),
 
   isModerator: function() {
@@ -72,16 +72,16 @@ export default Ember.Controller.extend(EmberValidations, {
   }.property('user_submission'),
 
   pending: function() {
-    return this.get('status') == 'pending';
+    return this.get('status') === 'pending';
   }.property('status'),
 
   confirmed: function() {
-    return this.get('status') == 'confirmed';
+    return this.get('status') === 'confirmed';
   }.property('status'),
 
   pendingSubmissions: function() {
     if (this.get('submissions')) {
-      return this.get('submissions').filter((s) => s.get('status') == 'pending');
+      return this.get('submissions').filter((s) => s.get('status') === 'pending');
     } else {
       return null;
     }
@@ -103,7 +103,7 @@ export default Ember.Controller.extend(EmberValidations, {
         });
       };
 
-      if (this.get('status') == "") {
+      if (this.get('status') === "") {
         let submission = this.store.createRecord('submission', {
           event: this.get('model')
         });
@@ -114,7 +114,7 @@ export default Ember.Controller.extend(EmberValidations, {
             this.notifyPropertyChange('user_submission');
             this.get('currentUser').get('submissions').pushObject(submission);
             this.get('infos').setSubmissions();
-            if (submission.get('status') == 'confirmed') {
+            if (submission.get('status') === 'confirmed') {
               let count = this.get('model.attendees_count') + 1;
               this.set('model.attendees_count', count);
               this.get('model').get('attendees').reload();
@@ -163,7 +163,7 @@ export default Ember.Controller.extend(EmberValidations, {
           () => {
             this.set('user_submission', null);
             this.get('infos').setSubmissions();
-            if (status == 'confirmed') {
+            if (status === 'confirmed') {
               let count = this.get('model.attendees_count') - 1;
               this.set('model.attendees_count', count);
               this.get('model').get('attendees').reload();

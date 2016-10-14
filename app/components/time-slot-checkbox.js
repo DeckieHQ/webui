@@ -14,7 +14,7 @@ export default Ember.Component.extend({
 
     if (submissions) {
       submissions.forEach((time_slot_submission) => {
-        if (time_slot_submission.get('time_slot.id') == timeSlotId) {
+        if (time_slot_submission.get('time_slot.id') === timeSlotId) {
           isChecked = true;
         }
       })
@@ -35,7 +35,7 @@ export default Ember.Component.extend({
 
       if (time_slot.get('member')) {
         this.get('member.time_slot_submissions').forEach((time_slot_submission) => {
-          if (time_slot_submission.get('time_slot.id') == time_slot.id) {
+          if (time_slot_submission.get('time_slot.id') === time_slot.id) {
             let count = time_slot.get('members_count') - 1;
             time_slot.set('members_count', count);
             time_slot.set('member', false);

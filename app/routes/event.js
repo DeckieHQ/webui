@@ -73,7 +73,7 @@ export default Ember.Route.extend({
               }
             })
             .then(() => {
-              let isHost = this.get('currentUser').get('profile.id') == model.get('host.id');
+              let isHost = this.get('currentUser').get('profile.id') === model.get('host.id');
 
               if (isHost) {
                 return model.query('submissions', { include: 'profile' });
@@ -100,7 +100,7 @@ export default Ember.Route.extend({
             }
           })
           .then(() => {
-            let isHost = this.get('currentUser').get('profile.id') == model.get('host.id');
+            let isHost = this.get('currentUser').get('profile.id') === model.get('host.id');
 
             if (isHost) {
               return model.query('submissions', { include: 'profile' });

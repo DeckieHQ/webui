@@ -8,12 +8,12 @@ export default DS.JSONAPISerializer.extend({
     return underscore(attr);
   },
 
-  keyForRelationship: function(key, relationship, method) {
+  keyForRelationship: function(key) {
     //Default in Ember: return dasherize(key);
      return key;
    },
 
-  normalizeArrayResponse(store, primaryModelClass, payload, id, requestType) {
+  normalizeArrayResponse(store, primaryModelClass, payload) {
     const result = this._super(...arguments);
     result.meta = result.meta || {};
 

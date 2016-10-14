@@ -93,7 +93,7 @@ export default Ember.Component.extend(EmberValidations, {
         maximum: 256,
       },
     },
-    "model.short_description": {
+    "model.description": {
       length: {
         maximum: 8192,
       },
@@ -126,7 +126,7 @@ export default Ember.Component.extend(EmberValidations, {
     },
     day: {
       presence: {
-        'if': function(object, validator) {
+        'if': function(object) {
           return object.get('model.type') === 'recurrent';
         }
       }
@@ -211,7 +211,7 @@ export default Ember.Component.extend(EmberValidations, {
         }
       } else {
         let endDate = refDate.clone().add(until, 'M').add(1, 'M');
-        let diffMonths = endDate.diff(refDate, 'M')
+        let diffMonths = endDate.diff(refDate, 'M');
 
         for (let i = 1; i < diffMonths; i++) {
           let tmpDate = refDate.clone();
@@ -233,7 +233,7 @@ export default Ember.Component.extend(EmberValidations, {
             = recurrentity === 'firstWeek' ? 0
             : recurrentity === 'secondWeek' ? 1
             : recurrentity === 'thirdWeek' ? 2
-            : 3
+            : 3;
 
           tmpDate.add(nbWeeks, 'w');
 

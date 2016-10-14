@@ -1,11 +1,11 @@
 import ApplicationSerializer from '../serializers/application';
 
 export default ApplicationSerializer.extend({
-  modelNameFromPayloadKey(key) {
+  modelNameFromPayloadKey() {
     return 'password-forgottens';
   },
 
-  payloadKeyFromModelName(modelName) {
+  payloadKeyFromModelName() {
     return 'users';
   },
 });

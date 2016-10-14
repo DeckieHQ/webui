@@ -6,7 +6,7 @@ export default Ember.Service.extend({
   i18n: Ember.inject.service(),
   store: Ember.inject.service(),
 
-  userObserver: Ember.observer('currentUser.content', function(sender, key, value, rev) {
+  userObserver: Ember.observer('currentUser.content', function() {
     if (!this.get('currentUser').content) {
       this.set('hosted_events', null);
       this.set('submissions', null);
@@ -22,7 +22,7 @@ export default Ember.Service.extend({
           not_type: 'recurrent',
           opened: true,
         }
-      }
+      };
 
       return this.get('currentUser').content.query('hosted_events', params).then(
         (events) => {
@@ -42,7 +42,7 @@ export default Ember.Service.extend({
           }
         },
         include: 'event'
-      }
+      };
 
       return this.get('currentUser').content.query('submissions', params).then(
         (submissions) => {
@@ -90,7 +90,7 @@ export default Ember.Service.extend({
           not_type: 'recurrent',
           opened: true
         }
-      }
+      };
 
       return this.get('currentUser').content.query('hosted_events', params).then(
         (events) => {
@@ -110,7 +110,7 @@ export default Ember.Service.extend({
           }
         },
         include: 'event'
-      }
+      };
 
       return this.get('currentUser').content.query('submissions', params).then(
         (submissions) => {

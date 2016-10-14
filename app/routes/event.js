@@ -41,7 +41,7 @@ export default Ember.Route.extend({
       return model.query('time_slots_members', params).then((time_slots_members) => {
         this.controllerFor('event').set('time_slots_members', time_slots_members);
 
-        return time_slots_members.forEach((member) => member.get('time_slot_submissions'))
+        return time_slots_members.forEach((member) => member.get('time_slot_submissions'));
       })
       .then(() => {
         let params = {
@@ -60,7 +60,7 @@ export default Ember.Route.extend({
           this.controllerFor('event').set('isFlexibleMember', isMember);
 
           return this.controllerFor('event').set('time_slots', time_slots);
-        })
+        });
       })
       .then(() => {
         if (isAuthenticated) {
@@ -88,7 +88,7 @@ export default Ember.Route.extend({
             })
           ;
         }
-      })
+      });
     } else {
       if (isAuthenticated) {
         return model.get('user_submission')
@@ -119,7 +119,7 @@ export default Ember.Route.extend({
   },
 
   actions: {
-    willTransition: function(transition) {
+    willTransition: function() {
       this.get('controller').set('displayComments', false);
     },
 

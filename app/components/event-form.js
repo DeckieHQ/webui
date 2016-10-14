@@ -1,6 +1,5 @@
 import Ember from 'ember';
 import EmberValidations, { validator } from 'ember-validations';
-import _ from 'lodash/lodash';
 
 export default Ember.Component.extend(EmberValidations, {
   i18n: Ember.inject.service(),

@@ -10,4 +10,4 @@ export default AuthenticatedRoute.extend({
       return this.transitionTo('event', model);
     }
   }
-})
+});

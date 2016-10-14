@@ -1,3 +1,5 @@
+import Ember from 'ember';
+
 export function initialize({ registry }) {
   const service = Ember.ObjectProxy.create({ isServiceFactory: true });
 
@@ -6,7 +8,7 @@ export function initialize({ registry }) {
   registry.injection('route',      'currentUser', 'service:current-user');
   registry.injection('controller', 'currentUser', 'service:current-user');
   registry.injection('component',  'currentUser', 'service:current-user');
-};
+}
 
 export default {
   initialize,

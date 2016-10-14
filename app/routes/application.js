@@ -1,12 +1,11 @@
 import Ember from 'ember';
-import ApplicationRouteMixin from 'ember-simple-auth/mixins/application-route-mixin';
 
 export default Ember.Route.extend({
   session: Ember.inject.service(),
   moment: Ember.inject.service(),
   i18n: Ember.inject.service(),
 
-  beforeModel(transition) {
+  beforeModel() {
     this._switchLocale('fr');
 
     if (this.get('session').get('isAuthenticated')) {
@@ -69,9 +68,9 @@ export default Ember.Route.extend({
       .then(defer.resolve)
       .then(() => {
         if (params.transitionToRecord) {
-          self.transitionTo(params.transitionToRecord.constructor.modelName, params.transitionToRecord)
+          self.transitionTo(params.transitionToRecord.constructor.modelName, params.transitionToRecord);
         } else if (params.transitionToModel) {
-          self.transitionTo(model.constructor.modelName, model)
+          self.transitionTo(model.constructor.modelName, model);
         }
       })
       .catch(reason => {

@@ -347,7 +347,7 @@ export default {
     "city": "Ville",
     "country": "Pays",
     "short-description": "Description courte",
-    "description": "Description longue",
+    "long-description": "Description longue",
     "category": "Type de jeu",
     "ambiance": "Ambiance attendue",
     "level": "Niveau minimum requis",

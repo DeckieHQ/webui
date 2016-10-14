@@ -122,7 +122,7 @@ export default Ember.Route.extend({
           i = i++;
         }
       });
-    }
+    };
   },
   labelFor: function(refinementName) {
     let label = this.get('i18n').t(`label.${refinementName}`);

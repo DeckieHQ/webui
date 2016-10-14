@@ -166,18 +166,18 @@ export default Ember.Component.extend(EmberValidations, {
           ).then(user => {
             this.get('currentUser').set('content', user);
             this.get('targetObject').send('transition');
-          })
-        }
+          });
+        };
       } else if (this.get('alreadyCreated')) {
         afterSave = () => {
           this.get('session').authenticate('authenticator:devise', model.get('email'), password);
           this.get('targetObject').set('updated', true);
-        }
+        };
       } else {
         afterSave = () => {
           this.get('session').authenticate('authenticator:devise', model.get('email'), password);
           this.get('targetObject').transitionToRoute('user-created');
-        }
+        };
       }
 
       let params = {

@@ -5,9 +5,9 @@ export default AuthenticatedRoute.extend({
     return this.store.query('notification', { sort: '-action.created_at', include: 'action,action.actor' });
   },
 
-  afterModel(model) {
+  afterModel() {
     return this.get('currentUser').get('preferences').then(
       (preferences) => this.controllerFor('account.notifications').set('preferences', preferences)
-    )
+    );
   }
 });

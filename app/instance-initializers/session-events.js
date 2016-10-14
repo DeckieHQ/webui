@@ -9,7 +9,7 @@ export function initialize(instance) {
   session.on('invalidationSucceeded', function() {
     applicationRoute.send('sessionInvalidated');
   });
-};
+}
 
 export default {
   initialize,

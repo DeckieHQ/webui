@@ -1,4 +1,3 @@
-import DS from 'ember-data';
 import AuthenticatedRoute from './authenticated-route';
 
 export default AuthenticatedRoute.extend({
@@ -22,7 +21,7 @@ export default AuthenticatedRoute.extend({
           this.set('result', result);
           this.set('currentUser.email_verified', true);
         })
-        .catch((reason) => {
+        .catch(() => {
           result['verified'] = false;
           this.set('result', result);
         })
@@ -30,7 +29,7 @@ export default AuthenticatedRoute.extend({
     }
   },
 
-  model: function(params) {
+  model: function() {
     return this.get('result');
   },
 });

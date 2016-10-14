@@ -1,22 +1,26 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  headTags: [{
-    type: 'meta',
-    tagId: 'meta-og-description',
-    attrs: {
-      name: 'description',
-      content: this.get('model.short_description'),
-    }
+  setHeadTags: function(model) {
+    let headTags = [{
+      type: 'meta',
+      tagId: 'meta-og-description',
+      attrs: {
+        name: 'description',
+        content: model.get('short_description'),
+      }
+    },
+    {
+      type: 'meta',
+      tagId: 'meta-og-title',
+      attrs: {
+        name: 'title',
+        content: model.get('model.title'),
+      }
+    }];
+
+    this.set('headTags', headTags);
   },
-  {
-    type: 'meta',
-    tagId: 'meta-og-description',
-    attrs: {
-      name: 'title',
-      content: this.get('model.title'),
-    }
-  }],
 
   deactivate: function() {
     var controller = this.get('controller');
@@ -40,6 +44,7 @@ export default Ember.Route.extend({
 
   afterModel(model) {
     let isAuthenticated = this.get('session.isAuthenticated');
+    this.setHeadTags(model);
 
     if (model.get('flexible')) {
       let params = {

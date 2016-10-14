@@ -17,7 +17,7 @@ export default Ember.Component.extend({
         if (time_slot_submission.get('time_slot.id') === timeSlotId) {
           isChecked = true;
         }
-      })
+      });
     }
 
     return isChecked;
@@ -25,8 +25,7 @@ export default Ember.Component.extend({
 
   disabled: function () {
     return this.get('currentUser.content') ?
-      this.get('currentUser.profile.id') != this.get('member.id') :
-      true
+      this.get('currentUser.profile.id') !== this.get('member.id') : true;
   }.property('currentUser', 'member'),
 
   actions: {
@@ -42,7 +41,7 @@ export default Ember.Component.extend({
 
             return time_slot_submission.destroyRecord();
           }
-        })
+        });
       } else {
         let submission = this.get('store').createRecord('time-slot-submission', {
           time_slot: time_slot

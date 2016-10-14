@@ -42,7 +42,7 @@ export default Ember.Component.extend(EmberValidations, {
           this.toggleProperty('isUpdating');
         })
         .catch((reason) => {
-          context.set("showErrors", true);
+          this.set("showErrors", true);
           defer.reject(reason);
         })
       ;

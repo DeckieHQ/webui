@@ -40,12 +40,12 @@ export default Ember.Component.extend(EmberValidations, {
       let params = {
         afterSave: () => {
           this.set('message', null);
-          this.set('displayedSubCommentsCount', count+1)
+          this.set('displayedSubCommentsCount', count+1);
           this.set('comment.comments_count', total+1);
           this.set('subComments', subComments.pushObjects([subComment]));
         },
         model: subComment
-      }
+      };
 
       this.get('targetObject').get('targetObject').get('targetObject').send('save', this, defer, params);
     },
@@ -54,7 +54,7 @@ export default Ember.Component.extend(EmberValidations, {
       this.get('subComments').removeObject(comment);
       let count = this.get('displayedSubCommentsCount');
       let total = this.get('comment.comments_count');
-      this.set('displayedSubCommentsCount', count-1)
+      this.set('displayedSubCommentsCount', count-1);
       this.set('comment.comments_count', total-1);
       comment.destroyRecord();
     },
@@ -95,7 +95,7 @@ export default Ember.Component.extend(EmberValidations, {
           .then((subComments) => {
             this.set('nextPage', subComments.get('meta.pagination.next.number'));
             return this.set('subComments', subComments.sortBy('created_at').pushObjects(this.get('subComments')));
-          })
+          });
       }
     }
   }

@@ -26,7 +26,7 @@ export default Ember.Component.extend(EmberValidations, {
         let regex = new RegExp(/\S+@\S+\.\S+/);
         if (!regex.test(this.model.get('model.email'))) {
           return this.get('i18n').t('error.email');
-        };
+        }
       })
     },
     "model.first_name": {
@@ -90,8 +90,6 @@ export default Ember.Component.extend(EmberValidations, {
       }
     }
   },
-
-  months: moment.months(),
 
   months: [
     { value: '1', label: 'month.january' },

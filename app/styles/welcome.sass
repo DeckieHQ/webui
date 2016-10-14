@@ -45,17 +45,25 @@
         margin-top: 5em
         padding: 0 1em
 
+  @media (min-width: 769px)
+    #suggested-events
+      display: flex
+
   #suggested-events
     margin: 1em 0
 
     .suggested-event
-      .well
-        transition: all ease .25s
+      cursor: pointer
+      display: flex
+      flex-direction: column
+      margin: 1em
+      transition: all ease .25s
 
-      a
-        @include unstyled-link()
+      .top
+        flex-grow: 1
 
       .title
+        color: $green
         text-align: center
         display: block
         font-size: 1.75em
@@ -100,9 +108,8 @@
           border-radius: 4px
 
       &:hover
-        .well
-          border-color: $green
-          transform: scale(1.01)
+        border-color: $green
+        transform: scale(1.01)
 
         .my-btn
           color: white

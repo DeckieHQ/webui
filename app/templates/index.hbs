@@ -24,56 +24,56 @@
 
   <div id="suggested-events" class="row">
     {{#each model as |event|}}
-      <div class="suggested-event col-md-4">
-        {{#link-to 'event' event.objectID}}
-          <div class="well">
-            <span class="title">
-              <h3>{{event.title}}</h3>
-            </span>
+      <div class="suggested-event well col-md-4" {{action 'goto_event' event.objectID}}>
+        <div class='top'>
+          <div class="title">
+            <h3>{{event.title}}</h3>
+          </div>
 
-            {{event-details event=event}}
+          {{event-details event=event}}
 
-            <div class="clearfix"></div>
+          <div class="clearfix"></div>
 
-            {{players-count event=event}}
+          {{players-count event=event}}
 
-            <div class="hide categories">
-              <span class="category">{{event.category}}</span>
-              <span class="ambiance">{{event.ambiance}}</span>
-              <span class="level">{{event.level}}</span>
-            </div>
+          <div class="hide categories">
+            <span class="category">{{event.category}}</span>
+            <span class="ambiance">{{event.ambiance}}</span>
+            <span class="level">{{event.level}}</span>
+          </div>
 
-            <div class='event-description'>
-              {{event.short_description}}
-            </div>
+          <div class='event-description'>
+            {{event.short_description}}
+          </div>
+        </div>
 
-            <hr>
+        <div>
+          <hr>
 
-            <div class="host">
-              <div class="row">
-                <div class="avatar col-md-3">
-                  {{avatar-display profile=event.host}}
+          <div class="host">
+            <div class="row">
+              <div class="avatar col-md-3">
+                {{avatar-display profile=event.host}}
+              </div>
+
+              <div class="col-md-9">
+                <div class="name">
+                  {{name-display profile=event.host}}
                 </div>
 
-                <div class="col-md-9">
-                  <div class="name">
-                    {{name-display profile=event.host}}
-                  </div>
-
-                  <div class="profile-description">
-                    {{event.host.short_description}}
-                  </div>
+                <div class="profile-description">
+                  {{event.host.short_description}}
                 </div>
               </div>
             </div>
-
-            <hr>
-
-            <div class="goto">
-              <span class="my-btn">{{t 'welcome.access'}}</span>
-            </div>
           </div>
-        {{/link-to}}
+
+          <hr>
+
+          <div class="goto">
+            <span class="my-btn">{{t 'welcome.access'}}</span>
+          </div>
+        </div>
       </div>
     {{/each}}
   </div>

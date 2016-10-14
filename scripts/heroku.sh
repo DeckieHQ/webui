@@ -13,7 +13,7 @@ function init() {
     echo "Creating heroku app $app..."
 
     heroku apps:create $app --region eu --buildpack \
-      https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/emberjs.tgz
+      https://github.com/tonycoco/heroku-buildpack-ember-cli.git
 
     git remote add $app "https://git.heroku.com/$app.git"
 }

@@ -18,6 +18,12 @@
 @import "user-created";
 @import "profile";
 
+@media (max-width: 768px) {
+  .container-fluid {
+    padding: 0;
+  }
+}
+
 .logo-name {
   margin-top: -15px;
   height: 53px;

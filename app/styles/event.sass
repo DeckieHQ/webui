@@ -132,17 +132,28 @@
     #time-slots-box
       height: 65vh
 
+@media (max-width: 768px)
+  #event
+    text-align: center
+
+    .event-details
+      margin-top: 0.75em
+
+    .players-count
+      margin-top: 0.75em
+
 #event
   .head
     margin-bottom: 0.75em
 
-  .body
-    display: flex
-
-    .infos
+  @media (min-width: 769px)
+    .body
       display: flex
-      flex-direction: column
-      justify-content: space-between
+
+      .infos
+        display: flex
+        flex-direction: column
+        justify-content: space-between
 
   h3
     margin: 0

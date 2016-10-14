@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import ApplicationAdapter from '../adapters/application';
 
 export default ApplicationAdapter.extend({
@@ -6,7 +5,7 @@ export default ApplicationAdapter.extend({
     return Ember.String.underscore(modelName);
   },
 
-  urlForCreateRecord(modelName, snapshot) {
+  urlForCreateRecord(modelName) {
     return this._buildURL('user/'+modelName);
   },
 });

@@ -74,7 +74,7 @@ export default Ember.Component.extend(EmberValidations, {
           this.set('message', null);
         },
         model: subComment
-      }
+      };
 
       this.get('targetObject').get('targetObject').send('save', this, defer, params);
     },

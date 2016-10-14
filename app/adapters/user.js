@@ -1,4 +1,3 @@
-import Ember from 'ember';
 import ApplicationAdapter from '../adapters/application';
 
 export default ApplicationAdapter.extend({
@@ -6,11 +5,11 @@ export default ApplicationAdapter.extend({
     return 'user';
   },
 
-  urlForFindRecord(id, modelName, snapshot) {
+  urlForFindRecord(id, modelName) {
     return this._buildURL(modelName, id) + '?include=profile';
   },
 
-  urlForUpdateRecord: function(id, modelName, snapshot) {
+  urlForUpdateRecord: function(id, modelName) {
     return this._buildURL(modelName, '');
   },
 });

@@ -15,7 +15,7 @@ export default Ember.Component.extend({
     };
 
     return this.get('event').query('children', params)
-      .then((children) => this.set('children', children))
+      .then((children) => this.set('children', children));
   },
 
   actions: {

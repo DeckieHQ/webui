@@ -1,8 +1,7 @@
-import Ember from 'ember';
 import ApplicationAdapter from '../adapters/application';
 
 export default ApplicationAdapter.extend({
-  urlForCreateRecord(modelName, snapshot) {
+  urlForCreateRecord() {
     return this.get('host')+"/user/password";
   },
 });

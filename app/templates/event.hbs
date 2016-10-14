@@ -203,26 +203,7 @@
             {{/unless}}
           </div>
           <div class='col-xs-12 col-md-6'>
-            <div class="details">
-              {{#if model.flexible}}
-                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                {{t 'date-flexible-from'}}
-                {{moment-format model.begin_at_range.min 'DD MMMM'}}
-              {{else unless model.recurrent}}
-                <div class="date">
-                  <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                  {{moment-format model.begin_at 'DD MMMM'}}
-                </div>
-                <div class="time">
-                  <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                  {{moment-format model.begin_at 'HH:mm'}}
-                </div>
-              {{/if}}
-              <div class="place">
-                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                {{capitalize model.city}} {{short-postcode postcode=model.postcode}}
-              </div>
-            </div>
+            {{event-details event=model}}
           </div>
         </div>
         <div class='row body'>

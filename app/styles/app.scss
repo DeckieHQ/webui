@@ -31,6 +31,21 @@
   }
 }
 
+.event-details {
+  font-size: 1.25em;
+  text-align: center;
+
+  > div {
+    display: inline-block;
+    margin: 0 .5em;
+  }
+
+  .glyphicon {
+    position: relative;
+    top: .125em;
+  }
+}
+
 .attendees {
   font-size: 3em;
   text-align: center;

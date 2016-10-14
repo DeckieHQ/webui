@@ -31,26 +31,7 @@
               <h3>{{event.title}}</h3>
             </span>
 
-            <div class="details">
-              {{#if (eq event.type "flexible")}}
-                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                {{t 'date-flexible-from'}}
-                {{moment-format event.begin_at_range.min 'DD MMMM'}}
-              {{else}}
-                <div class="date">
-                  <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                  {{moment-format event.begin_at 'DD MMMM'}}
-                </div>
-                <div class="time">
-                  <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                  {{moment-format event.begin_at 'HH:mm'}}
-                </div>
-              {{/if}}
-              <div class="place">
-                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                {{capitalize event.city}} {{short-postcode postcode=event.postcode}}
-              </div>
-            </div>
+            {{event-details event=event}}
 
             <div class="clearfix"></div>
 

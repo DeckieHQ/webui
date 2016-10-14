@@ -464,6 +464,7 @@ export default {
     "date": "date invalide",
     "min-max": "doit être inférieur ou égal au maximum"
   },
+  "players": "joueurs",
   "delete": "supprimer",
   "monday": "lun",
   "tuesday": "mar",

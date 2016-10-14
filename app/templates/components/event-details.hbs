@@ -1,0 +1,28 @@
+<div class="event-details">
+  {{#if event.flexible}}
+    <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+    {{t 'date-flexible-from'}}
+    {{moment-format event.begin_at_range.min 'DD MMMM'}}
+  {{else unless event.recurrent}}
+    <div>
+      <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
+      {{moment-format event.begin_at 'DD MMMM'}}
+    </div>
+    <div>
+      <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+      {{moment-format event.begin_at 'HH:mm'}}
+    </div>
+  {{/if}}
+  <div>
+    <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
+    {{capitalize event.city}} {{short-postcode postcode=event.postcode}}
+  </div>
+  <div>
+    <span class="icon-player" aria-hidden="true"></span>
+    {{#if event.unlimited_capacity}}
+      {{t 'unlimited-capacity'}}
+    {{else}}
+      {{minPlayersCapacity}} {{t 'to'}} {{maxPlayersCapacity}} {{t 'players'}}
+    {{/if}}
+  </div>
+</div>

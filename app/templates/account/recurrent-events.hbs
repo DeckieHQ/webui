@@ -7,12 +7,7 @@
             <h3 class='confirmed'>{{event.title}}</h3>
           </div>
           <div class='col-xs-12 col-md-6'>
-            <div class="details">
-              <div class="place">
-                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                {{capitalize event.city}} {{short-postcode postcode=event.postcode}}
-              </div>
-            </div>
+            {{event-details event=event}}
           </div>
         </div>
 

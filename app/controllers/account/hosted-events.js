@@ -14,7 +14,7 @@ export default Ember.Controller.extend({
           not_type: 'recurrent',
           opened: !opened
         }
-      }
+      };
 
       return this.get('currentUser').content.query('hosted_events', params).then(
         (events) => {

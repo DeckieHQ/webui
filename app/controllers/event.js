@@ -34,7 +34,7 @@ export default Ember.Controller.extend(EmberValidations, {
   }.property('model.min_capacity'),
 
   minCapacityReached: function() {
-    return (this.get('model').get('attendees_count') - this.get('model').get('min_capacity')) >= 0
+    return (this.get('model').get('attendees_count') - this.get('model').get('min_capacity')) >= 0;
   }.property('model.min_capacity', 'model.attendees_count'),
 
   isHost: function() {
@@ -62,7 +62,7 @@ export default Ember.Controller.extend(EmberValidations, {
   }.property('session.isAuthenticated'),
 
   displayPrivateComments: function() {
-    return this.get('isMember') && this.get('model.private_comments_count') > 0
+    return this.get('isMember') && this.get('model.private_comments_count') > 0;
   }.property('isMember'),
 
   status: function() {
@@ -96,12 +96,12 @@ export default Ember.Controller.extend(EmberValidations, {
   displayComments: true,
 
   actions: {
-    join_event: function(defer) {
+    join_event: function() {
       if (!this.get('session.isAuthenticated')) {
         return this.transitionToRoute('login-or-registration').then((newRoute) => {
           newRoute.controller.set('transitonToRecord', this.get('model'));
         });
-      };
+      }
 
       if (this.get('status') === "") {
         let submission = this.store.createRecord('submission', {
@@ -152,7 +152,7 @@ export default Ember.Controller.extend(EmberValidations, {
           window.location.reload(true);
         }).catch(() => {
           window.location.reload(true);
-        })
+        });
       }
     },
 
@@ -200,7 +200,7 @@ export default Ember.Controller.extend(EmberValidations, {
             .split(';').join(' ').split('-').join(' ')
             .split('_').join(' ').split('"').join(' ')
             .split('<').join(' ').split('>').join(' ')
-            .split(/\s+/).filter(Boolean)
+            .split(/\s+/).filter(Boolean);
 
       let invitations = _.map(emails, email => {
         return store.createRecord('invitation', { email: email, event: event })
@@ -241,7 +241,7 @@ export default Ember.Controller.extend(EmberValidations, {
           this.set('displayComments', true);
         },
         model: comment
-      }
+      };
 
       this.send('save', this, defer, params);
     },

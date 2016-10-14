@@ -48,7 +48,7 @@ export default Ember.Controller.extend(EmberValidations, {
           prefs.push('event-submit');
         }
       } else {
-        let index = prefs.indexOf('event-submit')
+        let index = prefs.indexOf('event-submit');
         if (index > -1) {
           prefs.splice(index, 1);
         }
@@ -58,7 +58,7 @@ export default Ember.Controller.extend(EmberValidations, {
           prefs.push('event-unsubmit');
         }
       } else {
-        let index = prefs.indexOf('event-unsubmit')
+        let index = prefs.indexOf('event-unsubmit');
         if (index > -1) {
           prefs.splice(index, 1);
         }
@@ -68,7 +68,7 @@ export default Ember.Controller.extend(EmberValidations, {
           prefs.push('event-join');
         }
       } else {
-        let index = prefs.indexOf('event-join')
+        let index = prefs.indexOf('event-join');
         if (index > -1) {
           prefs.splice(index, 1);
         }
@@ -78,7 +78,7 @@ export default Ember.Controller.extend(EmberValidations, {
           prefs.push('event-leave');
         }
       } else {
-        let index = prefs.indexOf('event-leave')
+        let index = prefs.indexOf('event-leave');
         if (index > -1) {
           prefs.splice(index, 1);
         }
@@ -88,7 +88,7 @@ export default Ember.Controller.extend(EmberValidations, {
           prefs.push('event-update');
         }
       } else {
-        let index = prefs.indexOf('event-update')
+        let index = prefs.indexOf('event-update');
         if (index > -1) {
           prefs.splice(index, 1);
         }
@@ -98,7 +98,7 @@ export default Ember.Controller.extend(EmberValidations, {
           prefs.push('event-cancel');
         }
       } else {
-        let index = prefs.indexOf('event-cancel')
+        let index = prefs.indexOf('event-cancel');
         if (index > -1) {
           prefs.splice(index, 1);
         }
@@ -108,7 +108,7 @@ export default Ember.Controller.extend(EmberValidations, {
           prefs.push('event-ready');
         }
       } else {
-        let index = prefs.indexOf('event-ready')
+        let index = prefs.indexOf('event-ready');
         if (index > -1) {
           prefs.splice(index, 1);
         }
@@ -118,7 +118,7 @@ export default Ember.Controller.extend(EmberValidations, {
           prefs.push('event-not_ready');
         }
       } else {
-        let index = prefs.indexOf('event-not_ready')
+        let index = prefs.indexOf('event-not_ready');
         if (index > -1) {
           prefs.splice(index, 1);
         }
@@ -128,7 +128,7 @@ export default Ember.Controller.extend(EmberValidations, {
           prefs.push('event-remove_full');
         }
       } else {
-        let index = prefs.indexOf('event-remove_full')
+        let index = prefs.indexOf('event-remove_full');
         if (index > -1) {
           prefs.splice(index, 1);
         }
@@ -138,7 +138,7 @@ export default Ember.Controller.extend(EmberValidations, {
           prefs.push('event-remove_start');
         }
       } else {
-        let index = prefs.indexOf('event-remove_start')
+        let index = prefs.indexOf('event-remove_start');
         if (index > -1) {
           prefs.splice(index, 1);
         }
@@ -148,7 +148,7 @@ export default Ember.Controller.extend(EmberValidations, {
           prefs.push('event-comment');
         }
       } else {
-        let index = prefs.indexOf('event-comment')
+        let index = prefs.indexOf('event-comment');
         if (index > -1) {
           prefs.splice(index, 1);
         }
@@ -158,7 +158,7 @@ export default Ember.Controller.extend(EmberValidations, {
           prefs.push('comment-comment');
         }
       } else {
-        let index = prefs.indexOf('comment-comment')
+        let index = prefs.indexOf('comment-comment');
         if (index > -1) {
           prefs.splice(index, 1);
         }
@@ -166,7 +166,7 @@ export default Ember.Controller.extend(EmberValidations, {
 
       let params = {
         model: this.get('preferences')
-      }
+      };
 
       this.send('save', this, defer, params);
     }

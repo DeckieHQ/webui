@@ -14,7 +14,7 @@ export default Ember.Controller.extend(EmberValidations, {
     "model.password_confirmation": {
       presence: true,
       inline: validator(function() {
-        if (this.model.get('model.password') != this.model.get('model.password_confirmation')) {
+        if (this.model.get('model.password') !== this.model.get('model.password_confirmation')) {
           return this.get('i18n').t("error.password-confirm");
         }
       })
@@ -26,7 +26,8 @@ export default Ember.Controller.extend(EmberValidations, {
       let params = {
         afterSave: () => this.set('success', true),
         fail: () => this.set('invalidToken', true)
-      }
+      };
+
       this.send('save', this, defer, params);
     }
   }

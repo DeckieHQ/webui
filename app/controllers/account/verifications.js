@@ -9,7 +9,7 @@ export default Ember.Controller.extend({
       return verification.save()
         .then(() => {
           defer.resolve();
-          this.set('emailSent', true)
+          this.set('emailSent', true);
         })
         .catch((reason) => {
           defer.reject(reason);

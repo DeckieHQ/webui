@@ -19,7 +19,7 @@ export default Ember.Component.extend({
           .then(() => {
             this.get('notifications').set('notifications_count', 0);
 
-            return this.get('store').query('notification', { sort: '-action.created_at', include: 'action,action.actor' })
+            return this.get('store').query('notification', { sort: '-action.created_at', include: 'action,action.actor' });
           })
           .then((list) => {
             this.set('list', list);

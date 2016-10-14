@@ -50,7 +50,7 @@ export default Ember.Controller.extend({
     let params = { include: 'event', sort: 'event.begin_at', filters: { event: { opened: true } } };
 
     if (!opened) {
-      params.sort = `-${params.sort}`
+      params.sort = `-${params.sort}`;
 
       params.filters.event.opened = false;
     }

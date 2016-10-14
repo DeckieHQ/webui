@@ -19,7 +19,7 @@ export default Ember.Controller.extend(EmberValidations, {
           this.set('verified', true);
           this.set('currentUser.phone_number_verified', true);
         }
-      }
+      };
 
       this.send('save', this, defer, params);
     }

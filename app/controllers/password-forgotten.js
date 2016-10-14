@@ -11,7 +11,7 @@ export default Ember.Controller.extend(EmberValidations, {
         let regex = new RegExp(/\S+@\S+\.\S+/);
         if (!regex.test(this.model.get('model.email'))) {
           return this.get('i18n').t('error.email');
-        };
+        }
       })
     },
   },
@@ -20,7 +20,8 @@ export default Ember.Controller.extend(EmberValidations, {
     submit: function(defer) {
       let params = {
         afterSave: () => this.set('success', true)
-      }
+      };
+      
       this.send('save', this, defer, params);
     }
   }

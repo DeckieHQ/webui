@@ -46,32 +46,23 @@
   }
 }
 
-.attendees {
+.players-count {
   font-size: 3em;
   text-align: center;
 
-  .capacity {
+  .inner {
+    font-size: .75em;
     padding: .5em;
     border-radius: 50%;
     color: $green;
     display: inline-block;
-    margin: auto;
     background-color: rgba(255,255,255,.5);
     box-shadow: 0 0 30px -5px rgba(0,0,0,.25);
+    vertical-align: text-bottom;
 
     .icon-player {
       @extend .glyphicon, .glyphicon-user;
       font-size: .75em;
-    }
-
-    .attendees-count {
-      font-size: .75em;
-      vertical-align: text-bottom;
-    }
-
-    .min-max {
-      font-size: .5em;
-      vertical-align: text-bottom;
     }
   }
 }

@@ -6,7 +6,15 @@ export default Ember.Route.extend({
     tagId: 'meta-og-description',
     attrs: {
       name: 'description',
-      content: 'youhou rouki tes trop fort',
+      content: this.get('model.short_description'),
+    }
+  },
+  {
+    type: 'meta',
+    tagId: 'meta-og-description',
+    attrs: {
+      name: 'title',
+      content: this.get('model.title'),
     }
   }],
 

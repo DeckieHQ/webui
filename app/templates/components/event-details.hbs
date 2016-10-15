@@ -1,5 +1,5 @@
 <div class="event-details">
-  {{#if event.flexible}}
+  {{#if (eq event.type 'flexible')}}
     <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
     {{t 'date-flexible-from'}}
     {{moment-format event.begin_at_range.min 'DD MMMM'}}

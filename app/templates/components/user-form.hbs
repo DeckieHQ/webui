@@ -54,8 +54,10 @@
 
     <div class='inline-block'>
       <div class='policy-infos'>
-        {{t 'policy.infos'}}
-        {{#link-to 'policy' target='blank'}}{{t 'policy.title'}}{{/link-to}}
+        {{#unless alreadyCreated}}
+          {{t 'policy.infos'}}
+          {{#link-to 'policy' target='blank'}}{{t 'policy.title'}}{{/link-to}}
+        {{/unless}}
       </div>
       {{dynamic-submit actionOnSubmit="save_user" class='user-submit'}}
     </div>

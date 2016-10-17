@@ -52,9 +52,9 @@ export default Ember.Component.extend(EmberValidations, {
     birthday: {
       inline: validator(function() {
         if (!this.model.model.get('organization')) {
-          let day = parseInt(this.model.day) + 1;
+          let day = parseInt(this.model.day);
           let date = [ day, this.model.month, this.model.year ].join("-");
-          let birthday = moment(date, "DD-MMMM-YYYY");
+          let birthday = moment.utc(date, "DD-M-YYYY");
 
           if (!birthday.isValid()) {
             return this.get('i18n').t('error.date');
@@ -183,9 +183,9 @@ export default Ember.Component.extend(EmberValidations, {
       let params = {
         beforeSave: () => {
           if (!model.get('organization')) {
-            let day = parseInt(this.get('day')) + 1;
+            let day = parseInt(this.get('day'));
             let date = [ day, this.get('month'), this.get('year') ].join("-");
-            let birthday = moment(date, "DD-M-YYYY");
+            let birthday = moment.utc(date, "DD-M-YYYY");
 
             model.set('birthday', birthday.toDate());
           }

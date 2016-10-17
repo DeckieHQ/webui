@@ -311,6 +311,7 @@ export default {
     "first-invitation": "J'invite mes amis",
     "first-flexible-event": "Je suis flexible",
     "first-unlimited-event-capacity": "Plus on est des fous, plus on rit !",
+    "first-recurrent-event": "C'est dans la régularité qu'on fait les meilleures parties",
     "condition": {
       "early-registration": "s'inscrire avant le lancement officiel.",
       "first-feedback": "envoyer un avis (contructif) sur la plateforme.",
@@ -318,7 +319,8 @@ export default {
       "verified-profile": "vérifier son profil.",
       "first-invitation": "inviter un ami à une partie.",
       "first-flexible-event": "organiser une partie avec choix de la date.",
-      "first-unlimited-event-capacity": "organiser une partie avec une capacité illimitée."
+      "first-unlimited-event-capacity": "organiser une partie avec une capacité illimitée.",
+      "first-recurrent-event": "organiser une partie régulière."
     }
   },
   "tips": {

@@ -42,4 +42,10 @@ export default Ember.Controller.extend({
       (achievement) => achievement.get('name') === 'first-unlimited-event-capacity'
     );
   }.property(),
+
+  firstRecurrentEvent: function() {
+    return this.get('model').find(
+      (achievement) => achievement.get('name') === 'first-recurrent-event'
+    );
+  }.property(),
  });

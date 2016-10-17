@@ -38,6 +38,18 @@ export default Ember.Controller.extend(EmberValidations, {
   event_not_ready: function(){
     return this.get('preferences.notifications').indexOf('event-not_ready') > -1;
   }.property(),
+  time_slot_join: function(){
+    return this.get('preferences.notifications').indexOf('time_slot-join') > -1;
+  }.property(),
+  time_slot_leave: function(){
+    return this.get('preferences.notifications').indexOf('time_slot-leave') > -1;
+  }.property(),
+  time_slot_confirm: function(){
+    return this.get('preferences.notifications').indexOf('time_slot-confirm') > -1;
+  }.property(),
+  time_slot_cancel: function(){
+    return this.get('preferences.notifications').indexOf('time_slot-cancel') > -1;
+  }.property(),
 
   actions: {
     update_preferences: function(defer) {
@@ -159,6 +171,46 @@ export default Ember.Controller.extend(EmberValidations, {
         }
       } else {
         let index = prefs.indexOf('comment-comment');
+        if (index > -1) {
+          prefs.splice(index, 1);
+        }
+      }
+      if (this.get('time_slot_join')) {
+        if (prefs.indexOf('time_slot-join') < 0) {
+          prefs.push('time_slot-join');
+        }
+      } else {
+        let index = prefs.indexOf('time_slot-join');
+        if (index > -1) {
+          prefs.splice(index, 1);
+        }
+      }
+      if (this.get('time_slot_leave')) {
+        if (prefs.indexOf('time_slot-leave') < 0) {
+          prefs.push('time_slot-leave');
+        }
+      } else {
+        let index = prefs.indexOf('time_slot-leave');
+        if (index > -1) {
+          prefs.splice(index, 1);
+        }
+      }
+      if (this.get('time_slot_confirm')) {
+        if (prefs.indexOf('time_slot-confirm') < 0) {
+          prefs.push('time_slot-confirm');
+        }
+      } else {
+        let index = prefs.indexOf('time_slot-confirm');
+        if (index > -1) {
+          prefs.splice(index, 1);
+        }
+      }
+      if (this.get('time_slot_cancel')) {
+        if (prefs.indexOf('time_slot-cancel') < 0) {
+          prefs.push('time_slot-cancel');
+        }
+      } else {
+        let index = prefs.indexOf('time_slot-cancel');
         if (index > -1) {
           prefs.splice(index, 1);
         }

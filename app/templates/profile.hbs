@@ -2,48 +2,31 @@
   {{profile-display profile=model}}
 
   {{#each model.hosted_events as |event|}}
-    <div class="hit">
-      {{#link-to 'event' event}}
-        <div class='row head'>
-          <div class='col-xs-12 col-md-6'>
-            <h3 class='confirmed'>{{event.title}}</h3>
-          </div>
-          <div class='col-xs-12 col-md-6'>
-            <div class="details">
-              {{#if event.flexible}}
-                <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                {{t 'date-flexible-from'}}
-                {{moment-format event.begin_at_range.min 'DD MMMM'}}
-              {{else}}
-                <div class="date">
-                  <span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>
-                  {{moment-format event.begin_at 'DD MMMM'}}
-                </div>
-                <div class="time">
-                  <span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-                  {{moment-format event.begin_at 'HH:mm'}}
-                </div>
-              {{/if}}
-              <div class="place">
-                <span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span>
-                {{capitalize event.city}} {{short-postcode postcode=event.postcode}}
-              </div>
+    {{#unless event.recurrent}}
+      <div class="hit">
+        {{#link-to 'event' event}}
+          <div class='row head'>
+            <div class='col-xs-12 col-md-6'>
+              <h3 class='confirmed'>{{event.title}}</h3>
+            </div>
+            <div class='col-xs-12 col-md-6'>
+              {{event-details event=event}}
             </div>
           </div>
-        </div>
 
-        <div class='row'>
-          <div class='col-xs-12 col-md-6'>
-            <div class='description'>
-             {{event.short_description}}
+          <div class='row body'>
+            <div class='infos col-xs-12 col-md-6'>
+              <div class='description'>
+               {{event.short_description}}
+              </div>
+              {{display-categories event=event}}
             </div>
-            {{display-categories event=event}}
+            <div class='col-xs-12 col-md-6'>
+              {{players-count event=event}}
+            </div>
           </div>
-          <div class='col-xs-12 col-md-6'>
-            {{plus-one event=event}}
-          </div>
-        </div>
-      {{/link-to}}
-    </div>
+        {{/link-to}}
+      </div>
+    {{/unless}}
   {{/each}}
 </div>

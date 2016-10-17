@@ -9,6 +9,7 @@ export default Ember.Route.extend({
     let params = {
       sort: 'begin_at',
       filters: {
+        not_type: 'recurrent',
         opened: true
       },
     };

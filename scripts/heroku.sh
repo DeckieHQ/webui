@@ -14,8 +14,6 @@ function init() {
 
     heroku apps:create $app --region eu --buildpack \
       https://github.com/tonycoco/heroku-buildpack-ember-cli.git
-
-    git remote add $app "https://git.heroku.com/$app.git"
 }
 
 function configure() {
@@ -54,6 +52,8 @@ function configure() {
 }
 
 function deploy() {
+    git remote add $app "https://git.heroku.com/$app.git"
+    
     heroku config:set REBUILD_ALL=true --app $app
 
     #heroku plugins:install https://github.com/heroku/heroku-repo.git

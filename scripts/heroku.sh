@@ -52,8 +52,8 @@ function configure() {
 }
 
 function deploy() {
-    git remote add $app "https://git.heroku.com/$app.git"
-    
+    heroku git:remote -a $app -r $app
+
     heroku config:set REBUILD_ALL=true --app $app
 
     #heroku plugins:install https://github.com/heroku/heroku-repo.git

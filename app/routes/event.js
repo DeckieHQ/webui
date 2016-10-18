@@ -1,12 +1,14 @@
 import Ember from 'ember';
 
 export default Ember.Route.extend({
-  setHeadTags: function(model) {
-    let headTags = [{
+  headTags: function() {
+    let model = this.modelFor(this.routeName);
+
+    return [{
       type: 'meta',
       tagId: 'meta-og-description',
       attrs: {
-        name: 'description',
+        property: 'og:description',
         content: model.get('short_description'),
       }
     },
@@ -14,12 +16,10 @@ export default Ember.Route.extend({
       type: 'meta',
       tagId: 'meta-og-title',
       attrs: {
-        name: 'title',
-        content: model.get('model.title'),
+        property: 'og:title',
+        content: model.get('title'),
       }
     }];
-
-    this.set('headTags', headTags);
   },
 
   deactivate: function() {
@@ -44,7 +44,6 @@ export default Ember.Route.extend({
 
   afterModel(model) {
     let isAuthenticated = this.get('session.isAuthenticated');
-    this.setHeadTags(model);
 
     if (model.get('flexible')) {
       let params = {

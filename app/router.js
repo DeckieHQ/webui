@@ -42,6 +42,7 @@ Router.map(function() {
   this.route('feedback-sent');
   this.route('event-not-found');
   this.route('policy');
+  this.route('sitemap.xml');
 });
 
 export default Router;

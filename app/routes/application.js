@@ -5,6 +5,45 @@ export default Ember.Route.extend({
   moment: Ember.inject.service(),
   i18n: Ember.inject.service(),
 
+  headTags: function() {
+    return [{
+      type: 'meta',
+      tagId: 'meta-og-description',
+      attrs: {
+        property: 'og:description',
+        content: 'Organisez vos parties en toute simplicité et rencontrez de nouvelles personnes avec qui jouer à vos jeux préférés',
+      }
+    }, {
+      type: 'meta',
+      tagId: 'meta-og-title',
+      attrs: {
+        property: 'og:title',
+        content: 'Deckie',
+      }
+    }, {
+      type: 'meta',
+      tagId: 'meta-og-image',
+      attrs: {
+        property: 'og:image',
+        content: 'https://www.deckie.fr/assets/images/avatar-a2fc5859bbeb404f9104c07c508d648c.jpg',
+      }
+    }, {
+      type: 'meta',
+      tagId: 'meta-og-image-width',
+      attrs: {
+        property: 'og:image:width',
+        content: '300',
+      }
+    }, {
+      type: 'meta',
+      tagId: 'meta-og-image-height',
+      attrs: {
+        property: 'og:image:height',
+        content: '300',
+      }
+    }];
+  },
+
   beforeModel() {
     this._switchLocale('fr');
 

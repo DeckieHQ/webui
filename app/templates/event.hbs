@@ -195,7 +195,7 @@
             <h3>{{model.title}}</h3>
             {{#unless model.recurrent}}
               <div class='margin-top'>
-                {{#fb-share tagName="a" url=eventUrl title=model.title description=model.short_description}}
+                {{#fb-share tagName="a" url=eventUrl}}
                   <img class='fb-logo' src='/assets/images/fb-share.png'>
                   <span class='fb-share'>{{t 'facebook-share'}}</span>
                 {{/fb-share}}

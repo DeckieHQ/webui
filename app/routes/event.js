@@ -11,13 +11,33 @@ export default Ember.Route.extend({
         property: 'og:description',
         content: model.get('short_description'),
       }
-    },
-    {
+    }, {
       type: 'meta',
       tagId: 'meta-og-title',
       attrs: {
         property: 'og:title',
         content: model.get('title'),
+      }
+    }, {
+      type: 'meta',
+      tagId: 'meta-og-image',
+      attrs: {
+        property: 'og:image',
+        content: 'https://www.deckie.fr/assets/images/avatar-a2fc5859bbeb404f9104c07c508d648c.jpg',
+      }
+    }, {
+      type: 'meta',
+      tagId: 'meta-og-image-width',
+      attrs: {
+        property: 'og:image:width',
+        content: '300',
+      }
+    }, {
+      type: 'meta',
+      tagId: 'meta-og-image-height',
+      attrs: {
+        property: 'og:image:height',
+        content: '300',
       }
     }];
   },

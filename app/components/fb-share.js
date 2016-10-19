@@ -18,6 +18,8 @@ export default fbComponent.extend({
           href: self.get('url'),
           title: title,
           description: description,
+          'image:width': '300',
+          'image:height': '3000'
         },
         function(response) {
           if (response && !response.error_code) {

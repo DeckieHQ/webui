@@ -7,13 +7,31 @@
   <url>
     <loc>https://www.deckie.fr/</loc>
     <lastmod>2016-09-15T13:18:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.deckie.fr/search</loc>
     <lastmod>2016-09-15T13:18:23+00:00</lastmod>
-    <changefreq>monthly</changefreq>
+    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.deckie.fr/events/new</loc>
+    <lastmod>2016-10-19T13:18:23+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.deckie.fr/registration</loc>
+    <lastmod>2016-10-19T13:18:23+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.deckie.fr/login</loc>
+    <lastmod>2016-10-19T13:18:23+00:00</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
   </url>
 </urlset>

@@ -17,14 +17,14 @@
           {{else if pending}}
             <div>{{t 'event.submission.pending'}}</div>
             <div>
-              <div {{action 'quit_event'}} class="btn-red full-width">
+              <div {{action 'quit_event'}} class={{if isAbleToEdit 'btn-red full-width margin-bottom' 'btn-red full-width'}}>
                 {{t 'event.quit'}}
               </div>
             </div>
           {{else if confirmed}}
             {{t 'event.submission.confirmed'}}
             <div>
-              <div {{action 'quit_event'}} class="btn-red full-width">
+              <div {{action 'quit_event'}} class={{if isAbleToEdit 'btn-red full-width margin-bottom' 'btn-red full-width'}}>
                 {{t 'event.quit'}}
               </div>
             </div>

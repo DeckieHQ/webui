@@ -47,6 +47,10 @@ export default DS.Model.extend(HasManyQuery.ModelMixin, {
     inverse: 'children'
   }),
 
+  normal: Ember.computed('type', function() {
+    return this.get('type') === 'normal' ? true : false;
+  }),
+
   flexible: Ember.computed('type', function() {
     return this.get('type') === 'flexible' ? true : false;
   }),
